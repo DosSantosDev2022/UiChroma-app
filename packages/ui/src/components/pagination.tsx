@@ -1,7 +1,7 @@
 'use client'
 
-import { usePagination } from '@/hooks/usePagination'
-import { Button } from '@/components/ui/button'
+import { usePagination } from '../../../hooks/src/usePagination'
+import { Button } from '../components/button'
 import Link from 'next/link'
 import { LuChevronsLeft, LuChevronsRight } from 'react-icons/lu'
 

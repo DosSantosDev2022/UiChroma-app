@@ -1,7 +1,7 @@
 'use client'
 
-import React from 'react'
 import { useState } from 'react'
+
 import { LuChevronDown, LuChevronUp } from 'react-icons/lu'
 
 interface Accordion {

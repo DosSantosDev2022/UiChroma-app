@@ -9,11 +9,27 @@ import { TbComponents } from 'react-icons/tb'
 import { MdNewReleases } from 'react-icons/md'
 import { IoIosRocket } from 'react-icons/io'
 import { FaHouse } from 'react-icons/fa6'
+import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
+import { GetPathLinks } from '@/types/pages'
 
-export function NaigationLinks() {
-  /* const componentList = [...ComponentList].sort((a, b) =>
-    a.name.localeCompare(b.name),
-  ) */
+const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
+  const query =`
+      query MyQuery {
+      components {
+        id
+        slug
+        componentName
+      }
+    }
+  `
+  return fetchHygraphQuery(query)
+}
+
+export async function NaigationLinks() {
+  const {components} = await GET_PATH_LINKS()
+  const componentList = [...components].sort((a, b) =>
+    a.componentName.localeCompare(b.componentName),
+  )
   const hookList = [...hooks]
 
   /* const templates = [...Templates].sort((a, b) => a.name.localeCompare(b.name)) */
@@ -91,17 +107,17 @@ export function NaigationLinks() {
             </Dropdown.Trigger>
 
             <Navigation.List className="mt-2 max-h-[268px] space-y-1 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary-900">
-              {/* {componentList.map((c) => (
-                <Navigation.Item className="border-none " key={c.id}>
+               {componentList.map((component) => (
+                <Navigation.Item className="border-none " key={component.id}>
                   <Navigation.Links
                     className="w-full bg-transparent"
-                    url={c.url}
+                    url={`/preview/components/${component.slug}`}
                   >
-                    {c.name}
+                    {component.componentName}
                   </Navigation.Links>
                 </Navigation.Item>
-              ))} */}
-              a
+              ))} 
+              
             </Navigation.List>
           </Dropdown.Root>
         </Navigation.Item>

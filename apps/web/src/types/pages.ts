@@ -19,3 +19,11 @@ export interface GetStarterData {
     }
   }
 }
+
+export interface GetPathLinks{
+  components : {
+    id: string
+    slug: string
+    componentName: string
+  }[]
+}

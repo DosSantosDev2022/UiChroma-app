@@ -1,24 +1,37 @@
 import { inter } from '@/app/fonts'
 import { Button } from '@repo/ui/components/button.tsx'
 import Link from 'next/link'
+import { fetchHygraphQuery } from './api/cms/hygraph'
+import { HomePageData } from '@/types/pages'
+import { RichText } from '@/components/global/rich-text'
 
-export default function Home() {
+const GET_HOME_PAGE_DATA = async (): Promise<HomePageData> => {
+  const query =`
+      query MyQuery {
+      homePage(where: {slug: "home"}) {
+        id
+        sectionHero {
+          raw
+        }
+        sectionIntroduction {
+          raw
+        }
+      }
+    }
+  `
+  return fetchHygraphQuery(query)
+}
+
+export default async function Home() {
+  const {homePage} = await GET_HOME_PAGE_DATA()
   return (
     <div className="w-full space-y-2  p-6  ">
-      <div className="flex flex-col items-center gap-6">
-        <h1
-          className={`${inter.className} text-center text-7xl font-extrabold tracking-tight text-primary-900 `}
-        >
-          Construa aplicações modernas e responsivas rapidamente.
-        </h1>
-        <p className="w-[768px] text-center text-base font-normal text-primary-800 ">
-          UIChroma é uma biblioteca de componentes React desenvolvida para
-          simplificar e acelerar o processo de criação de interfaces de usuário
-          de forma ágil e dinâmica. Com uma gama diversificada de componentes
-          cuidadosamente projetados, UIChroma permite aos desenvolvedores criar
-          experiências de usuário excepcionais sem a necessidade de instalar
-          dependências adicionais em seus projetos.
-        </p>
+      <section className="flex flex-col items-center gap-6">
+        <RichText content={homePage.sectionHero.raw}
+          renderers={{
+          h1:({children}) => <h1 className={` ${inter.className} font-bold text-primary-900 text-7xl`} >{children}</h1>,
+          p:({children}) =><p className='text-primary-800 font-normal text-lg'>{children}</p>
+        }}/>
 
         <div className="flex w-full items-center justify-center gap-2">
           <Button
@@ -36,18 +49,40 @@ export default function Home() {
             <Link href={'/'}>Documentação</Link>
           </Button>
         </div>
-      </div>
+      </section>
 
-      <div className="mt-10 space-y-2 border px-2 py-3">
-        <h3
-          className={`${inter.className} text-start text-2xl font-extrabold tracking-tight text-primary-900 `}
+      <div className="mt-10 space-y-2  px-2 py-3">
+        <RichText content={homePage.sectionIntroduction.raw}
+        renderers={{
+          h3:({children}) =>(
+            <h3
+          className={`${inter.className} text-start text-2xl
+           font-extrabold tracking-tight text-primary-900 `}
         >
-          Introdução
+          {children}
         </h3>
-        <span className="w-[768px] text-base font-normal text-primary-900 ">
-          Componentes lindamente projetados que você pode copiar e colar em seus
-          aplicativos. Personalizável. Código aberto e de graça.
-        </span>
+          ),
+        p:({children}) => (
+          <p className='w-[768px] text-base font-normal text-primary-900'>{children}</p>
+        ),
+
+        code_block: ({ children }) => (
+          <pre className="bg-zinc-950 w-[768px]  p-4 rounded-md overflow-x-auto
+          scrollbar-thin scrollbar-track-blumine-900 scrollbar-thumb-blumine-50">
+            <code className="text-zinc-50">{children}</code>
+          </pre>
+        ),
+        li: ({ children }) => (
+          <ul className="text-primary-800">{children}</ul>
+        ),
+        ul: ({ children }) => (
+          <ul className="space-y-4">{children}</ul>
+        ),
+        ol: ({ children }) => (
+          <ul className="space-y-4">{children}</ul>
+        ),
+        }}
+        />
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 import { format } from 'date-fns'
 import { RichText } from '@/components/global/rich-text'
 import { SearchReleases } from '@/components/global/searchReleases'
-import { Button } from '@/components/ui/button'
+import { Button } from '@repo/ui/components/button.tsx'
 import Link from 'next/link'
 
 const GET_RELEASES = async (term: string): Promise<MyQueryResponse> => {

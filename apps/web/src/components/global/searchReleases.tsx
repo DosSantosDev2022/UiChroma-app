@@ -33,7 +33,7 @@ export function SearchReleases() {
     >
       <InputRoot className="h-11 w-[296px] rounded-lg ">
         <InputIcon>
-          <BsSearch />
+          <BsSearch className="text-secondary-50" />
         </InputIcon>
         <ComponentInput
           type="text"

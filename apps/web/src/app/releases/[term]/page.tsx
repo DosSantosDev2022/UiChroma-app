@@ -39,7 +39,7 @@ export default async function ReleasePage({
   const { releasePage } = await GET_RELEASES(searchParams?.query || '')
 
   return (
-    <div className=" p-4">
+    <div className=" relative flex h-full max-w-4xl  flex-col  px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-3">
         <h6 className="text-4xl font-extrabold text-primary-900">
           {`Resultado da busca para ${searchParams?.query}`}

@@ -57,8 +57,6 @@ export default async function ComponentDetails({
       component.componentName.toLowerCase() === params.name.toLowerCase(),
   )
 
-  console.log(componentData)
-
   if (!componentData) {
     return <div>Componente não encontrado</div>
   }
@@ -80,8 +78,8 @@ export default async function ComponentDetails({
   } */
 
   return (
-    <div className="2 grid w-full grid-cols-12 gap-10">
-      <section className="col-span-9 h-screen w-full overflow-y-scroll p-2 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
+    <div className=" grid w-full grid-cols-12 gap-10">
+      <section className="col-span-9 h-screen w-full overflow-y-scroll px-8 py-5 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
         <div id="inicio">
           <HeroComponents
             content="Componente"
@@ -98,41 +96,42 @@ export default async function ComponentDetails({
             <h4 className="mt-10 text-3xl font-extrabold tracking-[2.16px] text-cyan-900">
               Preview do componente
             </h4>
-            <div className="flex h-full w-full flex-shrink-0 items-start justify-center rounded-lg border bg-zinc-700 p-8 shadow-md">
+            <div className="bg-primary-100 flex h-full w-full flex-shrink-0 items-start justify-center rounded-lg border p-8 shadow-md">
               <ComponentPreview componentData={componentData} />
             </div>
           </div>
-
-          <ClipBoardContainer id="copyCode">
-            <ClipBoardHeader>
-              <ClipBoardName>{componentData.componentName}</ClipBoardName>
-              <ClipBoardAction
-                className=""
-                copyText={componentData.codeString || ''}
-              />
-            </ClipBoardHeader>
-            <ClipBoardArea className="h-full">
-              <SyntaxHighlighter
-                language="jsx"
-                style={dracula}
-                customStyle={{
-                  width: '100%',
-                  padding: '22px',
-                  borderRadius: '12px',
-                  background: 'none',
-                  scrollbarWidth: 'none',
-                  scrollbarColor: 'auto',
-                }}
-                showLineNumbers
-              >
-                {componentData.codeString || ''}
-              </SyntaxHighlighter>
-            </ClipBoardArea>
-          </ClipBoardContainer>
+          <div id="copyCode">
+            <ClipBoardContainer>
+              <ClipBoardHeader className="bg-primary-950">
+                <ClipBoardName>{componentData.componentName}</ClipBoardName>
+                <ClipBoardAction
+                  className="bg-primary-900 hover:bg-primary-700"
+                  copyText={componentData.codeString || ''}
+                />
+              </ClipBoardHeader>
+              <ClipBoardArea className="h-full bg-primary-950/90">
+                <SyntaxHighlighter
+                  language="jsx"
+                  style={dracula}
+                  customStyle={{
+                    width: '100%',
+                    padding: '22px',
+                    borderRadius: '12px',
+                    background: 'none',
+                    scrollbarWidth: 'none',
+                    scrollbarColor: 'auto',
+                  }}
+                  showLineNumbers
+                >
+                  {componentData.codeString || ''}
+                </SyntaxHighlighter>
+              </ClipBoardArea>
+            </ClipBoardContainer>
+          </div>
         </div>
 
         <div className="space-y-3">
-          <h4 className="mt-10 text-2xl font-extrabold  text-cyan-900">
+          <h4 className="mt-10 text-2xl font-extrabold ">
             Dependências para utilizar esse componente
           </h4>
 
@@ -145,17 +144,20 @@ export default async function ComponentDetails({
                 <span className="flex items-center gap-3 text-lg font-semibold">
                   <IoIosArrowDroprightCircle
                     size={24}
-                    className="text-cyan-800"
+                    className="text-primary-600"
                   />
                   {dep.title}
                 </span>
 
                 <ClipBoardContainer className="">
-                  <ClipBoardHeader>
+                  <ClipBoardHeader className="bg-primary-950">
                     <ClipBoardName>{dep.title}</ClipBoardName>
-                    <ClipBoardAction copyText={dep.command} />
+                    <ClipBoardAction
+                      copyText={dep.command}
+                      className="bg-primary-900 hover:bg-primary-700"
+                    />
                   </ClipBoardHeader>
-                  <ClipBoardArea className="h-full">
+                  <ClipBoardArea className="h-full bg-primary-950/90">
                     {dep.command}{' '}
                   </ClipBoardArea>
                 </ClipBoardContainer>
@@ -163,11 +165,11 @@ export default async function ComponentDetails({
             ))}
           </div>
         </div>
+
+        <div id="como-usar"></div>
       </section>
       <section className="sticky top-0 col-span-3 h-screen   p-2 ">
-        <h4 className="mb-8 ml-4 text-2xl font-semibold text-primary-900">
-          Navegação
-        </h4>
+        <h4 className="mb-8 ml-4 text-2xl font-semibold ">Navegação</h4>
 
         <NavigationScrollView />
       </section>

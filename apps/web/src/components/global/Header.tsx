@@ -8,7 +8,7 @@ import { IoLogoFigma } from 'react-icons/io5'
 
 export function Header() {
   return (
-    <header className="bg-primary-950 flex h-20 w-full max-w-[1440px] items-center justify-end px-8 py-6 ">
+    <header className="flex h-16 w-full max-w-[1440px] items-center justify-end border-b bg-primary-950 px-8 py-6 shadow-xl ">
       <div className="flex w-full items-center justify-between gap-8">
         <Modal />
 

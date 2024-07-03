@@ -13,7 +13,7 @@ import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 import { GetPathLinks } from '@/types/pages'
 
 const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
-  const query =`
+  const query = `
       query MyQuery {
       components {
         id
@@ -26,7 +26,7 @@ const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
 }
 
 export async function NaigationLinks() {
-  const {components} = await GET_PATH_LINKS()
+  const { components } = await GET_PATH_LINKS()
   const componentList = [...components].sort((a, b) =>
     a.componentName.localeCompare(b.componentName),
   )
@@ -107,7 +107,7 @@ export async function NaigationLinks() {
             </Dropdown.Trigger>
 
             <Navigation.List className="mt-2 max-h-[268px] space-y-1 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary-900">
-               {componentList.map((component) => (
+              {componentList.map((component) => (
                 <Navigation.Item className="border-none " key={component.id}>
                   <Navigation.Links
                     className="w-full bg-transparent"
@@ -116,8 +116,7 @@ export async function NaigationLinks() {
                     {component.componentName}
                   </Navigation.Links>
                 </Navigation.Item>
-              ))} 
-              
+              ))}
             </Navigation.List>
           </Dropdown.Root>
         </Navigation.Item>

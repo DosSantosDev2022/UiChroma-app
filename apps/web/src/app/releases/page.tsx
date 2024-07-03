@@ -36,12 +36,10 @@ export default async function ReleasePage() {
   const { releasePage } = await GET_RELEASES()
 
   return (
-    <div className=" p-4">
+    <div className=" relative flex h-full max-w-4xl  flex-col  px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-3">
-        <h1 className="text-6xl font-extrabold text-primary-900">
-          {releasePage?.title}
-        </h1>
-        <p className="text-lg font-normal text-primary-800 ">
+        <h1 className="text-6xl font-extrabold ">{releasePage?.title}</h1>
+        <p className="text-lg font-normal text-primary-950 ">
           {releasePage?.description}
         </p>
       </div>
@@ -59,10 +57,10 @@ export default async function ReleasePage() {
                 {format(new Date(releases.date), 'dd/MM/yyyy')}
               </span>
               <div className="flex items-center gap-3">
-                <h4 className="text-3xl font-bold text-primary-900">
+                <h4 className="text-3xl font-bold text-primary-950">
                   {releases.title}{' '}
                 </h4>
-                <span className=" w-14 rounded-xl bg-primary-900 px-1 py-2 text-center text-sm font-light text-secondary-50">
+                <span className=" w-16 rounded-lg border bg-primary-900 px-1 py-2 text-center text-sm font-light text-secondary-50 shadow-xl">
                   {releases.version}
                 </span>
               </div>
@@ -72,27 +70,29 @@ export default async function ReleasePage() {
               {releases.commits.map((commit) => (
                 <li
                   key={commit.id}
-                  className=" gap-2 text-base font-light leading-7 tracking-wider text-primary-600"
+                  className=" gap-2 text-base font-light leading-7 tracking-wider "
                 >
                   <RichText
                     renderers={{
                       bold: ({ children }) => (
-                        <b className="font-bold text-primary-900">{children}</b>
+                        <b className="font-bold ">{children}</b>
+                      ),
+                      li: ({ children }) => (
+                        <li className=" px-2 py-1">{children}</li>
                       ),
                       ul: ({ children }) => (
-                        <ul className="space-y-1">{children}</ul>
+                        <ul className="ml-6 mt-1 list-disc space-y-4 px-2">
+                          {children}
+                        </ul>
                       ),
                       p: ({ children }) => (
-                        <p className="mt-5 text-base font-light text-primary-600">
-                          {children}
-                        </p>
+                        <p className="mt-5 text-base font-medium">{children}</p>
                       ),
                       h5: ({ children }) => (
-                        <h5 className="mb-2 mt-2 text-lg font-medium text-primary-900">
+                        <h5 className="mb-2 mt-2 text-lg font-bold">
                           {children}
                         </h5>
                       ),
-                      
                     }}
                     content={commit.description.raw}
                   />

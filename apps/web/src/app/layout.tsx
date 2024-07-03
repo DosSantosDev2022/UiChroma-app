@@ -26,7 +26,7 @@ export default function RootLayout({
 
           <div className="flex flex-1 flex-col">
             <Header />
-            <main className="min-h-0 flex-1 overflow-auto bg-gradient-to-t from-secondary-50 to-secondary-100 p-4 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
+            <main className="bg-primary-50 min-h-0 flex-1 overflow-auto p-4  text-primary-900 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
               {children}
             </main>
           </div>

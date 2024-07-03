@@ -41,7 +41,7 @@ export function NavigationScrollView() {
   ]
   return (
     <NavigationRoot>
-      <NavigationList className="space-y-1">
+      <NavigationList className="flex flex-col space-y-0 ">
         {navigations.map((navigation) => (
           <NavigationItem key={navigation.text} className="px-1 py-2">
             <Button

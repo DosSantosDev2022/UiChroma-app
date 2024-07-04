@@ -4,34 +4,43 @@ import { ChangeEvent, useEffect, useState } from 'react'
 import { Button } from '../../../../../packages/ui/src/components/button'
 import { BsSearch } from 'react-icons/bs'
 import { InputRoot, ComponentInput, InputIcon } from './input'
+import Link from 'next/link'
 
-/* import Link from 'next/link'
-import { v4 as uuid } from 'uuid' */
+interface Component {
+  id: string;
+  slug: string;
+  componentName: string;
+}
 
-export default function Modal() {
+interface ModalProps {
+  data: Component[];
+}
+
+export default function Modal({data}:ModalProps) {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  /* const [filtered, setFiltered] = useState(routes) */
+  const [filtered, setFiltered] = useState<Component[]>([]);
 
   const handleOpenModal = () => {
     setIsOpenModal(!isOpenModal)
   }
 
-  /* useEffect(() => {
-    if (searchTerm) {
-      setFiltered(
-        routes.filter((routes) =>
-          routes.name.toLowerCase().includes(searchTerm.toLowerCase()),
-        ),
-      )
-    } else {
-      setFiltered([
-        { name: 'Documentação', path: '/', id: uuid() },
-        { name: 'Templates', path: '/templates', id: uuid() },
-        { name: 'Releases', path: '/releases', id: uuid() },
-      ])
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.toLowerCase();
+    setSearchTerm(value);
+
+    if(value) {
+      const filteredComponents = data.filter((data) =>
+        data.componentName.toLowerCase().includes(value)
+      );
+  
+      setFiltered(filteredComponents);
+    }else {
+      setFiltered([]);
     }
-  }, [searchTerm]) */
+  };
+
   return (
     <>
       <Button
@@ -43,7 +52,7 @@ export default function Modal() {
       </Button>
 
       {isOpenModal ? (
-        <div className="fixed left-0 right-0 top-0 z-50 flex   max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-zinc-900/50 md:inset-0 ">
+        <div className="fixed left-0 right-0 top-0 z-50 flex   max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-zinc-900/50 backdrop-blur-sm md:inset-0 ">
           <div className="relative max-h-full  w-full max-w-2xl  rounded-lg bg-secondary-50 p-2">
             {/* Modal content */}
 
@@ -60,21 +69,7 @@ export default function Modal() {
                   type="button"
                   className="ms-auto flex h-8 w-8 items-center justify-center rounded-lg "
                 >
-                  <svg
-                    className="h-3 w-3"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 14 14"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                    />
-                  </svg>
+                  X
                   <span className="sr-only">Close modal</span>
                 </Button>
               </div>
@@ -88,25 +83,23 @@ export default function Modal() {
                     type="text"
                     id="search"
                     value={searchTerm}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                      setSearchTerm(e.target.value)
-                    }
+                    onChange={handleSearch}
                   />
                 </InputRoot>
               </form>
             </div>
 
-            {/* <div className="space-4  max-h-80 overflow-y-auto p-4 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-800 md:p-5">
+            <div className="space-4  max-h-80 overflow-y-auto p-4 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-800 md:p-5">
               {filtered.length > 0 ? (
                 <ul>
                   {filtered.map((filter) => (
-                    <li className="flex flex-col gap-1" key={filter.name}>
+                    <li className="flex flex-col gap-1" key={filter.id}>
                       <Link
                         className="w-full rounded-md border p-2 text-primary-800 transition-all duration-200 hover:bg-primary-800 hover:text-secondary-50"
-                        href={filter.path}
+                        href={filter.slug}
                         onClick={handleOpenModal}
                       >
-                        {filter.name}
+                        {filter.componentName}
                       </Link>
                     </li>
                   ))}
@@ -116,7 +109,7 @@ export default function Modal() {
                   Nenhum componente encontrado !
                 </span>
               )}
-            </div> */}
+            </div>
           </div>
         </div>
       ) : (

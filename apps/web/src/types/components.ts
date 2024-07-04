@@ -14,6 +14,7 @@ interface Dependencie {
 }
 
 interface Component {
+  id:string
   slug: string
   tag: Tag
   componentName: string

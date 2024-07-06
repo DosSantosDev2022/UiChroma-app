@@ -1,9 +1,10 @@
 'use client'
 import { GoDotFill } from 'react-icons/go'
 import { Button } from '@repo/ui/components/button.tsx'
-import { NavigationItem } from './navigation/navigationItem'
-import { NavigationList } from './navigation/navigationList'
-import { NavigationRoot } from './navigation/navigationRoot'
+
+import { NavigationRoot } from '../navigation/navigationRoot'
+import { NavigationItem } from '../navigation/navigationItem'
+import { NavigationList } from '../navigation/navigationList'
 
 export function NavigationScrollView() {
   const handleButtonClickScrollIntoView = (id: string) => {

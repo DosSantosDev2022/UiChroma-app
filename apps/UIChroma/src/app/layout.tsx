@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
 import '@/styles/globals.css'
-import { Header } from '@/components/global/Header'
-import { SideBar } from '@/components/global/SideBar'
-import { nunito } from '@/fonts/fonts'
+import { Header } from '@/components/header/Header'
+import { SideBar } from '@/components/sideBar/SideBar'
+import { nunito } from '@/assets/fonts'
 
 export const metadata: Metadata = {
   title: 'UIChroma',

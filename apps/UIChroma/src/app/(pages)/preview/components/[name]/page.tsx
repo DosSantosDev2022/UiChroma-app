@@ -1,5 +1,5 @@
-import { HeroComponents } from '@/components/global/heroComponents'
-import { Feature } from '@/components/global/feature'
+import { HeroComponents } from '@/components/ui/heroComponents'
+import { Feature } from '@/components/feature/feature'
 import { IoIosArrowDroprightCircle } from 'react-icons/io'
 import {
   ClipBoardAction,
@@ -10,11 +10,11 @@ import {
 } from '@repo/ui/components/clipboard.tsx'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 
-import { NavigationScrollView } from '@/components/global/navigationScrollView'
+import { NavigationScrollView } from '@/components/navigationScroll/navigationScrollView'
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 import { DataQuery } from '@/types/components'
-import ComponentPreview from '@/components/global/componentPreview'
+import ComponentPreview from '@/components/componentPreview/componentPreview'
 
 interface ComponentDetailsProps {
   params: {

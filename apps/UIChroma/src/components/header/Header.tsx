@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
-import Modal from './modalSearch'
+import Modal from '@/components/modal/modalSearch'
 import { IoLogoFigma } from 'react-icons/io5'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 import { DataQuery } from '@/types/components'

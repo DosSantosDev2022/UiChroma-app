@@ -16,7 +16,7 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
     const loadComponent = async () => {
       try {
         const importedComponent = await import(
-          `@/components/preview/${componentData.componentName.toLowerCase()}`
+          `@/components/@examples/${componentData.componentName.toLowerCase()}`
         )
         setComponent(() => importedComponent.default)
       } catch (error) {

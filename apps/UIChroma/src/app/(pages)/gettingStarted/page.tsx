@@ -1,7 +1,7 @@
 import { GetStarterData } from '@/types/pages'
-import { fetchHygraphQuery } from '../api/cms/hygraph'
-import { RichText } from '@/components/global/rich-text'
-import { inter } from '@/fonts/fonts'
+import { fetchHygraphQuery } from '../../api/cms/hygraph'
+import { RichText } from '@/components/ui/rich-text'
+import { inter } from '@/assets/fonts'
 
 const GET_STARTER_PAGE_DATA = async (): Promise<GetStarterData> => {
   const query = `

@@ -1,4 +1,4 @@
-import { inter } from '@/app/fonts'
+import { inter } from '@/fonts/fonts'
 import { Button } from '@repo/ui/components/button.tsx'
 import Link from 'next/link'
 import { fetchHygraphQuery } from './api/cms/hygraph'

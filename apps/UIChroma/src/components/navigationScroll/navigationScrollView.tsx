@@ -48,6 +48,7 @@ export function NavigationScrollView() {
             <Button
               onClick={() => handleButtonClickScrollIntoView(navigation.url)}
               variant="link"
+              sizes='full'
               className="flex items-center gap-2 text-start text-lg font-normal text-primary-900 duration-300 hover:scale-105 hover:font-bold hover:no-underline"
             >
               <GoDotFill size={12} />

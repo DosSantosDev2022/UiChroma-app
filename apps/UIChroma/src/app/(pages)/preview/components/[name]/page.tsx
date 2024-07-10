@@ -101,7 +101,7 @@ export default async function ComponentDetails({
               <ComponentPreview componentData={componentData} />
             </div>
           </div>
-           
+
           <div id="copyCode " className='space-y-4'>
             <h4 className="mt-10 text-2xl font-extrabold ">
               Código fonte do componente
@@ -171,46 +171,46 @@ export default async function ComponentDetails({
           </div>
         </div>
 
-        
-          {componentData.animations ? (
-            <div className="space-y-3">
+
+        {componentData.animations ? (
+          <div className="space-y-3">
             <h4 className="mt-10 text-2xl font-extrabold ">
               Animações para utilizar neste componente
             </h4>
             <div id="copyCode">
-            <ClipBoardContainer>
-              <ClipBoardHeader className="bg-primary-950">
-                <ClipBoardName>{'tailwind.config.js.'}</ClipBoardName>
-                <ClipBoardAction
-                  className="bg-primary-900 hover:bg-primary-700"
-                  copyText={componentData.animations || ''}
-                />
-              </ClipBoardHeader>
-              <ClipBoardArea className="h-full bg-primary-950/90">
-                <SyntaxHighlighter
-                  language="jsx"
-                  style={dracula}
-                  customStyle={{
-                    width: '100%',
-                    padding: '22px',
-                    borderRadius: '12px',
-                    background: 'none',
-                    scrollbarWidth: 'none',
-                    scrollbarColor: 'auto',
-                  }}
-                  showLineNumbers
-                >
-                  {componentData.animations || ''}
-                </SyntaxHighlighter>
-              </ClipBoardArea>
-            </ClipBoardContainer>
+              <ClipBoardContainer>
+                <ClipBoardHeader className="bg-primary-950">
+                  <ClipBoardName>{'tailwind.config.js.'}</ClipBoardName>
+                  <ClipBoardAction
+                    className="bg-primary-900 hover:bg-primary-700"
+                    copyText={componentData.animations || ''}
+                  />
+                </ClipBoardHeader>
+                <ClipBoardArea className="h-full bg-primary-950/90">
+                  <SyntaxHighlighter
+                    language="jsx"
+                    style={dracula}
+                    customStyle={{
+                      width: '100%',
+                      padding: '22px',
+                      borderRadius: '12px',
+                      background: 'none',
+                      scrollbarWidth: 'none',
+                      scrollbarColor: 'auto',
+                    }}
+                    showLineNumbers
+                  >
+                    {componentData.animations || ''}
+                  </SyntaxHighlighter>
+                </ClipBoardArea>
+              </ClipBoardContainer>
             </div>
-             </div>
-          ) : (
-            <></>
-          )}
-          
-       
+          </div>
+        ) : (
+          <></>
+        )}
+
+
 
         <div id="como-usar"></div>
       </section>

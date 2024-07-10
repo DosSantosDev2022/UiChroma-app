@@ -41,6 +41,7 @@ const GET_DETAILS_COMPONENT = async (): Promise<DataQuery> => {
           command
         }
         codeString
+        animations
       }
     }
   `
@@ -61,7 +62,7 @@ export default async function ComponentDetails({
     return <div>Componente não encontrado</div>
   }
 
-  /* if (!ComponentPreview) {
+  if (!ComponentPreview) {
     return (
       <div className="flex h-screen flex-col items-center justify-center">
         <span className="text-center text-4xl font-bold text-zinc-600">
@@ -75,7 +76,7 @@ export default async function ComponentDetails({
         </p>
       </div>
     )
-  } */
+  }
 
   return (
     <div className=" grid w-full grid-cols-12 gap-10">
@@ -100,7 +101,11 @@ export default async function ComponentDetails({
               <ComponentPreview componentData={componentData} />
             </div>
           </div>
-          <div id="copyCode">
+           
+          <div id="copyCode " className='space-y-4'>
+            <h4 className="mt-10 text-2xl font-extrabold ">
+              Código fonte do componente
+            </h4>
             <ClipBoardContainer>
               <ClipBoardHeader className="bg-primary-950">
                 <ClipBoardName>{componentData.componentName}</ClipBoardName>
@@ -165,6 +170,47 @@ export default async function ComponentDetails({
             ))}
           </div>
         </div>
+
+        
+          {componentData.animations ? (
+            <div className="space-y-3">
+            <h4 className="mt-10 text-2xl font-extrabold ">
+              Animações para utilizar neste componente
+            </h4>
+            <div id="copyCode">
+            <ClipBoardContainer>
+              <ClipBoardHeader className="bg-primary-950">
+                <ClipBoardName>{'tailwind.config.js.'}</ClipBoardName>
+                <ClipBoardAction
+                  className="bg-primary-900 hover:bg-primary-700"
+                  copyText={componentData.animations || ''}
+                />
+              </ClipBoardHeader>
+              <ClipBoardArea className="h-full bg-primary-950/90">
+                <SyntaxHighlighter
+                  language="jsx"
+                  style={dracula}
+                  customStyle={{
+                    width: '100%',
+                    padding: '22px',
+                    borderRadius: '12px',
+                    background: 'none',
+                    scrollbarWidth: 'none',
+                    scrollbarColor: 'auto',
+                  }}
+                  showLineNumbers
+                >
+                  {componentData.animations || ''}
+                </SyntaxHighlighter>
+              </ClipBoardArea>
+            </ClipBoardContainer>
+            </div>
+             </div>
+          ) : (
+            <></>
+          )}
+          
+       
 
         <div id="como-usar"></div>
       </section>

@@ -74,7 +74,7 @@ const ClipBoardHeader = React.forwardRef<
 
 ClipBoardHeader.displayName = 'ClipBoardHeader'
 
-const ClipBoardName = React.forwardRef<
+const ClipBoardLabel = React.forwardRef<
   HTMLHeadingElement,
   React.HTMLAttributes<HTMLHeadingElement>
 >(({ className, ...props }, ref) => {
@@ -88,7 +88,7 @@ const ClipBoardName = React.forwardRef<
   )
 })
 
-ClipBoardName.displayName = 'ClipBoardName'
+ClipBoardLabel.displayName = 'ClipBoardLabel'
 
 const ClipBoardArea = React.forwardRef<
   HTMLDivElement,
@@ -113,6 +113,6 @@ export {
   ClipBoardAction,
   ClipBoardHeader,
   ClipBoardArea,
-  ClipBoardName,
+  ClipBoardLabel,
   ClipBoardContainer,
 }

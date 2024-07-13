@@ -2,7 +2,6 @@
 
 import { usePagination } from '../../../hooks/src/usePagination'
 import { Button } from '../components/button'
-import Link from 'next/link'
 import { LuChevronsLeft, LuChevronsRight } from 'react-icons/lu'
 
 interface PaginationProps {
@@ -34,9 +33,9 @@ export function Pagination({ page, limit, total }: PaginationProps) {
           asChild
         >
           {!isFarstPage ? (
-            <Link href={`/?page=1`}>
+            <a href={`/?page=1`}>
               <LuChevronsLeft />
-            </Link>
+            </a>
           ) : (
             <Button
               variant="disabled"
@@ -52,19 +51,19 @@ export function Pagination({ page, limit, total }: PaginationProps) {
             key={pageNumber}
             className={
               page === pageNumber
-                ? 'text-primary " flex h-12 w-12 items-center justify-center  bg-cyan-600 hover:bg-cyan-800'
+                ? 'text-primary " flex h-12 w-12 items-center justify-center  bg-zinc-600 hover:bg-zinc-800'
                 : 'flex h-12 w-12 items-center justify-center'
             }
           >
-            <Link href={`/?page=${pageNumber}`}>{pageNumber}</Link>
+            <a href={`/?page=${pageNumber}`}>{pageNumber}</a>
           </Button>
         ))}
 
         <Button className="flex h-12 w-12 items-center justify-center" asChild>
           {!isLastPage ? (
-            <Link href={`/AllPosts?page=${Math.ceil(total / limit)}`}>
+            <a href={`/AllPosts?page=${Math.ceil(total / limit)}`}>
               <LuChevronsRight />
-            </Link>
+            </a>
           ) : (
             <Button
               variant="disabled"

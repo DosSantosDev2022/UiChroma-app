@@ -18,6 +18,112 @@ importers:
         specifier: ^5.5.2
         version: 5.5.3
 
+  apps/UIChroma:
+    dependencies:
+      '@graphcms/rich-text-react-renderer':
+        specifier: ^0.6.1
+        version: 0.6.1(react-dom@18.3.1)(react@18.3.1)
+      '@graphcms/rich-text-types':
+        specifier: ^0.5.1
+        version: 0.5.1
+      '@hookform/resolvers':
+        specifier: ^3.6.0
+        version: 3.6.0(react-hook-form@7.52.1)
+      '@radix-ui/react-avatar':
+        specifier: ^1.1.0
+        version: 1.1.0(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
+      '@radix-ui/react-slot':
+        specifier: ^1.1.0
+        version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@repo/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      '@types/react-syntax-highlighter':
+        specifier: ^15.5.13
+        version: 15.5.13
+      date-fns:
+        specifier: ^3.6.0
+        version: 3.6.0
+      highlight.js:
+        specifier: ^11.9.0
+        version: 11.9.0
+      next:
+        specifier: 14.2.3
+        version: 14.2.3(react-dom@18.3.1)(react@18.3.1)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+      react-hook-form:
+        specifier: ^7.52.0
+        version: 7.52.1(react@18.3.1)
+      react-icons:
+        specifier: ^5.2.1
+        version: 5.2.1(react@18.3.1)
+      react-syntax-highlighter:
+        specifier: ^15.5.0
+        version: 15.5.0(react@18.3.1)
+      tailwind-merge:
+        specifier: ^2.3.0
+        version: 2.3.0
+      tailwind-scrollbar:
+        specifier: ^3.1.0
+        version: 3.1.0(tailwindcss@3.4.4)
+      tailwindcss-animated:
+        specifier: ^1.1.2
+        version: 1.1.2(tailwindcss@3.4.4)
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.14.9)(typescript@5.5.3)
+      uuid:
+        specifier: ^9.0.1
+        version: 9.0.1
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
+    devDependencies:
+      '@rocketseat/eslint-config':
+        specifier: 2.1.0
+        version: 2.1.0(eslint@8.57.0)(typescript@5.5.3)
+      '@types/node':
+        specifier: ^20.14.7
+        version: 20.14.9
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      '@types/uuid':
+        specifier: ^9.0.8
+        version: 9.0.8
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-config-next:
+        specifier: 14.2.3
+        version: 14.2.3(eslint@8.57.0)(typescript@5.5.3)
+      install:
+        specifier: ^0.13.0
+        version: 0.13.0
+      postcss:
+        specifier: ^8.4.38
+        version: 8.4.39
+      prettier:
+        specifier: ^3.3.2
+        version: 3.3.2
+      prettier-plugin-tailwindcss:
+        specifier: ^0.5.14
+        version: 0.5.14(prettier@3.3.2)
+      tailwindcss:
+        specifier: ^3.4.4
+        version: 3.4.4(ts-node@10.9.2)
+      typescript:
+        specifier: ^5.5.2
+        version: 5.5.3
+
   apps/web:
     dependencies:
       '@graphcms/rich-text-react-renderer':
@@ -164,6 +270,9 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.3.1
+      react-icons:
+        specifier: ^5.2.1
+        version: 5.2.1(react@18.3.1)
       tailwind-merge:
         specifier: ^2.3.0
         version: 2.3.0

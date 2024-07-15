@@ -44,11 +44,12 @@ export default function Modal({data}:ModalProps) {
   return (
     <>
       <Button
-        className="flex w-[360px] items-center justify-start gap-4 px-6 py-3"
+        variant='primary'
+        className=" justify-start  w-[360px]  gap-4 "
         onClick={handleOpenModal}
       >
-        <BsSearch size={20} />
-        Buscar ...
+        <BsSearch size={20} /> 
+        Buscar...   
       </Button>
 
       {isOpenModal ? (
@@ -65,9 +66,10 @@ export default function Modal({data}:ModalProps) {
                 </h3>
                 <Button
                   variant="primary"
+                  sizes='icon'
                   onClick={handleOpenModal}
                   type="button"
-                  className="ms-auto flex h-8 w-8 items-center justify-center rounded-lg "
+                  className="ms-auto flex rounded-full"
                 >
                   X
                   <span className="sr-only">Close modal</span>

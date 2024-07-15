@@ -50,7 +50,7 @@ export default async function Home() {
 
           <div className="flex w-full items-center justify-start gap-2">
             <Button
-              variant="primary"
+              variant="Shine"
               asChild
               className="flex w-40 items-center justify-center"
             >

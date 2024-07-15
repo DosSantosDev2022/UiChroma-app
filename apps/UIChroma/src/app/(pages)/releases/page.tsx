@@ -3,9 +3,9 @@ import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 import { format } from 'date-fns'
 
-import { RichText } from '@/components/global/rich-text'
+import { RichText } from '@/components/ui/rich-text'
 
-import { SearchReleases } from '@/components/global/searchReleases'
+import { SearchReleases } from '@/components/searchRelease/searchReleases'
 
 const GET_RELEASES = async (): Promise<MyQueryResponse> => {
   const query = `

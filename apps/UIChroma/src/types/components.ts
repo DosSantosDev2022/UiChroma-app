@@ -22,6 +22,7 @@ interface Component {
   features: Feature[]
   dependencie: Dependencie[]
   codeString: string
+  animations:string
 }
 
 export interface DataQuery {

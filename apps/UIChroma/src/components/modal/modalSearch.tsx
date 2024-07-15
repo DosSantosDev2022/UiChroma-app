@@ -1,9 +1,9 @@
 'use client'
 
 import { ChangeEvent, useEffect, useState } from 'react'
-import { Button } from '../../../../../packages/ui/src/components/button'
+import { Button } from '@repo/ui/components/button.tsx'
 import { BsSearch } from 'react-icons/bs'
-import { InputRoot, ComponentInput, InputIcon } from './input'
+import { InputRoot, ComponentInput, InputIcon } from '@repo/ui/components/input.tsx'
 import Link from 'next/link'
 
 interface Component {
@@ -74,7 +74,7 @@ export default function Modal({data}:ModalProps) {
                 </Button>
               </div>
               <form className="w-full">
-                <InputRoot className="w-full ">
+                <InputRoot className="w-full bg-primary-900 focus-within:ring-primary-800">
                   <InputIcon>
                     <BsSearch />
                   </InputIcon>

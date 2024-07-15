@@ -1,9 +1,9 @@
-import { inter } from '@/fonts/fonts'
+import { inter } from '@/assets/fonts'
 import { Button } from '@repo/ui/components/button.tsx'
 import Link from 'next/link'
 import { fetchHygraphQuery } from './api/cms/hygraph'
 import { HomePageData } from '@/types/pages'
-import { RichText } from '@/components/global/rich-text'
+import { RichText } from '@/components/ui/rich-text'
 
 const GET_HOME_PAGE_DATA = async (): Promise<HomePageData> => {
   const query = `

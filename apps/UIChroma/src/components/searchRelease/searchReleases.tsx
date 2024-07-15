@@ -1,6 +1,6 @@
 'use client'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { InputRoot, ComponentInput, InputIcon } from './input'
+import { InputRoot, ComponentInput, InputIcon } from '@repo/ui/components/input.tsx'
 import { BsSearch } from 'react-icons/bs'
 
 export function SearchReleases() {
@@ -31,7 +31,7 @@ export function SearchReleases() {
       }}
       className=" flex h-14 w-full items-center justify-end p-2"
     >
-      <InputRoot className="h-11 w-[296px] rounded-lg ">
+      <InputRoot className="h-11 w-[296px] rounded-lg bg-primary-900 focus-within:ring-primary-800 ">
         <InputIcon>
           <BsSearch className="text-secondary-50" />
         </InputIcon>

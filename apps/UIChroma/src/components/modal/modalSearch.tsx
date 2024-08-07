@@ -44,12 +44,13 @@ export default function Modal({data}:ModalProps) {
   return (
     <>
       <Button
+        sizes='full'
         variant='primary'
-        className=" justify-start  w-[360px]  gap-4 "
+        className=" flex  items-center justify-start gap-4  w-[360px] "
         onClick={handleOpenModal}
       >
         <BsSearch size={20} /> 
-        Buscar...   
+        Buscar...  
       </Button>
 
       {isOpenModal ? (

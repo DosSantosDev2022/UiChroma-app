@@ -25,49 +25,49 @@ const GET_HOME_PAGE_DATA = async (): Promise<HomePageData> => {
 export default async function Home() {
   const { homePage } = await GET_HOME_PAGE_DATA()
   return (
-    <div className="relative flex h-full max-w-4xl flex-col  px-4 sm:px-6 lg:px-8">
-      <div className=" flex-auto">
-        <article className="flex h-full  flex-col pb-10 pt-16">
-          <div className="space-y-6">
-            <RichText
-              content={homePage.sectionHero.raw}
-              renderers={{
-                h1: ({ children }) => (
-                  <h1
-                    className={` ${inter.className} text-6xl font-bold text-primary-900`}
-                  >
-                    {children}
-                  </h1>
-                ),
-                p: ({ children }) => (
-                  <p className="text-lg font-normal text-primary-800">
-                    {children}
-                  </p>
-                ),
-              }}
-            />
-          </div>
+    <div className="relative flex h-full max-w-4xl flex-col px-4 sm:px-6 lg:px-8">
 
-          <div className="flex w-full items-center justify-start gap-2">
-            <Button
-              variant="Shine"
-              asChild
-              className="flex w-40 items-center justify-center"
-            >
-              <Link href={'/starter'}>Primeiros passos</Link>
-            </Button>
-            <Button
-              variant="outline"
-              asChild
-              className="flex w-40 items-center justify-center"
-            >
-              <Link href={'/'}>Documentação</Link>
-            </Button>
-          </div>
-        </article>
-      </div>
+      <section className="flex h-full flex-col pb-10 pt-16">
+        <div className="space-y-6">
+          <RichText
+            content={homePage.sectionHero.raw}
+            renderers={{
+              h1: ({ children }) => (
+                <h1
+                  className={` ${inter.className} text-6xl font-bold text-primary-900`}
+                >
+                  {children}
+                </h1>
+              ),
+              p: ({ children }) => (
+                <p className="text-lg font-normal text-primary-800">
+                  {children}
+                </p>
+              ),
+            }}
+          />
+        </div>
 
-      <article className="mt-10 space-y-3  px-2 py-3">
+        <div className="flex w-full items-center justify-start gap-2">
+          <Button
+            variant="Shine"
+            asChild
+            className="flex w-40 items-center justify-center text-base"
+          >
+            <Link href={'/starter'}>Primeiros passos</Link>
+          </Button>
+          <Button
+            variant="outline"
+            asChild
+            className="flex w-40 items-center justify-center text-base"
+          >
+            <Link href={'/'}>Documentação</Link>
+          </Button>
+        </div>
+      </section>
+
+
+      <article className="mt-10 space-y-6  px-2 py-3">
         <RichText
           content={homePage.sectionIntroduction.raw}
           renderers={{

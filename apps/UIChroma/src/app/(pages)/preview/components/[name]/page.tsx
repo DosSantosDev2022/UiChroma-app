@@ -5,7 +5,7 @@ import {
   ClipBoardAction,
   ClipBoardArea,
   ClipBoardHeader,
-  ClipBoardName,
+  ClipBoardLabel,
   ClipBoardContainer,
 } from '@repo/ui/components/clipboard.tsx'
 import SyntaxHighlighter from 'react-syntax-highlighter'
@@ -108,7 +108,7 @@ export default async function ComponentDetails({
             </h4>
             <ClipBoardContainer>
               <ClipBoardHeader className="bg-primary-950">
-                <ClipBoardName>{componentData.componentName}</ClipBoardName>
+                <ClipBoardLabel>{componentData.componentName}</ClipBoardLabel>
                 <ClipBoardAction
                   className="bg-primary-900 hover:bg-primary-700"
                   copyText={componentData.codeString || ''}
@@ -156,7 +156,7 @@ export default async function ComponentDetails({
 
                 <ClipBoardContainer className="">
                   <ClipBoardHeader className="bg-primary-950">
-                    <ClipBoardName>{dep.title}</ClipBoardName>
+                    <ClipBoardLabel>{dep.title}</ClipBoardLabel>
                     <ClipBoardAction
                       copyText={dep.command}
                       className="bg-primary-900 hover:bg-primary-700"
@@ -180,7 +180,7 @@ export default async function ComponentDetails({
             <div id="copyCode">
               <ClipBoardContainer>
                 <ClipBoardHeader className="bg-primary-950">
-                  <ClipBoardName>{'tailwind.config.js.'}</ClipBoardName>
+                  <ClipBoardLabel>{'tailwind.config.js.'}</ClipBoardLabel>
                   <ClipBoardAction
                     className="bg-primary-900 hover:bg-primary-700"
                     copyText={componentData.animations || ''}

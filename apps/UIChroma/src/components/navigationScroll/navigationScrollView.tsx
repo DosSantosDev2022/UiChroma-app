@@ -44,12 +44,12 @@ export function NavigationScrollView() {
     <NavigationRoot>
       <NavigationList className="flex flex-col space-y-0 ">
         {navigations.map((navigation) => (
-          <NavigationItem key={navigation.text} className="px-1 py-2">
+          <NavigationItem key={navigation.text} className="px-1 py-2 w-full ">
             <Button
               onClick={() => handleButtonClickScrollIntoView(navigation.url)}
               variant="link"
               sizes='full'
-              className="flex items-center gap-2 text-start text-lg font-normal text-primary-900 duration-300 hover:scale-105 hover:font-bold hover:no-underline"
+              className="flex justify-start  gap-2  text-lg font-normal text-primary-900 duration-300 hover:scale-105 hover:font-bold hover:no-underline"
             >
               <GoDotFill size={12} />
               {navigation.text}

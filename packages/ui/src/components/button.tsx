@@ -76,7 +76,7 @@ export function Button({
           <FaSpinner size={20} className="animate-spin text-zinc-50" />
         </span>
       ) : (
-        <Comp>{props.children}</Comp>
+        props.children
       )}
     </Comp>
   )

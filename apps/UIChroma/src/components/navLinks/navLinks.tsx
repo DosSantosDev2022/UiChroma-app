@@ -20,17 +20,22 @@ const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
         slug
         componentName
       }
+      hook {
+        id
+        slug
+        hookName
+      }
     }
   `
   return fetchHygraphQuery(query)
 }
 
 export async function NaigationLinks() {
-  const { components } = await GET_PATH_LINKS()
+  const { components,hook } = await GET_PATH_LINKS()
   const componentList = [...components].sort((a, b) =>
     a.componentName.localeCompare(b.componentName),
   )
-  const hookList = [...hooks]
+  const hookList = [...hook].sort((a,b) => a.hookName.localeCompare(b.hookName))
 
   /* const templates = [...Templates].sort((a, b) => a.name.localeCompare(b.name)) */
 
@@ -131,13 +136,13 @@ export async function NaigationLinks() {
             </Dropdown.Trigger>
 
             <Navigation.List className="mt-2 max-h-[268px] space-y-1 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary-900">
-              {hookList.map((h) => (
-                <Navigation.Item className="border-none " key={h.id}>
+              {hookList.map((hook) => (
+                <Navigation.Item className="border-none " key={hook.id}>
                   <Navigation.Links
                     className="w-full bg-transparent"
-                    url={h.url}
+                    url={`/preview/hooks/${hook.hookName}`}
                   >
-                    {h.name}
+                    {hook.hookName}
                   </Navigation.Links>
                 </Navigation.Item>
               ))}

@@ -1,58 +1,103 @@
 'use client'
+import React, { useState } from 'react'
+import { LuChevronDown } from 'react-icons/lu'
+import { twMerge } from 'tailwind-merge'
 
-import { useState } from 'react'
+const AccordionRoot = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
+  <div
+    {...props}
+    ref={ref}
+    className={twMerge(
+      'w-full rounded-t-lg space-y-1 bg-zinc-50 text-zinc-600 ',
+      className,
+    )}
+  />
+))
+AccordionRoot.displayName = 'AccordionRoot'
 
-import { LuChevronDown, LuChevronUp } from 'react-icons/lu'
+const AccordionTrigger = React.forwardRef<
+  HTMLButtonElement,
+  React.HtmlHTMLAttributes<HTMLButtonElement>
+>(({ className, ...props }, ref) => (
+  <button
+    {...props}
+    className={twMerge(
+      'h-16 w-full px-2 py-3 flex  items-center justify-between gap-2',
+      className,
+    )}
+    ref={ref}
+  />
+))
+AccordionTrigger.displayName = 'AccordionTrigger'
 
-interface Accordion {
+const AccordionQuestion = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement>
+>(({ className, ...props }, ref) => (
+  <span
+    className={twMerge('w-full text-start text-base font-semibold ', className)}
+    {...props}
+    ref={ref}
+  />
+))
+AccordionQuestion.displayName = 'AccordionQuestion'
+
+const AccordionAnswer = React.forwardRef<
+  HTMLSpanElement,
+  React.HTMLAttributes<HTMLSpanElement>
+>(({ className, ...props }, ref) => (
+  <span
+    className={twMerge(
+      ' overflow-hidden text-start text-sm font-normal',
+      className,
+    )}
+    {...props}
+    ref={ref}
+  />
+))
+AccordionAnswer.displayName = 'AccordionAnswer'
+
+// Componente montado
+
+interface AccordionProps {
   question: string // recebe as questões
   answer: string // recebe as respostas
 }
 
-export function Accordion({ answer, question }: Accordion) {
-  const [accordionOpen, setAccordionOpen] = useState(false)
+export function Accordion({ answer, question }: AccordionProps) {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleAccordion = () => setIsOpen(!isOpen)
+
   return (
-    <div className="flex flex-col rounded-t-lg bg-cyan-700 p-6">
-      <button
-        aria-expanded={accordionOpen}
-        aria-controls="accordionContent"
+    <AccordionRoot>
+      <AccordionTrigger
+        aria-expanded={isOpen}
+        aria-controls="accordion-content"
         role="button"
         tabIndex={0}
-        onClick={() => setAccordionOpen(!accordionOpen)}
-        className="mb-4 flex w-full items-center justify-between gap-2"
+        onClick={toggleAccordion}
       >
-        <span className="w-full text-start text-xl font-semibold text-zinc-50">
-          {question}
-        </span>
-        {accordionOpen ? (
-          <span className=" flex h-[40px] w-[40px] items-center justify-center rounded-md p-2 text-2xl text-zinc-50">
-            <LuChevronUp />
-          </span>
-        ) : (
-          <span className=" flex h-[40px] w-[40px] items-center justify-center rounded-md p-2 text-2xl text-zinc-50">
-            <LuChevronDown />
-          </span>
-        )}
-      </button>
-      {accordionOpen ? (
-        <div
-          className=" grid grid-rows-[1fr] overflow-hidden  font-medium opacity-100 transition-all
-        duration-300 ease-in-out"
-        >
-          <span className=" overflow-hidden text-start text-sm font-normal  text-zinc-50">
-            {answer}
-          </span>
-        </div>
-      ) : (
-        <div
-          className=" grid  grid-rows-[0fr] overflow-hidden  opacity-0  transition-all
-        duration-300 ease-in-out"
-        >
-          <span className=" overflow-hidden text-start text-sm font-normal  text-zinc-50">
-            {answer}
-          </span>
-        </div>
-      )}
-    </div>
+        <AccordionQuestion>{question}</AccordionQuestion>
+        <LuChevronDown
+          className={`transform transition-transform duration-500 ${
+            isOpen ? 'rotate-90' : ''
+          }`}
+          size={20}
+        />
+      </AccordionTrigger>
+      <div
+        id="accordion-content"
+        className={`overflow-hidden  font-normal transition-[max-height] duration-300 ease-in-out ${
+          isOpen ? 'max-h-[1000px] opacity-100 px-2 py-3' : 'max-h-0 opacity-0'
+        }`}
+        style={{ transitionProperty: 'max-height, opacity' }}
+      >
+        <AccordionAnswer>{answer}</AccordionAnswer>
+      </div>
+    </AccordionRoot>
   )
 }

@@ -13,6 +13,13 @@ interface Dependencie {
   command: string
 }
 
+interface DocLinks {
+    id: string
+    label : string
+    icon: string
+    url:string
+}
+
 interface Component {
   id:string
   slug: string
@@ -23,6 +30,7 @@ interface Component {
   dependencie: Dependencie[]
   codeString: string
   animations:string
+  docLinks: DocLinks[]
 }
 
 interface Hook {
@@ -37,8 +45,8 @@ interface Hook {
 
 }
 
-export interface DataQuery {
-  components: Component[]
+export interface DataQueryComponent {
+  component: Component
 }
 
 export interface DataQueryHooks{

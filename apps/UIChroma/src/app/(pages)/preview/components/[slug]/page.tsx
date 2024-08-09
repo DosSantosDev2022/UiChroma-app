@@ -9,56 +9,58 @@ import {
   ClipBoardContainer,
 } from '@repo/ui/components/clipboard.tsx'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-
-import { NavigationScrollView } from '@/components/navigationScroll/navigationScrollView'
 import { dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
-import { DataQuery } from '@/types/components'
+import { DataQueryComponent } from '@/types/components'
 import ComponentPreview from '@/components/componentPreview/componentPreview'
+import { inter } from '@/assets/fonts'
+import { LinkButtons } from '@/components/LinkButtons/LinkButtons'
 
 interface ComponentDetailsProps {
   params: {
-    name: string
+    slug: string
   }
 }
 
-const GET_DETAILS_COMPONENT = async (): Promise<DataQuery> => {
+const GET_DETAILS_COMPONENT = async (slug: string): Promise<DataQueryComponent> => {
   const query = `
-      query MyQuery {
-      components {
-        slug
-        tag {
-          tagName
-        }
-        componentName
-        description
-        features {
-          item
-        }
-        dependencie {
+      query MyQuery($slug: String!) {
+        component(where: {slug: $slug}) {
+          slug
+          tag {
+            tagName
+          }
+          componentName
+          description
+          features {
+            item
+          }
+          dependencie {
+            id
+            title
+            command
+          }
+          codeString
+          animations
+          docLinks {
           id
-          title
-          command
-        }
-        codeString
-        animations
-      }
+          label
+          icon
+          url
+         }
+       }
     }
   `
-  return fetchHygraphQuery(query)
+  const variables = {slug}
+  return fetchHygraphQuery(query, variables)
 }
 
 export default async function ComponentDetails({
   params,
 }: ComponentDetailsProps) {
-  const { components } = await GET_DETAILS_COMPONENT()
-
-  const componentData = components.find(
-    (component) =>
-      component.componentName.toLowerCase() === params.name.toLowerCase(),
-  )
-
-  if (!componentData) {
+  const { component } = await GET_DETAILS_COMPONENT(params.slug)
+  console.log(component)
+  if (!component) {
     return <div>Componente não encontrado</div>
   }
 
@@ -79,47 +81,50 @@ export default async function ComponentDetails({
   }
 
   return (
-    <div className=" grid w-full grid-cols-12 gap-10">
-      <section className="col-span-9 h-screen w-full overflow-y-scroll px-8 py-5 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
+    <>
+      <section className="px-8 py-5 w-full border rounded-md shadow-sm ">
         <div id="inicio">
           <HeroComponents
-            content="Componente"
-            name={componentData?.componentName}
-            description={componentData?.description}
+            type="Componente"
+            name={component.componentName}
+            description={component.description}
           />
         </div>
+
+        <LinkButtons link={component.docLinks || []} />
+        
         <div id="feature">
-          <Feature feature={componentData?.features || []} />
+          <Feature feature={component.features || []} />
         </div>
 
-        <div id="exemplo" className="flex flex-col gap-32">
+        <div id="exemplo" className="flex flex-col gap-12">
           <div className="space-y-5">
-            <h4 className="mt-10 text-3xl font-extrabold tracking-[2.16px] text-cyan-900">
-              Preview do componente
+            <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
+              Preview
             </h4>
-            <div className="bg-primary-100 flex h-full w-full flex-shrink-0 items-start justify-center rounded-lg border p-8 shadow-md">
-              <ComponentPreview componentData={componentData} />
+            <div className="bg-transparent  flex h-full w-full flex-shrink-0 items-start justify-center rounded-lg border p-8 shadow-sm">
+              <ComponentPreview componentData={component} />
             </div>
           </div>
 
-          <div id="copyCode " className='space-y-4'>
-            <h4 className="mt-10 text-2xl font-extrabold ">
-              Código fonte do componente
+          <div id="copyCode " className='space-y-4 '>
+            <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
+              Código fonte
             </h4>
             <ClipBoardContainer>
               <ClipBoardHeader className="bg-primary-950">
-                <ClipBoardLabel>{componentData.componentName}</ClipBoardLabel>
+                <ClipBoardLabel>{component.componentName}</ClipBoardLabel>
                 <ClipBoardAction
                   className="bg-primary-900 hover:bg-primary-700"
-                  copyText={componentData.codeString || ''}
+                  copyText={component.codeString || ''}
                 />
               </ClipBoardHeader>
-              <ClipBoardArea className="h-full bg-primary-950/90">
+              <ClipBoardArea className="w-full h-full bg-primary-950/90">
                 <SyntaxHighlighter
                   language="jsx"
                   style={dracula}
                   customStyle={{
-                    width: '100%',
+                    width: '668px',
                     padding: '22px',
                     borderRadius: '12px',
                     background: 'none',
@@ -128,7 +133,7 @@ export default async function ComponentDetails({
                   }}
                   showLineNumbers
                 >
-                  {componentData.codeString || ''}
+                  {component.codeString || ''}
                 </SyntaxHighlighter>
               </ClipBoardArea>
             </ClipBoardContainer>
@@ -136,12 +141,12 @@ export default async function ComponentDetails({
         </div>
 
         <div className="space-y-3">
-          <h4 className="mt-10 text-2xl font-extrabold ">
-            Dependências para utilizar esse componente
+          <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`}>
+            Dependências
           </h4>
 
           <div id="dependencias" className="space-y-6">
-            {componentData.dependencie.map((dep) => (
+            {component.dependencie.map((dep) => (
               <div
                 className="flex w-full flex-col items-start gap-2 text-zinc-600"
                 key={dep.id}
@@ -172,7 +177,7 @@ export default async function ComponentDetails({
         </div>
 
 
-        {componentData.animations ? (
+        {component.animations ? (
           <div className="space-y-3">
             <h4 className="mt-10 text-2xl font-extrabold ">
               Animações para utilizar neste componente
@@ -183,7 +188,7 @@ export default async function ComponentDetails({
                   <ClipBoardLabel>{'tailwind.config.js.'}</ClipBoardLabel>
                   <ClipBoardAction
                     className="bg-primary-900 hover:bg-primary-700"
-                    copyText={componentData.animations || ''}
+                    copyText={component.animations || ''}
                   />
                 </ClipBoardHeader>
                 <ClipBoardArea className="h-full bg-primary-950/90">
@@ -195,12 +200,12 @@ export default async function ComponentDetails({
                       padding: '22px',
                       borderRadius: '12px',
                       background: 'none',
-                      scrollbarWidth: 'none',
+                      scrollbarWidth: '-moz-initial',
                       scrollbarColor: 'auto',
                     }}
                     showLineNumbers
                   >
-                    {componentData.animations || ''}
+                    {component.animations || ''}
                   </SyntaxHighlighter>
                 </ClipBoardArea>
               </ClipBoardContainer>
@@ -214,11 +219,6 @@ export default async function ComponentDetails({
 
         <div id="como-usar"></div>
       </section>
-      <section className="sticky top-0 col-span-3 h-screen   p-2 ">
-        <h4 className="mb-8 ml-4 text-2xl font-semibold ">Navegação</h4>
-
-        <NavigationScrollView />
-      </section>
-    </div>
+    </>
   )
 }

@@ -23,7 +23,9 @@ export function NavigationLinks({
     <Link
       href={url}
       className={twMerge(
-        `flex w-full items-center justify-start gap-4 rounded-lg py-2 text-sm font-medium text-secondary-50 duration-200 hover:bg-primary-800 ${pathName === url ? 'active bg-primary-800' : ''}`,
+        `flex w-full items-center justify-start gap-4 rounded-lg py-2 text-sm 
+        font-medium text-secondary-300 duration-200 hover:bg-primary-800
+         ${pathName === url ? 'active bg-primary-800' : ''}`,
         className,
       )}
     >

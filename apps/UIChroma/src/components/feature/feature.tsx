@@ -1,3 +1,4 @@
+import { inter } from '@/assets/fonts'
 import { FaCircleCheck } from 'react-icons/fa6'
 
 interface FeatureProps {
@@ -11,7 +12,7 @@ export function Feature({ feature }: FeatureProps) {
   return (
     <>
       <div className="w-full space-y-4">
-        <h1 className="mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ">
+        <h1 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
           Features
         </h1>
 

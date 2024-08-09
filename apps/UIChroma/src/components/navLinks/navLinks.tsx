@@ -70,7 +70,7 @@ export async function NaigationLinks() {
       <Navigation.List>
         {links.map((link) => (
           <Navigation.Item key={link.id}>
-            <Navigation.Links url={link.Url}>
+            <Navigation.Links className='text-secondary-50' url={link.Url}>
               <Navigation.Icon>{link.icon}</Navigation.Icon>
               {link.name}
             </Navigation.Links>

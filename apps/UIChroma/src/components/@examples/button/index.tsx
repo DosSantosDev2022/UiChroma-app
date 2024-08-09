@@ -1,7 +1,7 @@
 import { Button } from '@repo/ui/components/button.tsx'
 
 export default function ButtonPreview() {
-  const variantes = [
+  const variantes: { type: "primary" | "secundary" | "outline" | "highlight" | "disabled" | "link" | "danger" | "warning" | "Swipe" | "Shine" }[] = [
     { type: 'primary' },
     { type: 'secundary' },
     { type: 'outline' },
@@ -10,26 +10,23 @@ export default function ButtonPreview() {
     { type: 'link' },
     { type: 'danger' },
     { type: 'warning' },
-  ]
-  
-  const animates = [
     { type: 'Swipe' },
     { type: 'Shine' }
   ]
-  
+
+
   return (
     <div className="flex w-full flex-wrap items-center  gap-2">
+      {/* Exemplos do componente button utilizando as variantes */}
       {variantes.map((variant) => (
-        <Button  key={variant.type} variant={variant.type} sizes='default'>
+        <Button key={variant.type} variant={variant.type} sizes='xs'>
           {variant.type}
         </Button>
       ))}
 
-     
-       <Button  isLoading  variant={'primary'} sizes='default'>Loading</Button>
-       {animates.map((animate) => (
-        <Button key={animate.type} animate={animate.type} variant={'none'} sizes='default'>{animate.type}</Button>
-       ))}
+      {/* Exemplo do componente button recebendo estados */}
+      <Button isLoading variant={'primary'} sizes='xs'>Loading</Button>
+
     </div>
   )
 }

@@ -25,7 +25,7 @@ const GET_HOME_PAGE_DATA = async (): Promise<HomePageData> => {
 export default async function Home() {
   const { homePage } = await GET_HOME_PAGE_DATA()
   return (
-    <div className="relative flex h-full max-w-4xl flex-col px-4 sm:px-6 lg:px-8">
+    <div className=" flex h-full max-w-4xl flex-col px-4 sm:px-6 lg:px-8">
 
       <section className="flex h-full flex-col pb-10 pt-16">
         <div className="space-y-6">

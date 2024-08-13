@@ -1,5 +1,4 @@
 import { HeroComponents } from '@/components/ui/heroComponents'
-import { Feature } from '@/components/feature/feature'
 import { IoIosArrowDroprightCircle } from 'react-icons/io'
 import {
   ClipBoardAction,
@@ -14,7 +13,10 @@ import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 import { DataQueryComponent } from '@/types/components'
 import ComponentPreview from '@/components/componentPreview/componentPreview'
 import { inter } from '@/assets/fonts'
-import { LinkButtons } from '@/components/LinkButtons/LinkButtons'
+import { NavigateThroughSections } from '@/components/navigationScroll/NavigateThroughSections'
+import { FaCircleCheck } from 'react-icons/fa6'
+import { DocLinks } from '@/components/documentationslink/docLinks'
+
 
 interface ComponentDetailsProps {
   params: {
@@ -42,16 +44,15 @@ const GET_DETAILS_COMPONENT = async (slug: string): Promise<DataQueryComponent> 
           }
           codeString
           animations
-          docLinks {
-          id
-          label
-          icon
-          url
-         }
+          doclinks {
+            label
+            url
+            id
+          }
        }
-    }
+     }
   `
-  const variables = {slug}
+  const variables = { slug }
   return fetchHygraphQuery(query, variables)
 }
 
@@ -59,7 +60,7 @@ export default async function ComponentDetails({
   params,
 }: ComponentDetailsProps) {
   const { component } = await GET_DETAILS_COMPONENT(params.slug)
-  console.log(component)
+ 
   if (!component) {
     return <div>Componente não encontrado</div>
   }
@@ -80,25 +81,68 @@ export default async function ComponentDetails({
     )
   }
 
+  const pagesectionlinks = [
+    {
+      text: 'Início',
+      url: 'inicio',
+    },
+    {
+      text: 'Features',
+      url: 'feature',
+    },
+    {
+      text: 'Exemplo',
+      url: 'exemplo',
+    },
+    {
+      text: 'CopyCode',
+      url: 'copyCode',
+    },
+    {
+      text: 'Dependencias',
+      url: 'dependencias',
+    },
+    {
+      text: 'Como usar',
+      url: 'como-usar',
+    },
+  ]
   return (
-    <>
-      <section className="px-8 py-5 w-full border rounded-md shadow-sm ">
-        <div id="inicio">
+    <div className='flex gap-6 justify-between w-full'>
+      <section className="px-8 py-5 w-full border rounded-md shadow-sm">
+        <div id='inicio'>
           <HeroComponents
             type="Componente"
             name={component.componentName}
             description={component.description}
           />
+          <DocLinks links={component.doclinks} />
         </div>
 
-        <LinkButtons link={component.docLinks || []} />
-        
-        <div id="feature">
-          <Feature feature={component.features || []} />
+        <div id='feature'>
+          <div className="w-full space-y-4">
+            <h1 className={`mt-10 text-3xl font-extrabold tracking-[2.16px]
+               text-primary-900 ${inter.className}`} >
+              Features
+            </h1>
+            <ul className="flex flex-col items-start gap-2">
+              {component.features.map((feature) => (
+
+                <li
+                  key={feature.id}
+                  className="flex items-center gap-2 text-primary-800"
+                >
+                  <FaCircleCheck size={18} />
+                  {feature.item}
+                </li>
+
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div id="exemplo" className="flex flex-col gap-12">
-          <div className="space-y-5">
+        <div className="flex flex-col gap-12">
+          <div id='exemplo' className="space-y-5">
             <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
               Preview
             </h4>
@@ -107,7 +151,7 @@ export default async function ComponentDetails({
             </div>
           </div>
 
-          <div id="copyCode " className='space-y-4 '>
+          <div id="copyCode" className='space-y-4 '>
             <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
               Código fonte
             </h4>
@@ -219,6 +263,12 @@ export default async function ComponentDetails({
 
         <div id="como-usar"></div>
       </section>
-    </>
+
+      <section className='w-80 h-screen border sticky top-0 px-8 py-5 space-y-6'>
+        <h4 className='font-bold text-base'>Navegue nessa página</h4>
+
+        <NavigateThroughSections links={pagesectionlinks} />
+      </section>
+    </div>
   )
 }

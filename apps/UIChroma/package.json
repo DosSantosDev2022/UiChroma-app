@@ -13,7 +13,6 @@
     "@graphcms/rich-text-react-renderer": "^0.6.1",
     "@graphcms/rich-text-types": "^0.5.1",
     "@hookform/resolvers": "^3.9.0",
-    "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@repo/ui": "workspace:*",
     "@types/react-syntax-highlighter": "^15.5.13",

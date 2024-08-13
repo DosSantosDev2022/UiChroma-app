@@ -6,7 +6,8 @@ interface ComponentData {
   componentName: string
 }
 
-interface Props {  componentData: ComponentData    
+interface Props {
+  componentData: ComponentData
 }
 
 const ComponentPreview: React.FC<Props> = ({ componentData }) => {

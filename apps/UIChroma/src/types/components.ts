@@ -2,8 +2,8 @@ interface Tag {
   tagName: string
 }
 
-interface Feature {
-  id: string
+export interface Feature {
+  id?: string
   item: string
 }
 
@@ -13,10 +13,9 @@ interface Dependencie {
   command: string
 }
 
-interface DocLinks {
+export interface DocLinks {
     id: string
     label : string
-    icon: string
     url:string
 }
 
@@ -30,7 +29,7 @@ interface Component {
   dependencie: Dependencie[]
   codeString: string
   animations:string
-  docLinks: DocLinks[]
+  doclinks: DocLinks[]
 }
 
 interface Hook {

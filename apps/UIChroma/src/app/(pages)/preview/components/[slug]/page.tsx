@@ -91,8 +91,8 @@ export default async function ComponentDetails({
       url: 'feature',
     },
     {
-      text: 'Exemplo',
-      url: 'exemplo',
+      text: 'Preview',
+      url: 'preview',
     },
     {
       text: 'CopyCode',
@@ -142,7 +142,7 @@ export default async function ComponentDetails({
         </div>
 
         <div className="flex flex-col gap-12">
-          <div id='exemplo' className="space-y-5">
+          <div id='preview' className="space-y-5">
             <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
               Preview
             </h4>
@@ -163,17 +163,19 @@ export default async function ComponentDetails({
                   copyText={component.codeString || ''}
                 />
               </ClipBoardHeader>
-              <ClipBoardArea className="w-full h-full bg-primary-950/90">
+              <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
                 <SyntaxHighlighter
                   language="jsx"
                   style={dracula}
                   customStyle={{
-                    width: '668px',
+                    maxWidth:'768px',
+                    width: '768px',
+                    height:'100%',
                     padding: '22px',
                     borderRadius: '12px',
                     background: 'none',
-                    scrollbarWidth: 'none',
-                    scrollbarColor: 'auto',
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: 'unset',
                   }}
                   showLineNumbers
                 >

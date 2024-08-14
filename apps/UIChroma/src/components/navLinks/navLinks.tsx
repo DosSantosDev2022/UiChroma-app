@@ -32,6 +32,7 @@ const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
 
 export async function NaigationLinks() {
   const { components,hook } = await GET_PATH_LINKS()
+
   const componentList = [...components].sort((a, b) =>
     a.componentName.localeCompare(b.componentName),
   )

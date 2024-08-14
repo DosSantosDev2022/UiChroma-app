@@ -21,12 +21,12 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${nunito.className} antialiased`}>
-        <div className="flex w-full  h-screen  overflow-hidden">
+        <div className="flex w-full h-screen overflow-hidden">
           <SideBar />
 
-          <div className="flex flex-1 flex-col">
+          <div className="flex flex-1 flex-col h-full">
             <Header />
-            <main className="bg-primary-50 min-h-0 w-full flex-1 overflow-auto p-4  text-primary-900 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
+            <main className="bg-primary-50 flex-1 overflow-auto p-4 text-primary-900 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
               {children}
             </main>
           </div>

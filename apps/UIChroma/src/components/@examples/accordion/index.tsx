@@ -1,7 +1,8 @@
-import { Accordion } from '@repo/ui/components/accordion.tsx'
+import { AccordionAnswer, AccordionContainer, 
+  AccordionProvider, AccordionQuestion, AccordionTrigger, AccordionContent } from '@repo/ui/components/accordion.tsx'
 
 export default function AccordionPreview() {
-  const questions = [
+  const faqs = [
     {
       id: '0001',
       question: 'O que é a UIChroma?',
@@ -29,9 +30,18 @@ export default function AccordionPreview() {
   ]
 
   return (
-    <div className="flex flex-col gap-1">
-      {questions.map((q) => (
-        <Accordion key={q.id} question={q.question} answer={q.answer} />
+    <div className='w-full'>
+      {faqs.map((faq, index) => (
+        <AccordionProvider key={index}>
+          <AccordionContainer>
+            <AccordionTrigger>
+              <AccordionQuestion>{faq.question}</AccordionQuestion>
+            </AccordionTrigger>
+            <AccordionContent>
+              <AccordionAnswer>{faq.answer}</AccordionAnswer>
+            </AccordionContent>
+          </AccordionContainer>
+        </AccordionProvider>
       ))}
     </div>
   )

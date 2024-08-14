@@ -1,44 +1,104 @@
 'use client'
-import React, { useState } from 'react'
+import React, { createContext, ReactNode, useContext, useState } from 'react'
 import { LuChevronDown } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
-const AccordionRoot = React.forwardRef<
+interface AccordionContextProps {
+  isOpen: boolean
+  toggleOpen: () => void
+}
+
+const AccordionContext = createContext<AccordionContextProps | undefined>(
+  undefined,
+)
+
+const useAccordionContext = () => {
+  const context = useContext(AccordionContext)
+  if (!context) {
+    throw new Error(
+      'Accordion components must be used within a Accordion provider',
+    )
+  }
+
+  return context
+}
+
+const AccordionProvider = ({ children }: { children: ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const toggleOpen = () => setIsOpen((prev) => !prev)
+
+  return (
+    <AccordionContext.Provider value={{ isOpen, toggleOpen }}>
+      {children}
+    </AccordionContext.Provider>
+  )
+}
+
+const AccordionContainer = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
     {...props}
     ref={ref}
-    className={twMerge(
-      'w-full rounded-t-lg space-y-1 bg-zinc-50 text-zinc-600 ',
-      className,
-    )}
+    className={twMerge('w-full space-y-1 relative', className)}
   />
 ))
-AccordionRoot.displayName = 'AccordionRoot'
+AccordionContainer.displayName = 'AccordionContainer'
 
 const AccordionTrigger = React.forwardRef<
   HTMLButtonElement,
   React.HtmlHTMLAttributes<HTMLButtonElement>
->(({ className, ...props }, ref) => (
-  <button
-    {...props}
-    className={twMerge(
-      'h-16 w-full px-2 py-3 flex  items-center justify-between gap-2',
-      className,
-    )}
-    ref={ref}
-  />
-))
+>(({ className, ...props }, ref) => {
+  const { toggleOpen, isOpen } = useAccordionContext()
+  return (
+    <button
+      {...props}
+      onClick={toggleOpen}
+      className={twMerge(
+        'w-full px-4 py-2 flex border h-16 rounded-t-md items-center justify-between gap-2 cursor-pointer focus:outline-none',
+        className,
+      )}
+      ref={ref}
+    >
+      {props.children}
+      <LuChevronDown
+        className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${
+          isOpen ? 'rotate-180' : ''
+        }`}
+      />
+    </button>
+  )
+})
 AccordionTrigger.displayName = 'AccordionTrigger'
+
+const AccordionContent = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => {
+  const { isOpen } = useAccordionContext()
+  return (
+    <div
+      {...props}
+      ref={ref}
+      className={twMerge(
+        'overflow-hidden transition-all duration-500 ease-in-out',
+        isOpen ? 'max-h-screen animate-fade-in' : 'max-h-0 animate-fade-out',
+        className,
+      )}
+    >
+      <div className="px-4 py-2">{props.children}</div>
+    </div>
+  )
+})
+AccordionContent.displayName = 'AccordionContent'
 
 const AccordionQuestion = React.forwardRef<
   HTMLSpanElement,
   React.HTMLAttributes<HTMLSpanElement>
 >(({ className, ...props }, ref) => (
   <span
-    className={twMerge('w-full text-start text-base font-semibold ', className)}
+    className={twMerge('text-base font-semibold text-zinc-700', className)}
     {...props}
     ref={ref}
   />
@@ -50,54 +110,19 @@ const AccordionAnswer = React.forwardRef<
   React.HTMLAttributes<HTMLSpanElement>
 >(({ className, ...props }, ref) => (
   <span
-    className={twMerge(
-      ' overflow-hidden text-start text-sm font-normal',
-      className,
-    )}
+    className={twMerge('text-sm text-start text-zinc-600', className)}
     {...props}
     ref={ref}
   />
 ))
 AccordionAnswer.displayName = 'AccordionAnswer'
 
-// Componente montado
-
-interface AccordionProps {
-  question: string // recebe as questões
-  answer: string // recebe as respostas
-}
-
-export function Accordion({ answer, question }: AccordionProps) {
-  const [isOpen, setIsOpen] = useState(false)
-
-  const toggleAccordion = () => setIsOpen(!isOpen)
-
-  return (
-    <AccordionRoot>
-      <AccordionTrigger
-        aria-expanded={isOpen}
-        aria-controls="accordion-content"
-        role="button"
-        tabIndex={0}
-        onClick={toggleAccordion}
-      >
-        <AccordionQuestion>{question}</AccordionQuestion>
-        <LuChevronDown
-          className={`transform transition-transform duration-500 ${
-            isOpen ? 'rotate-90' : ''
-          }`}
-          size={20}
-        />
-      </AccordionTrigger>
-      <div
-        id="accordion-content"
-        className={`overflow-hidden  font-normal transition-[max-height] duration-300 ease-in-out ${
-          isOpen ? 'max-h-[1000px] opacity-100 px-2 py-3' : 'max-h-0 opacity-0'
-        }`}
-        style={{ transitionProperty: 'max-height, opacity' }}
-      >
-        <AccordionAnswer>{answer}</AccordionAnswer>
-      </div>
-    </AccordionRoot>
-  )
+export {
+  AccordionAnswer,
+  AccordionContainer,
+  AccordionContext,
+  AccordionProvider,
+  AccordionTrigger,
+  AccordionQuestion,
+  AccordionContent,
 }

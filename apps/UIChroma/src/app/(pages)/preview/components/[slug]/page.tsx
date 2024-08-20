@@ -1,4 +1,5 @@
 import { HeroComponents } from '@/components/ui/heroComponents'
+
 import { IoIosArrowDroprightCircle } from 'react-icons/io'
 import {
   ClipBoardAction,
@@ -8,7 +9,6 @@ import {
   ClipBoardContainer,
 } from '@repo/ui/components/clipboard.tsx'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 import { DataQueryComponent } from '@/types/components'
 import ComponentPreview from '@/components/componentPreview/componentPreview'
@@ -16,6 +16,8 @@ import { inter } from '@/assets/fonts'
 import { NavigateThroughSections } from '@/components/navigationScroll/NavigateThroughSections'
 import { FaCircleCheck } from 'react-icons/fa6'
 import { DocLinks } from '@/components/documentationslink/docLinks'
+import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { pagesectionlinks } from '@/config/navigationLinks'
 
 
 interface ComponentDetailsProps {
@@ -34,9 +36,9 @@ const GET_DETAILS_COMPONENT = async (slug: string): Promise<DataQueryComponent> 
           }
           componentName
           description
-          features {
-            item
-          }
+           featureList {
+              content
+           }
           dependencie {
             id
             title
@@ -81,32 +83,7 @@ export default async function ComponentDetails({
     )
   }
 
-  const pagesectionlinks = [
-    {
-      text: 'Início',
-      url: 'inicio',
-    },
-    {
-      text: 'Features',
-      url: 'feature',
-    },
-    {
-      text: 'Preview',
-      url: 'preview',
-    },
-    {
-      text: 'CopyCode',
-      url: 'copyCode',
-    },
-    {
-      text: 'Dependencias',
-      url: 'dependencias',
-    },
-    {
-      text: 'Como usar',
-      url: 'como-usar',
-    },
-  ]
+ 
   return (
     <div className='flex gap-6 justify-between w-full'>
       <section className="px-8 py-5 w-full border rounded-md shadow-sm">
@@ -126,14 +103,14 @@ export default async function ComponentDetails({
               Features
             </h1>
             <ul className="flex flex-col items-start gap-2">
-              {component.features.map((feature) => (
+              {component.featureList.map((feature,index) => (
 
                 <li
-                  key={feature.id}
+                  key={index}
                   className="flex items-center gap-2 text-primary-800"
                 >
                   <FaCircleCheck size={18} />
-                  {feature.item}
+                  {feature.content}
                 </li>
 
               ))}
@@ -166,7 +143,7 @@ export default async function ComponentDetails({
               <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
                 <SyntaxHighlighter
                   language="jsx"
-                  style={dracula}
+                  style={darcula}
                   customStyle={{
                     maxWidth:'768px',
                     width: '768px',
@@ -176,6 +153,9 @@ export default async function ComponentDetails({
                     background: 'none',
                     scrollbarWidth: 'thin',
                     scrollbarColor: 'unset',
+                    color:'white',
+                    colorRendering:'optimizeQuality',
+                    
                   }}
                   showLineNumbers
                 >
@@ -240,7 +220,7 @@ export default async function ComponentDetails({
                 <ClipBoardArea className="h-full bg-primary-950/90">
                   <SyntaxHighlighter
                     language="jsx"
-                    style={dracula}
+                    style={darcula}
                     customStyle={{
                       width: '100%',
                       padding: '22px',

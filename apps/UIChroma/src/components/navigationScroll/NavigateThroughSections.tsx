@@ -30,8 +30,8 @@ export function NavigateThroughSections({links}:NavigateThroughSectionsProps) {
   return (
     <NavigationRoot>
       <NavigationList className="flex flex-col space-y-0">
-        {links.map((link) => (
-          <NavigationItem key={link.text}>
+        {links.map((link, index) => (
+          <NavigationItem key={index}>
             <Button
               onClick={() => handleButtonClickScrollIntoView(link.url)}
               variant="link"

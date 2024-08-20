@@ -13,7 +13,7 @@ export function HeroComponents({
 }: HeroComponentsProps) {
   return (
     <div className=" flex w-full flex-col">
-      <span className="bg-primary-950 text-secondary-50 w-28 rounded-lg px-1.5 py-2 text-center text-base font-medium leading-[29px] ">
+      <span className="bg-primary-950 text-secondary-50 w-32 rounded-lg px-1.5 py-2 text-center text-base font-medium leading-[29px] ">
         {type}
       </span>
       <h1 className={`text-primary-900 mt-6 text-4xl font-extrabold ${inter.className}`} >

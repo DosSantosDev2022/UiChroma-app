@@ -3,7 +3,7 @@ import { NaigationLinks } from '@/components/navLinks/navLinks'
 
 export function SideBar() {
   return (
-    <aside className="flex h-full flex-col justify-between bg-primary-950 lg:w-72 xl:w-80">
+    <aside className="flex h-full flex-col justify-between bg-primary-950 col-start-1 row-span-2">
       <div className="flex flex-col gap-4 p-4 lg:p-8 lg:pt-4 overflow-y-auto scrollbar-thin scrollbar-track-primary-800 scrollbar-thumb-primary-950">
         <div className="flex w-full items-center justify-between gap-4 px-2 py-1">
           <LogoUI />

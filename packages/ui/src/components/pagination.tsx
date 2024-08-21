@@ -1,79 +1,121 @@
-'use client'
+import React from 'react'
+import { LuChevronLeft, LuChevronRight, LuMoreHorizontal } from 'react-icons/lu'
+import { twMerge } from 'tailwind-merge'
 
-import { usePagination } from '../../../hooks/src/usePagination'
-import { Button } from '../components/button'
-import { LuChevronsLeft, LuChevronsRight } from 'react-icons/lu'
+const Pagination = React.forwardRef<HTMLElement, React.ComponentProps<'nav'>>(
+  ({ className, ...props }, ref) => (
+    <nav
+      role="navigation"
+      aria-label="navigation"
+      className={twMerge('mx-auto flex  w-full justify-center', className)}
+      {...props}
+      ref={ref}
+    />
+  ),
+)
 
-interface PaginationProps {
-  page: number
-  limit: number
-  total: number
-}
+Pagination.displayName = 'Pagination'
 
-export function Pagination({ page, limit, total }: PaginationProps) {
-  const { pages } = usePagination({
-    page,
-    limit,
-    total,
-  })
+const PaginationContent = React.forwardRef<
+  HTMLUListElement,
+  React.ComponentProps<'ul'>
+>(({ className, ...props }, ref) => (
+  <ul
+    className={twMerge('flex flex-row items-center gap-1', className)}
+    {...props}
+    ref={ref}
+  />
+))
 
-  const isFarstPage = page === 1
-  const isLastPage = page === Math.ceil(total / limit)
+PaginationContent.displayName = 'PaginationContent'
 
-  return (
-    <div className="flex w-full items-center justify-between gap-2">
-      <span className="text-light flex w-full font-light">
-        Mostrando {Math.min(limit, total - (page - 1) * limit)} de {total}
-      </span>
+const PaginationItem = React.forwardRef<
+  HTMLLIElement,
+  React.ComponentProps<'li'>
+>(({ className, ...props }, ref) => (
+  <li
+    className={twMerge('flex items-center justify-center', className)}
+    {...props}
+    ref={ref}
+  />
+))
 
-      <div className="flex items-center gap-2">
-        <Button
-          className="flex h-12 w-12 items-center justify-center"
-          variant="primary"
-          asChild
-        >
-          {!isFarstPage ? (
-            <a href={`/?page=1`}>
-              <LuChevronsLeft />
-            </a>
-          ) : (
-            <Button
-              variant="disabled"
-              className="flex h-12 w-12 items-center justify-center"
-            >
-              <LuChevronsLeft />
-            </Button>
-          )}
-        </Button>
-        {pages.map((pageNumber) => (
-          <Button
-            asChild
-            key={pageNumber}
-            className={
-              page === pageNumber
-                ? 'text-primary " flex h-12 w-12 items-center justify-center  bg-zinc-600 hover:bg-zinc-800'
-                : 'flex h-12 w-12 items-center justify-center'
-            }
-          >
-            <a href={`/?page=${pageNumber}`}>{pageNumber}</a>
-          </Button>
-        ))}
+PaginationItem.displayName = 'PaginationItem'
 
-        <Button className="flex h-12 w-12 items-center justify-center" asChild>
-          {!isLastPage ? (
-            <a href={`/AllPosts?page=${Math.ceil(total / limit)}`}>
-              <LuChevronsRight />
-            </a>
-          ) : (
-            <Button
-              variant="disabled"
-              className="flex h-12 w-12 items-center justify-center"
-            >
-              <LuChevronsRight />
-            </Button>
-          )}
-        </Button>
-      </div>
-    </div>
-  )
+type PaginationLinkProps = {
+  isActive?: boolean
+} & React.ComponentProps<'a'>
+
+const PaginationLink = ({
+  className,
+  isActive,
+  ...props
+}: PaginationLinkProps) => (
+  <a
+    aria-current={isActive ? 'page' : 'false'}
+    className={twMerge(
+      ` hover:opacity-70 duration-300 border p-2 rounded-lg w-10 h-10 flex items-center justify-center
+      ${isActive ? 'bg-zinc-50 text-zinc-700' : 'bg-zinc-700 text-zinc-50'}`,
+      className,
+    )}
+    {...props}
+  />
+)
+
+PaginationLink.displayName = 'PaginationLink'
+
+const PaginationPrevious = ({
+  className,
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) => (
+  <PaginationLink
+    aria-label="go to previous page"
+    className={twMerge('gap-1 pl-2.5 cursor-pointer', className)}
+    {...props}
+  >
+    <LuChevronLeft className="h-4 w-4" />
+  </PaginationLink>
+)
+
+PaginationPrevious.displayName = 'PaginationPrevious'
+
+const PaginationNext = ({
+  className,
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) => (
+  <PaginationLink
+    aria-label="go to Next page"
+    className={twMerge('gap-1 pr-2.5 cursor-pointer', className)}
+    {...props}
+  >
+    <LuChevronRight className="h-4 w-4" />
+  </PaginationLink>
+)
+
+PaginationNext.displayName = 'PaginationNext'
+
+const PaginationEllipsis = ({
+  className,
+  ...props
+}: React.ComponentProps<'span'>) => (
+  <span
+    aria-hidden
+    className={twMerge('flex h-9 w-9 items-center justify-center', className)}
+    {...props}
+  >
+    <LuMoreHorizontal className="h-4 w-4" />
+    <span className="sr-only">More pages</span>
+  </span>
+)
+
+PaginationEllipsis.displayName = 'PaginationEllipsis'
+
+export {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
 }

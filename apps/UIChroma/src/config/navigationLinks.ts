@@ -16,13 +16,18 @@
     url: 'copyCode',
   },
   {
-    text: 'Dependencias',
-    url: 'dependencias',
+    text: 'Utilidades',
+    url: 'utilities'
   },
   {
     text: 'Como usar',
     url: 'como-usar',
   },
+  {
+    text: 'Dependencias',
+    url: 'dependencias',
+  },
+  
 ]
 
 

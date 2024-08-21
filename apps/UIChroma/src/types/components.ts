@@ -29,6 +29,9 @@ interface Component {
   featureList: FeatureList[]
   dependencie: Dependencie[]
   codeString: string
+  codeUsage:string
+  utilities:string
+  utilitiesDescription:string
   animations:string
   doclinks: DocLinks[]
 }
@@ -38,6 +41,7 @@ interface Hook {
   slug: string
   tag: Tag
   hookName: string
+  componenteUsage:string
   description: string
   featureList: FeatureList[]
   codeString: string

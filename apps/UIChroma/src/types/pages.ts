@@ -44,9 +44,4 @@ export interface GetPathLinks {
     slug: string
     componentName: string
   }[]
-  hook:{
-    id: string
-    slug: string
-    hookName: string
-  }[]
 }

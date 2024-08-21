@@ -45,6 +45,9 @@ const GET_DETAILS_COMPONENT = async (slug: string): Promise<DataQueryComponent> 
             command
           }
           codeString
+          codeUsage
+          utilities
+          utilitiesDescription
           animations
           doclinks {
             label
@@ -62,7 +65,7 @@ export default async function ComponentDetails({
   params,
 }: ComponentDetailsProps) {
   const { component } = await GET_DETAILS_COMPONENT(params.slug)
- 
+
   if (!component) {
     return <div>Componente não encontrado</div>
   }
@@ -83,7 +86,7 @@ export default async function ComponentDetails({
     )
   }
 
- 
+
   return (
     <div className='flex gap-6 justify-between w-full'>
       <section className="px-8 py-5 w-full border rounded-md shadow-sm">
@@ -103,7 +106,7 @@ export default async function ComponentDetails({
               Features
             </h1>
             <ul className="flex flex-col items-start gap-2">
-              {component.featureList.map((feature,index) => (
+              {component.featureList.map((feature, index) => (
 
                 <li
                   key={index}
@@ -129,12 +132,19 @@ export default async function ComponentDetails({
           </div>
 
           <div id="copyCode" className='space-y-4 '>
-            <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
-              Código fonte
-            </h4>
+            <div className='space-y-2'>
+              <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
+                Código fonte
+              </h4>
+              <p className='text-base font-light text-primary-900'>
+                Oferecemos o código fonte completo deste componente, pronto para 
+                usar em sua aplicação, basta copiar e criar o arquivo em seu projeto
+                utilizando o código abaixo.
+              </p>
+            </div>
             <ClipBoardContainer>
               <ClipBoardHeader className="bg-primary-950">
-                <ClipBoardLabel>{component.componentName}</ClipBoardLabel>
+                <ClipBoardLabel>Copiar componente</ClipBoardLabel>
                 <ClipBoardAction
                   className="bg-primary-900 hover:bg-primary-700"
                   copyText={component.codeString || ''}
@@ -145,17 +155,17 @@ export default async function ComponentDetails({
                   language="jsx"
                   style={darcula}
                   customStyle={{
-                    maxWidth:'768px',
+                    maxWidth: '768px',
                     width: '768px',
-                    height:'100%',
+                    height: '100%',
                     padding: '22px',
                     borderRadius: '12px',
                     background: 'none',
                     scrollbarWidth: 'thin',
                     scrollbarColor: 'unset',
-                    color:'white',
-                    colorRendering:'optimizeQuality',
-                    
+                    color: 'white',
+                    colorRendering: 'optimizeQuality',
+
                   }}
                   showLineNumbers
                 >
@@ -164,6 +174,96 @@ export default async function ComponentDetails({
               </ClipBoardArea>
             </ClipBoardContainer>
           </div>
+
+          <div id="utilities" className='space-y-4 '>
+            <div className='space-y-2'>
+              <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
+                Utilidades
+              </h4>
+              <p className='text-base font-light text-primary-900'>
+                {component.utilitiesDescription}
+              </p>
+            </div>
+
+
+            <ClipBoardContainer>
+              <ClipBoardHeader className="bg-primary-950">
+                <ClipBoardLabel>Copiar utilidades</ClipBoardLabel>
+                <ClipBoardAction
+                  className="bg-primary-900 hover:bg-primary-700"
+                  copyText={component.utilities || ''}
+                />
+              </ClipBoardHeader>
+              <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
+                <SyntaxHighlighter
+                  language="jsx"
+                  style={darcula}
+                  customStyle={{
+                    maxWidth: '768px',
+                    width: '768px',
+                    height: '100%',
+                    padding: '22px',
+                    borderRadius: '12px',
+                    background: 'none',
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: 'unset',
+                    color: 'white',
+                    colorRendering: 'optimizeQuality',
+
+                  }}
+                  showLineNumbers
+                >
+                  {component.utilities || ''}
+                </SyntaxHighlighter>
+              </ClipBoardArea>
+            </ClipBoardContainer>
+          </div>
+
+          <div id="como-usar" className='space-y-4 '>
+            <div className='space-y-2'>
+              <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
+                Exemplo de uso
+              </h4>
+              <p className='text-base font-light text-primary-900'>
+                Aqui esta um exemplo de como utilizar o nosso componente em sua aplicação React.
+              </p>
+            </div>
+
+
+            <ClipBoardContainer>
+              <ClipBoardHeader className="bg-primary-950">
+                <ClipBoardLabel>Copiar exemplo de uso</ClipBoardLabel>
+                <ClipBoardAction
+                  className="bg-primary-900 hover:bg-primary-700"
+                  copyText={component.codeUsage || ''}
+                />
+              </ClipBoardHeader>
+              <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
+                <SyntaxHighlighter
+                  language="jsx"
+                  style={darcula}
+                  customStyle={{
+                    maxWidth: '768px',
+                    width: '768px',
+                    height: '100%',
+                    padding: '22px',
+                    borderRadius: '12px',
+                    background: 'none',
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: 'unset',
+                    color: 'white',
+                    colorRendering: 'optimizeQuality',
+
+                  }}
+                  showLineNumbers
+                >
+                  {component.codeUsage || ''}
+                </SyntaxHighlighter>
+              </ClipBoardArea>
+            </ClipBoardContainer>
+          </div>
+
+
         </div>
 
         <div className="space-y-3">
@@ -240,10 +340,6 @@ export default async function ComponentDetails({
         ) : (
           <></>
         )}
-
-
-
-        <div id="como-usar"></div>
       </section>
 
       <section className='w-80 h-screen border sticky top-0 px-8 py-5 space-y-6'>

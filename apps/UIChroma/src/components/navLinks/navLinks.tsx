@@ -1,9 +1,7 @@
 import { v4 as uuid } from 'uuid'
-import { hooks } from '@/lib/hooks'
 import { Navigation } from '@/components/navigation'
 import { Dropdown } from '@/components/dropdown'
 import { IoDocumentText } from 'react-icons/io5'
-import { GiHook } from 'react-icons/gi'
 import { HiTemplate } from 'react-icons/hi'
 import { TbComponents } from 'react-icons/tb'
 import { MdNewReleases } from 'react-icons/md'
@@ -20,23 +18,18 @@ const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
         slug
         componentName
       }
-      hook {
-        id
-        slug
-        hookName
-      }
     }
   `
   return fetchHygraphQuery(query)
 }
 
 export async function NaigationLinks() {
-  const { components,hook } = await GET_PATH_LINKS()
+  const { components } = await GET_PATH_LINKS()
 
   const componentList = [...components].sort((a, b) =>
     a.componentName.localeCompare(b.componentName),
   )
-  const hookList = [...hook].sort((a,b) => a.hookName.localeCompare(b.hookName))
+ 
 
   /* const templates = [...Templates].sort((a, b) => a.name.localeCompare(b.name)) */
 
@@ -127,29 +120,7 @@ export async function NaigationLinks() {
           </Dropdown.Root>
         </Navigation.Item>
 
-        <Navigation.Item>
-          <Dropdown.Root>
-            <Dropdown.Trigger>
-              <Dropdown.Icon>
-                <GiHook size={18} />
-              </Dropdown.Icon>
-              Hooks
-            </Dropdown.Trigger>
-
-            <Navigation.List className="mt-2 max-h-[268px] space-y-1 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary-900">
-              {hookList.map((hook) => (
-                <Navigation.Item className="border-none " key={hook.id}>
-                  <Navigation.Links
-                    className="w-full bg-transparent"
-                    url={`/preview/hooks/${hook.hookName}`}
-                  >
-                    {hook.hookName}
-                  </Navigation.Links>
-                </Navigation.Item>
-              ))}
-            </Navigation.List>
-          </Dropdown.Root>
-        </Navigation.Item>
+       
       </Navigation.List>
     </Navigation.Root>
   )

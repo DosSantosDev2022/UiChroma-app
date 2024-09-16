@@ -1,6 +1,4 @@
 import { HeroComponents } from '@/components/ui/heroComponents'
-
-import { IoIosArrowDroprightCircle } from 'react-icons/io'
 import {
   ClipBoardAction,
   ClipBoardArea,
@@ -42,6 +40,7 @@ const GET_DETAILS_COMPONENT = async (slug: string): Promise<DataQueryComponent> 
           dependencie {
             id
             title
+            description
             command
           }
           codeString
@@ -85,6 +84,8 @@ export default async function ComponentDetails({
       </div>
     )
   }
+
+  
 
 
   return (
@@ -136,8 +137,8 @@ export default async function ComponentDetails({
               <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
                 Código fonte
               </h4>
-              <p className='text-base font-light text-primary-900'>
-                Oferecemos o código fonte completo deste componente, pronto para 
+              <p className='text-base font-normal text-primary-900'>
+                Oferecemos o código fonte completo deste componente, pronto para
                 usar em sua aplicação, basta copiar e criar o arquivo em seu projeto
                 utilizando o código abaixo.
               </p>
@@ -175,56 +176,58 @@ export default async function ComponentDetails({
             </ClipBoardContainer>
           </div>
 
-          <div id="utilities" className='space-y-4 '>
-            <div className='space-y-2'>
-              <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
-                Utilidades
-              </h4>
-              <p className='text-base font-light text-primary-900'>
-                {component.utilitiesDescription}
-              </p>
+          {component.utilities && (
+            <div id="utilities" className='space-y-4 '>
+              <div className='space-y-2'>
+                <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
+                  Utilidades
+                </h4>
+                <p className='text-base font-normal text-primary-900'>
+                  {component.utilitiesDescription}
+                </p>
+              </div>
+
+
+              <ClipBoardContainer>
+                <ClipBoardHeader className="bg-primary-950">
+                  <ClipBoardLabel>Copiar utilidades</ClipBoardLabel>
+                  <ClipBoardAction
+                    className="bg-primary-900 hover:bg-primary-700"
+                    copyText={component.utilities || ''}
+                  />
+                </ClipBoardHeader>
+                <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
+                  <SyntaxHighlighter
+                    language="jsx"
+                    style={darcula}
+                    customStyle={{
+                      maxWidth: '768px',
+                      width: '768px',
+                      height: '100%',
+                      padding: '22px',
+                      borderRadius: '12px',
+                      background: 'none',
+                      scrollbarWidth: 'thin',
+                      scrollbarColor: 'unset',
+                      color: 'white',
+                      colorRendering: 'optimizeQuality',
+
+                    }}
+                    showLineNumbers
+                  >
+                    {component.utilities || ''}
+                  </SyntaxHighlighter>
+                </ClipBoardArea>
+              </ClipBoardContainer>
             </div>
-
-
-            <ClipBoardContainer>
-              <ClipBoardHeader className="bg-primary-950">
-                <ClipBoardLabel>Copiar utilidades</ClipBoardLabel>
-                <ClipBoardAction
-                  className="bg-primary-900 hover:bg-primary-700"
-                  copyText={component.utilities || ''}
-                />
-              </ClipBoardHeader>
-              <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
-                <SyntaxHighlighter
-                  language="jsx"
-                  style={darcula}
-                  customStyle={{
-                    maxWidth: '768px',
-                    width: '768px',
-                    height: '100%',
-                    padding: '22px',
-                    borderRadius: '12px',
-                    background: 'none',
-                    scrollbarWidth: 'thin',
-                    scrollbarColor: 'unset',
-                    color: 'white',
-                    colorRendering: 'optimizeQuality',
-
-                  }}
-                  showLineNumbers
-                >
-                  {component.utilities || ''}
-                </SyntaxHighlighter>
-              </ClipBoardArea>
-            </ClipBoardContainer>
-          </div>
+          )}
 
           <div id="como-usar" className='space-y-4 '>
             <div className='space-y-2'>
               <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
                 Exemplo de uso
               </h4>
-              <p className='text-base font-light text-primary-900'>
+              <p className='text-base font-normal text-primary-900'>
                 Aqui esta um exemplo de como utilizar o nosso componente em sua aplicação React.
               </p>
             </div>
@@ -262,8 +265,6 @@ export default async function ComponentDetails({
               </ClipBoardArea>
             </ClipBoardContainer>
           </div>
-
-
         </div>
 
         <div className="space-y-3">
@@ -274,16 +275,12 @@ export default async function ComponentDetails({
           <div id="dependencias" className="space-y-6">
             {component.dependencie.map((dep) => (
               <div
-                className="flex w-full flex-col items-start gap-2 text-zinc-600"
+                className="flex w-full flex-col items-start gap-4 text-zinc-600"
                 key={dep.id}
               >
-                <span className="flex items-center gap-3 text-lg font-semibold">
-                  <IoIosArrowDroprightCircle
-                    size={24}
-                    className="text-primary-600"
-                  />
-                  {dep.title}
-                </span>
+                <p className="flex items-center gap-3 text-base font-normal">
+                  {dep.description}
+                </p>
 
                 <ClipBoardContainer className="">
                   <ClipBoardHeader className="bg-primary-950">
@@ -294,7 +291,20 @@ export default async function ComponentDetails({
                     />
                   </ClipBoardHeader>
                   <ClipBoardArea className="h-full bg-primary-950/90">
-                    {dep.command}{' '}
+                    <SyntaxHighlighter
+                      language="jsx"
+                      style={darcula}
+                      customStyle={{
+                        width: '100%',
+                        padding: '4px',
+                        borderRadius: '8px',
+                        background: 'none',
+                        scrollbarWidth: 'thin',
+                        scrollbarColor: 'auto',
+                      }}
+                    >
+                      {dep.command}
+                    </SyntaxHighlighter>
                   </ClipBoardArea>
                 </ClipBoardContainer>
               </div>
@@ -303,43 +313,40 @@ export default async function ComponentDetails({
         </div>
 
 
-        {component.animations ? (
-          <div className="space-y-3">
-            <h4 className="mt-10 text-2xl font-extrabold ">
+        {component.animations && (
+          <div className="space-y-4">
+            <h4 className="text-2xl font-extrabold text-primary-900 mt-10">
               Animações para utilizar neste componente
             </h4>
-            <div id="copyCode">
-              <ClipBoardContainer>
-                <ClipBoardHeader className="bg-primary-950">
-                  <ClipBoardLabel>{'tailwind.config.js.'}</ClipBoardLabel>
-                  <ClipBoardAction
-                    className="bg-primary-900 hover:bg-primary-700"
-                    copyText={component.animations || ''}
-                  />
-                </ClipBoardHeader>
-                <ClipBoardArea className="h-full bg-primary-950/90">
-                  <SyntaxHighlighter
-                    language="jsx"
-                    style={darcula}
-                    customStyle={{
-                      width: '100%',
-                      padding: '22px',
-                      borderRadius: '12px',
-                      background: 'none',
-                      scrollbarWidth: '-moz-initial',
-                      scrollbarColor: 'auto',
-                    }}
-                    showLineNumbers
-                  >
-                    {component.animations || ''}
-                  </SyntaxHighlighter>
-                </ClipBoardArea>
-              </ClipBoardContainer>
-            </div>
+            <ClipBoardContainer>
+              <ClipBoardHeader className="bg-primary-950">
+                <ClipBoardLabel>tailwind.config.js</ClipBoardLabel>
+                <ClipBoardAction
+                  className="bg-primary-900 hover:bg-primary-700"
+                  copyText={component.animations}
+                />
+              </ClipBoardHeader>
+              <ClipBoardArea className="bg-primary-950/90">
+                <SyntaxHighlighter
+                  language="jsx"
+                  style={darcula}
+                  customStyle={{
+                    width: '100%',
+                    padding: '16px',
+                    borderRadius: '8px',
+                    background: 'none',
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: 'auto',
+                  }}
+                  showLineNumbers
+                >
+                  {component.animations}
+                </SyntaxHighlighter>
+              </ClipBoardArea>
+            </ClipBoardContainer>
           </div>
-        ) : (
-          <></>
         )}
+
       </section>
 
       <section className='w-80 h-screen border sticky top-0 px-8 py-5 space-y-6'>

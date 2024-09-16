@@ -1,4 +1,4 @@
-import { RichTextContent } from "@graphcms/rich-text-types"
+
 
 interface Tag {
   tagName: string
@@ -11,17 +11,18 @@ export interface FeatureList {
 interface Dependencie {
   id: string
   title: string
+  description: string
   command: string
 }
 
 export interface DocLinks {
-    id: string
-    label : string
-    url:string
+  id: string
+  label: string
+  url: string
 }
 
 interface Component {
-  id:string
+  id: string
   slug: string
   tag: Tag
   componentName: string
@@ -29,32 +30,13 @@ interface Component {
   featureList: FeatureList[]
   dependencie: Dependencie[]
   codeString: string
-  codeUsage:string
-  utilities:string
-  utilitiesDescription:string
-  animations:string
+  codeUsage: string
+  utilities: string
+  utilitiesDescription: string
+  animations: string
   doclinks: DocLinks[]
-}
-
-interface Hook {
-  id:string
-  slug: string
-  tag: Tag
-  hookName: string
-  componenteUsage:string
-  description: string
-  featureList: FeatureList[]
-  codeString: string
-  doclinks: DocLinks[]
-  usage: {
-    raw: RichTextContent
-  }
 }
 
 export interface DataQueryComponent {
   component: Component
-}
-
-export interface DataQueryHooks{
-  hook:Hook[]
 }

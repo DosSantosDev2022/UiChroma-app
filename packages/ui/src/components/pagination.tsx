@@ -7,7 +7,7 @@ const Pagination = React.forwardRef<HTMLElement, React.ComponentProps<'nav'>>(
     <nav
       role="navigation"
       aria-label="navigation"
-      className={twMerge('mx-auto flex  w-full justify-center', className)}
+      className={twMerge('mx-auto flex  w-full justify-center py-2', className)}
       {...props}
       ref={ref}
     />

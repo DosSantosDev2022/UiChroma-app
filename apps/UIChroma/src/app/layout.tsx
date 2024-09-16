@@ -25,7 +25,6 @@ export default function RootLayout({
           <SideBar  />
 
           <Header />
-
           <main className="bg-primary-50 col-start-2 row-start-2 overflow-auto p-4 text-primary-900 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
             {children}
           </main>

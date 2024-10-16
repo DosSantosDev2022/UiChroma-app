@@ -89,8 +89,8 @@ export default async function ComponentDetails({
 
 
   return (
-    <div className='flex gap-6 justify-between w-full'>
-      <section className="px-8 py-5 w-full border rounded-md shadow-sm">
+    <div className='grid grid-cols-4 gap-4'>
+      <section className="px-8 py-5 col-span-3  w-full border rounded-md shadow-sm ">
         <div id='inicio'>
           <HeroComponents
             type="Componente"
@@ -349,7 +349,7 @@ export default async function ComponentDetails({
 
       </section>
 
-      <section className='w-80 h-screen border sticky top-0 px-8 py-5 space-y-6'>
+      <section className='w-full col-span-1 h-screen border sticky top-0 px-8 py-5 space-y-6'>
         <h4 className='font-bold text-base'>Navegue nessa página</h4>
 
         <NavigateThroughSections links={pagesectionlinks} />

@@ -64,8 +64,8 @@ const GET_STARTER_PAGE_DATA = async (): Promise<GetStarterData> => {
 export default async function Starter() {
   const { getstarted } = await GET_STARTER_PAGE_DATA()
   return (
-    <div className='flex gap-6 w-full justify-between'>
-      <section className="px-8 py-5 max-w-3xl w-full border rounded-md shadow-sm ">
+    <div className='grid grid-cols-4 gap-4'>
+      <section className="px-8 py-5 col-span-3  w-full border rounded-md shadow-sm ">
         <div className=" space-y-20 pb-10 pt-16 ">
           <div id='Introdução' className="flex flex-col gap-3  ">
             <RichText
@@ -299,7 +299,7 @@ export default async function Starter() {
         </div>
       </section>
 
-      <section className='w-80 h-screen border sticky top-0 px-8 py-5 space-y-6'>
+      <section className='w-full col-span-1 h-screen border sticky top-0 px-8 py-5 space-y-6'>
         <h4 className='font-bold text-base'>Navegue nessa página</h4>
 
         <NavigateThroughSections links={pagesectionlinks} />

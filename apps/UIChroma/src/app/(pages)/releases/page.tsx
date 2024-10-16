@@ -36,7 +36,7 @@ export default async function ReleasePage() {
   const { releasePage } = await GET_RELEASES()
 
   return (
-    <div className=" relative flex h-full max-w-4xl  flex-col  px-4 sm:px-6 lg:px-8">
+    <div className=" relative flex h-full max-w-5xl  flex-col  px-4 sm:px-6 lg:px-8">
       <div className="flex flex-col gap-3">
         <h1 className="text-6xl font-extrabold ">{releasePage?.title}</h1>
         <p className="text-lg font-normal text-primary-950 ">

@@ -21,11 +21,11 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`${nunito.className} antialiased`}>
-        <div className="grid h-screen grid-cols-[320px_1fr] grid-rows-[auto_1fr] overflow-hidden">
+        <div className="grid h-screen grid-cols-[260px_1fr] grid-rows-[auto_1fr] overflow-hidden">
           <SideBar  />
 
           <Header />
-          <main className="bg-primary-50 col-start-2 row-start-2 overflow-auto p-4 text-primary-900 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-900">
+          <main className="bg-background col-start-2 row-start-2 overflow-auto p-4 text-foreground scrollbar-thin scrollbar-track-background scrollbar-thumb-foreground">
             {children}
           </main>
         </div>

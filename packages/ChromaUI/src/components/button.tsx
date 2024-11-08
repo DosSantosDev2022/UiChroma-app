@@ -23,20 +23,20 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantClasses = {
-  primary: 'bg-primary-900 text-secondary-50 hover:bg-primary-700',
-  secundary: 'bg-secondary-50 text-primary-900 hover:bg-secondary-200',
+  primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
+  secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary/40',
   outline:
-    'bg-transparent border border-secundary text-light hover:bg-primary hover:bg-primary-700 hover:text-primary-50 ',
-  highlight: 'text-zinc-50 hover:bg-violet-800 duration-300 bg-violet-900',
-  disabled:
-    'bg-opacity-80 bg-primary-950 border border-primary-800 text-secondary-50',
+    'bg-transparent border border-border text-primary hover:bg-primary/80 hover:text-primary-foreground',
+  highlight:
+    'text-primary-foreground hover:bg-primary/80 duration-300 bg-primary',
+  disabled: 'bg-opacity-80 bg-accent border text-accent-foreground',
   link: 'bg-transparent border-none underline-offset-4 hover:underline',
   danger: 'bg-red-700 hover:bg-red-600 text-zinc-50',
   warning: 'bg-yellow-400 text-zinc-900 hover:bg-yellow-300',
   Shine:
-    'before:ease relative  overflow-hidden border border-primary-800 bg-primary-800 text-white shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-primary-500 hover:before:-translate-x-40',
+    'before:ease relative  overflow-hidden border border-primary bg-primary text-primary-foreground shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-primary-500 hover:before:-translate-x-40',
   Swipe:
-    'text-zinc-50 hover:before:bg-redborder-red-500 relative  overflow-hidden border border-primary-500 bg-white text-primary-500 shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-primary-500 before:transition-all before:duration-500 hover:text-white hover:shadow-primary-500 hover:before:left-0 hover:before:w-full',
+    'text-zinc-50 hover:before:bg-redborder-red-500 relative  overflow-hidden border border-primary bg-primary text-primary-foreground shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-primary-500 before:transition-all before:duration-500 hover:text-white hover:shadow-primary-500 hover:before:left-0 hover:before:w-full',
 }
 const sizeClasses = {
   xs: 'h-10 w-20  text-xs',
@@ -64,7 +64,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         twMerge(
           variantClasses[variant!],
           sizeClasses[sizes!],
-          'appearance-none rounded-md px-3 py-2 flex gap-2 items-center justify-center font-normal transition-all duration-500',
+          'appearance-none rounded-md px-3 py-2 flex gap-2 items-center justify-center font-normal transition-all duration-300',
           className,
         ),
       [className, sizes, variant],

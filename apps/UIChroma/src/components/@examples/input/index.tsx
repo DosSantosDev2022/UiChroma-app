@@ -3,7 +3,7 @@ import {
   InputRoot,
   InputIcon,
   ComponentInput,
-} from '@repo/ui/components/input.tsx'
+} from '@repo/ChromaUI/components//input.tsx'
 
 export default function InputPreview() {
   return (

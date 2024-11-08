@@ -1,9 +1,9 @@
 'use client'
 
 import { ChangeEvent, useEffect, useState } from 'react'
-import { Button } from '@repo/ui/components/button.tsx'
+import { Button } from '@repo/ChromaUI/components/button.tsx'
 import { BsSearch } from 'react-icons/bs'
-import { InputRoot, ComponentInput, InputIcon } from '@repo/ui/components/input.tsx'
+import { InputRoot, ComponentInput, InputIcon } from '@repo/ChromaUI/components/input.tsx'
 import Link from 'next/link'
 
 interface Component {
@@ -45,8 +45,8 @@ export default function Modal({data}:ModalProps) {
     <>
       <Button
         sizes='full'
-        variant='primary'
-        className=" flex  items-center justify-start gap-4  w-[360px] "
+        variant='secundary'
+        className=" flex  items-center justify-start gap-4 border w-[360px] "
         onClick={handleOpenModal}
       >
         <BsSearch size={20} /> 
@@ -55,14 +55,14 @@ export default function Modal({data}:ModalProps) {
 
       {isOpenModal ? (
         <div className="fixed left-0 right-0 top-0 z-50 flex   max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden bg-zinc-900/50 backdrop-blur-sm md:inset-0 ">
-          <div className="relative max-h-full  w-full max-w-2xl  rounded-lg bg-secondary-50 p-2">
+          <div className="relative max-h-full  w-full max-w-2xl  rounded-lg bg-secondary p-2">
             {/* Modal content */}
 
             {/* Modal Header */}
 
             <div className="flex w-full flex-col items-center justify-between gap-4 rounded-t border-b p-4 md:p-5 ">
               <div className="flex w-full items-center  justify-between  ">
-                <h3 className="text-xl font-semibold text-primary-900">
+                <h3 className="text-xl font-semibold text-secondary-foreground">
                   Encontre o seu componente
                 </h3>
                 <Button
@@ -77,12 +77,12 @@ export default function Modal({data}:ModalProps) {
                 </Button>
               </div>
               <form className="w-full">
-                <InputRoot className="w-full bg-primary-900 focus-within:ring-primary-800">
+                <InputRoot>
                   <InputIcon>
                     <BsSearch />
                   </InputIcon>
                   <ComponentInput
-                    placeholder="Buscar ..."
+                    placeholder="Buscar componentes..."
                     type="text"
                     id="search"
                     value={searchTerm}

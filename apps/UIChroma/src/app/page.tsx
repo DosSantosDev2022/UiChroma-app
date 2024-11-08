@@ -1,5 +1,5 @@
 import { inter } from '@/assets/fonts'
-import { Button } from '@repo/ui/components/button.tsx'
+import { Button } from '@repo/ChromaUI/components/button.tsx'
 import Link from 'next/link'
 import { fetchHygraphQuery } from './api/cms/hygraph'
 import { HomePageData } from '@/types/pages'
@@ -34,16 +34,17 @@ export default async function Home() {
             renderers={{
               h1: ({ children }) => (
                 <h1
-                  className={` ${inter.className} text-6xl font-bold text-primary-900`}
+                  className={` ${inter.className} text-6xl font-bold text-secondary-foreground`}
                 >
                   {children}
                 </h1>
               ),
               p: ({ children }) => (
-                <p className="text-lg font-normal text-primary-800">
+                <p className="text-lg font-normal text-secondary-foreground">
                   {children}
                 </p>
               ),
+              
             }}
           />
         </div>
@@ -74,27 +75,30 @@ export default async function Home() {
             h3: ({ children }) => (
               <h3
                 className={`${inter.className} text-start text-2xl
-           font-extrabold tracking-tight text-primary-900 `}
+           font-extrabold tracking-tight text-secondary-foreground `}
               >
                 {children}
               </h3>
             ),
             p: ({ children }) => (
-              <p className="text-base font-normal text-primary-900">
+              <p className="text-base font-normal text-secondary-foreground">
                 {children}
               </p>
+            ),
+            bold: ({children}) => (
+              <b className='text-secondary-foreground'>{children}</b>
             ),
 
             code_block: ({ children }) => (
               <pre
-                className="w-full overflow-x-auto rounded-xl bg-primary-950 px-10 py-5 shadow-lg
-                 scrollbar-thin scrollbar-track-primary-900 scrollbar-thumb-primary-800"
+                className="w-full overflow-x-auto rounded-xl bg-muted px-10 py-5 
+                 scrollbar-thin scrollbar-track-secondary-foreground scrollbar-thumb-secondary-foreground"
               >
-                <code className="text-zinc-50">{children}</code>
+                <code className="text-muted-foreground">{children}</code>
               </pre>
             ),
             li: ({ children }) => (
-              <li className=" text-primary-900">{children}</li>
+              <li className=" text-secondary-foreground">{children}</li>
             ),
             ul: ({ children }) => (
               <ul className="ml-6 mt-1 list-disc space-y-4 px-2">{children}</ul>

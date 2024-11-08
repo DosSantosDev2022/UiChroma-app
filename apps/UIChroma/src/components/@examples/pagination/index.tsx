@@ -1,5 +1,5 @@
 'use client'
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@repo/ui/components/pagination.tsx'
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@repo/ChromaUI/components//pagination.tsx'
 import { usePagination, ELLIPSIS_LEFT, ELLIPSIS_RIGTH } from '@/hooks/usePagination'
 
 export default function PaginationPreview() {

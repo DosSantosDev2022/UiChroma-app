@@ -28,7 +28,7 @@ const GET_SEARCH = (): Promise<GetSearch> => {
 export async function Header() {
   const { components } = await GET_SEARCH()
   return (
-    <header className="flex h-16  items-center justify-between bg-primary-950 border-b px-6 shadow-xl col-start-2 row-start-1 w-full">
+    <header className="flex h-16  items-center justify-between bg-background border-b px-6 shadow-xl col-start-2 row-start-1 w-full">
       <Modal data={components} />
 
       <div className="flex items-center gap-4">

@@ -1,6 +1,6 @@
 'use client'
 import { GoDotFill } from 'react-icons/go'
-import { Button } from '@repo/ui/components/button.tsx'
+import { Button } from '@repo/ChromaUI/components/button.tsx'
 
 import { NavigationRoot } from '../navigation/navigationRoot'
 import { NavigationItem } from '../navigation/navigationItem'

@@ -5,10 +5,10 @@ import {
   ClipBoardHeader,
   ClipBoardLabel,
   ClipBoardContainer,
-} from '@repo/ui/components/clipboard.tsx'
+} from '@repo/ChromaUI/components/clipboard.tsx'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
-import { DataQueryComponent } from '@/types/components'
+import { DataQueryComponent, getStaticPathsTypes } from '@/types/components'
 import ComponentPreview from '@/components/componentPreview/componentPreview'
 import { inter } from '@/assets/fonts'
 import { NavigateThroughSections } from '@/components/navigationScroll/NavigateThroughSections'
@@ -17,11 +17,29 @@ import { DocLinks } from '@/components/documentationslink/docLinks'
 import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { pagesectionlinks } from '@/config/navigationLinks'
 
-
 interface ComponentDetailsProps {
   params: {
     slug: string
   }
+}
+
+export const revalidate = 60 * 60 * 24
+
+export const dynamicParams = true
+
+export async function generateStaticParams() {
+  const response = await fetchHygraphQuery<{ components: getStaticPathsTypes[] }>(`
+      query {
+       components {
+        slug
+       }
+      }
+    `
+  )
+
+    return response.components.map((component) => ({
+      slug: component.slug
+    }))
 }
 
 const GET_DETAILS_COMPONENT = async (slug: string): Promise<DataQueryComponent> => {
@@ -60,14 +78,12 @@ const GET_DETAILS_COMPONENT = async (slug: string): Promise<DataQueryComponent> 
   return fetchHygraphQuery(query, variables)
 }
 
+
+
 export default async function ComponentDetails({
   params,
 }: ComponentDetailsProps) {
   const { component } = await GET_DETAILS_COMPONENT(params.slug)
-
-  if (!component) {
-    return <div>Componente não encontrado</div>
-  }
 
   if (!ComponentPreview) {
     return (
@@ -84,9 +100,6 @@ export default async function ComponentDetails({
       </div>
     )
   }
-
-  
-
 
   return (
     <div className='grid grid-cols-4 gap-4'>

@@ -14,7 +14,7 @@
     "@graphcms/rich-text-types": "^0.5.1",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-slot": "^1.1.0",
-    "@repo/ui": "workspace:*",
+    "@repo/chromaui": "workspace:*",
     "@types/react-syntax-highlighter": "^15.5.13",
     "date-fns": "^3.6.0",
     "highlight.js": "^11.10.0",

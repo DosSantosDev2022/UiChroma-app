@@ -4,7 +4,7 @@ import {
   SelectProvider,
   SelectRoot,
   SelectTrigger,
-} from '@repo/ui/components/select.tsx'
+} from '@repo/ChromaUI/components/select.tsx'
 
 export default function SelectPreview() {
   const options = [

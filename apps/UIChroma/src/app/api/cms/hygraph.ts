@@ -8,8 +8,12 @@ export const fetchHygraphQuery = async <T>(
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
-    body: JSON.stringify({ query, variables }),
     cache: 'no-cache',
+    /* next: {
+    revalidate: 60 * 60 * 24 
+    }, */
+    body: JSON.stringify({ query, variables }),
+    
   })
 
   const { data } = await response.json()

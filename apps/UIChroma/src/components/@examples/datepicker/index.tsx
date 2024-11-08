@@ -1,4 +1,4 @@
-import {DatePicker} from '@repo/ui/components/datepicker.tsx'
+import {DatePicker} from '@repo/ChromaUI/components//datepicker.tsx'
 
 export default function datepickerPreview() {
   return (

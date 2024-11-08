@@ -1,4 +1,7 @@
 
+export interface getStaticPathsTypes {
+  slug: string
+}
 
 interface Tag {
   tagName: string

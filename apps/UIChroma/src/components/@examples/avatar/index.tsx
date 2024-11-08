@@ -3,7 +3,7 @@ import {
   AvatarFallback,
   Avatar,
   AvatarImage,
-} from '@repo/ui/components/avatar.tsx'
+} from '@repo/ChromaUI/components/avatar.tsx'
 
 export default function AvatarPreview() {
   return (

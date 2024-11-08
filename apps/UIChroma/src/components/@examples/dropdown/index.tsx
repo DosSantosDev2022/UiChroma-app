@@ -8,7 +8,7 @@ import {
   DropDownList,
   DropDownProvider,
   DropDownTrigger,
-} from '@repo/ui/components/dropdown.tsx'
+} from '@repo/ChromaUI/components/dropdown.tsx'
 import { FaCreditCard, FaUser } from 'react-icons/fa'
 import { RiTeamFill } from 'react-icons/ri'
 import { IoMdSettings } from 'react-icons/io'

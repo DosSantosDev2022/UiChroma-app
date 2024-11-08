@@ -1,4 +1,4 @@
-import { Button } from '@repo/ui/components/button.tsx'
+import { Button } from '@repo/ChromaUI/components/button.tsx'
 
 export default function ButtonPreview() {
   const variantes: { type: "primary" | "secundary" | "outline" | "highlight" | "disabled" | "link" | "danger" | "warning" | "Swipe" | "Shine" }[] = [

@@ -8,7 +8,7 @@ const InputRoot = React.forwardRef<
   <div
     ref={ref}
     className={twMerge(
-      'flex h-14 w-full items-center gap-3 rounded  bg-zinc-800 p-4 focus-within:ring-2 focus-within:ring-zinc-900',
+      'flex h-14 w-full items-center gap-3 rounded  bg-input  p-4 focus-within:ring-2 focus-within:ring-ring',
       className,
     )}
     {...props}
@@ -21,7 +21,11 @@ const InputIcon = React.forwardRef<
   HTMLElement,
   React.HTMLAttributes<HTMLElement>
 >(({ className, ...props }, ref) => (
-  <i ref={ref} className={twMerge('', className)} {...props} />
+  <i
+    ref={ref}
+    className={twMerge('text-muted-foreground', className)}
+    {...props}
+  />
 ))
 
 InputIcon.displayName = 'InputIcon'
@@ -34,7 +38,7 @@ const ComponentInput = React.forwardRef<
     <input
       type={type}
       className={twMerge(
-        'text-md flex-1 bg-transparent font-light text-zinc-300 outline-none placeholder:text-zinc-400',
+        'text-md flex-1 bg-transparent font-light text-muted-foreground outline-none placeholder:text-muted-foreground',
         className,
       )}
       ref={ref}

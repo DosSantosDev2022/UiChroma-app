@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Button } from '@repo/ui/components/button.tsx';
+import { Button } from '@repo/ChromaUI/components/button.tsx';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { BiLogoFigma } from 'react-icons/bi';
 import { SiStorybook } from 'react-icons/si';

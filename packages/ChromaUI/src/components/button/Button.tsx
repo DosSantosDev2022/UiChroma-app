@@ -4,7 +4,8 @@ import { ForwardedRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { FaSpinner } from 'react-icons/fa6'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean
   asChild?: boolean
   sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'

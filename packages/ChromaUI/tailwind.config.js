@@ -1,5 +1,4 @@
 
-
 const chromaConfig = {
   theme: {
     extend: {

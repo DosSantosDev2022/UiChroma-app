@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Button } from './button'
+import React, { useState } from 'react'
+import { Button } from './button/Button'
 
 export default function Modal() {
   const [isOpenModal, setIsOpenModal] = useState(false)

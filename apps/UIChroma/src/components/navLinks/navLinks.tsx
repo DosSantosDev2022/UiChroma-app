@@ -8,15 +8,24 @@ import { MdNewReleases } from 'react-icons/md'
 import { IoIosRocket } from 'react-icons/io'
 import { FaHouse } from 'react-icons/fa6'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
-import { GetPathLinks } from '@/types/pages'
+
+
+
+interface GetPathLinks {
+  pageComponents: {
+    id: string
+    slug: string
+    name: string
+  }[]
+}
 
 const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
   const query = `
       query MyQuery {
-      components {
+      pageComponents {
         id
         slug
-        componentName
+        name
       }
     }
   `
@@ -24,10 +33,10 @@ const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
 }
 
 export async function NaigationLinks() {
-  const { components } = await GET_PATH_LINKS()
+  const { pageComponents } = await GET_PATH_LINKS()
 
-  const componentList = [...components].sort((a, b) =>
-    a.componentName.localeCompare(b.componentName),
+  const componentList = [...pageComponents].sort((a, b) =>
+    a.name.localeCompare(b.name),
   )
  
 
@@ -112,7 +121,7 @@ export async function NaigationLinks() {
                     className="w-full bg-transparent"
                     url={`/preview/components/${component.slug}`}
                   >
-                    {component.componentName}
+                    {component.name}
                   </Navigation.Links>
                 </Navigation.Item>
               ))}

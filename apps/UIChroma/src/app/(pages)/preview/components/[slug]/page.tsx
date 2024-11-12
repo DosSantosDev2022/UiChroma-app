@@ -1,4 +1,4 @@
-import { HeroComponents } from '@/components/ui/heroComponents'
+
 import {
   ClipBoardAction,
   ClipBoardArea,
@@ -6,16 +6,15 @@ import {
   ClipBoardLabel,
   ClipBoardContainer,
 } from '@repo/ChromaUI/components/clipboard.tsx'
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
-import { DataQueryComponent, getStaticPathsTypes } from '@/types/components'
 import ComponentPreview from '@/components/componentPreview/componentPreview'
 import { inter } from '@/assets/fonts'
 import { NavigateThroughSections } from '@/components/navigationScroll/NavigateThroughSections'
 import { FaCircleCheck } from 'react-icons/fa6'
 import { DocLinks } from '@/components/documentationslink/docLinks'
-import { darcula } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import { pagesectionlinks } from '@/config/navigationLinks'
+import { CodeBlock } from '@/components/codeBlock'
+import { GET_DETAILS_COMPONENT } from '@/utils/Get_Details_Components'
+
 
 interface ComponentDetailsProps {
   params: {
@@ -23,69 +22,12 @@ interface ComponentDetailsProps {
   }
 }
 
-export const revalidate = 60 * 60 * 24
-
-export const dynamicParams = true
-
-export async function generateStaticParams() {
-  const response = await fetchHygraphQuery<{ components: getStaticPathsTypes[] }>(`
-      query {
-       components {
-        slug
-       }
-      }
-    `
-  )
-
-    return response.components.map((component) => ({
-      slug: component.slug
-    }))
-}
-
-const GET_DETAILS_COMPONENT = async (slug: string): Promise<DataQueryComponent> => {
-  const query = `
-      query MyQuery($slug: String!) {
-        component(where: {slug: $slug}) {
-          slug
-          tag {
-            tagName
-          }
-          componentName
-          description
-           featureList {
-              content
-           }
-          dependencie {
-            id
-            title
-            description
-            command
-          }
-          codeString
-          codeUsage
-          utilities
-          utilitiesDescription
-          animations
-          doclinks {
-            label
-            url
-            id
-          }
-       }
-     }
-  `
-  const variables = { slug }
-  return fetchHygraphQuery(query, variables)
-}
-
-
-
 export default async function ComponentDetails({
   params,
 }: ComponentDetailsProps) {
-  const { component } = await GET_DETAILS_COMPONENT(params.slug)
+  const { pageComponent } = await GET_DETAILS_COMPONENT(params.slug)
 
-  if (!ComponentPreview) {
+  if (!pageComponent) {
     return (
       <div className="flex h-screen flex-col items-center justify-center">
         <span className="text-center text-4xl font-bold text-zinc-600">
@@ -105,29 +47,35 @@ export default async function ComponentDetails({
     <div className='grid grid-cols-4 gap-4'>
       <section className="px-8 py-5 col-span-3  w-full border rounded-md shadow-sm ">
         <div id='inicio'>
-          <HeroComponents
-            type="Componente"
-            name={component.componentName}
-            description={component.description}
-          />
-          <DocLinks links={component.doclinks} />
+          <div className=" flex w-full flex-col">
+            <div className='flex mt-6  items-center justify-start gap-3'>
+              <h1 className={`text-foreground text-4xl font-extrabold ${inter.className}`} >
+                {pageComponent.name}
+              </h1>
+              <span className='bg-primary text-primary-foreground rounded-lg px-2 py-1.5 text-sm'>{`v${pageComponent.version}`} </span>
+            </div>
+            <p className="text-muted-foreground mt-4 max-w-[500px] text-base font-normal ">
+              {pageComponent.description}
+            </p>
+          </div>
+          <DocLinks links={pageComponent.docsLinks} />
         </div>
 
         <div id='feature'>
           <div className="w-full space-y-4">
-            <h1 className={`mt-10 text-3xl font-extrabold tracking-[2.16px]
-               text-primary-900 ${inter.className}`} >
+            <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px]
+               text-foreground ${inter.className}`} >
               Features
-            </h1>
+            </h4>
             <ul className="flex flex-col items-start gap-2">
-              {component.featureList.map((feature, index) => (
+              {pageComponent.features.map((feature, index) => (
 
                 <li
                   key={index}
-                  className="flex items-center gap-2 text-primary-800"
+                  className="flex items-center gap-2 text-foreground"
                 >
-                  <FaCircleCheck size={18} />
-                  {feature.content}
+                  <FaCircleCheck className='text-primary' size={18} />
+                  {feature.name}
                 </li>
 
               ))}
@@ -136,230 +84,121 @@ export default async function ComponentDetails({
         </div>
 
         <div className="flex flex-col gap-12">
-          <div id='preview' className="space-y-5">
-            <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
+          <div id='preview' className="space-y-4">
+            <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
               Preview
             </h4>
             <div className="bg-transparent  flex h-full w-full flex-shrink-0 items-start justify-center rounded-lg border p-8 shadow-sm">
-              <ComponentPreview componentData={component} />
+              <ComponentPreview componentData={pageComponent} />
             </div>
           </div>
 
-          <div id="copyCode" className='space-y-4 '>
+          <div id="copyCode" className='space-y-4'>
             <div className='space-y-2'>
-              <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
-                Código fonte
+              <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
+                {pageComponent.sourceCode?.title}
               </h4>
-              <p className='text-base font-normal text-primary-900'>
-                Oferecemos o código fonte completo deste componente, pronto para
-                usar em sua aplicação, basta copiar e criar o arquivo em seu projeto
-                utilizando o código abaixo.
+              <p className='text-base font-normal text-muted-foreground'>
+                {pageComponent.sourceCode.description}
               </p>
             </div>
             <ClipBoardContainer>
-              <ClipBoardHeader className="bg-primary-950">
+              <ClipBoardHeader>
                 <ClipBoardLabel>Copiar componente</ClipBoardLabel>
                 <ClipBoardAction
-                  className="bg-primary-900 hover:bg-primary-700"
-                  copyText={component.codeString || ''}
+                  copyText={pageComponent.sourceCode?.blockCode || ''}
                 />
               </ClipBoardHeader>
-              <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
-                <SyntaxHighlighter
-                  language="jsx"
-                  style={darcula}
-                  customStyle={{
-                    maxWidth: '768px',
-                    width: '768px',
-                    height: '100%',
-                    padding: '22px',
-                    borderRadius: '12px',
-                    background: 'none',
-                    scrollbarWidth: 'thin',
-                    scrollbarColor: 'unset',
-                    color: 'white',
-                    colorRendering: 'optimizeQuality',
-
-                  }}
-                  showLineNumbers
-                >
-                  {component.codeString || ''}
-                </SyntaxHighlighter>
+              <ClipBoardArea>
+                <CodeBlock
+                  code={pageComponent.sourceCode?.blockCode || ''}
+                />
               </ClipBoardArea>
             </ClipBoardContainer>
           </div>
 
-          {component.utilities && (
+          {pageComponent.utilities && (
             <div id="utilities" className='space-y-4 '>
               <div className='space-y-2'>
-                <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
+                <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
                   Utilidades
                 </h4>
-                <p className='text-base font-normal text-primary-900'>
-                  {component.utilitiesDescription}
+                <p className='text-base font-normal text-muted-foreground'>
+                  {pageComponent.utilities.description}
                 </p>
               </div>
 
 
               <ClipBoardContainer>
-                <ClipBoardHeader className="bg-primary-950">
+                <ClipBoardHeader>
                   <ClipBoardLabel>Copiar utilidades</ClipBoardLabel>
                   <ClipBoardAction
-                    className="bg-primary-900 hover:bg-primary-700"
-                    copyText={component.utilities || ''}
+                    copyText={pageComponent.utilities?.blockCode || ''}
                   />
                 </ClipBoardHeader>
-                <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
-                  <SyntaxHighlighter
-                    language="jsx"
-                    style={darcula}
-                    customStyle={{
-                      maxWidth: '768px',
-                      width: '768px',
-                      height: '100%',
-                      padding: '22px',
-                      borderRadius: '12px',
-                      background: 'none',
-                      scrollbarWidth: 'thin',
-                      scrollbarColor: 'unset',
-                      color: 'white',
-                      colorRendering: 'optimizeQuality',
-
-                    }}
-                    showLineNumbers
-                  >
-                    {component.utilities || ''}
-                  </SyntaxHighlighter>
+                <ClipBoardArea>
+                  <CodeBlock
+                    code={pageComponent.utilities?.blockCode || ''}
+                  />
                 </ClipBoardArea>
               </ClipBoardContainer>
             </div>
           )}
 
-          <div id="como-usar" className='space-y-4 '>
+          <div id="como-usar" className='space-y-4'>
             <div className='space-y-2'>
-              <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`} >
-                Exemplo de uso
+              <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
+                {pageComponent.sampleCode.title}
               </h4>
-              <p className='text-base font-normal text-primary-900'>
-                Aqui esta um exemplo de como utilizar o nosso componente em sua aplicação React.
+              <p className='text-base font-normal text-muted-foreground'>
+                {pageComponent.sampleCode.description}
               </p>
             </div>
 
 
             <ClipBoardContainer>
-              <ClipBoardHeader className="bg-primary-950">
-                <ClipBoardLabel>Copiar exemplo de uso</ClipBoardLabel>
+              <ClipBoardHeader>
+                <ClipBoardLabel>{pageComponent.sampleCode?.title}</ClipBoardLabel>
                 <ClipBoardAction
-                  className="bg-primary-900 hover:bg-primary-700"
-                  copyText={component.codeUsage || ''}
+                  copyText={pageComponent.sampleCode?.blockCode || ''}
                 />
               </ClipBoardHeader>
-              <ClipBoardArea className=" h-full bg-primary-950/90 scrollbar-thin scrollbar-track-zinc-800 scrollbar-thumb-zinc-700">
-                <SyntaxHighlighter
-                  language="jsx"
-                  style={darcula}
-                  customStyle={{
-                    maxWidth: '768px',
-                    width: '768px',
-                    height: '100%',
-                    padding: '22px',
-                    borderRadius: '12px',
-                    background: 'none',
-                    scrollbarWidth: 'thin',
-                    scrollbarColor: 'unset',
-                    color: 'white',
-                    colorRendering: 'optimizeQuality',
-
-                  }}
-                  showLineNumbers
-                >
-                  {component.codeUsage || ''}
-                </SyntaxHighlighter>
+              <ClipBoardArea >
+                <CodeBlock
+                  code={pageComponent.sampleCode?.blockCode || ''}
+                />
               </ClipBoardArea>
             </ClipBoardContainer>
           </div>
         </div>
 
-        <div className="space-y-3">
-          <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-primary-900 ${inter.className}`}>
-            Dependências
-          </h4>
-
-          <div id="dependencias" className="space-y-6">
-            {component.dependencie.map((dep) => (
+        {pageComponent.dependencies && (
+          <div id="dependencias" className="space-y-4">
+            <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
+              Dependências
+            </h4>
+            {pageComponent.dependencies.map((dep) => (
               <div
                 className="flex w-full flex-col items-start gap-4 text-zinc-600"
                 key={dep.id}
               >
-                <p className="flex items-center gap-3 text-base font-normal">
+                <p className="flex items-center gap-3 text-base font-normal text-muted-foreground">
                   {dep.description}
                 </p>
 
-                <ClipBoardContainer className="">
-                  <ClipBoardHeader className="bg-primary-950">
+                <ClipBoardContainer>
+                  <ClipBoardHeader>
                     <ClipBoardLabel>{dep.title}</ClipBoardLabel>
-                    <ClipBoardAction
-                      copyText={dep.command}
-                      className="bg-primary-900 hover:bg-primary-700"
-                    />
+                    <ClipBoardAction copyText={dep.command} />
                   </ClipBoardHeader>
-                  <ClipBoardArea className="h-full bg-primary-950/90">
-                    <SyntaxHighlighter
-                      language="jsx"
-                      style={darcula}
-                      customStyle={{
-                        width: '100%',
-                        padding: '4px',
-                        borderRadius: '8px',
-                        background: 'none',
-                        scrollbarWidth: 'thin',
-                        scrollbarColor: 'auto',
-                      }}
-                    >
-                      {dep.command}
-                    </SyntaxHighlighter>
+                  <ClipBoardArea>
+                    <CodeBlock code={dep.command} />
                   </ClipBoardArea>
                 </ClipBoardContainer>
               </div>
             ))}
           </div>
-        </div>
-
-
-        {component.animations && (
-          <div className="space-y-4">
-            <h4 className="text-2xl font-extrabold text-primary-900 mt-10">
-              Animações para utilizar neste componente
-            </h4>
-            <ClipBoardContainer>
-              <ClipBoardHeader className="bg-primary-950">
-                <ClipBoardLabel>tailwind.config.js</ClipBoardLabel>
-                <ClipBoardAction
-                  className="bg-primary-900 hover:bg-primary-700"
-                  copyText={component.animations}
-                />
-              </ClipBoardHeader>
-              <ClipBoardArea className="bg-primary-950/90">
-                <SyntaxHighlighter
-                  language="jsx"
-                  style={darcula}
-                  customStyle={{
-                    width: '100%',
-                    padding: '16px',
-                    borderRadius: '8px',
-                    background: 'none',
-                    scrollbarWidth: 'thin',
-                    scrollbarColor: 'auto',
-                  }}
-                  showLineNumbers
-                >
-                  {component.animations}
-                </SyntaxHighlighter>
-              </ClipBoardArea>
-            </ClipBoardContainer>
-          </div>
         )}
-
       </section>
 
       <section className='w-full col-span-1 h-screen border sticky top-0 px-8 py-5 space-y-6'>

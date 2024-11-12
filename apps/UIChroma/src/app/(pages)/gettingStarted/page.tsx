@@ -1,4 +1,4 @@
-import { GetStarterData } from '@/types/pages'
+import { GetStarterData } from '@/@types/pages'
 import { fetchHygraphQuery } from '../../api/cms/hygraph'
 import { RichText } from '@/components/ui/rich-text'
 import { inter } from '@/assets/fonts'

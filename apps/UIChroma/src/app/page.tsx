@@ -1,36 +1,19 @@
 import { inter } from '@/assets/fonts'
 import { Button } from '@repo/ChromaUI/components/button.tsx'
 import Link from 'next/link'
-import { fetchHygraphQuery } from './api/cms/hygraph'
-import { HomePageData } from '@/types/pages'
 import { RichText } from '@/components/ui/rich-text'
+import { GET_HOME_PAGE_DATA } from '@/utils/Get_Home_Page_Data'
 
-const GET_HOME_PAGE_DATA = async (): Promise<HomePageData> => {
-  const query = `
-      query MyQuery {
-      homePage(where: {slug: "home"}) {
-        id
-        sectionHero {
-          raw
-        }
-        sectionIntroduction {
-          raw
-        }
-      }
-    }
-  `
-  return fetchHygraphQuery(query)
-}
 
 export default async function Home() {
-  const { homePage } = await GET_HOME_PAGE_DATA()
+  const { documentationPage } = await GET_HOME_PAGE_DATA()
   return (
     <div className=" flex h-full max-w-4xl flex-col px-4 sm:px-6 lg:px-8">
 
       <section className="flex h-full flex-col pb-10 pt-16">
         <div className="space-y-6">
           <RichText
-            content={homePage.sectionHero.raw}
+            content={documentationPage?.section.content.raw}
             renderers={{
               h1: ({ children }) => (
                 <h1
@@ -44,12 +27,12 @@ export default async function Home() {
                   {children}
                 </p>
               ),
-              
+
             }}
           />
         </div>
 
-        <div className="flex w-full items-center justify-start gap-2">
+        <div className="flex w-full mt-4 items-center justify-start gap-2">
           <Button
             variant="Shine"
             asChild
@@ -70,7 +53,7 @@ export default async function Home() {
 
       <article className="mt-10 space-y-6  px-2 py-3">
         <RichText
-          content={homePage.sectionIntroduction.raw}
+          content={documentationPage.section02.content.raw}
           renderers={{
             h3: ({ children }) => (
               <h3
@@ -85,17 +68,8 @@ export default async function Home() {
                 {children}
               </p>
             ),
-            bold: ({children}) => (
+            bold: ({ children }) => (
               <b className='text-secondary-foreground'>{children}</b>
-            ),
-
-            code_block: ({ children }) => (
-              <pre
-                className="w-full overflow-x-auto rounded-xl bg-muted px-10 py-5 
-                 scrollbar-thin scrollbar-track-secondary-foreground scrollbar-thumb-secondary-foreground"
-              >
-                <code className="text-muted-foreground">{children}</code>
-              </pre>
             ),
             li: ({ children }) => (
               <li className=" text-secondary-foreground">{children}</li>

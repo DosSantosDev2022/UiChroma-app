@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 interface ComponentData {
-  componentName: string
+  name: string
 }
 
 interface Props {
@@ -17,7 +17,7 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
     const loadComponent = async () => {
       try {
         const importedComponent = await import(
-          `@/components/@examples/${componentData.componentName.toLowerCase()}`
+          `@/components/@examples/${componentData.name.toLowerCase()}`
         )
         setComponent(() => importedComponent.default)
       } catch (error) {
@@ -26,7 +26,7 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
     }
 
     loadComponent()
-  }, [componentData.componentName])
+  }, [componentData.name])
 
   if (!Component) {
     return (

@@ -20,7 +20,7 @@ interface DatePickerProps {
   range?: boolean // Flag para ativar o modo de seleção de intervalo
 }
 
-export function DatePicker({ value, onChange, range }: DatePickerProps) {
+export function Calendar({ value, onChange, range }: DatePickerProps) {
   const [currentDate, setCurrentDate] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
   const [startDate, setStartDate] = useState<Date | null>(null)

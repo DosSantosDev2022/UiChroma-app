@@ -9,7 +9,7 @@ import Link from 'next/link'
 interface Component {
   id: string;
   slug: string;
-  componentName: string;
+  name: string;
 }
 
 interface ModalProps {
@@ -32,7 +32,7 @@ export default function Modal({data}:ModalProps) {
 
     if(value) {
       const filteredComponents = data.filter((data) =>
-        data.componentName.toLowerCase().includes(value)
+        data.name.toLowerCase().includes(value)
       );
   
       setFiltered(filteredComponents);
@@ -102,7 +102,7 @@ export default function Modal({data}:ModalProps) {
                         href={filter.slug}
                         onClick={handleOpenModal}
                       >
-                        {filter.componentName}
+                        {filter.name}
                       </Link>
                     </li>
                   ))}

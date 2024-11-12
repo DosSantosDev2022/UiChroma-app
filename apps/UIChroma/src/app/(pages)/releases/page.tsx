@@ -1,4 +1,4 @@
-import { MyQueryResponse } from '@/types/releases'
+import { MyQueryResponse } from '@/@types/releases'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 import { format } from 'date-fns'

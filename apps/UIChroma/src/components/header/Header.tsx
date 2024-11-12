@@ -5,20 +5,20 @@ import { IoLogoFigma } from 'react-icons/io5'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 interface GetSearch {
-  components: {
+  pageComponents: {
     id: string
     slug:string
-    componentName:string
+    name:string
   }[]
 }
 
 const GET_SEARCH = (): Promise<GetSearch> => {
   const query=`
       query MyQuery {
-      components {
+      pageComponents {
         id
         slug
-        componentName
+        name
       }
     }
   `
@@ -26,10 +26,10 @@ const GET_SEARCH = (): Promise<GetSearch> => {
 }
 
 export async function Header() {
-  const { components } = await GET_SEARCH()
+  const { pageComponents } = await GET_SEARCH()
   return (
     <header className="flex h-16  items-center justify-between bg-background border-b px-6 shadow-xl col-start-2 row-start-1 w-full">
-      <Modal data={components} />
+      <Modal data={pageComponents} />
 
       <div className="flex items-center gap-4">
         <Link className="duration-300 hover:scale-105" href={''}>

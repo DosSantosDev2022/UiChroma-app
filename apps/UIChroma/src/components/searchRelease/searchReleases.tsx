@@ -1,9 +1,9 @@
 'use client'
 
+import { ComponentInput, InputIcon, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { InputRoot, ComponentInput, InputIcon } from '@repo/ChromaUI/components/input.tsx'
-import { BsSearch } from 'react-icons/bs'
 import { useEffect, useState } from 'react'
+import { BsSearch } from 'react-icons/bs'
 
 export function SearchReleases() {
   const searchParams = useSearchParams()

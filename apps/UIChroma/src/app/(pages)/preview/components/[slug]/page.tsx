@@ -1,19 +1,19 @@
 
+import { inter } from '@/assets/fonts'
+import { CodeBlock } from '@/components/codeBlock'
+import ComponentPreview from '@/components/componentPreview/componentPreview'
+import { DocLinks } from '@/components/documentationslink/docLinks'
+import { NavigateThroughSections } from '@/components/navigationScroll/NavigateThroughSections'
+import { pagesectionlinks } from '@/config/navigationLinks'
+import { GET_DETAILS_COMPONENT } from '@/utils/Get_Details_Components'
 import {
   ClipBoardAction,
   ClipBoardArea,
+  ClipBoardContainer,
   ClipBoardHeader,
   ClipBoardLabel,
-  ClipBoardContainer,
-} from '@repo/ChromaUI/components/clipboard.tsx'
-import ComponentPreview from '@/components/componentPreview/componentPreview'
-import { inter } from '@/assets/fonts'
-import { NavigateThroughSections } from '@/components/navigationScroll/NavigateThroughSections'
+} from '@repo/ChromaUI/components/clipboard/Clipboard.tsx'
 import { FaCircleCheck } from 'react-icons/fa6'
-import { DocLinks } from '@/components/documentationslink/docLinks'
-import { pagesectionlinks } from '@/config/navigationLinks'
-import { CodeBlock } from '@/components/codeBlock'
-import { GET_DETAILS_COMPONENT } from '@/utils/Get_Details_Components'
 
 
 interface ComponentDetailsProps {

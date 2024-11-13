@@ -1,10 +1,10 @@
 'use client'
 
-import { ChangeEvent, useEffect, useState } from 'react'
-import { Button } from '@repo/ChromaUI/components/button.tsx'
-import { BsSearch } from 'react-icons/bs'
-import { InputRoot, ComponentInput, InputIcon } from '@repo/ChromaUI/components/input.tsx'
+import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
+import { ComponentInput, InputIcon, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
 import Link from 'next/link'
+import { ChangeEvent, useState } from 'react'
+import { BsSearch } from 'react-icons/bs'
 
 interface Component {
   id: string;
@@ -16,7 +16,7 @@ interface ModalProps {
   data: Component[];
 }
 
-export default function Modal({data}:ModalProps) {
+export default function Modal({ data }: ModalProps) {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [filtered, setFiltered] = useState<Component[]>([]);
@@ -30,13 +30,13 @@ export default function Modal({data}:ModalProps) {
     const value = e.target.value.toLowerCase();
     setSearchTerm(value);
 
-    if(value) {
+    if (value) {
       const filteredComponents = data.filter((data) =>
         data.name.toLowerCase().includes(value)
       );
-  
+
       setFiltered(filteredComponents);
-    }else {
+    } else {
       setFiltered([]);
     }
   };
@@ -49,8 +49,8 @@ export default function Modal({data}:ModalProps) {
         className=" flex  items-center justify-start gap-4 border w-[360px] "
         onClick={handleOpenModal}
       >
-        <BsSearch size={20} /> 
-        Buscar...  
+        <BsSearch size={20} />
+        Buscar...
       </Button>
 
       {isOpenModal ? (

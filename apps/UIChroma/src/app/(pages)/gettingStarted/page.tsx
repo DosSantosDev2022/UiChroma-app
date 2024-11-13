@@ -1,8 +1,9 @@
 import { GetStarterData } from '@/@types/pages'
-import { fetchHygraphQuery } from '../../api/cms/hygraph'
-import { RichText } from '@/components/ui/rich-text'
 import { inter } from '@/assets/fonts'
 import { NavigateThroughSections } from '@/components/navigationScroll/NavigateThroughSections'
+import { RichText } from '@/components/ui/rich-text'
+import { randomUUID } from 'crypto'
+import { fetchHygraphQuery } from '../../api/cms/hygraph'
 
 const GET_STARTER_PAGE_DATA = async (): Promise<GetStarterData> => {
   const query = `
@@ -35,32 +36,38 @@ const GET_STARTER_PAGE_DATA = async (): Promise<GetStarterData> => {
   return fetchHygraphQuery(query)
 }
 
- const pagesectionlinks = [
+const pagesectionlinks = [
   {
+    id: randomUUID(),
     text: 'Introdução',
     url: 'Introdução',
   },
   {
+    id: randomUUID(),
     text: 'Primeiros Passos',
     url: 'Primeiros-Passos',
   },
   {
+    id: randomUUID(),
     text: 'Instalação',
     url: 'Instalação',
   },
   {
+    id: randomUUID(),
     text: 'Usando os Componentes',
     url: 'Usando',
   },
   {
+    id: randomUUID(),
     text: 'Personalização',
     url: 'Personalização',
   },
   {
+    id: randomUUID(),
     text: 'Exemplos',
     url: 'Exemplos',
   },
-] 
+]
 export default async function Starter() {
   const { getstarted } = await GET_STARTER_PAGE_DATA()
   return (

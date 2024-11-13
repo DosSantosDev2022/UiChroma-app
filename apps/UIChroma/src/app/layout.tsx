@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
 
-import '@/styles/globals.css'
+import { nunito } from '@/assets/fonts'
 import { Header } from '@/components/header/Header'
 import { SideBar } from '@/components/sideBar/SideBar'
-import { nunito } from '@/assets/fonts'
+import '../../../../global.css'
 
 export const metadata: Metadata = {
   title: 'UIChroma',
@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={`${nunito.className} antialiased`}>
         <div className="grid h-screen grid-cols-[260px_1fr] grid-rows-[auto_1fr] overflow-hidden">
-          <SideBar  />
+          <SideBar />
 
           <Header />
           <main className="bg-background col-start-2 row-start-2 overflow-auto p-4 text-foreground scrollbar-thin scrollbar-track-background scrollbar-thumb-foreground">

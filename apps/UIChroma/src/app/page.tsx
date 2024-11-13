@@ -1,8 +1,8 @@
 import { inter } from '@/assets/fonts'
-import { Button } from '@repo/ChromaUI/components/button.tsx'
-import Link from 'next/link'
 import { RichText } from '@/components/ui/rich-text'
 import { GET_HOME_PAGE_DATA } from '@/utils/Get_Home_Page_Data'
+import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
+import Link from 'next/link'
 
 
 export default async function Home() {

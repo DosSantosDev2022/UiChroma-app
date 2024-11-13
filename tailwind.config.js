@@ -1,5 +1,12 @@
 
-const chromaConfig = {
+const config = {
+  content: [
+    './apps/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    '../../packages/ChromaUI/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {
       colors: {
@@ -86,4 +93,4 @@ const chromaConfig = {
   },
 };
 
-module.exports = chromaConfig;
+export default config

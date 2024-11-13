@@ -1,7 +1,7 @@
+import { Button } from '@repo/ChromaUI/components/button/Button.tsx';
 import Link from 'next/link';
-import { Button } from '@repo/ChromaUI/components/button.tsx';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { BiLogoFigma } from 'react-icons/bi';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { SiStorybook } from 'react-icons/si';
 
 interface LinksProps {
@@ -14,9 +14,9 @@ interface LinksProps {
 
 // Mapeamento de labels para ícones
 const iconMap: { [key: string]: JSX.Element } = {
-  'Storybook' : <SiStorybook size={20} />,
-    'Figma' : <BiLogoFigma size={20} />,
-    'GitHub':  <FaGithub size={20} /> 
+  'Storybook': <SiStorybook size={20} />,
+  'Figma': <BiLogoFigma size={20} />,
+  'GitHub': <FaGithub size={20} />
 };
 
 export function DocLinks({ links }: LinksProps) {

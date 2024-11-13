@@ -1,21 +1,21 @@
 'use client'
+import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
 import { GoDotFill } from 'react-icons/go'
-import { Button } from '@repo/ChromaUI/components/button.tsx'
 
-import { NavigationRoot } from '../navigation/navigationRoot'
+import { useState } from 'react'
 import { NavigationItem } from '../navigation/navigationItem'
 import { NavigationList } from '../navigation/navigationList'
-import { useState } from 'react'
+import { NavigationRoot } from '../navigation/navigationRoot'
 
 interface NavigateThroughSectionsProps {
-  links:{
+  links: {
     id: string
-    text:string
+    text: string
     url: string
   }[]
 }
 
-export function NavigateThroughSections({links}:NavigateThroughSectionsProps) {
+export function NavigateThroughSections({ links }: NavigateThroughSectionsProps) {
   const [activeLink, setActiveLink] = useState<string>(links[0]?.url || '')
 
   const handleButtonClickScrollIntoView = (id: string) => {
@@ -30,23 +30,23 @@ export function NavigateThroughSections({links}:NavigateThroughSectionsProps) {
   return (
     <NavigationRoot>
       <NavigationList className="flex flex-col space-y-0">
-      {links.map(
+        {links.map(
           (link) =>
-            
-              <NavigationItem key={link.url}>
-                <Button
-                  onClick={() => handleButtonClickScrollIntoView(link.url)}
-                  variant="link"
-                  sizes="full"
-                  className={`flex justify-start gap-2 text-base font-light text-muted-foreground 
+
+            <NavigationItem key={link.url}>
+              <Button
+                onClick={() => handleButtonClickScrollIntoView(link.url)}
+                variant="link"
+                sizes="full"
+                className={`flex justify-start gap-2 text-base font-light text-muted-foreground 
                     duration-300 hover:scale-105 hover:font-bold hover:no-underline 
                     ${activeLink === link.url ? 'text-primary font-bold' : ''}`}
-                >
-                  <GoDotFill size={12} />
-                  {link.text}
-                </Button>
-              </NavigationItem>
-           
+              >
+                <GoDotFill size={12} />
+                {link.text}
+              </Button>
+            </NavigationItem>
+
         )}
       </NavigationList>
     </NavigationRoot>

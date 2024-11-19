@@ -5,7 +5,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@repo/ChromaUI/components/card.tsx'
+} from '@repo/chromaui/components/card/Card.tsx'
 
 export default function CardPreview() {
   return (

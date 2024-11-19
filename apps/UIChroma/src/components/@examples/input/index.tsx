@@ -1,9 +1,9 @@
-import { LuSearch } from 'react-icons/lu'
 import {
-  InputRoot,
-  InputIcon,
   ComponentInput,
-} from '@repo/ChromaUI/components//input.tsx'
+  InputIcon,
+  InputRoot,
+} from '@repo/chromaui/components/input/Input.tsx'
+import { LuSearch } from 'react-icons/lu'
 
 export default function InputPreview() {
   return (

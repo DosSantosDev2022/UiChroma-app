@@ -1,9 +1,9 @@
 'use client'
 import {
-  AvatarFallback,
   Avatar,
+  AvatarFallback,
   AvatarImage,
-} from '@repo/ChromaUI/components/avatar.tsx'
+} from '@repo/chromaui/components/avatar/Avatar.tsx'
 
 export default function AvatarPreview() {
   return (

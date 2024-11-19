@@ -63,9 +63,8 @@ const AccordionTrigger = React.forwardRef<
     >
       {props.children}
       <LuChevronDown
-        className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${
-          isOpen ? 'rotate-180' : ''
-        }`}
+        className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${isOpen ? 'rotate-180' : ''
+          }`}
       />
     </button>
   )
@@ -120,9 +119,10 @@ AccordionAnswer.displayName = 'AccordionAnswer'
 export {
   AccordionAnswer,
   AccordionContainer,
+  AccordionContent,
   AccordionContext,
   AccordionProvider,
-  AccordionTrigger,
   AccordionQuestion,
-  AccordionContent,
+  AccordionTrigger
 }
+

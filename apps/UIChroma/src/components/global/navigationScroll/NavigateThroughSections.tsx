@@ -1,15 +1,11 @@
 'use client'
 import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
-import { GoDotFill } from 'react-icons/go'
-
 import { useState } from 'react'
-import { NavigationItem } from '../navigation/navigationItem'
-import { NavigationList } from '../navigation/navigationList'
-import { NavigationRoot } from '../navigation/navigationRoot'
+import { GoDotFill } from 'react-icons/go'
+import { Navigation } from '../navigation/index'
 
 interface NavigateThroughSectionsProps {
   links: {
-    id: string
     text: string
     url: string
   }[]
@@ -28,12 +24,12 @@ export function NavigateThroughSections({ links }: NavigateThroughSectionsProps)
 
 
   return (
-    <NavigationRoot>
-      <NavigationList className="flex flex-col space-y-0">
+    <Navigation.Root>
+      <Navigation.List className="flex flex-col space-y-0">
         {links.map(
           (link) =>
 
-            <NavigationItem key={link.url}>
+            <Navigation.Item key={link.text}>
               <Button
                 onClick={() => handleButtonClickScrollIntoView(link.url)}
                 variant="link"
@@ -45,10 +41,10 @@ export function NavigateThroughSections({ links }: NavigateThroughSectionsProps)
                 <GoDotFill size={12} />
                 {link.text}
               </Button>
-            </NavigationItem>
+            </Navigation.Item>
 
         )}
-      </NavigationList>
-    </NavigationRoot>
+      </Navigation.List>
+    </Navigation.Root>
   )
 }

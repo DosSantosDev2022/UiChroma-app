@@ -1,18 +1,19 @@
 
 import { inter } from '@/assets/fonts'
-import { CodeBlock } from '@/components/codeBlock'
-import ComponentPreview from '@/components/componentPreview/componentPreview'
-import { DocLinks } from '@/components/documentationslink/docLinks'
-import { NavigateThroughSections } from '@/components/navigationScroll/NavigateThroughSections'
-import { pagesectionlinks } from '@/config/navigationLinks'
-import { GET_DETAILS_COMPONENT } from '@/utils/Get_Details_Components'
+import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
+import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
+import { DocLinks } from '@/components/pages/home/documentationslink/docLinks'
+import ComponentPreview from '@/components/pages/preview/componentPreview/componentPreview'
+import { links } from '@/config/preview.json'
+import { GET_DETAILS_COMPONENT } from '@/utils/getDetailsComponentData'
+import { Badge } from '@repo/chromaui/components/bedge/Bedge.tsx'
 import {
   ClipBoardAction,
   ClipBoardArea,
   ClipBoardContainer,
   ClipBoardHeader,
   ClipBoardLabel,
-} from '@repo/ChromaUI/components/clipboard/Clipboard.tsx'
+} from '@repo/chromaui/components/clipboard/Clipboard.tsx'
 import { FaCircleCheck } from 'react-icons/fa6'
 
 
@@ -52,7 +53,7 @@ export default async function ComponentDetails({
               <h1 className={`text-foreground text-4xl font-extrabold ${inter.className}`} >
                 {pageComponent.name}
               </h1>
-              <span className='bg-primary text-primary-foreground rounded-lg px-2 py-1.5 text-sm'>{`v${pageComponent.version}`} </span>
+              <Badge variant='primary' children={pageComponent.version} />
             </div>
             <p className="text-muted-foreground mt-4 max-w-[500px] text-base font-normal ">
               {pageComponent.description}
@@ -204,7 +205,7 @@ export default async function ComponentDetails({
       <section className='w-full col-span-1 h-screen border sticky top-0 px-8 py-5 space-y-6'>
         <h4 className='font-bold text-base'>Navegue nessa página</h4>
 
-        <NavigateThroughSections links={pagesectionlinks} />
+        <NavigateThroughSections links={links} />
       </section>
     </div>
   )

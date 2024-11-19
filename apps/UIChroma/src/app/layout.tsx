@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 import { nunito } from '@/assets/fonts'
-import { Header } from '@/components/header/Header'
-import { SideBar } from '@/components/sideBar/SideBar'
+import { Header } from '@/components/global/header/Header'
+import { SideBar } from '@/components/global/sideBar/SideBar'
 import '../../../../global.css'
 
 export const metadata: Metadata = {

@@ -1,5 +1,8 @@
-import { AccordionAnswer, AccordionContainer, 
-  AccordionProvider, AccordionQuestion, AccordionTrigger, AccordionContent } from '@repo/ChromaUI/components/accordion.tsx'
+import {
+  AccordionAnswer, AccordionContainer,
+  AccordionContent,
+  AccordionProvider, AccordionQuestion, AccordionTrigger
+} from '@repo/chromaui/components/accordion/Accordion.tsx'
 
 export default function AccordionPreview() {
   const faqs = [

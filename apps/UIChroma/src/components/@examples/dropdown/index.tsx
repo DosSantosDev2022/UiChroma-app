@@ -8,10 +8,10 @@ import {
   DropDownList,
   DropDownProvider,
   DropDownTrigger,
-} from '@repo/ChromaUI/components/dropdown.tsx'
+} from '@repo/chromaui/components/dropdown/Dropdown.tsx'
 import { FaCreditCard, FaUser } from 'react-icons/fa'
-import { RiTeamFill } from 'react-icons/ri'
 import { IoMdSettings } from 'react-icons/io'
+import { RiTeamFill } from 'react-icons/ri'
 
 export default function DropDownPreview() {
   const list = [

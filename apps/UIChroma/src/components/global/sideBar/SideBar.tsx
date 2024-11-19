@@ -1,5 +1,5 @@
 import LogoUI from '@/assets/icons/Logo'
-import { NaigationLinks } from '@/components/navLinks/navLinks'
+import { NaigationLinks } from '@/components/global/navLinks/navLinks'
 
 export function SideBar() {
   return (

@@ -1,6 +1,6 @@
 'use client'
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@repo/ChromaUI/components//pagination.tsx'
-import { usePagination, ELLIPSIS_LEFT, ELLIPSIS_RIGTH } from '@/hooks/usePagination'
+import { ELLIPSIS_LEFT, ELLIPSIS_RIGTH, usePagination } from '@/hooks/usePagination/index'
+import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@repo/chromaui/components/pagination/Pagination.tsx'
 
 export default function PaginationPreview() {
   const { isCurrentPage, pages } = usePagination({ page: 1, limit: 10, total: 100 })

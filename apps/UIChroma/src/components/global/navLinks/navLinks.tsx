@@ -1,44 +1,22 @@
-import { v4 as uuid } from 'uuid'
-import { Navigation } from '@/components/navigation'
-import { Dropdown } from '@/components/dropdown'
-import { IoDocumentText } from 'react-icons/io5'
-import { HiTemplate } from 'react-icons/hi'
-import { TbComponents } from 'react-icons/tb'
-import { MdNewReleases } from 'react-icons/md'
-import { IoIosRocket } from 'react-icons/io'
+import { Dropdown } from '@/components/global/dropdown'
+import { Navigation } from '@/components/global/navigation'
+import { GET_COMPONENTS_NAME } from '@/utils/getComponentNames'
 import { FaHouse } from 'react-icons/fa6'
-import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
+import { HiTemplate } from 'react-icons/hi'
+import { IoIosRocket } from 'react-icons/io'
+import { IoDocumentText } from 'react-icons/io5'
+import { MdNewReleases } from 'react-icons/md'
+import { TbComponents } from 'react-icons/tb'
+import { v4 as uuid } from 'uuid'
 
 
-
-interface GetPathLinks {
-  pageComponents: {
-    id: string
-    slug: string
-    name: string
-  }[]
-}
-
-const GET_PATH_LINKS = async (): Promise<GetPathLinks> => {
-  const query = `
-      query MyQuery {
-      pageComponents {
-        id
-        slug
-        name
-      }
-    }
-  `
-  return fetchHygraphQuery(query)
-}
 
 export async function NaigationLinks() {
-  const { pageComponents } = await GET_PATH_LINKS()
+  const { pageComponents } = await GET_COMPONENTS_NAME()
 
   const componentList = [...pageComponents].sort((a, b) =>
     a.name.localeCompare(b.name),
   )
- 
 
   /* const templates = [...Templates].sort((a, b) => a.name.localeCompare(b.name)) */
 
@@ -58,7 +36,7 @@ export async function NaigationLinks() {
     {
       id: uuid(),
       name: 'Documentação',
-      Url: '/docs',
+      Url: '/documentation',
       icon: <IoDocumentText size={18} />,
     },
     {
@@ -129,7 +107,7 @@ export async function NaigationLinks() {
           </Dropdown.Root>
         </Navigation.Item>
 
-       
+
       </Navigation.List>
     </Navigation.Root>
   )

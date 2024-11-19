@@ -1,19 +1,19 @@
+import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
+import Modal from '@/components/global/modal/modalSearch'
 import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
-import Modal from '@/components/modal/modalSearch'
 import { IoLogoFigma } from 'react-icons/io5'
-import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 interface GetSearch {
   pageComponents: {
     id: string
-    slug:string
-    name:string
+    slug: string
+    name: string
   }[]
 }
 
 const GET_SEARCH = (): Promise<GetSearch> => {
-  const query=`
+  const query = `
       query MyQuery {
       pageComponents {
         id

@@ -1,11 +1,8 @@
 
 const config = {
   content: [
-    './apps/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    '../../packages/ChromaUI/**/*.{js,ts,jsx,tsx}',
+    '../../apps/**/src/**/*.{js,ts,jsx,tsx}', // Para aplicações no monorepo
+    '../../packages/**/src/**/*.{js,ts,jsx,tsx}', // Para pacotes compartilhados
   ],
   theme: {
     extend: {
@@ -91,6 +88,10 @@ const config = {
       },
     },
   },
+  plugins: [
+    require('tailwind-merge'),
+    require('tailwind-scrollbar'),
+  ],
 };
 
 export default config

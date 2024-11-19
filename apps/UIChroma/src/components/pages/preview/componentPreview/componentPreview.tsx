@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
 
 interface ComponentData {
@@ -12,7 +12,7 @@ interface Props {
 
 const ComponentPreview: React.FC<Props> = ({ componentData }) => {
   const [Component, setComponent] = useState<React.FC | null>(null)
-
+  console.log(componentData.name)
   useEffect(() => {
     const loadComponent = async () => {
       try {

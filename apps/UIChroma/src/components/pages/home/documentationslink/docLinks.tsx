@@ -8,7 +8,7 @@ interface LinksProps {
   links: {
     id: string;
     label: string;
-    url: string;
+    url?: string;
   }[];
 }
 
@@ -34,7 +34,7 @@ export function DocLinks({ links }: LinksProps) {
                 justify-center gap-2 rounded-lg bg-primary-950 text-secondary-50'
                 aria-label={`link to ${link.label}`}
                 target='_blank'
-                href={link.url}>
+                href={link.url || ''}>
                 {icon} {/* Renderiza o ícone apropriado */}
                 {link.label}
               </Link>

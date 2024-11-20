@@ -1,11 +1,8 @@
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { RichText } from '@/components/global/cms/rich-text'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
-import { links } from '@/config/starterPage.json'
+import { links } from '@/enums/documentation'
 import { GET_STARTER_PAGE_DATA } from '@/utils/getStartPageData'
-
-
-
 
 
 export default async function Starter() {
@@ -59,7 +56,7 @@ export default async function Starter() {
             />
           </div>
 
-          <div className="flex  flex-col gap-3 ">
+          <div id="" className="flex  flex-col gap-3 ">
             <RichText
               content={documentationPage.section04?.content.raw}
               renderers={defaultRenderers}

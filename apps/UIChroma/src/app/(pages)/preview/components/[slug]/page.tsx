@@ -4,7 +4,7 @@ import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
 import { DocLinks } from '@/components/pages/home/documentationslink/docLinks'
 import ComponentPreview from '@/components/pages/preview/componentPreview/componentPreview'
-import { links } from '@/config/preview.json'
+import { links } from '@/enums/preview'
 import { GET_DETAILS_COMPONENT } from '@/utils/getDetailsComponentData'
 import { Badge } from '@repo/chromaui/components/bedge/Bedge.tsx'
 import {
@@ -47,7 +47,7 @@ export default async function ComponentDetails({
   return (
     <div className='grid grid-cols-4 gap-4'>
       <section className="px-8 py-5 col-span-3  w-full border rounded-md shadow-sm ">
-        <div id='inicio'>
+        <div id='Início'>
           <div className=" flex w-full flex-col">
             <div className='flex mt-6  items-center justify-start gap-3'>
               <h1 className={`text-foreground text-4xl font-extrabold ${inter.className}`} >
@@ -62,7 +62,7 @@ export default async function ComponentDetails({
           <DocLinks links={pageComponent.docsLinks} />
         </div>
 
-        <div id='feature'>
+        <div id='Features'>
           <div className="w-full space-y-4">
             <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px]
                text-foreground ${inter.className}`} >
@@ -85,7 +85,7 @@ export default async function ComponentDetails({
         </div>
 
         <div className="flex flex-col gap-12">
-          <div id='preview' className="space-y-4">
+          <div id='Preview' className="space-y-4">
             <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
               Preview
             </h4>
@@ -94,7 +94,7 @@ export default async function ComponentDetails({
             </div>
           </div>
 
-          <div id="copyCode" className='space-y-4'>
+          <div id="CopyCode" className='space-y-4'>
             <div className='space-y-2'>
               <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
                 {pageComponent.sourceCode?.title}
@@ -119,7 +119,7 @@ export default async function ComponentDetails({
           </div>
 
           {pageComponent.utilities && (
-            <div id="utilities" className='space-y-4 '>
+            <div id="Utilidades" className='space-y-4 '>
               <div className='space-y-2'>
                 <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
                   Utilidades
@@ -146,7 +146,7 @@ export default async function ComponentDetails({
             </div>
           )}
 
-          <div id="como-usar" className='space-y-4'>
+          <div id="Como usar" className='space-y-4'>
             <div className='space-y-2'>
               <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
                 {pageComponent.sampleCode.title}
@@ -174,7 +174,7 @@ export default async function ComponentDetails({
         </div>
 
         {pageComponent.dependencies && (
-          <div id="dependencias" className="space-y-4">
+          <div id="Dependencias" className="space-y-4">
             <h4 className={`mt-10 text-3xl font-extrabold tracking-[2.16px] text-foreground ${inter.className}`} >
               Dependências
             </h4>

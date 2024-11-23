@@ -1,8 +1,8 @@
 
-const config = {
+const baseConfig = {
   content: [
-    '../../apps/**/src/**/*.{js,ts,jsx,tsx}', // Para aplicações no monorepo
-    '../../packages/**/src/**/*.{js,ts,jsx,tsx}', // Para pacotes compartilhados
+    '../../apps/*/src/**/*.{js,ts,jsx,tsx}', // Para aplicações no monorepo
+    '../../packages/*/src/**/*.{js,ts,jsx,tsx}', // Para pacotes compartilhados
   ],
   theme: {
     extend: {
@@ -94,4 +94,4 @@ const config = {
   ],
 };
 
-export default config
+export default baseConfig

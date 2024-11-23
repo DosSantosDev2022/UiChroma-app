@@ -132,10 +132,22 @@ const DropDownLabel = React.forwardRef<
 
 DropDownLabel.displayName = 'DropDownLabel'
 
+
+interface DropDownLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  asChild?: boolean
+}
+
 const DropDownLink = React.forwardRef<
   HTMLAnchorElement,
-  React.AnchorHTMLAttributes<HTMLAnchorElement>
->(({ className, ...props }, ref) => {
+  DropDownLinkProps
+>(({ className, asChild, children, ...props }, ref) => {
+  if (asChild) {
+    return React.cloneElement(children as React.ReactElement, {
+      ...props,
+      ref
+    })
+  }
+
   return (
     <a
       className={twMerge(

@@ -41,23 +41,31 @@ const NavigationItem = forwardRef<HTMLLIElement, ComponentPropsWithRef<'li'>>(
 
 NavigationItem.displayName = 'NavigationItem'
 
-interface NavigationLinkProps extends ComponentPropsWithRef<'a'> {
-  url: string
+interface NavigationLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  asChild?: boolean
 }
 
 const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>(
-  ({ className, url, ...props }, ref) => (
-    <a
-      className={twMerge(
-        `flex w-full items-center justify-start gap-2  text-sm font-semibold text-background-foreground
-         `,
-        className,
-      )}
-      {...props}
-      ref={ref}
-      href={url}
-    />
-  ),
+  ({ className, asChild, children, ...props }, ref) => {
+    if (asChild) {
+      return React.cloneElement(children as React.ReactElement, {
+        ...props,
+        ref
+      })
+    }
+
+    return (
+      <a
+        className={twMerge(
+          `flex w-full items-center justify-start gap-2  text-sm font-semibold text-background-foreground
+           `,
+          className,
+        )}
+        {...props}
+        ref={ref}
+      />
+    )
+  }
 )
 
 NavigationLink.displayName = 'NavigationLink'

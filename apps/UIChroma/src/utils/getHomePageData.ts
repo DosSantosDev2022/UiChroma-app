@@ -1,5 +1,5 @@
-import { HomePageData } from "@/@types/homepage"
-import { fetchHygraphQuery } from "@/app/api/cms/hygraph"
+import { HomePageData } from '@/@types/homepage'
+import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_HOME_PAGE_DATA = async (): Promise<HomePageData> => {
   const query = `

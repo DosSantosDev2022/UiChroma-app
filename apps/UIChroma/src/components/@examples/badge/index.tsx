@@ -26,7 +26,7 @@ export default function BedgePreview() {
   return (
     <div className='flex items-center justify-center gap-2'>
       {types.map((type) => (
-        <Badge className='w-[85px]' variant={type.variant} children={type.children} />
+        <Badge key={type.variant} className='w-[85px]' variant={type.variant} children={type.children} />
       ))}
     </div>
   )

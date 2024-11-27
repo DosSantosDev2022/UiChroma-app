@@ -29,7 +29,6 @@ const CarouselButton = React.forwardRef<
   <button
     type="button"
     className={twMerge(
-      // eslint-disable-next-line prettier/prettier
       `absolute active:scale-95 duration-300 top-1/2 transform -translate-y-1/2 bg-accent-foreground text-accent rounded-full p-2 hover:bg-accent-foreground/70 focus:outline-none ${direction === 'prev' ? 'left-4' : 'right-4'
       }`,
       className,

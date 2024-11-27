@@ -1,4 +1,5 @@
 import { inter } from "@/assets/fonts";
+import Image from "next/image";
 import { ReactNode } from "react";
 
 interface defaultRenderersProps {
@@ -47,7 +48,7 @@ export const defaultRenderers = {
 
   // Imagens
   img: ({ src, alt }: { src?: string; alt?: string }) => (
-    <img src={src} alt={alt} className="max-w-full rounded-md shadow-md" />
+    <Image src={src || ''} alt={alt || ''} className="max-w-full rounded-md shadow-md" />
   ),
 
   // Bloco de código

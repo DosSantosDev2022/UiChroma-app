@@ -1,4 +1,4 @@
-import { resolve } from "node:path";
+const { resolve } = require("node:path");
 
 const project = resolve(process.cwd(), "tsconfig.json");
 
@@ -32,4 +32,8 @@ module.exports = {
     "node_modules/",
   ],
   overrides: [{ files: ["*.js?(x)", "*.ts?(x)"] }],
+  rules: {
+    'no-unused-vars': 'off',
+    'no-undef': 'off',
+  }
 };

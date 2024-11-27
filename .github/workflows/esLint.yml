@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3 # Corrigido para o GitHub Action de checkout
+        uses: actions/checkout@v3 # Configura ambiente node js
 
       - name: Cache pnpm dependencies
         uses: actions/cache@v3
@@ -24,13 +24,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3 # Configura ambiente node js
-        with:
-          node-version: '20' # Versão do Node.js que estou usando
+      - name: Install pnpm
+        run: npm install -g pnpm # Instala o pnpm globalmente
 
       - name: Install dependencies
-        run: pnpm install # Instala as dependências
+        run: pnpm install # Instala as dependências do projeto
 
       - name: Run Lint
-        run: pnpm run lint # Rodar o comando do Eslint
+        run: pnpm run lint # Executa o linting no código

@@ -2,24 +2,35 @@ name: Lint Code Action
 
 on:
   push:
-     branches:
-        - main # Ações acionadas quando houver push para a branch main
-     pull_request:
-      branches:
-        - main # Ações acionadas quando houver PR para a branch main
+    branches:
+      - main # Ações acionadas quando houver push para a branch main
+  pull_request:
+    branches:
+      - main # Ações acionadas quando houver PR para a branch main
 
-  jobs: 
-    lint: 
-      runs-on: windows-latest #define o ambiente para rodar o workflow
+jobs:
+  lint:
+    runs-on: windows-latest # Define o ambiente para rodar o workflow
 
-      steps:
-        - name: Checkout code
-          uses: actions/setup-node@v3 # Configura ambiente node js
-          with:
-             node-version: '20' #Versão do Node.js que estou usando
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3 # Corrigido para o GitHub Action de checkout
 
-        - name: Install dependencies
-          run: pnpm install #Instala as dependencias
-          
-        - name:  Run Lint
-          run: pnpm run lint #Rodar o comando do Eslint             
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3 # Configura ambiente node js
+        with:
+          node-version: '20' # Versão do Node.js que estou usando
+
+      - name: Install dependencies
+        run: pnpm install # Instala as dependências
+
+      - name: Run Lint
+        run: pnpm run lint # Rodar o comando do Eslint

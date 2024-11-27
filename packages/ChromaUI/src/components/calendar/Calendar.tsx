@@ -1,21 +1,22 @@
 'use client'
-import React, { useState, useEffect } from 'react'
 import {
-  format,
-  startOfMonth,
-  endOfMonth,
-  startOfWeek,
-  endOfWeek,
   add,
-  sub,
+  endOfMonth,
+  endOfWeek,
+  format,
+  isBefore,
   isSameDay,
   isWithinInterval,
-  isBefore,
+  startOfMonth,
+  startOfWeek,
+  sub,
 } from 'date-fns'
+import React, { useEffect, useState } from 'react'
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu'
 
 interface DatePickerProps {
   value: Date | null
+  // eslint-disable-next-line no-unused-vars
   onChange: (date: Date | { startDate: Date; endDate: Date }) => void
   range?: boolean // Flag para ativar o modo de seleção de intervalo
 }
@@ -157,17 +158,15 @@ export function Calendar({ value, onChange, range }: DatePickerProps) {
                       >
                         <p
                           onClick={() => handleSelectDate(date)}
-                          className={`text-sm font-medium cursor-pointer ${
-                            isCurrentMonth ? 'text-zinc-900' : 'text-zinc-300'
-                          } rounded-full flex items-center justify-center w-full h-full transition-all duration-300 ${
-                            isSelected || isStart || isEnd
+                          className={`text-sm font-medium cursor-pointer ${isCurrentMonth ? 'text-zinc-900' : 'text-zinc-300'
+                            } rounded-full flex items-center justify-center w-full h-full transition-all duration-300 ${isSelected || isStart || isEnd
                               ? 'bg-violet-600 text-zinc-50'
                               : isInRange
                                 ? 'bg-violet-200 text-violet-800'
                                 : isToday
                                   ? 'bg-violet-400 text-zinc-50'
                                   : 'hover:bg-violet-100'
-                          }`}
+                            }`}
                         >
                           {date.getDate()}
                         </p>

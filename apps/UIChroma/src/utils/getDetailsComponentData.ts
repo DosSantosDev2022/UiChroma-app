@@ -1,7 +1,9 @@
-import { ComponentsPageData } from "@/@types/components"
-import { fetchHygraphQuery } from "@/app/api/cms/hygraph"
+import { ComponentsPageData } from '@/@types/components'
+import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
-export const GET_DETAILS_COMPONENT = async (slug: string): Promise<ComponentsPageData> => {
+export const GET_DETAILS_COMPONENT = async (
+  slug: string,
+): Promise<ComponentsPageData> => {
   const query = `
       query MyQuery($slug: String!) {
         pageComponent(where: {slug: $slug}) {
@@ -46,5 +48,7 @@ export const GET_DETAILS_COMPONENT = async (slug: string): Promise<ComponentsPag
      }
   `
   const variables = { slug }
-  return fetchHygraphQuery(query, variables)
+  return fetchHygraphQuery(query, variables, {
+    cache: 'no-cache',
+  })
 }

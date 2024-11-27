@@ -4,14 +4,15 @@ import React, { createContext, ReactNode, useContext, useState } from 'react'
 import { RiArrowDownWideLine, RiArrowUpWideLine } from 'react-icons/ri'
 import { twMerge } from 'tailwind-merge'
 
-interface SelectContext {
+interface SelectContextProps {
   isOpen: boolean
   toggleOpen: () => void
   selectedOption: string
+  // eslint-disable-next-line no-unused-vars
   selectOption: (option: string) => void
 }
 
-const SelectContext = createContext<SelectContext | undefined>(undefined)
+const SelectContext = createContext<SelectContextProps | undefined>(undefined)
 
 const useSelectContext = () => {
   const context = useContext(SelectContext)
@@ -125,9 +126,10 @@ const SelectOption = React.forwardRef<
   React.HTMLAttributes<HTMLOptionElement>
 >(({ className, children, ...props }, ref) => {
   const { selectOption } = useSelectContext()
+  const optionLabel = children as string
   return (
     <option
-      onClick={() => selectOption(children as string)}
+      onClick={() => selectOption(optionLabel)}
       className={twMerge(
         'relative flex w-full cursor-pointer items-center bg-secondary-50 py-1.5  pl-8  pr-2 text-sm text-primary-950 outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-secondary-100',
         className,
@@ -143,10 +145,7 @@ const SelectOption = React.forwardRef<
 SelectOption.displayName = 'SelectOption'
 
 export {
-  SelectProvider,
-  SelectContent,
-  SelectRoot,
-  SelectTrigger,
-  SelectOption,
-  SelectIcon,
+  SelectContent, SelectIcon, SelectOption, SelectProvider, SelectRoot,
+  SelectTrigger
 }
+

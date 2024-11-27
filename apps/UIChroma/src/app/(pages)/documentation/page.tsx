@@ -1,5 +1,6 @@
 import { NavigateThroughSections } from "@/components/global/navigationScroll/NavigateThroughSections";
-import { links } from '@/config/documentation.json';
+import { links } from '@/enums/documentation';
+
 
 
 

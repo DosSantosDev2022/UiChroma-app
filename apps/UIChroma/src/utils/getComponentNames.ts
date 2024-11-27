@@ -1,6 +1,6 @@
-import { fetchHygraphQuery } from "@/app/api/cms/hygraph"
+import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
-interface QueryProps {
+export interface QueryProps {
   pageComponents: {
     id: string
     slug: string
@@ -18,5 +18,5 @@ export const GET_COMPONENTS_NAME = async (): Promise<QueryProps> => {
       }
     }
   `
-  return fetchHygraphQuery(query)
+  return fetchHygraphQuery(query, undefined, { cache: 'no-cache' })
 }

@@ -1,8 +1,9 @@
-import { MyQueryResponse } from '@/@types/releases';
-import { fetchHygraphQuery } from "@/app/api/cms/hygraph";
+import { MyQueryResponse } from '@/@types/releases'
+import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
-
-export const GET_RELEASES = async (searchTerm?: string): Promise<MyQueryResponse> => {
+export const GET_RELEASES = async (
+  searchTerm?: string,
+): Promise<MyQueryResponse> => {
   const query = `
     query MyQuery($searchTerm: String) {
       releasePage(where: { slug: "release-page" }) {
@@ -22,6 +23,10 @@ export const GET_RELEASES = async (searchTerm?: string): Promise<MyQueryResponse
         }
       }
     }
-  `;
-  return fetchHygraphQuery(query, { searchTerm: searchTerm || '' });
-};
+  `
+  return fetchHygraphQuery(
+    query,
+    { searchTerm: searchTerm || '' },
+    { cache: 'force-cache', revalidate: 60 * 60 * 24 },
+  )
+}

@@ -1,114 +1,95 @@
-import { Dropdown } from '@/components/global/dropdown'
-import { Navigation } from '@/components/global/navigation'
+
+import { links } from '@/enums/sideBar'
 import { GET_COMPONENTS_NAME } from '@/utils/getComponentNames'
-import { FaHouse } from 'react-icons/fa6'
+import { DropDownContainer, DropDownContent, DropDownIcon, DropDownItem, DropDownLink, DropDownList, DropDownProvider, DropDownTrigger } from '@repo/chromaui/components/dropdown/Dropdown.tsx'
+import { NavigationIcon, NavigationItem, NavigationLink, NavigationList, NavigationRoot } from '@repo/chromaui/components/navigation/navigation.tsx'
+import Link from 'next/link'
 import { HiTemplate } from 'react-icons/hi'
-import { IoIosRocket } from 'react-icons/io'
-import { IoDocumentText } from 'react-icons/io5'
-import { MdNewReleases } from 'react-icons/md'
 import { TbComponents } from 'react-icons/tb'
-import { v4 as uuid } from 'uuid'
+
 
 
 
 export async function NaigationLinks() {
   const { pageComponents } = await GET_COMPONENTS_NAME()
-
-  const componentList = [...pageComponents].sort((a, b) =>
-    a.name.localeCompare(b.name),
-  )
+  const componentList = [...pageComponents].sort((a, b) => a.name.localeCompare(b.name))
 
   /* const templates = [...Templates].sort((a, b) => a.name.localeCompare(b.name)) */
 
-  const links = [
-    {
-      id: uuid(),
-      name: 'Home',
-      Url: '/',
-      icon: <FaHouse size={18} />,
-    },
-    {
-      id: uuid(),
-      name: 'Primeiros passos',
-      Url: '/gettingStarted',
-      icon: <IoIosRocket size={18} />,
-    },
-    {
-      id: uuid(),
-      name: 'Documentação',
-      Url: '/documentation',
-      icon: <IoDocumentText size={18} />,
-    },
-    {
-      id: uuid(),
-      name: 'Releases',
-      Url: '/releases',
-      icon: <MdNewReleases size={18} />,
-    },
-  ]
+
   return (
-    <Navigation.Root>
-      <Navigation.List>
-        {links.map((link) => (
-          <Navigation.Item key={link.id}>
-            <Navigation.Links className='text-secondary-50' url={link.Url}>
-              <Navigation.Icon>{link.icon}</Navigation.Icon>
-              {link.name}
-            </Navigation.Links>
-          </Navigation.Item>
-        ))}
+    <>
+      <NavigationRoot>
+        <NavigationList>
+          {links.map((link) => (
+            <NavigationItem key={link.id}>
+              <NavigationLink asChild>
+                <Link className='flex w-full items-center justify-start gap-2 ' href={link.Url} >
+                  <NavigationIcon>
+                    <link.icon size={18} />
+                  </NavigationIcon>
+                  {link.name}
+                </Link>
+              </NavigationLink>
+            </NavigationItem>
+          ))}
+        </NavigationList>
+      </NavigationRoot>
 
-        <Navigation.Item>
-          <Dropdown.Root>
-            <Dropdown.Trigger>
-              <Dropdown.Icon>
-                <HiTemplate size={18} />
-              </Dropdown.Icon>
-              Templates
-            </Dropdown.Trigger>
+      <DropDownProvider>
+        <DropDownContainer>
+          <DropDownTrigger className='border-none'>
+            <DropDownIcon>
+              <HiTemplate size={18} />
+            </DropDownIcon>
+            Templates
+          </DropDownTrigger>
 
-            <Navigation.List className="mt-2 max-h-[268px] space-y-1 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary-900">
+
+          <DropDownContent position='sticky'>
+            <DropDownList className="mt-2 max-h-[268px] space-y-1 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary-900">
               {/*   {templates.map((template) => (
-                <Navigation.Item className="border-none " key={template.id}>
-                  <Navigation.Links
-                    className="w-full bg-transparent"
-                    url={template.url}
-                  >
-                    {template.name}
-                  </Navigation.Links>
-                </Navigation.Item>
-              ))} */}
+                  <Navigation.Item className="border-none " key={template.id}>
+                    <Navigation.Links
+                      className="w-full bg-transparent"
+                      url={template.url}
+                    >
+                      {template.name}
+                    </Navigation.Links>
+                  </Navigation.Item>
+                ))} */}
               a
-            </Navigation.List>
-          </Dropdown.Root>
-        </Navigation.Item>
+            </DropDownList>
+          </DropDownContent>
 
-        <Navigation.Item>
-          <Dropdown.Root>
-            <Dropdown.Trigger>
-              <Dropdown.Icon>
-                <TbComponents size={18} />
-              </Dropdown.Icon>
-              Componentes
-            </Dropdown.Trigger>
+        </DropDownContainer>
+      </DropDownProvider>
 
-            <Navigation.List className="mt-2 max-h-[268px] space-y-1 overflow-y-scroll px-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary-900">
+      <DropDownProvider>
+        <DropDownContainer>
+          <DropDownTrigger className='border-none'>
+            <DropDownIcon>
+              <TbComponents size={18} />
+            </DropDownIcon>
+            Componentes
+          </DropDownTrigger>
+          <DropDownContent position='sticky'>
+            <DropDownList className="mt-2 max-h-[268px] space-y-1 overflow-y-scroll px-4 custom-scrollbar">
               {componentList.map((component) => (
-                <Navigation.Item className="border-none " key={component.id}>
-                  <Navigation.Links
-                    className="w-full bg-transparent"
-                    url={`/preview/components/${component.slug}`}
+                <DropDownItem className="border-none " key={component.id}>
+                  <DropDownLink
+                    asChild
                   >
-                    {component.name}
-                  </Navigation.Links>
-                </Navigation.Item>
+                    <Link href={`/preview/components/${component.slug}`}>{component.name}</Link>
+                  </DropDownLink>
+                </DropDownItem>
               ))}
-            </Navigation.List>
-          </Dropdown.Root>
-        </Navigation.Item>
+            </DropDownList>
 
+          </DropDownContent>
 
-      </Navigation.List>
-    </Navigation.Root>
+        </DropDownContainer>
+      </DropDownProvider>
+    </>
   )
 }

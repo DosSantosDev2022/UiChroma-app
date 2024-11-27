@@ -15,10 +15,10 @@ interface GetStarterData {
     id: string;
     title: string;
     slug: string;
-    section: Section;
-    section02: Section;
-    section03: Section;
-    section04: Section;
+    section: Section | null;
+    section02: Section | null;
+    section03: Section | null;
+    section04: Section | null;
   }
 }
 

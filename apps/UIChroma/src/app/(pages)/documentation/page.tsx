@@ -1,15 +1,21 @@
+import { ContentSections, MainContainer, SectionNavigation, SectionPage, WrapperSections } from "@/components/global/containers/pageContainers";
 import { NavigateThroughSections } from "@/components/global/navigationScroll/NavigateThroughSections";
+import { Title } from "@/components/global/title/title";
 import { links } from '@/enums/documentation';
 
 
-
-
-export default function DocumentationPage() {
-  return <div className='grid grid-cols-4 gap-4'>
-    <section className="px-8 py-5 col-span-3  w-full border rounded-md shadow-sm "></section>
-    <section className='w-full col-span-1 h-screen border sticky top-0 px-8 py-5 space-y-6'>
-      <h4 className='font-bold text-base'>Navegue nessa página</h4>
-      <NavigateThroughSections links={links} />
-    </section>
-  </div>
+export default async function DocumentationPage() {
+  return (
+    <MainContainer >
+      <SectionPage>
+        <WrapperSections>
+          <ContentSections></ContentSections>
+        </WrapperSections>
+      </SectionPage>
+      <SectionNavigation>
+        <Title as="h3" className="text-lg">Navegue nessa página</Title>
+        <NavigateThroughSections links={links} />
+      </SectionNavigation>
+    </MainContainer>
+  )
 }

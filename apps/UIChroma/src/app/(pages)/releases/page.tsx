@@ -1,5 +1,6 @@
 import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
+import { Title } from '@/components/global/title/title'
 import { SearchReleases } from '@/components/pages/releases/searchRelease/searchReleases'
 import { GET_RELEASES } from '@/utils/getReleasesData'
 import { Badge } from '@repo/chromaui/components/bedge/Bedge.tsx'
@@ -26,26 +27,26 @@ export default async function ReleasePage({ searchParams }: ReleasePageParams) {
     <div className="relative flex h-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
       <SearchReleases />
       <div className="flex flex-col gap-3">
-        <h1 className="text-6xl font-extrabold">{releasePage.title}</h1>
-        <p className="text-primary-950 text-lg font-normal">
+        <Title>{releasePage.title}</Title>
+        <p className="text-muted-foreground text-base font-normal">
           {releasePage.description}
         </p>
       </div>
 
-      <div className="mt-20 space-y-4">
+      <div className="mt-20 mb-20 space-y-4">
         {releasePage.releases.map((release) => (
           <div
             key={release.id}
             className="flex flex-col gap-2 rounded-md border p-4 shadow-sm"
           >
             <div className="flex flex-col gap-2">
-              <span className="text-secondary-400 text-base font-normal">
+              <span className="text-muted-foreground text-sm font-normal">
                 {format(new Date(release.date), 'dd/MM/yyyy')}
               </span>
               <div className="flex items-center gap-3">
-                <h4 className="text-primary-950 text-3xl font-bold">
+                <Title as='h4' className="text-foreground text-xl font-bold">
                   {release.title}
-                </h4>
+                </Title>
                 <Badge variant="accent" children={release.version} />
               </div>
             </div>

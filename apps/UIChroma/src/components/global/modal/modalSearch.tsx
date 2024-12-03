@@ -1,7 +1,7 @@
 'use client'
 
 import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
-import { ComponentInput, InputIcon, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
+import { Field, InputIcon, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
 import Link from 'next/link'
 import { ChangeEvent, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
@@ -70,7 +70,7 @@ export default function Modal({ data }: ModalProps) {
                   sizes='icon'
                   onClick={handleOpenModal}
                   type="button"
-                  className="ms-auto flex rounded-full"
+                  className="ms-auto flex rounded-full active:scale-95 duration-500"
                 >
                   X
                   <span className="sr-only">Close modal</span>
@@ -81,7 +81,7 @@ export default function Modal({ data }: ModalProps) {
                   <InputIcon>
                     <BsSearch />
                   </InputIcon>
-                  <ComponentInput
+                  <Field
                     placeholder="Buscar componentes..."
                     type="text"
                     id="search"
@@ -108,7 +108,7 @@ export default function Modal({ data }: ModalProps) {
                   ))}
                 </ul>
               ) : (
-                <span className="font-medium text-primary-800 ">
+                <span className="font-medium text-muted-foreground">
                   Nenhum componente encontrado !
                 </span>
               )}

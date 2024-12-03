@@ -30,7 +30,7 @@ const InputIcon = React.forwardRef<
 
 InputIcon.displayName = 'InputIcon'
 
-const ComponentInput = React.forwardRef<
+const Field = React.forwardRef<
   HTMLInputElement,
   React.InputHTMLAttributes<HTMLInputElement>
 >(({ className, type, ...props }, ref) => {
@@ -47,6 +47,6 @@ const ComponentInput = React.forwardRef<
   )
 })
 
-ComponentInput.displayName = 'Input'
+Field.displayName = 'Field'
 
-export { InputRoot, InputIcon, ComponentInput }
+export { InputRoot, InputIcon, Field }

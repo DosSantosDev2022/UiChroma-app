@@ -57,7 +57,7 @@ const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>(
     return (
       <a
         className={twMerge(
-          `flex w-full items-center justify-start gap-2  text-sm font-semibold text-background-foreground
+          `flex w-full items-center justify-start gap-2  text-sm font-semibold text-foreground
            `,
           className,
         )}

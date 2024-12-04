@@ -2,12 +2,12 @@ import React, { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface BadgeProps extends ComponentProps<'span'> {
-  variant: 'primary' | 'secondary' | 'accent'
-  children: string
+  variant?: 'primary' | 'secondary' | 'accent'
+  children?: string
 }
 
 export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, variant, children, ...props }, ref) => {
+  ({ className, variant = 'accent', children, ...props }, ref) => {
     const variantClasses = {
       primary: 'bg-primary text-primary-foreground',
       secondary: 'bg-secondary text-secondary-foreground',

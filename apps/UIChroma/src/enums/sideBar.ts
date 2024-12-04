@@ -53,3 +53,14 @@ export const links: LinkItem[] = [
     icon: MdNewReleases
   },
 ];
+
+export const themes = [
+  {
+    label: 'Documentação',
+    url: 'themes/docs'
+  },
+  {
+    label: 'Gerador de temas',
+    url: 'themes/generator'
+  },
+]

@@ -1,6 +1,6 @@
 'use client'
 
-import { ComponentInput, InputIcon, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
+import { Field, InputIcon, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
@@ -24,15 +24,14 @@ export function SearchReleases() {
 
   return (
     <div className="flex h-14 w-full items-center justify-end p-2">
-      <InputRoot className="h-11 w-[296px] rounded-lg bg-primary-900 focus-within:ring-primary-800">
+      <InputRoot className="h-11 w-[296px] ">
         <InputIcon>
           <BsSearch className="text-secondary-50" />
         </InputIcon>
-        <ComponentInput
+        <Field
           type="text"
           id="search"
           name="search"
-          className="text-secondary-50 placeholder:text-secondary-50"
           placeholder="Buscar por releases..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}

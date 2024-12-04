@@ -1,5 +1,5 @@
 import {
-  ComponentInput,
+  Field,
   InputIcon,
   InputRoot,
 } from '@repo/chromaui/components/input/Input.tsx'
@@ -11,7 +11,7 @@ export default function InputPreview() {
       <InputIcon>
         <LuSearch />
       </InputIcon>
-      <ComponentInput placeholder="Search.." />
+      <Field placeholder="Search.." />
     </InputRoot>
   )
 }

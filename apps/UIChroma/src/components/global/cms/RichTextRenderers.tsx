@@ -53,8 +53,8 @@ export const defaultRenderers = {
 
   // Bloco de código
   code_block: ({ children }: defaultRenderersProps) => (
-    <pre className="w-full overflow-x-auto rounded-xl bg-primary-950 px-10 py-5 shadow-lg scrollbar-thin scrollbar-track-primary-900 scrollbar-thumb-primary-800">
-      <code className="text-zinc-50">{children}</code>
+    <pre className="w-full overflow-x-auto rounded-xl bg-secondary-foreground px-10 py-5 shadow-lg scrollbar-thin scrollbar-track-primary-900 scrollbar-thumb-primary-800">
+      <code className="text-secondary">{children}</code>
     </pre>
   ),
 

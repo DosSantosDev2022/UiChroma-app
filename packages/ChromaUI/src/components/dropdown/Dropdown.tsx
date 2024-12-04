@@ -91,7 +91,7 @@ const DropDownList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ul
     {...props}
-    className={twMerge('flex flex-col gap-1', className)}
+    className={twMerge('flex flex-col gap-1 mt-2 space-y-1 overflow-y-scroll px-4 custom-scrollbar', className)}
     ref={ref}
   />
 ))

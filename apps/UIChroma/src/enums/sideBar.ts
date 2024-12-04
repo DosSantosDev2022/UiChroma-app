@@ -1,5 +1,5 @@
 import { FaHome } from "react-icons/fa";
-import { IoIosRocket, IoMdColorPalette } from "react-icons/io";
+import { IoIosRocket } from "react-icons/io";
 import { IoDocumentText } from "react-icons/io5";
 import { IconType } from "react-icons/lib";
 import { MdNewReleases } from "react-icons/md";
@@ -10,7 +10,6 @@ export enum NavigationLinksSideBar {
   GETTING_STARTED = "Primeiros passos",
   DOCUMENTATION = "Documentação",
   RELEASES = "Releases",
-  THEME = 'Temas'
 }
 
 export enum NavigationUrls {
@@ -18,7 +17,6 @@ export enum NavigationUrls {
   GETTING_STARTED = "/gettingStarted",
   DOCUMENTATION = "/documentation",
   RELEASES = "/releases",
-  TEMAS= "/themes"
 }
 
 interface LinkItem {
@@ -54,10 +52,15 @@ export const links: LinkItem[] = [
     Url: NavigationUrls.RELEASES,
     icon: MdNewReleases
   },
-  {
-    id: uuid(),
-    name: NavigationLinksSideBar.THEME,
-    Url: NavigationUrls.TEMAS,
-    icon: IoMdColorPalette 
-  },
 ];
+
+export const themes = [
+  {
+    label: 'Documentação',
+    url: 'themes/docs'
+  },
+  {
+    label: 'Gerador de temas',
+    url: 'themes/generator'
+  },
+]

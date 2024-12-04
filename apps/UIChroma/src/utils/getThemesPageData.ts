@@ -5,7 +5,7 @@ import { fetchHygraphQuery } from "@/app/api/cms/hygraph";
 export const GET_THEMES_PAGE_DATA = async (): Promise<PageDataTypes> => {
   const query = `
     query MyQuery {
-      documentationPage(where: {slug: "themes"}) {
+      documentationPage(where: {slug: "theme"}) {
         id
         title
         slug
@@ -41,8 +41,16 @@ export const GET_THEMES_PAGE_DATA = async (): Promise<PageDataTypes> => {
             raw
           }
         }
+          section05 {
+          id
+          title
+          description
+          content {
+            raw
+          }
+        }
       }
     }
   `
-  return fetchHygraphQuery(query)
+  return fetchHygraphQuery(query, undefined, { cache: 'no-cache' })
 }

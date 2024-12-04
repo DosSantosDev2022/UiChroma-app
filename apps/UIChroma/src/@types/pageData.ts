@@ -18,5 +18,6 @@ export interface PageDataTypes {
     section02: Section | null;
     section03: Section | null;
     section04: Section | null;
+    section05: Section | null;
   }
 }

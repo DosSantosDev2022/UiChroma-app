@@ -1,7 +1,8 @@
 "use client";
-import { ColorsState } from "@/@types/colorsState";
+import { Colors } from "@/@types/colorsState";
 import { CodeBlock } from "@/components/global/codeBlock/codeBlock";
 import { Title } from "@/components/global/title/title";
+import { defaultColors } from "@/enums/colors";
 import { generateCodeCss, generateTailwindConfig } from "@/utils/generateCode";
 import { Button } from "@repo/ChromaUI/components/button/Button.tsx";
 import { ClipBoardAction, ClipBoardArea, ClipBoardContainer, ClipBoardHeader, ClipBoardLabel } from "@repo/ChromaUI/components/clipboard/Clipboard.tsx";
@@ -10,61 +11,12 @@ import { SketchPicker } from "react-color";
 
 
 export default function ThemeGeneratorPage() {
-  const [colors, setColors] = useState<ColorsState>({
-    background: '',
-    foreground: '',
-    card: '',
-    cardForeground: '',
-    popover: '',
-    popoverForeground: '',
-    primary: '',
-    primaryForeground: '',
-    secondary: '',
-    secondaryForeground: '',
-    muted: '',
-    mutedForeground: '',
-    accent: '',
-    accentForeground: '',
-    destructive: '',
-    destructiveForeground: '',
-    border: '',
-    input: '',
-    ring: '',
-    chart1: '',
-    chart2: '',
-    chart3: '',
-    chart4: '',
-    chart5: '',
-    darkBackground: '',
-    darkForeground: '',
-    darkCard: '',
-    darkCardForeground: '',
-    darkPopover: '',
-    darkPopoverForeground: '',
-    darkPrimary: '',
-    darkPrimaryForeground: '',
-    darkSecondary: '',
-    darkSecondaryForeground: '',
-    darkMuted: '',
-    darkMutedForeground: '',
-    darkAccent: '',
-    darkAccentForeground: '',
-    darkDestructive: '',
-    darkDestructiveForeground: '',
-    darkBorder: '',
-    darkInput: '',
-    darkRing: '',
-    darkChart1: '',
-    darkChart2: '',
-    darkChart3: '',
-    darkChart4: '',
-    darkChart5: ''
-  });
+  const [colors, setColors] = useState<Colors>(defaultColors);
 
   const [activePickers, setActivePickers] = useState<{ [key: string]: boolean }>({});
   const [activeTab, setActiveTab] = useState<"globalcss" | "tailwindConfig">("globalcss")
 
-  const handleColorChange = (color: any, key: keyof ColorsState) => {
+  const handleColorChange = (color: any, key: keyof Colors) => {
     const { h, s, l } = color.hsl;
     setColors((prevColors) => ({
       ...prevColors,
@@ -97,14 +49,14 @@ export default function ThemeGeneratorPage() {
                 </label>
                 <div
                   className="w-8 h-8 rounded-full border border-border"
-                  style={{ backgroundColor: colors[key as keyof ColorsState] }}
+                  style={{ backgroundColor: colors[key as keyof Colors] }}
                 />
               </div>
               {activePickers[key] && (
                 <SketchPicker
                   className="mt-2"
-                  color={colors[key as keyof ColorsState]}
-                  onChange={(color) => handleColorChange(color, key as keyof ColorsState)}
+                  color={colors[key as keyof Colors]}
+                  onChange={(color) => handleColorChange(color, key as keyof Colors)}
                 />
               )}
             </div>

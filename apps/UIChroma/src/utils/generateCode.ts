@@ -1,7 +1,7 @@
-import { ColorsState } from "@/@types/colorsState";
+import { Colors } from "@/@types/colorsState";
 
 
-export const generateCodeCss = (colors: ColorsState) => {
+export const generateCodeCss = (colors: Colors) => {
   return `
       @tailwind base;
       @tailwind components;
@@ -11,22 +11,30 @@ export const generateCodeCss = (colors: ColorsState) => {
         :root {
           --background: ${colors.background};
           --foreground: ${colors.foreground};
-          --card: ${colors.card};
-          --card-foreground: ${colors.cardForeground};
-          --popover: ${colors.popover};
-          --popover-foreground: ${colors.popoverForeground};
           --primary: ${colors.primary};
-          --primary-foreground: ${colors.primaryForeground};
+          --primary-hover: ${colors.primary_hover}
+          --primary-foreground: ${colors.primary_foreground};
           --secondary: ${colors.secondary};
-          --secondary-foreground: ${colors.secondaryForeground};
+          --secondary-hover: ${colors.secondary_hover}
+          --secondary-foreground: ${colors.secondary_foreground};
           --muted: ${colors.muted};
-          --muted-foreground: ${colors.mutedForeground};
+          --muted-hover: ${colors.muted_hover}
+          --muted-foreground: ${colors.muted_foreground};
           --accent: ${colors.accent};
-          --accent-foreground: ${colors.accentForeground};
-          --destructive: ${colors.destructive};
-          --destructive-foreground: ${colors.destructiveForeground};
+          --accent-hover ${colors.accent_hover}
+          --accent-foreground: ${colors.accent_foreground};
+
+          --danger: ${colors.danger};
+          --danger-hover: ${colors.danger_hover}
+          --danger-foreground: ${colors.danger_foreground};
+          --warning: ${colors.warning}
+          --warning-hover: ${colors.warning_hover}
+          --warning-foreground: ${colors.warning_foregorund}
+          --sucess: ${colors.sucess}
+          --sucess-hover: ${colors.sucess_hover}
+          --sucess-foreground: ${colors.sucess_foreground}
+
           --border: ${colors.border};
-          --input: ${colors.input};
           --ring: ${colors.ring};
           --chart-1: ${colors.chart1};
           --chart-2: ${colors.chart2};
@@ -36,30 +44,38 @@ export const generateCodeCss = (colors: ColorsState) => {
        }
 
         .dark {
-          --background: ${colors.darkBackground};
-          --foreground: ${colors.darkForeground};
-          --card: ${colors.darkCard};
-          --card-foreground: ${colors.darkCardForeground};
-          --popover: ${colors.darkPopover};
-          --popover-foreground: ${colors.darkPopoverForeground};
-          --primary: ${colors.darkPrimary};
-          --primary-foreground: ${colors.darkPrimaryForeground};
-          --secondary: ${colors.darkSecondary};
-          --secondary-foreground: ${colors.darkSecondaryForeground};
-          --muted: ${colors.darkMuted};
-          --muted-foreground: ${colors.darkMutedForeground};
-          --accent: ${colors.darkAccent};
-          --accent-foreground: ${colors.darkAccentForeground};
-          --destructive: ${colors.darkDestructive};
-          --destructive-foreground: ${colors.darkDestructiveForeground};
-          --border: ${colors.darkBorder};
-          --input: ${colors.darkInput};
-          --ring: ${colors.darkRing};
-          --chart-1: ${colors.darkChart1};
-          --chart-2: ${colors.darkChart2};
-          --chart-3: ${colors.darkChart3};
-          --chart-4: ${colors.darkChart4};
-          --chart-5: 3${colors.darkChart5};
+          --background: ${colors.dark_background};
+          --foreground: ${colors.dark_foreground};
+          --primary: ${colors.dark_primary};
+          --primary-hover: ${colors.dark_primary_hover}
+          --primary-foreground: ${colors.dark_primary_foreground};
+          --secondary: ${colors.dark_secondary};
+          --secondary-hover: ${colors.dark_secondary_hover}
+          --secondary-foreground: ${colors.dark_secondary_foreground};
+          --muted: ${colors.dark_muted};
+          --muted-hover: ${colors.dark_muted_hover}
+          --muted-foreground: ${colors.dark_muted_foreground};
+          --accent: ${colors.dark_accent};
+          --accent-hover: ${colors.dark_accent_hover}
+          --accent-foreground: ${colors.dark_accent_foreground};
+
+          --danger: ${colors.dark_danger};
+          --danger-hover: ${colors.dark_danger_hover}
+          --danger-foreground: ${colors.dark_danger_foreground};
+          --warning: ${colors.dark_warning}
+          --warning: ${colors.dark_warning_hover}
+          --warning-foreground: ${colors.dark_warning_foregorund}
+          --sucess: ${colors.dark_sucess}
+          --sucess: ${colors.dark_sucess_hover}
+          --sucess-foreground: ${colors.dark_secondary_foreground}
+
+          --border: ${colors.dark_border};
+          --ring: ${colors.dark_ring};
+          --chart-1: ${colors.dark_chart1};
+          --chart-2: ${colors.dark_chart2};
+          --chart-3: ${colors.dark_chart3};
+          --chart-4: ${colors.dark_chart4};
+          --chart-5: ${colors.dark_chart5};
           } 
       }
         

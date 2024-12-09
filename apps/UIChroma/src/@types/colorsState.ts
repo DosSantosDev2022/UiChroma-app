@@ -1,54 +1,3 @@
-export type ColorsState = {
-  background: string;
-  foreground: string;
-  card: string;
-  cardForeground: string
-  popover: string;
-  popoverForeground: string
-  primary: string;
-  primaryForeground: string;
-  secondary: string
-  secondaryForeground: string
-  muted: string
-  mutedForeground: string
-  accent: string
-  accentForeground: string
-  destructive: string
-  destructiveForeground: string
-  border: string
-  input: string
-  ring: string
-  chart1: string
-  chart2: string
-  chart3: string
-  chart4: string
-  chart5: string
-  darkBackground: string;
-  darkForeground: string;
-  darkCard: string;
-  darkCardForeground: string
-  darkPopover: string;
-  darkPopoverForeground: string
-  darkPrimary: string;
-  darkPrimaryForeground: string;
-  darkSecondary: string;
-  darkSecondaryForeground: string;
-  darkMuted: string;
-  darkMutedForeground: string;
-  darkAccent: string;
-  darkAccentForeground: string;
-  darkDestructive: string;
-  darkDestructiveForeground: string;
-  darkBorder: string;
-  darkInput: string;
-  darkRing: string;
-  darkChart1: string;
-  darkChart2: string;
-  darkChart3: string;
-  darkChart4: string;
-  darkChart5: string;
-};
-
 export type Colors = {
   // Tema modo ligth
 
@@ -73,9 +22,9 @@ export type Colors = {
   warning: string // cor para elementos de atenção
   warning_hover: string // hover da cor warning
   warning_foregorund: string // cor de contraste para warning
-  sucess: string // cor para elementos de sucesso
-  sucess_hover: string // hover da cor sucess
-  sucess_foreground: string // contraste da cor sucess
+  success: string // cor para elementos de sucesso
+  success_hover: string // hover da cor sucess
+  success_foreground: string // contraste da cor sucess
 
   border: string // cor para bordas 
   ring: string // cor para rings
@@ -108,9 +57,9 @@ export type Colors = {
   dark_warning: string // cor para elementos de atenção
   dark_warning_hover: string // hover da cor warning
   dark_warning_foregorund: string // cor de contraste para warning
-  dark_sucess: string // cor para elementos de sucesso
-  dark_sucess_hover: string // hover da cor sucess
-  dark_sucess_foreground: string // contraste da cor sucess
+  dark_success: string // cor para elementos de sucesso
+  dark_success_hover: string // hover da cor sucess
+  dark_success_foreground: string // contraste da cor sucess
 
   dark_border: string // cor para bordas 
   dark_ring: string // cor para rings

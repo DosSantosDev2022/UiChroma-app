@@ -10,9 +10,9 @@ import { useState } from "react";
 import { SketchPicker } from "react-color";
 
 
-export default function ThemeGeneratorPage() {
-  const [colors, setColors] = useState<Colors>(defaultColors);
 
+export default function ThemeCreatePage() {
+  const [colors, setColors] = useState<Colors>(defaultColors);
   const [activePickers, setActivePickers] = useState<{ [key: string]: boolean }>({});
   const [activeTab, setActiveTab] = useState<"globalcss" | "tailwindConfig">("globalcss")
 
@@ -33,18 +33,31 @@ export default function ThemeGeneratorPage() {
 
   return (
     <div className="p-4 space-y-12">
-      <Title>Gerador de temas</Title>
+      <div className="p-2 flex flex-col items-center justify-start gap-2">
+        <Title className="text-6xl">Gerador de temas</Title>
+        <p className="text-muted-foreground font-normal text-base">
+          Crie temas incríveis para seus projetos
+        </p>
+      </div>
 
-
-      <div className="grid grid-cols-12 gap-2  p-2">
-        <section className="flex flex-col items-start space-y-4 p-2 col-span-4 max-h-[468px]
-        shadow border overflow-y-auto custom-scrollbar">
+      <div className="grid grid-cols-12 gap-2 p-2">
+        <section
+          className="flex flex-col items-start space-y-3 px-6 py-3 col-span-7 max-h-[468px]
+          shadow border overflow-y-auto custom-scrollbar"
+        >
           {Object.keys(colors).map((key) => (
-            <div key={key} className="flex flex-col border rounded-md w-full shadow-sm px-2 py-2.5">
+            <div
+              key={key}
+              className="relative flex flex-col border rounded-full w-full shadow-sm px-2 py-2.5"
+            >
               <div
-                onClick={(() => togglePicker(key))}
-                className="flex items-center justify-between gap-2 cursor-pointer active:scale-95 duration-500">
-                <label htmlFor={key} className="mb-2 font-semibold text-muted-foreground ">
+                onClick={() => togglePicker(key)}
+                className="flex items-center justify-between gap-2 cursor-pointer active:scale-95 duration-500"
+              >
+                <label
+                  htmlFor={key}
+                  className="ml-4 font-semibold text-muted-foreground "
+                >
                   {key.replace(/[A-Z]/g, " $&").toLowerCase()}
                 </label>
                 <div
@@ -53,17 +66,21 @@ export default function ThemeGeneratorPage() {
                 />
               </div>
               {activePickers[key] && (
-                <SketchPicker
-                  className="mt-2"
-                  color={colors[key as keyof Colors]}
-                  onChange={(color) => handleColorChange(color, key as keyof Colors)}
-                />
+                <div
+                  className="absolute top-full left-0 z-50 mt-2"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <SketchPicker
+                    color={colors[key as keyof Colors]}
+                    onChange={(color) => handleColorChange(color, key as keyof Colors)}
+                  />
+                </div>
               )}
             </div>
           ))}
         </section>
 
-        <section className=" col-span-8 sticky max-h-[468px] overflow-y-auto custom-scrollbar">
+        <section className="col-span-5 sticky max-h-[468px] overflow-y-auto custom-scrollbar">
           <div className="flex items-center justify-start gap-1 mb-1">
             <Button
               data-active={activeTab === "globalcss" ? "true" : "false"}
@@ -77,7 +94,9 @@ export default function ThemeGeneratorPage() {
             <Button
               data-active={activeTab === "tailwindConfig" ? "true" : "false"}
               onClick={() => setActiveTab("tailwindConfig")}
-              className={`active:scale-95 duration-500 ${activeTab === "tailwindConfig" ? "text-primary-foreground bg-primary" : ""
+              className={`active:scale-95 duration-500 ${activeTab === "tailwindConfig"
+                  ? "text-primary-foreground bg-primary"
+                  : ""
                 } w-28`}
               variant="outline"
             >
@@ -86,13 +105,25 @@ export default function ThemeGeneratorPage() {
           </div>
           <ClipBoardContainer>
             <ClipBoardHeader>
-              <ClipBoardLabel>Copiar {activeTab === "globalcss" ? "CSS" : "Tailwind Config"}</ClipBoardLabel>
+              <ClipBoardLabel>
+                Copiar {activeTab === "globalcss" ? "CSS" : "Tailwind Config"}
+              </ClipBoardLabel>
               <ClipBoardAction
-                copyText={activeTab === 'globalcss' ? generateCodeCss(colors) : generateTailwindConfig()}
+                copyText={
+                  activeTab === "globalcss"
+                    ? generateCodeCss(colors)
+                    : generateTailwindConfig()
+                }
               />
             </ClipBoardHeader>
             <ClipBoardArea>
-              <CodeBlock code={activeTab === 'globalcss' ? generateCodeCss(colors) : generateTailwindConfig()} />
+              <CodeBlock
+                code={
+                  activeTab === "globalcss"
+                    ? generateCodeCss(colors)
+                    : generateTailwindConfig()
+                }
+              />
             </ClipBoardArea>
           </ClipBoardContainer>
         </section>

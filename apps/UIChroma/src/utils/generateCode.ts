@@ -30,9 +30,9 @@ export const generateCodeCss = (colors: Colors) => {
           --warning: ${colors.warning}
           --warning-hover: ${colors.warning_hover}
           --warning-foreground: ${colors.warning_foregorund}
-          --sucess: ${colors.sucess}
-          --sucess-hover: ${colors.sucess_hover}
-          --sucess-foreground: ${colors.sucess_foreground}
+          --success: ${colors.success}
+          --success-hover: ${colors.success_hover}
+          --success-foreground: ${colors.success_foreground}
 
           --border: ${colors.border};
           --ring: ${colors.ring};
@@ -65,9 +65,9 @@ export const generateCodeCss = (colors: Colors) => {
           --warning: ${colors.dark_warning}
           --warning: ${colors.dark_warning_hover}
           --warning-foreground: ${colors.dark_warning_foregorund}
-          --sucess: ${colors.dark_sucess}
-          --sucess: ${colors.dark_sucess_hover}
-          --sucess-foreground: ${colors.dark_secondary_foreground}
+          --success: ${colors.dark_success}
+          --success: ${colors.dark_success_hover}
+          --success-foreground: ${colors.dark_secondary_foreground}
 
           --border: ${colors.dark_border};
           --ring: ${colors.dark_ring};
@@ -97,40 +97,40 @@ export const generateTailwindConfig = () => {
          extend: {
             colors: {
               background: 'hsl(var(--background))',
-              'background-hover': 'hsl(var(--background-hover))',
               foreground: 'hsl(var(--foreground))',
-              'foreground-hover': 'hsl(var(--foreground-hover))',
+
               primary: 'hsl(var(--primary))',
-              'primary-hover': 'hsl(var(--primary-hover))',
-              'primary-foreground': 'hsl(var(--primary-foreground))',
+              'primary-hover': 'hsl(var(--primary_hover))',
+              'primary-foreground': 'hsl(var(--primary_foreground))',
               secondary: 'hsl(var(--secondary))',
-              'secondary-hover': 'hsl(var(--secondary-hover))',
-              'secondary-foreground': 'hsl(var(--secondary-foreground))',
+              'secondary-hover': 'hsl(var(--secondary_hover))',
+              'secondary-foreground': 'hsl(var(--secondary_foreground))',
               muted: 'hsl(var(--muted))',
-              'muted-hover': 'hsl(var(--muted-hover))',
-              'muted-foreground': 'hsl(var(--muted-foreground))',
+              'muted-hover': 'hsl(var(--muted_hover))',
+              'muted-foreground': 'hsl(var(--muted_foreground))',
               accent: 'hsl(var(--accent))',
-              'accent-hover': 'hsl(var(--accent-hover))',
-              'accent-foreground': 'hsl(var(--accent-foreground))',
-              destructive: 'hsl(var(--destructive))',
-              'destructive-hover': 'hsl(var(--destructive-hover))',
-              'destructive-foreground': 'hsl(var(--destructive-foreground))',
+              'accent-hover': 'hsl(var(--accent_hover))',
+              'accent-foreground': 'hsl(var(--accent_foreground))',
+
+              danger: 'hsl(var(--danger))',
+              'danger-hover': 'hsl(var(--danger_hover))',
+              'danger-foreground': 'hsl(var(--danger_foreground))',
+              warning: 'hsl(var(--warning))',
+              'warning-hover': 'hsl(var(--warning_hover))',
+              'warning-foreground': 'hsl(var(--warning_foreground))',
+              success: 'hsl(var(--success))',
+              'success-hover': 'hsl(var(--success_hover))',
+              'success-foreground': 'hsl(var(--success_foreground))',
+
               border: 'hsl(var(--border))',
-              'border-hover': 'hsl(var(--border-hover))',
               input: 'hsl(var(--input))',
-              'input-hover': 'hsl(var(--input-hover))',
               ring: 'hsl(var(--ring))',
-              'ring-hover': 'hsl(var(--ring-hover))',
-              'chart-1': 'hsl(var(--chart-1))',
-              'chart-1-hover': 'hsl(var(--chart-1-hover))',
-              'chart-2': 'hsl(var(--chart-2))',
-              'chart-2-hover': 'hsl(var(--chart-2-hover))',
-              'chart-3': 'hsl(var(--chart-3))',
-              'chart-3-hover': 'hsl(var(--chart-3-hover))',
-              'chart-4': 'hsl(var(--chart-4))',
-              'chart-4-hover': 'hsl(var(--chart-4-hover))',
-              'chart-5': 'hsl(var(--chart-5))',
-              'chart-5-hover': 'hsl(var(--chart-5-hover))',
+
+              'chart-1': 'hsl(var(--chart1))',
+              'chart-2': 'hsl(var(--chart2))',
+              'chart-3': 'hsl(var(--chart3))',
+              'chart-4': 'hsl(var(--chart4))',
+              'chart-5': 'hsl(var(--chart5))',
             },
           },
         },

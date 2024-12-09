@@ -60,7 +60,11 @@ export const themes = [
     url: 'themes/docs'
   },
   {
-    label: 'Gerador de temas',
-    url: 'themes/generator'
+    label: 'Temas prontos',
+    url: 'themes/template'
+  },
+  {
+    label: 'Criar tema',
+    url: 'themes/create'
   },
 ]

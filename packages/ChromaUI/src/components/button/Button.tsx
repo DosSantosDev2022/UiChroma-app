@@ -13,7 +13,7 @@ export interface ButtonProps
     | 'primary'
     | 'secundary'
     | 'outline'
-    | 'highlight'
+    | 'accent'
     | 'disabled'
     | 'link'
     | 'danger'
@@ -24,12 +24,12 @@ export interface ButtonProps
 }
 
 const variantClasses = {
-  primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
-  secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary/40',
+  primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
+  secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
   outline:
     'bg-transparent border border-border text-primary hover:bg-primary/80 hover:text-primary-foreground',
-  highlight:
-    'text-primary-foreground hover:bg-primary/80 duration-300 bg-primary',
+    accent:
+    'text-accent-foreground hover:bg-accent-hover duration-300 bg-accent',
   disabled: 'bg-opacity-80 bg-accent border text-accent-foreground',
   link: 'bg-transparent border-none underline-offset-4 hover:underline',
   danger: 'bg-red-700 hover:bg-red-600 text-zinc-50',

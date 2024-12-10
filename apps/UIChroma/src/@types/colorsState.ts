@@ -21,7 +21,7 @@ export type Colors = {
   danger_foreground: string // cor de contraste para danger
   warning: string // cor para elementos de atenção
   warning_hover: string // hover da cor warning
-  warning_foregorund: string // cor de contraste para warning
+  warning_foreground: string // cor de contraste para warning
   success: string // cor para elementos de sucesso
   success_hover: string // hover da cor sucess
   success_foreground: string // contraste da cor sucess
@@ -56,7 +56,7 @@ export type Colors = {
   dark_danger_foreground: string // cor de contraste para danger
   dark_warning: string // cor para elementos de atenção
   dark_warning_hover: string // hover da cor warning
-  dark_warning_foregorund: string // cor de contraste para warning
+  dark_warning_foreground: string // cor de contraste para warning
   dark_success: string // cor para elementos de sucesso
   dark_success_hover: string // hover da cor sucess
   dark_success_foreground: string // contraste da cor sucess

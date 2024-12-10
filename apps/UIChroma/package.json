@@ -15,6 +15,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@repo/chromaui": "workspace:*",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "colord": "^2.9.3",
     "highlight.js": "^11.10.0",
     "next": "15.0.3",
     "react-color": "^2.19.3",

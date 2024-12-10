@@ -3,131 +3,79 @@
 @tailwind utilities;
 
 @layer base {
-  [data-theme="default"] {
+  :root {
+    --background: 197 12% 96%;
+    --foreground: 195 20% 5%;
+    --primary: 195 27% 32%;
+    --primary-hover: 196 15% 44%;
+    --primary-foreground: 195 20% 5%;
+    --secondary: 197 12% 78%;
+    --secondary-hover: 196 12% 71%;
+    --secondary-foreground: 195 16% 8%;
+    --muted: 197 12% 93%;
+    --muted-hover: 197 12% 85%;
+    --muted-foreground: 196 18% 11%;
+    --accent: 225 27% 32%;
+    --accent-hover: 227 16% 44%;
 
-      /* General variables */
-      --background: 0 0% 100%;
-      --foreground: 224 71.4% 4.1%;
-      --primary: 262.1 83.3% 57.8%;
-      --primary-foreground: 210 20% 98%;
-      --secondary: 220 14.3% 95.9%;
-      --secondary-foreground: 220.9 39.3% 11%;
-      --muted: 220 14.3% 95.9%;
-      --muted-foreground: 220 8.9% 46.1%;
-      --accent: 220 14.3% 95.9%;
-      --accent-foreground: 220.9 39.3% 11%;
-
-      --danger: 0 84.2% 60.2%;
-      --danger-foreground: 210 20% 98%;
-
-      --border: 220 13% 91%;
-      --input: 220 13% 91%;
-      --ring: 262.1 83.3% 57.8%;
-
-      --chart-1: 12 76% 61%;
-      --chart-2: 173 58% 39%;
-      --chart-3: 197 37% 24%;
-      --chart-4: 43 74% 66%;
-      --chart-5: 27 87% 67%;
-    
-  
-    .dark {
-      /* Dark mode variables */
-      --background: 224 71.4% 4.1%;
-      --foreground: 210 20% 98%;
-      --primary: 263.4 70% 50.4%;
-      --primary-foreground: 210 20% 98%;
-      --secondary: 215 27.9% 16.9%;
-      --secondary-foreground: 210 20% 98%;
-      --muted: 215 27.9% 16.9%;
-      --muted-foreground: 217.9 10.6% 64.9%;
-      --accent: 215 27.9% 16.9%;
-      --accent-foreground: 210 20% 98%;
-
-      --danger: 0 62.8% 30.6%;
-      --danger-foreground: 210 20% 98%;
-
-      --border: 215 27.9% 16.9%;
-      --input: 215 27.9% 16.9%;
-      --ring: 263.4 70% 50.4%;
-
-      --chart-1: 220 70% 50%;
-      --chart-2: 160 60% 45%;
-      --chart-3: 30 80% 55%;
-      --chart-4: 280 65% 60%;
-      --chart-5: 340 75% 55%;
-    }
-  }
-
-
-    /* Custom Themes */
-  [data-theme="Scarpa Flow"] {
-    --background: 0 0% 98%;
-    --foreground: 0 0% 10%;
-    --primary: 0 0% 15%;
-    --primary-hover: 0 0% 20%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 85%;
-    --secondary-hover: 0 0% 80%;
-    --secondary-foreground: 0 0% 15%;
-    --accent: 200 70% 50%;
-    --accent-hover: 200 70% 45%;
-    --accent-foreground: 0 0% 98%;
-    --muted: 0 0% 90%;
-    --muted-hover: 0 0% 85%;
-    --muted-foreground: 0 0% 40%;
-    --danger: 0 65% 55%;
-    --danger-hover: 0 65% 45%;
-    --danger-foreground: 0 0% 98%;
-    --warning: 40 90% 60%;
-    --warning-hover: 40 90% 50%;
-    --warning-foreground: 0 0% 10%;
-    --success: 140 45% 45%;
-    --success-hover: 140 45% 35%;
-    --success-foreground: 0 0% 98%;
-    --border: 0 0% 80%;
-    --ring: 0 0% 70%;
-    --chart1: 200 70% 50%;
-    --chart2: 40 90% 60%;
-    --chart3: 140 45% 45%;
-    --chart4: 14 70% 55%;
-    --chart5: 280 50% 55%;
-  }
-
-  [data-theme="Scarpa-Flow"].dark {
-    --background: hsl(0, 0%, 10%);
-    --foreground: hsl(0, 0%, 95%);
-    --primary: hsl(0, 0%, 25%);
-    --primary-hover: hsl(0, 0%, 35%);
-    --primary-foreground: hsl(0, 0%, 95%);
-    --secondary: hsl(0, 0%, 15%);
-    --secondary-hover: hsl(0, 0%, 20%);
-    --secondary-foreground: hsl(0, 0%, 90%);
-    --accent: hsl(200, 70%, 60%);
-    --accent-hover: hsl(200, 70%, 50%);
-    --accent-foreground: hsl(0, 0%, 10%);
-    --muted: hsl(0, 0%, 30%);
-    --muted-hover: hsl(0, 0%, 40%);
-    --muted-foreground: hsl(0, 0%, 70%);
-    --danger: hsl(0, 65%, 60%);
-    --danger-hover: hsl(0, 65%, 50%);
-    --danger-foreground: hsl(0, 0%, 10%);
-    --warning: hsl(40, 90%, 70%);
-    --warning-hover: hsl(40, 90%, 60%);
+    --danger: hsl(0, 65%, 55%);
+    --danger-hover: hsl(0, 65%, 45%);
+    --danger-foreground: hsl(0, 0%, 98%);
+    --warning: hsl(40, 90%, 60%);
+    --warning-hover: hsl(40, 90%, 50%);
     --warning-foreground: hsl(0, 0%, 10%);
-    --success: hsl(140, 45%, 55%);
-    --success-hover: hsl(140, 45%, 45%);
-    --success-foreground: hsl(0, 0%, 10%);
-    --border: hsl(0, 0%, 30%);
-    --ring: hsl(0, 0%, 40%);
-    --chart1: hsl(200, 70%, 60%);
-    --chart2: hsl(40, 90%, 70%);
-    --chart3: hsl(140, 45%, 55%);
-    --chart4: hsl(14, 70%, 60%);
-    --chart5: hsl(280, 50%, 65%);
+    --success: hsl(140, 45%, 45%);
+    --success-hover: hsl(140, 45%, 35%);
+    --success-foreground: hsl(0, 0%, 98%);
+
+    --border: hsl(196, 18%, 11%);
+    --ring: hsl(196, 20%, 14%);
+    --chart-1: hsl(195, 27%, 32%);
+    --chart-2: hsl(255, 27%, 32%);
+    --chart-3: hsl(315, 27%, 32%);
+    --chart-4: hsl(15, 27%, 32%);
+    --chart-5: hsl(75, 27%, 32%);
+  }
+
+  .dark {
+    --background: hsl(195, 20%, 5%);
+    --foreground: hsl(197, 12%, 85%);
+    --primary: hsl(196, 18%, 11%);
+    --primary-hover: hsl(196, 20%, 14%);
+    --primary-foreground: hsl(197, 12%, 93%);
+    --secondary: hsl(195, 16%, 8%);
+    --secondary-hover: hsl(196, 18%, 11%);
+    --secondary-foreground: hsl(197, 12%, 85%);
+    --muted: hsl(195, 17%, 7%);
+    --muted-hover: hsl(196, 17%, 10%);
+    --muted-foreground: hsl(197, 12%, 78%);
+    --accent: hsl(226, 21%, 14%);
+    --accent-hover: hsl(226, 22%, 17%);
+    --accent-foreground: hsl(229, 13%, 93%);
+
+    --danger: hsl(0, 65%, 55%);
+    --danger-hover: hsl(0, 65%, 45%);
+    --danger-foreground: hsl(0, 0%, 98%);
+    --warning: hsl(40, 90%, 60%);
+    --warning-hover: hsl(40, 90%, 50%);
+    --warning-foreground: hsl(0, 0%, 10%);
+    --success: hsl(140, 45%, 45%);
+    --success-hover: hsl(140, 45%, 35%);
+    --success-foreground: hsl(197, 12%, 85%);
+
+    --border: hsl(195, 16%, 8%);
+    --ring: hsl(196, 18%, 11%);
+    --chart-1: hsl(196, 18%, 11%);
+    --chart-2: hsl(257, 20%, 11%);
+    --chart-3: hsl(317, 19%, 11%);
+    --chart-4: hsl(15, 20%, 11%);
+    --chart-5: hsl(74, 19%, 11%);
   }
 }
+
+
+
 /* Custom scrollbar styles */
 .custom-scrollbar {
   @apply overflow-auto scrollbar-thin scrollbar-track-background scrollbar-thumb-accent;
-}
+} 

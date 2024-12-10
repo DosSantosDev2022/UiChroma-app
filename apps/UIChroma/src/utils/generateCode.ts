@@ -29,7 +29,7 @@ export const generateCodeCss = (colors: Colors) => {
           --danger-foreground: ${colors.danger_foreground};
           --warning: ${colors.warning}
           --warning-hover: ${colors.warning_hover}
-          --warning-foreground: ${colors.warning_foregorund}
+          --warning-foreground: ${colors.warning_foreground}
           --success: ${colors.success}
           --success-hover: ${colors.success_hover}
           --success-foreground: ${colors.success_foreground}
@@ -64,7 +64,7 @@ export const generateCodeCss = (colors: Colors) => {
           --danger-foreground: ${colors.dark_danger_foreground};
           --warning: ${colors.dark_warning}
           --warning: ${colors.dark_warning_hover}
-          --warning-foreground: ${colors.dark_warning_foregorund}
+          --warning-foreground: ${colors.dark_warning_foreground}
           --success: ${colors.dark_success}
           --success: ${colors.dark_success_hover}
           --success-foreground: ${colors.dark_secondary_foreground}

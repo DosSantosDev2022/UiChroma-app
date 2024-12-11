@@ -1,6 +1,6 @@
 import {
   CarouselContainer,
-  CarouselRoot,
+  CarouselRoot
 } from '@repo/ChromaUI/components/Carousel/Carousel.tsx'
 import Image from 'next/image'
 
@@ -9,18 +9,18 @@ export default function CarouselPreview() {
     {
       id: 'slide01',
       url: 'https://placehold.co/600x400/png',
-      alt: 'slide-01',
+      alt: 'slide-01'
     },
     {
       id: 'slide02',
       url: 'https://placehold.co/600x400/png',
-      alt: 'slide-02',
+      alt: 'slide-02'
     },
     {
       id: 'slide03',
       url: 'https://placehold.co/600x400/png',
-      alt: 'slide-03',
-    },
+      alt: 'slide-03'
+    }
   ]
 
   return (

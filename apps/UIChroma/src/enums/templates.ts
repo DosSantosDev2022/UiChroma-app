@@ -64,8 +64,8 @@ export const themeTemplates = [
       dark_chart2: 'hsl(40, 90%, 70%)',
       dark_chart3: 'hsl(140, 45%, 55%)',
       dark_chart4: 'hsl(14, 70%, 60%)',
-      dark_chart5: 'hsl(280, 50%, 65%)',
-    },
+      dark_chart5: 'hsl(280, 50%, 65%)'
+    }
   },
   {
     name: 'Ocean Blue',
@@ -132,8 +132,8 @@ export const themeTemplates = [
       dark_chart2: 'hsl(40, 90%, 70%)',
       dark_chart3: 'hsl(140, 45%, 55%)',
       dark_chart4: 'hsl(14, 70%, 60%)',
-      dark_chart5: 'hsl(280, 50%, 65%)',
-    },
+      dark_chart5: 'hsl(280, 50%, 65%)'
+    }
   },
   {
     name: 'Persian Green',
@@ -200,8 +200,8 @@ export const themeTemplates = [
       dark_chart2: 'hsl(40, 90%, 70%)',
       dark_chart3: 'hsl(140, 45%, 55%)',
       dark_chart4: 'hsl(14, 70%, 60%)',
-      dark_chart5: 'hsl(280, 50%, 65%)',
-    },
+      dark_chart5: 'hsl(280, 50%, 65%)'
+    }
   },
   {
     name: 'Earth Tone',
@@ -268,8 +268,8 @@ export const themeTemplates = [
       dark_chart2: 'hsl(20, 40%, 50%)',
       dark_chart3: 'hsl(120, 35%, 55%)',
       dark_chart4: 'hsl(40, 90%, 70%)',
-      dark_chart5: 'hsl(280, 40%, 65%)',
-    },
+      dark_chart5: 'hsl(280, 40%, 65%)'
+    }
   },
   {
     name: 'Deep Blue',
@@ -336,8 +336,8 @@ export const themeTemplates = [
       dark_chart2: 'hsl(210, 45%, 50%)',
       dark_chart3: 'hsl(140, 45%, 55%)',
       dark_chart4: 'hsl(40, 90%, 70%)',
-      dark_chart5: 'hsl(280, 40%, 65%)',
-    },
+      dark_chart5: 'hsl(280, 40%, 65%)'
+    }
   },
   {
     name: 'Elegant Purple',
@@ -404,7 +404,7 @@ export const themeTemplates = [
       dark_chart2: 'hsl(280, 45%, 55%)',
       dark_chart3: 'hsl(140, 45%, 55%)',
       dark_chart4: 'hsl(40, 90%, 70%)',
-      dark_chart5: 'hsl(320, 40%, 65%)',
-    },
-  },
+      dark_chart5: 'hsl(320, 40%, 65%)'
+    }
+  }
 ]

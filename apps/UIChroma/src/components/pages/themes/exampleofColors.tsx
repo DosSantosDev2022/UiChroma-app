@@ -14,13 +14,13 @@ export function ExampleofColors({ Colors }: ExampleofColorsProps) {
         'accent',
         'muted',
         'background',
-        'foreground',
+        'foreground'
       ].map((key) => (
         <div
           key={key}
           className="flex h-28 w-28 cursor-pointer  items-center justify-center rounded-md border"
           style={{
-            backgroundColor: `hsl(${Colors[key as keyof Colors]})`,
+            backgroundColor: `hsl(${Colors[key as keyof Colors]})`
           }}
         >
           <span
@@ -28,7 +28,7 @@ export function ExampleofColors({ Colors }: ExampleofColorsProps) {
             style={{
               color: colord(`hsl(${Colors[key as keyof Colors]})`).isLight()
                 ? '#000'
-                : '#FFF',
+                : '#FFF'
             }}
           >
             {key.replace(/A[A-Z]/g, '$&').toLowerCase()}{' '}

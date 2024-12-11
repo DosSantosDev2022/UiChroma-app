@@ -22,7 +22,7 @@ export function CodeBlock({ code }: CodeBlockProps) {
         scrollbarColor: 'unset',
         color: 'white',
         colorRendering: 'optimizeQuality',
-        fontFamily: "'JetBrains Mono', monospace",
+        fontFamily: "'JetBrains Mono', monospace"
       }}
       showLineNumbers
     >

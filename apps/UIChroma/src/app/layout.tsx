@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   title: 'UIChroma',
   description: 'Biblioteca de componentes React',
   icons: {
-    icon: '/icon.svg',
-  },
+    icon: '/icon.svg'
+  }
 }
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode
 }>) {

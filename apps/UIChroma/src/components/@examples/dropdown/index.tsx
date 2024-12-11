@@ -7,7 +7,7 @@ import {
   DropDownLink,
   DropDownList,
   DropDownProvider,
-  DropDownTrigger,
+  DropDownTrigger
 } from '@repo/chromaui/components/dropdown/Dropdown.tsx'
 import { FaCreditCard, FaUser } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
@@ -18,23 +18,23 @@ export default function DropDownPreview() {
     {
       id: '0001',
       content: 'Profile',
-      icon: <FaUser />,
+      icon: <FaUser />
     },
     {
       id: '0002',
       content: 'Biling',
-      icon: <FaCreditCard />,
+      icon: <FaCreditCard />
     },
     {
       id: '0003',
       content: 'Settings',
-      icon: <IoMdSettings />,
+      icon: <IoMdSettings />
     },
     {
       id: '0004',
       content: 'Team',
-      icon: <RiTeamFill />,
-    },
+      icon: <RiTeamFill />
+    }
   ]
   return (
     <div>

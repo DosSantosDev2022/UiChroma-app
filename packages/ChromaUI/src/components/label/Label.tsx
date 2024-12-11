@@ -9,7 +9,7 @@ export const Label = React.forwardRef<
     <label
       className={twMerge(
         'text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
-        className,
+        className
       )}
       ref={ref}
       {...props}

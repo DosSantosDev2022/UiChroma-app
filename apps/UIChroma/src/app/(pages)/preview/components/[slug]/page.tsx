@@ -4,7 +4,7 @@ import {
   MainContainer,
   SectionNavigation,
   SectionPage,
-  WrapperSections,
+  WrapperSections
 } from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
 import { Title } from '@/components/global/title/title'
@@ -18,7 +18,7 @@ import {
   ClipBoardArea,
   ClipBoardContainer,
   ClipBoardHeader,
-  ClipBoardLabel,
+  ClipBoardLabel
 } from '@repo/chromaui/components/clipboard/Clipboard.tsx'
 import { redirect } from 'next/navigation'
 import { FaCircleCheck } from 'react-icons/fa6'
@@ -30,7 +30,7 @@ interface ComponentDetailsProps {
 }
 
 export default async function ComponentDetails({
-  params,
+  params
 }: ComponentDetailsProps) {
   const { slug } = await params
 

@@ -3,7 +3,7 @@ import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
 import {
   NavigationItem,
   NavigationList,
-  NavigationRoot,
+  NavigationRoot
 } from '@repo/chromaui/components/navigation/navigation.tsx'
 import { useState } from 'react'
 import { GoDotFill } from 'react-icons/go'
@@ -16,7 +16,7 @@ interface NavigateThroughSectionsProps {
 }
 
 export function NavigateThroughSections({
-  links,
+  links
 }: NavigateThroughSectionsProps) {
   const [activeLink, setActiveLink] = useState<string>(links[0]?.url || '')
 

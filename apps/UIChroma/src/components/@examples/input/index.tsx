@@ -1,7 +1,7 @@
 import {
   Field,
   InputIcon,
-  InputRoot,
+  InputRoot
 } from '@repo/chromaui/components/input/Input.tsx'
 import { LuSearch } from 'react-icons/lu'
 

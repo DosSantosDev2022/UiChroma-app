@@ -12,7 +12,7 @@ const Avatar = React.forwardRef<
     ref={ref}
     className={twMerge(
       'relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full',
-      className,
+      className
     )}
     {...props}
   />
@@ -43,7 +43,7 @@ const AvatarFallback = React.forwardRef<
     ref={ref}
     className={twMerge(
       'flex h-full w-full items-center justify-center rounded-full bg-gray-200',
-      className,
+      className
     )}
     {...props}
   >

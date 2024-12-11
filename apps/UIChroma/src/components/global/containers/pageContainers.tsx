@@ -15,7 +15,7 @@ function SectionPage({ children }: { children: ReactNode }) {
 
 function WrapperSections({
   children,
-  className,
+  className
 }: {
   children: ReactNode
   className?: string
@@ -29,7 +29,7 @@ function WrapperSections({
 
 function ContentSections({
   children,
-  id,
+  id
 }: {
   children?: ReactNode
   id?: string
@@ -54,5 +54,5 @@ export {
   SectionPage,
   SectionNavigation,
   WrapperSections,
-  ContentSections,
+  ContentSections
 }

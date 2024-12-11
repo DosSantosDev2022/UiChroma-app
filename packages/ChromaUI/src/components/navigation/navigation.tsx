@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge'
 const NavigationRoot = forwardRef<HTMLElement, ComponentPropsWithRef<'nav'>>(
   ({ className, ...props }, ref) => (
     <nav className={twMerge('w-full', className)} {...props} ref={ref} />
-  ),
+  )
 )
 
 NavigationRoot.displayName = 'NavigationRoot'
@@ -17,7 +17,7 @@ const NavigationList = forwardRef<
   <ul
     className={twMerge(
       'space-y-4  scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground',
-      className,
+      className
     )}
     {...props}
     ref={ref}
@@ -30,18 +30,19 @@ const NavigationItem = forwardRef<HTMLLIElement, ComponentPropsWithRef<'li'>>(
   ({ className, ...props }, ref) => (
     <li
       className={twMerge(
-        'cursor-pointer h-10 flex items-center w-full  px-2 py-1.5 hover:bg-foreground/10 animation-hover',
-        className,
+        'animation-hover flex h-10 w-full cursor-pointer  items-center px-2 py-1.5 hover:bg-foreground/10',
+        className
       )}
       {...props}
       ref={ref}
     />
-  ),
+  )
 )
 
 NavigationItem.displayName = 'NavigationItem'
 
-interface NavigationLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface NavigationLinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   asChild?: boolean
 }
 
@@ -59,7 +60,7 @@ const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>(
         className={twMerge(
           `flex w-full items-center justify-start gap-2  text-sm font-semibold text-foreground
            `,
-          className,
+          className
         )}
         {...props}
         ref={ref}
@@ -86,4 +87,3 @@ export {
   NavigationList,
   NavigationRoot
 }
-

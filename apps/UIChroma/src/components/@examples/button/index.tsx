@@ -23,7 +23,7 @@ export default function ButtonPreview() {
     { type: 'danger' },
     { type: 'warning' },
     { type: 'Swipe' },
-    { type: 'Shine' },
+    { type: 'Shine' }
   ]
 
   return (

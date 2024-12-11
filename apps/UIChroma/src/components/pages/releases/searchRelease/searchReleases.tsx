@@ -3,7 +3,7 @@
 import {
   Field,
   InputIcon,
-  InputRoot,
+  InputRoot
 } from '@repo/ChromaUI/components/input/Input.tsx'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'

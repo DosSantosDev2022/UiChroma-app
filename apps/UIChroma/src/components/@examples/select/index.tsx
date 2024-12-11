@@ -3,26 +3,26 @@ import {
   SelectOption,
   SelectProvider,
   SelectRoot,
-  SelectTrigger,
+  SelectTrigger
 } from '@repo/chromaui/components/select/Select.tsx'
 
 export default function SelectPreview() {
   const options = [
     {
-      label: 'Opção 01',
+      label: 'Opção 01'
     },
     {
-      label: 'Opção 02',
+      label: 'Opção 02'
     },
     {
-      label: 'Opção 03',
+      label: 'Opção 03'
     },
     {
-      label: 'Opção 04',
+      label: 'Opção 04'
     },
     {
-      label: 'Opção 05',
-    },
+      label: 'Opção 05'
+    }
   ]
 
   return (

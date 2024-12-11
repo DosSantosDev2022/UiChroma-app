@@ -8,14 +8,14 @@ interface DropDownContextProps {
 }
 
 const DropDownContext = createContext<DropDownContextProps | undefined>(
-  undefined,
+  undefined
 )
 
 const useDropDownContext = () => {
   const context = useContext(DropDownContext)
   if (!context) {
     throw new Error(
-      'DropDown components must be used within a DropDown provider',
+      'DropDown components must be used within a DropDown provider'
     )
   }
   return context
@@ -51,8 +51,8 @@ const DropDownTrigger = React.forwardRef<
       onClick={toggleOpen}
       {...props}
       className={twMerge(
-        'h-10 w-full px-2 py-1.5 border rounded bg-background text-foreground flex items-center justify-start gap-1 animation-hover hover:bg-foreground/10  ',
-        className,
+        'animation-hover flex h-10 w-full items-center justify-start gap-1 rounded border bg-background px-2 py-1.5 text-foreground hover:bg-foreground/10  ',
+        className
       )}
       ref={ref}
     />
@@ -73,14 +73,14 @@ const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
         <div
           {...props}
           className={twMerge(
-            `${position} mt-1 w-full rounded-md bg-background  border`,
-            className,
+            `${position} mt-1 w-full rounded-md border  bg-background`,
+            className
           )}
           ref={ref}
         />
       )
     )
-  },
+  }
 )
 
 DropDownContent.displayName = 'DropDownContent'
@@ -91,7 +91,10 @@ const DropDownList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ul
     {...props}
-    className={twMerge('flex flex-col gap-1 mt-2 space-y-1 overflow-y-scroll px-4 custom-scrollbar', className)}
+    className={twMerge(
+      'custom-scrollbar mt-2 flex flex-col gap-1 space-y-1 overflow-y-scroll px-4',
+      className
+    )}
     ref={ref}
   />
 ))
@@ -105,8 +108,8 @@ const DropDownItem = React.forwardRef<
   <li
     {...props}
     className={twMerge(
-      'cursor-pointer px-2 py-1.5  hover:bg-foreground/10 animation-hover',
-      className,
+      'animation-hover cursor-pointer px-2  py-1.5 hover:bg-foreground/10',
+      className
     )}
     ref={ref}
   />
@@ -121,8 +124,8 @@ const DropDownLabel = React.forwardRef<
   return (
     <label
       className={twMerge(
-        ' ml-1.5 border-b-border px-2 py-1.5 text-sm font-semibold text-background-foreground',
-        className,
+        ' text-background-foreground ml-1.5 border-b-border px-2 py-1.5 text-sm font-semibold',
+        className
       )}
       ref={ref}
       {...props}
@@ -132,33 +135,32 @@ const DropDownLabel = React.forwardRef<
 
 DropDownLabel.displayName = 'DropDownLabel'
 
-
-interface DropDownLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface DropDownLinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   asChild?: boolean
 }
 
-const DropDownLink = React.forwardRef<
-  HTMLAnchorElement,
-  DropDownLinkProps
->(({ className, asChild, children, ...props }, ref) => {
-  if (asChild) {
-    return React.cloneElement(children as React.ReactElement, {
-      ...props,
-      ref
-    })
-  }
+const DropDownLink = React.forwardRef<HTMLAnchorElement, DropDownLinkProps>(
+  ({ className, asChild, children, ...props }, ref) => {
+    if (asChild) {
+      return React.cloneElement(children as React.ReactElement, {
+        ...props,
+        ref
+      })
+    }
 
-  return (
-    <a
-      className={twMerge(
-        'flex w-full items-center justify-start gap-2  text-sm font-semibold text-background-foreground',
-        className,
-      )}
-      {...props}
-      ref={ref}
-    />
-  )
-})
+    return (
+      <a
+        className={twMerge(
+          'text-background-foreground flex w-full items-center justify-start  gap-2 text-sm font-semibold',
+          className
+        )}
+        {...props}
+        ref={ref}
+      />
+    )
+  }
+)
 
 DropDownLink.displayName = 'DropDownLink'
 
@@ -178,8 +180,8 @@ const DropDownIcon = React.forwardRef<
   return (
     <i
       className={twMerge(
-        'flex h-6 w-6 items-center justify-center text-background-foreground',
-        className,
+        'text-background-foreground flex h-6 w-6 items-center justify-center',
+        className
       )}
       {...props}
       ref={ref}
@@ -201,4 +203,3 @@ export {
   DropDownProvider,
   DropDownTrigger
 }
-

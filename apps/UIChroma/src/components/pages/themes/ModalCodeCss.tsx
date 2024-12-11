@@ -8,7 +8,7 @@ import {
   ClipBoardArea,
   ClipBoardContainer,
   ClipBoardHeader,
-  ClipBoardLabel,
+  ClipBoardLabel
 } from '@repo/ChromaUI/components/clipboard/Clipboard.tsx'
 import {
   ModalClose,
@@ -19,7 +19,7 @@ import {
   ModalProvider,
   ModalRoot,
   ModalTitle,
-  ModalTrigger,
+  ModalTrigger
 } from '@repo/ChromaUI/components/modal/Modal.tsx'
 import { useState } from 'react'
 import { BiLogoCss3 } from 'react-icons/bi'

@@ -23,21 +23,17 @@ const ClipBoardAction = React.forwardRef<HTMLButtonElement, ClipBoardProps>(
     return (
       <button
         className={twMerge(
-          'flex items-center gap-2  rounded-md p-1.5 transition-all duration-300 bg-muted-foreground text-muted hover:bg-muted-hover hover:text-muted-foreground',
-          className,
+          'flex items-center gap-2  rounded-md bg-muted-foreground p-1.5 text-muted transition-all duration-300 hover:bg-muted-hover hover:text-muted-foreground',
+          className
         )}
         ref={ref}
         onClick={handleCopyCode}
         {...props}
       >
-        {copy ? (
-          <FaCheckCircle size={14} />
-        ) : (
-          <FaCopy size={14} />
-        )}
+        {copy ? <FaCheckCircle size={14} /> : <FaCopy size={14} />}
       </button>
     )
-  },
+  }
 )
 ClipBoardAction.displayName = 'ClipBoardAction'
 
@@ -59,7 +55,7 @@ const ClipBoardHeader = React.forwardRef<
       ref={ref}
       className={twMerge(
         `flex h-12 w-full items-center justify-between rounded-md bg-foreground/95 px-2 py-3`,
-        className,
+        className
       )}
     />
   )
@@ -89,8 +85,8 @@ const ClipBoardArea = React.forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        'from h-full w-full bg-foreground/95 rounded-md',
-        className,
+        'from h-full w-full rounded-md bg-foreground/95',
+        className
       )}
     />
   )
@@ -98,6 +94,9 @@ const ClipBoardArea = React.forwardRef<
 ClipBoardArea.displayName = 'ClipBoardArea'
 
 export {
-  ClipBoardAction, ClipBoardArea, ClipBoardContainer, ClipBoardHeader, ClipBoardLabel
+  ClipBoardAction,
+  ClipBoardArea,
+  ClipBoardContainer,
+  ClipBoardHeader,
+  ClipBoardLabel
 }
-

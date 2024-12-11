@@ -69,5 +69,5 @@ export const defaultColors: Colors = {
   dark_chart2: '',
   dark_chart3: '',
   dark_chart4: '',
-  dark_chart5: '',
+  dark_chart5: ''
 }

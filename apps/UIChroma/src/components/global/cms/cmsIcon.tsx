@@ -8,7 +8,7 @@ export function CMSIcon({ icon, className }: CMSIconProps) {
     <div
       className={className}
       dangerouslySetInnerHTML={{
-        __html: `<i class="${className}">${icon}</i>`,
+        __html: `<i class="${className}">${icon}</i>`
       }}
     />
   )

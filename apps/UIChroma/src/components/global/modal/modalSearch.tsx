@@ -1,52 +1,55 @@
 'use client'
 
 import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
-import { Field, InputIcon, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
+import {
+  Field,
+  InputIcon,
+  InputRoot,
+} from '@repo/ChromaUI/components/input/Input.tsx'
 import Link from 'next/link'
 import { ChangeEvent, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 
 interface Component {
-  id: string;
-  slug: string;
-  name: string;
+  id: string
+  slug: string
+  name: string
 }
 
 interface ModalProps {
-  data: Component[];
+  data: Component[]
 }
 
 export default function Modal({ data }: ModalProps) {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
-  const [filtered, setFiltered] = useState<Component[]>([]);
+  const [filtered, setFiltered] = useState<Component[]>([])
 
   const handleOpenModal = () => {
     setIsOpenModal(!isOpenModal)
   }
 
-
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.toLowerCase();
-    setSearchTerm(value);
+    const value = e.target.value.toLowerCase()
+    setSearchTerm(value)
 
     if (value) {
       const filteredComponents = data.filter((data) =>
         data.name.toLowerCase().includes(value)
-      );
+      )
 
-      setFiltered(filteredComponents);
+      setFiltered(filteredComponents)
     } else {
-      setFiltered([]);
+      setFiltered([])
     }
-  };
+  }
 
   return (
     <>
       <Button
-        sizes='full'
-        variant='outline'
-        className=" flex  items-center justify-start gap-4 border border-border/20 w-[360px] "
+        sizes="full"
+        variant="outline"
+        className=" flex  w-[360px] items-center justify-start gap-4 border border-border/20 "
         onClick={handleOpenModal}
       >
         <BsSearch size={20} />
@@ -67,13 +70,12 @@ export default function Modal({ data }: ModalProps) {
                 </h3>
                 <Button
                   variant="primary"
-                  sizes='icon'
+                  sizes="icon"
                   onClick={handleOpenModal}
                   type="button"
-                  className="ms-auto flex rounded-full active:scale-95 duration-500"
+                  className="ms-auto flex rounded-full duration-500 active:scale-95"
                 >
-                  X
-                  <span className="sr-only">Close modal</span>
+                  X<span className="sr-only">Close modal</span>
                 </Button>
               </div>
               <form className="w-full">
@@ -92,13 +94,13 @@ export default function Modal({ data }: ModalProps) {
               </form>
             </div>
 
-            <div className="space-4  max-h-80 overflow-y-auto p-4 scrollbar-thin scrollbar-track-secondary-50 scrollbar-thumb-primary-800 md:p-5">
+            <div className="space-4  scrollbar-track-secondary-50 scrollbar-thumb-primary-800 max-h-80 overflow-y-auto p-4 scrollbar-thin md:p-5">
               {filtered.length > 0 ? (
                 <ul>
                   {filtered.map((filter) => (
                     <li className="flex flex-col gap-1" key={filter.id}>
                       <Link
-                        className="w-full rounded-md border p-2 text-primary-800 transition-all duration-200 hover:bg-primary-800 hover:text-secondary-50"
+                        className="text-primary-800 hover:bg-primary-800 hover:text-secondary-50 w-full rounded-md border p-2 transition-all duration-200"
                         href={filter.slug}
                         onClick={handleOpenModal}
                       >

@@ -1,5 +1,4 @@
-import { Colors } from "@/@types/colorsState";
-
+import { Colors } from '@/@types/colorsState'
 
 export const generateCodeCss = (colors: Colors) => {
   return `
@@ -84,7 +83,7 @@ export const generateCodeCss = (colors: Colors) => {
       }
         
    `
-};
+}
 
 export const generateTailwindConfig = () => {
   return `

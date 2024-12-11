@@ -1,0 +1,34 @@
+name: Prettier Code Action
+
+on:
+  push:
+    branches:
+      - main # Ações acionadas quando houver push para a branch main
+  pull_request:
+    branches:
+      - main # Ações acionadas quando houver PR para a branch main
+
+jobs:
+  prettier:
+    runs-on: windows-latest # Define o ambiente para rodar o workflow
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3 # Configura ambiente node js
+
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install pnpm
+        run: npm install -g pnpm # Instala o pnpm globalmente
+
+      - name: Install dependencies
+        run: pnpm install # Instala as dependências do projeto
+
+      - name: Run Prettier
+        run: pnpm run format # Executa o Prettier no código

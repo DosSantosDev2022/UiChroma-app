@@ -1,7 +1,19 @@
 import { Button } from '@repo/chromaui/components/button/Button.tsx'
 
 export default function ButtonPreview() {
-  const variantes: { type: "primary" | "secundary" | "outline" | "highlight" | "disabled" | "link" | "danger" | "warning" | "Swipe" | "Shine" }[] = [
+  const variantes: {
+    type:
+      | 'primary'
+      | 'secundary'
+      | 'outline'
+      | 'highlight'
+      | 'disabled'
+      | 'link'
+      | 'danger'
+      | 'warning'
+      | 'Swipe'
+      | 'Shine'
+  }[] = [
     { type: 'primary' },
     { type: 'secundary' },
     { type: 'outline' },
@@ -11,22 +23,22 @@ export default function ButtonPreview() {
     { type: 'danger' },
     { type: 'warning' },
     { type: 'Swipe' },
-    { type: 'Shine' }
+    { type: 'Shine' },
   ]
-
 
   return (
     <div className="flex w-full flex-wrap items-center  gap-2">
       {/* Exemplos do componente button utilizando as variantes */}
       {variantes.map((variant) => (
-        <Button key={variant.type} variant={variant.type} sizes='sm'>
+        <Button key={variant.type} variant={variant.type} sizes="sm">
           {variant.type}
         </Button>
       ))}
 
       {/* Exemplo do componente button recebendo estados */}
-      <Button isLoading variant={'primary'} sizes='sm'>Loading</Button>
-
+      <Button isLoading variant={'primary'} sizes="sm">
+        Loading
+      </Button>
     </div>
   )
 }

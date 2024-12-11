@@ -1,9 +1,25 @@
 'use client'
-import { ELLIPSIS_LEFT, ELLIPSIS_RIGTH, usePagination } from '@/hooks/usePagination/index'
-import { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@repo/chromaui/components/pagination/Pagination.tsx'
+import {
+  ELLIPSIS_LEFT,
+  ELLIPSIS_RIGTH,
+  usePagination,
+} from '@/hooks/usePagination/index'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from '@repo/chromaui/components/pagination/Pagination.tsx'
 
 export default function PaginationPreview() {
-  const { isCurrentPage, pages } = usePagination({ page: 1, limit: 10, total: 100 })
+  const { isCurrentPage, pages } = usePagination({
+    page: 1,
+    limit: 10,
+    total: 100,
+  })
   return (
     <Pagination>
       <PaginationContent>
@@ -15,7 +31,10 @@ export default function PaginationPreview() {
 
           return (
             <PaginationItem key={index}>
-              <PaginationLink href={`?page=${page}`} aria-current={isCurrentPage(Number(page)) ? 'page' : 'false'}>
+              <PaginationLink
+                href={`?page=${page}`}
+                aria-current={isCurrentPage(Number(page)) ? 'page' : 'false'}
+              >
                 {page}
               </PaginationLink>
             </PaginationItem>

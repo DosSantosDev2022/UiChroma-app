@@ -1,5 +1,5 @@
-import { Colors } from "@/@types/colorsState";
-import { colord } from "colord";
+import { Colors } from '@/@types/colorsState'
+import { colord } from 'colord'
 
 interface ExampleofColorsProps {
   Colors: Colors
@@ -7,11 +7,18 @@ interface ExampleofColorsProps {
 
 export function ExampleofColors({ Colors }: ExampleofColorsProps) {
   return (
-    <div className="flex items-center justify-center gap-2 flex-wrap shadow-sm rounded border px-6 py-4">
-      {['primary', 'secondary', 'accent', 'muted', 'background', 'foreground'].map((key) => (
+    <div className="flex flex-wrap items-center justify-center gap-2 rounded border px-6 py-4 shadow-sm">
+      {[
+        'primary',
+        'secondary',
+        'accent',
+        'muted',
+        'background',
+        'foreground',
+      ].map((key) => (
         <div
           key={key}
-          className="w-28 h-28 rounded-md border  cursor-pointer flex items-center justify-center"
+          className="flex h-28 w-28 cursor-pointer  items-center justify-center rounded-md border"
           style={{
             backgroundColor: `hsl(${Colors[key as keyof Colors]})`,
           }}
@@ -19,9 +26,13 @@ export function ExampleofColors({ Colors }: ExampleofColorsProps) {
           <span
             className="font-bold"
             style={{
-              color: colord(`hsl(${Colors[key as keyof Colors]})`).isLight() ? "#000" : "#FFF",
+              color: colord(`hsl(${Colors[key as keyof Colors]})`).isLight()
+                ? '#000'
+                : '#FFF',
             }}
-          >{key.replace(/A[A-Z]/g, "$&").toLowerCase()} </span>
+          >
+            {key.replace(/A[A-Z]/g, '$&').toLowerCase()}{' '}
+          </span>
         </div>
       ))}
     </div>

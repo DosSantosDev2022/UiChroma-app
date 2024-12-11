@@ -1,14 +1,9 @@
-import { ReactNode } from "react";
-import { twMerge } from "tailwind-merge";
+import { ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 function MainContainer({ children }: { children: ReactNode }) {
-  return (
-    <div className="grid grid-cols-4 gap-4">
-      {children}
-    </div>
-  )
+  return <div className="grid grid-cols-4 gap-4">{children}</div>
 }
-
 
 function SectionPage({ children }: { children: ReactNode }) {
   return (
@@ -18,18 +13,30 @@ function SectionPage({ children }: { children: ReactNode }) {
   )
 }
 
-function WrapperSections({ children, className }: { children: ReactNode, className?: string }) {
+function WrapperSections({
+  children,
+  className,
+}: {
+  children: ReactNode
+  className?: string
+}) {
   return (
-    <div className={twMerge(' space-y-20  pb-10 pt-8', className)} >
-        {children}
+    <div className={twMerge(' space-y-20  pb-10 pt-8', className)}>
+      {children}
     </div>
   )
 }
 
-function ContentSections({ children, id }: { children?: ReactNode, id?: string }) {
+function ContentSections({
+  children,
+  id,
+}: {
+  children?: ReactNode
+  id?: string
+}) {
   return (
     <div id={id} className="flex flex-col gap-3">
-        {children}
+      {children}
     </div>
   )
 }
@@ -42,11 +49,10 @@ function SectionNavigation({ children }: { children?: ReactNode }) {
   )
 }
 
-
 export {
   MainContainer,
   SectionPage,
   SectionNavigation,
   WrapperSections,
-  ContentSections
+  ContentSections,
 }

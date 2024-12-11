@@ -2,7 +2,7 @@ import { MyQueryResponse } from '@/@types/releases'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_RELEASES = async (
-  searchTerm?: string,
+  searchTerm?: string
 ): Promise<MyQueryResponse> => {
   const query = `
     query MyQuery($searchTerm: String) {
@@ -27,6 +27,6 @@ export const GET_RELEASES = async (
   return fetchHygraphQuery(
     query,
     { searchTerm: searchTerm || '' },
-    { cache: 'force-cache', revalidate: 60 * 60 * 24 },
+    { cache: 'force-cache', revalidate: 60 * 60 * 24 }
   )
 }

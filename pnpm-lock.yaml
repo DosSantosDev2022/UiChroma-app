@@ -121,6 +121,9 @@ importers:
         specifier: ^3.23.8
         version: 3.23.8
     devDependencies:
+      '@repo/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
       '@types/react-color':
         specifier: ^3.0.12
         version: 3.0.12

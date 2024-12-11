@@ -28,23 +28,23 @@ export default async function ReleasePage({ searchParams }: ReleasePageParams) {
       <SearchReleases />
       <div className="flex flex-col gap-3">
         <Title>{releasePage.title}</Title>
-        <p className="text-muted-foreground text-base font-normal">
+        <p className="text-base font-normal text-muted-foreground">
           {releasePage.description}
         </p>
       </div>
 
-      <div className="mt-20 mb-20 space-y-4">
+      <div className="mb-20 mt-20 space-y-4">
         {releasePage.releases.map((release) => (
           <div
             key={release.id}
             className="flex flex-col gap-2 rounded-md border p-4 shadow-sm"
           >
             <div className="flex flex-col gap-2">
-              <span className="text-muted-foreground text-sm font-normal">
+              <span className="text-sm font-normal text-muted-foreground">
                 {format(new Date(release.date), 'dd/MM/yyyy')}
               </span>
               <div className="flex items-center gap-3">
-                <Title as='h4' className="text-foreground text-xl font-bold">
+                <Title as="h4" className="text-xl font-bold text-foreground">
                   {release.title}
                 </Title>
                 <Badge variant="accent" children={release.version} />

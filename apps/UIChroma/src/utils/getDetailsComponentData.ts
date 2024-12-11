@@ -2,7 +2,7 @@ import { ComponentsPageData } from '@/@types/components'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_DETAILS_COMPONENT = async (
-  slug: string,
+  slug: string
 ): Promise<ComponentsPageData> => {
   const query = `
       query MyQuery($slug: String!) {

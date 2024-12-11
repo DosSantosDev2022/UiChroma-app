@@ -1,37 +1,37 @@
 'use client'
-import { useState } from "react";
-import { SketchPicker } from "react-color";
+import { useState } from 'react'
+import { SketchPicker } from 'react-color'
 
 interface SelectorColorsProps {
-  color: string;
-  onChange: (color: any) => void;
+  color: string
+  onChange: (color: any) => void
 }
 export function ColorPicker({ color, onChange }: SelectorColorsProps) {
   const [activePickers, setActivePickers] = useState(false)
   const togglePicker = () => {
     setActivePickers((prev) => !prev)
-  };
+  }
 
   return (
     <>
-      <div className="md:relative  flex flex-col border rounded-full w-full h-14 shadow-sm px-2 py-2.5">
+      <div className="flex  h-14 w-full flex-col rounded-full border px-2 py-2.5 shadow-sm md:relative">
         <div
           onClick={togglePicker}
-          className="flex items-center justify-between gap-2 cursor-pointer active:scale-95 duration-500"
+          className="flex cursor-pointer items-center justify-between gap-2 duration-500 active:scale-95"
         >
           <label className="ml-4 font-semibold text-muted-foreground">
             Base Color
           </label>
-          <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex flex-wrap items-center gap-2">
             <div
-              className="w-8 h-8 rounded-full border border-border cursor-pointer"
+              className="h-8 w-8 cursor-pointer rounded-full border border-border"
               style={{ backgroundColor: `hsl(${color})` }}
             />
           </div>
         </div>
         {activePickers && (
           <div
-            className="absolute top-full left-0 z-50 mt-2"
+            className="absolute left-0 top-full z-50 mt-2"
             onClick={(e) => e.stopPropagation()}
           >
             <SketchPicker
@@ -41,7 +41,6 @@ export function ColorPicker({ color, onChange }: SelectorColorsProps) {
           </div>
         )}
       </div>
-
     </>
   )
 }

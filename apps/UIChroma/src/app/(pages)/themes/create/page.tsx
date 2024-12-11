@@ -1,22 +1,22 @@
-'use client';
-import { Colors } from '@/@types/colorsState';
-import { Title } from '@/components/global/title/title';
-import { ColorPicker } from '@/components/pages/themes/ColorPicker';
-import { ExampleofColors } from '@/components/pages/themes/exampleofColors';
-import { ModalCodeCss } from '@/components/pages/themes/ModalCodeCss';
-import { defaultColors } from '@/enums/colors';
-import { generateTheme } from '@/utils/generateTheme';
-import { useState } from 'react';
+'use client'
+import { Colors } from '@/@types/colorsState'
+import { Title } from '@/components/global/title/title'
+import { ColorPicker } from '@/components/pages/themes/ColorPicker'
+import { ExampleofColors } from '@/components/pages/themes/exampleofColors'
+import { ModalCodeCss } from '@/components/pages/themes/ModalCodeCss'
+import { defaultColors } from '@/enums/colors'
+import { generateTheme } from '@/utils/generateTheme'
+import { useState } from 'react'
 
 export default function ThemeCreatePage() {
-  const [colors, setColors] = useState<Colors>(defaultColors);
+  const [colors, setColors] = useState<Colors>(defaultColors)
 
   const handleBaseColorChange = (color: any) => {
-    const { hex } = color; // Usar o valor hexadecimal da cor
-    const newTheme = generateTheme(hex); // Gerar tema baseado na cor
-    setColors(newTheme.colors); // Atualizar estado com o novo tema
-  };
-  console.log('cores geradas', colors);
+    const { hex } = color // Usar o valor hexadecimal da cor
+    const newTheme = generateTheme(hex) // Gerar tema baseado na cor
+    setColors(newTheme.colors) // Atualizar estado com o novo tema
+  }
+
   return (
     <div className="flex flex-col space-y-10">
       <section className="relative mx-auto p-2">
@@ -43,5 +43,5 @@ export default function ThemeCreatePage() {
         <ExampleofColors Colors={colors} />
       </section>
     </div>
-  );
+  )
 }

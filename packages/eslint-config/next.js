@@ -6,6 +6,7 @@ const project = resolve(process.cwd(), "tsconfig.json");
 module.exports = {
   extends: [
     "eslint:recommended",
+    'plugin:prettier/recommended',
     "prettier",
     require.resolve("@vercel/style-guide/eslint/next"),
     "turbo",
@@ -35,5 +36,16 @@ module.exports = {
   rules: {
     'no-unused-vars': 'off',
     'no-undef': 'off',
+    'prettier/prettier': ["error", {
+      'printWidth': 80,
+      'tabWidth': 2,
+      'singleQuote': true,
+      'trailingComma': 'all',
+      'arrowParens': 'always',
+      'semi': false,
+      'endOfLine': 'auto',
+      'tailwindcss/classnames-order': 'warn',
+      'tailwindcss/no-custom-classname': 'off',
+    }],
   }
 };

@@ -1,11 +1,11 @@
 export type Colors = {
   // Tema modo ligth
 
-  background: string; // cor de fundo principal
-  foreground: string; // cor de contraste principal
-  primary: string; // cor principal, usada para elementos importantes
+  background: string // cor de fundo principal
+  foreground: string // cor de contraste principal
+  primary: string // cor principal, usada para elementos importantes
   primary_hover: string // hover da cor principal
-  primary_foreground: string; // contraste da cor primary
+  primary_foreground: string // contraste da cor primary
   secondary: string // cor secundaria, usada para elementos menos importantes
   secondary_hover: string // hover da cor secundária
   secondary_foreground: string // cor de contraste para secondary
@@ -26,21 +26,21 @@ export type Colors = {
   success_hover: string // hover da cor sucess
   success_foreground: string // contraste da cor sucess
 
-  border: string // cor para bordas 
+  border: string // cor para bordas
   ring: string // cor para rings
 
-  chart1: string // core para gráficos 
+  chart1: string // core para gráficos
   chart2: string // core para gráficos
   chart3: string // core para gráficos
   chart4: string // core para gráficos
   chart5: string // core para gráficos
 
-  // Tema modo dark 
-  dark_background: string; // cor de fundo principal
-  dark_foreground: string; // cor de contraste principal
-  dark_primary: string; // cor principal, usada para elementos importantes
+  // Tema modo dark
+  dark_background: string // cor de fundo principal
+  dark_foreground: string // cor de contraste principal
+  dark_primary: string // cor principal, usada para elementos importantes
   dark_primary_hover: string // hover da cor principal
-  dark_primary_foreground: string; // contraste da cor primary
+  dark_primary_foreground: string // contraste da cor primary
   dark_secondary: string // cor secundaria, usada para elementos menos importantes
   dark_secondary_hover: string // hover da cor secundária
   dark_secondary_foreground: string // cor de contraste para secondary
@@ -61,10 +61,10 @@ export type Colors = {
   dark_success_hover: string // hover da cor sucess
   dark_success_foreground: string // contraste da cor sucess
 
-  dark_border: string // cor para bordas 
+  dark_border: string // cor para bordas
   dark_ring: string // cor para rings
 
-  dark_chart1: string // core para gráficos 
+  dark_chart1: string // core para gráficos
   dark_chart2: string // core para gráficos
   dark_chart3: string // core para gráficos
   dark_chart4: string // core para gráficos

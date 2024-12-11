@@ -33,16 +33,13 @@ export default function Modal({ children }: { children: ReactNode }) {
                   type="button"
                   className="ms-auto flex h-8 w-8 items-center justify-center rounded-lg "
                 >
-                  x
-                  <span className="sr-only">Close modal</span>
+                  x<span className="sr-only">Close modal</span>
                 </Button>
               </div>
 
               {/*  Modal body */}
 
-              <div className="space-4 p-4 md:p-5">
-                {children}
-              </div>
+              <div className="space-4 p-4 md:p-5">{children}</div>
               {/* Modal footer  */}
               <div className="flex items-center gap-2 rounded-b border-t border-gray-200 p-4 md:p-5 dark:border-gray-600">
                 <Button variant="primary" type="button">

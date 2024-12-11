@@ -1,6 +1,12 @@
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { RichText } from '@/components/global/cms/rich-text'
-import { MainContainer, SectionNavigation, SectionPage, WrapperSections, ContentSections } from '@/components/global/containers/pageContainers'
+import {
+  MainContainer,
+  SectionNavigation,
+  SectionPage,
+  WrapperSections,
+  ContentSections,
+} from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
 import { Title } from '@/components/global/title/title'
 import { links } from '@/enums/documentation'
@@ -80,7 +86,9 @@ export default async function Starter() {
       </SectionPage>
 
       <SectionNavigation>
-        <Title as='h3' className='text-lg' >Navegue nessa página</Title>
+        <Title as="h3" className="text-lg">
+          Navegue nessa página
+        </Title>
 
         <NavigateThroughSections links={links} />
       </SectionNavigation>

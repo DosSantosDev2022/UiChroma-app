@@ -1,9 +1,9 @@
 export enum NavigationLinks {
-  INTRODUCTION = "Introdução",
-  ESTRUTURA = "Estrutura",
-  DARK = "Dark",
-  CUSTOMIZATION = "Personalização",
-  INTEGRATION = "Integração",
+  INTRODUCTION = 'Introdução',
+  ESTRUTURA = 'Estrutura',
+  DARK = 'Dark',
+  CUSTOMIZATION = 'Personalização',
+  INTEGRATION = 'Integração',
 }
 
 export const links = [

@@ -1,6 +1,10 @@
 'use client'
 
-import { Field, InputIcon, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
+import {
+  Field,
+  InputIcon,
+  InputRoot,
+} from '@repo/ChromaUI/components/input/Input.tsx'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'

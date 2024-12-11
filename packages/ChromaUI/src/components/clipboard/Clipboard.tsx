@@ -23,7 +23,7 @@ const ClipBoardAction = React.forwardRef<HTMLButtonElement, ClipBoardProps>(
     return (
       <button
         className={twMerge(
-          'flex items-center gap-2  rounded-md p-1.5 transition-all duration-300 bg-background/30 hover:bg-background/20',
+          'flex items-center gap-2  rounded-md p-1.5 transition-all duration-300 bg-muted-foreground text-muted hover:bg-muted-hover hover:text-muted-foreground',
           className,
         )}
         ref={ref}
@@ -31,9 +31,9 @@ const ClipBoardAction = React.forwardRef<HTMLButtonElement, ClipBoardProps>(
         {...props}
       >
         {copy ? (
-          <FaCheckCircle className="text-accent" size={14} />
+          <FaCheckCircle size={14} />
         ) : (
-          <FaCopy className="text-accent" size={14} />
+          <FaCopy size={14} />
         )}
       </button>
     )
@@ -58,7 +58,7 @@ const ClipBoardHeader = React.forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        `flex h-12 w-full items-center justify-between rounded-md bg-foreground/90 p-3`,
+        `flex h-12 w-full items-center justify-between rounded-md bg-foreground/95 px-2 py-3`,
         className,
       )}
     />
@@ -74,7 +74,7 @@ const ClipBoardLabel = React.forwardRef<
     <h6
       {...props}
       ref={ref}
-      className={twMerge('text-lg font-normal text-accent', className)}
+      className={twMerge('text-base font-normal text-muted', className)}
     />
   )
 })
@@ -89,7 +89,7 @@ const ClipBoardArea = React.forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        'from h-full w-full bg-foreground/90 rounded-md',
+        'from h-full w-full bg-foreground/95 rounded-md',
         className,
       )}
     />
@@ -98,9 +98,6 @@ const ClipBoardArea = React.forwardRef<
 ClipBoardArea.displayName = 'ClipBoardArea'
 
 export {
-  ClipBoardAction,
-  ClipBoardHeader,
-  ClipBoardArea,
-  ClipBoardLabel,
-  ClipBoardContainer,
+  ClipBoardAction, ClipBoardArea, ClipBoardContainer, ClipBoardHeader, ClipBoardLabel
 }
+

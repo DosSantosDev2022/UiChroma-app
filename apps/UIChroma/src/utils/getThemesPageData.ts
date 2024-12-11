@@ -1,6 +1,5 @@
-import { PageDataTypes } from "@/@types/pageData";
-import { fetchHygraphQuery } from "@/app/api/cms/hygraph";
-
+import { PageDataTypes } from '@/@types/pageData'
+import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_THEMES_PAGE_DATA = async (): Promise<PageDataTypes> => {
   const query = `

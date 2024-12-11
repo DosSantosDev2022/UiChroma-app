@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@graphcms/rich-text-react-renderer": "^0.6.1",
@@ -15,6 +16,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@repo/chromaui": "workspace:*",
     "@types/react-syntax-highlighter": "^15.5.13",
+    "colord": "^2.9.3",
     "highlight.js": "^11.10.0",
     "next": "15.0.3",
     "react-color": "^2.19.3",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@types/react-color": "^3.0.12",
     "@types/uuid": "^9.0.8",
-    "tailwindcss": "*"
+    "tailwindcss": "*",
+    "@repo/eslint-config": "workspace:*"
   }
 }

@@ -1,7 +1,7 @@
 export const fetchHygraphQuery = async <T>(
   query: string,
   variables?: Record<string, any>,
-  options?: { cache?: RequestCache; revalidate?: number },
+  options?: { cache?: RequestCache; revalidate?: number }
 ): Promise<T> => {
   const { cache = 'force-cache', revalidate } = options || {}
 

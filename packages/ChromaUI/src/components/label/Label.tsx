@@ -1,7 +1,7 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const ComponentLabel = React.forwardRef<
+export const Label = React.forwardRef<
   HTMLLabelElement,
   React.InputHTMLAttributes<HTMLLabelElement>
 >(({ className, ...props }, ref) => {
@@ -17,4 +17,4 @@ const ComponentLabel = React.forwardRef<
   )
 })
 
-ComponentLabel.displayName = 'Label'
+Label.displayName = 'Label'

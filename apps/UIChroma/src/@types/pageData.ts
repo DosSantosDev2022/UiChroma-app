@@ -1,9 +1,9 @@
-import { RichTextContent } from "@graphcms/rich-text-types";
+import { RichTextContent } from '@graphcms/rich-text-types'
 
 interface Section {
-  id: string;
-  title: string;
-  description: string;
+  id: string
+  title: string
+  description: string
   content: {
     raw: RichTextContent
   }
@@ -11,13 +11,13 @@ interface Section {
 
 export interface PageDataTypes {
   documentationPage: {
-    id: string;
-    title: string;
-    slug: string;
-    section: Section | null;
-    section02: Section | null;
-    section03: Section | null;
-    section04: Section | null;
-    section05: Section | null;
+    id: string
+    title: string
+    slug: string
+    section: Section | null
+    section02: Section | null
+    section03: Section | null
+    section04: Section | null
+    section05: Section | null
   }
 }

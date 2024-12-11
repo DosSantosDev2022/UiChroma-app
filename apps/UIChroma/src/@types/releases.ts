@@ -1,6 +1,5 @@
 import type { RichTextContent } from '@graphcms/rich-text-types'
 
-
 type Commit = {
   id: string
   description: {

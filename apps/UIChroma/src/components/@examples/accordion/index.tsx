@@ -1,7 +1,10 @@
 import {
-  AccordionAnswer, AccordionContainer,
+  AccordionAnswer,
+  AccordionContainer,
   AccordionContent,
-  AccordionProvider, AccordionQuestion, AccordionTrigger
+  AccordionProvider,
+  AccordionQuestion,
+  AccordionTrigger,
 } from '@repo/chromaui/components/accordion/Accordion.tsx'
 
 export default function AccordionPreview() {
@@ -33,7 +36,7 @@ export default function AccordionPreview() {
   ]
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       {faqs.map((faq, index) => (
         <AccordionProvider key={index}>
           <AccordionContainer>

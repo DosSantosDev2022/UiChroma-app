@@ -42,7 +42,7 @@ const generatePages = (page: number, totalPages: number) => {
   ]
 }
 
- const usePagination = ({ page, limit, total }: UsePaginationProps) => {
+const usePagination = ({ page, limit, total }: UsePaginationProps) => {
   const totalPages = Math.ceil(total / limit)
   const pages = generatePages(page, totalPages)
   const isCurrentPage = (n: number) => n === page
@@ -50,6 +50,4 @@ const generatePages = (page: number, totalPages: number) => {
   return { isCurrentPage, pages }
 }
 
-export {
-  usePagination
-}
+export { usePagination }

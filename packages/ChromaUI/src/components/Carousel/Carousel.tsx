@@ -14,7 +14,7 @@ const CarouselContainer = React.forwardRef<
   React.HtmlHTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
   <div
-    className={twMerge('relative w-full h-full', className)}
+    className={twMerge('relative h-full w-full', className)}
     {...props}
     ref={ref}
   />
@@ -29,9 +29,10 @@ const CarouselButton = React.forwardRef<
   <button
     type="button"
     className={twMerge(
-      `absolute active:scale-95 duration-300 top-1/2 transform -translate-y-1/2 bg-accent-foreground text-accent rounded-full p-2 hover:bg-accent-foreground/70 focus:outline-none ${direction === 'prev' ? 'left-4' : 'right-4'
+      `absolute top-1/2 -translate-y-1/2 transform rounded-full bg-accent-foreground p-2 text-accent duration-300 hover:bg-accent-foreground/70 focus:outline-none active:scale-95 ${
+        direction === 'prev' ? 'left-4' : 'right-4'
       }`,
-      className,
+      className
     )}
     {...props}
     ref={ref}
@@ -44,7 +45,7 @@ const CarouselRoot = ({
   children,
   className,
   autoPlay = false,
-  autoPlayInterval = 5000,
+  autoPlayInterval = 5000
 }: CarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const items = useMemo(() => React.Children.toArray(children), [children])
@@ -70,21 +71,21 @@ const CarouselRoot = ({
   return (
     <div
       className={twMerge(
-        'relative overflow-hidden border  w-full h-96',
-        className,
+        'relative h-96 w-full  overflow-hidden border',
+        className
       )}
       aria-live="polite"
     >
       {/* Conteúdo do Carrossel */}
       <div
-        className="flex w-full h-full transition-transform duration-700 ease-in-out"
+        className="flex h-full w-full transition-transform duration-700 ease-in-out"
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
-          width: '100%',
+          width: '100%'
         }}
       >
         {React.Children.map(items, (child) => (
-          <div className="w-full h-full flex-shrink-0">{child}</div>
+          <div className="h-full w-full flex-shrink-0">{child}</div>
         ))}
       </div>
 
@@ -105,16 +106,16 @@ const CarouselRoot = ({
       </CarouselButton>
 
       {/* Indicadores */}
-      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 transform space-x-2">
         {items.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={twMerge(
-              'w-2.5 h-2.5 rounded-full',
+              'h-2.5 w-2.5 rounded-full',
               currentIndex === index
                 ? 'bg-accent'
-                : 'bg-accent-foreground hover:bg-accent-foreground/70',
+                : 'bg-accent-foreground hover:bg-accent-foreground/70'
             )}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -125,4 +126,3 @@ const CarouselRoot = ({
 }
 
 export { CarouselContainer, CarouselRoot }
-

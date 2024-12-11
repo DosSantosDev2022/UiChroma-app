@@ -59,7 +59,7 @@ const SelectIcon = React.forwardRef<
     <i
       className={twMerge(
         'flex h-10 w-10 items-center justify-center text-zinc-900',
-        className,
+        className
       )}
       {...props}
       ref={ref}
@@ -79,8 +79,8 @@ const SelectTrigger = React.forwardRef<
       value={'text'}
       onClick={toggleOpen}
       className={twMerge(
-        ' focus:ring-ring flex h-10 w-[368px] items-center justify-between rounded-md border bg-secondary-50 px-3 py-2 text-sm text-primary-950 ring-offset-primary-950 placeholder:text-primary-950 ',
-        className,
+        ' bg-secondary-50 text-primary-950 ring-offset-primary-950 placeholder:text-primary-950 flex h-10 w-[368px] items-center justify-between rounded-md border px-3 py-2 text-sm focus:ring-ring ',
+        className
       )}
       {...props}
       ref={ref}
@@ -111,7 +111,7 @@ const SelectContent = React.forwardRef<
   return (
     isOpen && (
       <div
-        className={twMerge('mt-1 rounded-md bg-secondary-50', className)}
+        className={twMerge('bg-secondary-50 mt-1 rounded-md', className)}
         {...props}
         ref={ref}
       />
@@ -131,8 +131,8 @@ const SelectOption = React.forwardRef<
     <option
       onClick={() => selectOption(optionLabel)}
       className={twMerge(
-        'relative flex w-full cursor-pointer items-center bg-secondary-50 py-1.5  pl-8  pr-2 text-sm text-primary-950 outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-secondary-100',
-        className,
+        'bg-secondary-50 text-primary-950 hover:bg-secondary-100 relative flex w-full cursor-pointer  items-center  py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+        className
       )}
       {...props}
       ref={ref}
@@ -145,7 +145,10 @@ const SelectOption = React.forwardRef<
 SelectOption.displayName = 'SelectOption'
 
 export {
-  SelectContent, SelectIcon, SelectOption, SelectProvider, SelectRoot,
+  SelectContent,
+  SelectIcon,
+  SelectOption,
+  SelectProvider,
+  SelectRoot,
   SelectTrigger
 }
-

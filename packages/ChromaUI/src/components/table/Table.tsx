@@ -48,7 +48,7 @@ const TableFooter = React.forwardRef<
     {...props}
     className={twMerge(
       'border-t font-medium [&>tr]:last:border-b-0',
-      className,
+      className
     )}
   />
 ))
@@ -74,7 +74,7 @@ const TableHead = React.forwardRef<
     ref={ref}
     className={twMerge(
       'h-12 px-4 text-left align-middle font-medium text-zinc-800 [&:has([role=checkbox])]:pr-0',
-      className,
+      className
     )}
     {...props}
   />
@@ -89,7 +89,7 @@ const TableCell = React.forwardRef<
     ref={ref}
     className={twMerge(
       'p-2 text-center align-middle  [&:has([role=checkbox])]:pr-0',
-      className,
+      className
     )}
     {...props}
   />
@@ -116,5 +116,5 @@ export {
   TableHead,
   TableRow,
   TableCell,
-  TableCaption,
+  TableCaption
 }

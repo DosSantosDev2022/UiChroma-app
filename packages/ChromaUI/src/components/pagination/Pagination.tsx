@@ -11,7 +11,7 @@ const Pagination = React.forwardRef<HTMLElement, React.ComponentProps<'nav'>>(
       {...props}
       ref={ref}
     />
-  ),
+  )
 )
 
 Pagination.displayName = 'Pagination'
@@ -54,9 +54,9 @@ const PaginationLink = ({
   <a
     aria-current={isActive ? 'page' : 'false'}
     className={twMerge(
-      ` hover:opacity-70 duration-300 border p-2 rounded-lg w-10 h-10 flex items-center justify-center
+      ` flex h-10 w-10 items-center justify-center rounded-lg border p-2 duration-300 hover:opacity-70
       ${isActive ? 'bg-zinc-50 text-zinc-700' : 'bg-zinc-700 text-zinc-50'}`,
-      className,
+      className
     )}
     {...props}
   />
@@ -70,7 +70,7 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="go to previous page"
-    className={twMerge('gap-1 pl-2.5 cursor-pointer', className)}
+    className={twMerge('cursor-pointer gap-1 pl-2.5', className)}
     {...props}
   >
     <LuChevronLeft className="h-4 w-4" />
@@ -85,7 +85,7 @@ const PaginationNext = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="go to Next page"
-    className={twMerge('gap-1 pr-2.5 cursor-pointer', className)}
+    className={twMerge('cursor-pointer gap-1 pr-2.5', className)}
     {...props}
   >
     <LuChevronRight className="h-4 w-4" />
@@ -117,5 +117,5 @@ export {
   PaginationLink,
   PaginationPrevious,
   PaginationNext,
-  PaginationEllipsis,
+  PaginationEllipsis
 }

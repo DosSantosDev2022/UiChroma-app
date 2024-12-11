@@ -35,7 +35,7 @@ const CardTitle = React.forwardRef<
     ref={ref}
     className={twMerge(
       'text-2xl font-semibold leading-none tracking-tight',
-      className,
+      className
     )}
     {...props}
   />

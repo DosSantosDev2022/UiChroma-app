@@ -9,7 +9,7 @@ import {
   isWithinInterval,
   startOfMonth,
   startOfWeek,
-  sub,
+  sub
 } from 'date-fns'
 import React, { useEffect, useState } from 'react'
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu'
@@ -96,18 +96,18 @@ export function Calendar({ value, onChange, range }: DatePickerProps) {
   }
 
   return (
-    <div className="w-full max-w-[300px] flex flex-col items-center justify-center p-4 border border-zinc-300 rounded-2xl">
-      <div className="flex items-center gap-2 mb-2">
-        <div className="flex items-center gap-8 border text-zinc-900 border-zinc-300 w-full justify-between rounded-xl py-0.5 px-0.5 text-sm font-medium ">
+    <div className="flex w-full max-w-[300px] flex-col items-center justify-center rounded-2xl border border-zinc-300 p-4">
+      <div className="mb-2 flex items-center gap-2">
+        <div className="flex w-full items-center justify-between gap-8 rounded-xl border border-zinc-300 px-0.5 py-0.5 text-sm font-medium text-zinc-900 ">
           <button
-            className="p-2 rounded-lg transition-all duration-500 hover:bg-violet-100 hover:text-violet-800"
+            className="rounded-lg p-2 transition-all duration-500 hover:bg-violet-100 hover:text-violet-800"
             onClick={prevMonth}
           >
             <LuChevronLeft />
           </button>
           {format(currentDate, 'MMMM yyyy')}
           <button
-            className=" p-2 rounded-lg transition-all duration-500 hover:bg-violet-100 hover:text-violet-800"
+            className=" rounded-lg p-2 transition-all duration-500 hover:bg-violet-100 hover:text-violet-800"
             onClick={nextMonth}
           >
             <LuChevronRight />
@@ -115,20 +115,20 @@ export function Calendar({ value, onChange, range }: DatePickerProps) {
         </div>
       </div>
 
-      <table className="pb-3 w-full">
+      <table className="w-full pb-3">
         <thead className="mb-2">
           <tr className="flex">
             {['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'].map(
               (dayName) => (
                 <td
                   key={dayName}
-                  className="flex items-center justify-center w-10 h-10"
+                  className="flex h-10 w-10 items-center justify-center"
                 >
-                  <p className="text-sm font-medium text-gray-900 rounded-full flex items-center justify-center w-full h-full">
+                  <p className="flex h-full w-full items-center justify-center rounded-full text-sm font-medium text-gray-900">
                     {dayName}
                   </p>
                 </td>
-              ),
+              )
             )}
           </tr>
         </thead>
@@ -154,19 +154,21 @@ export function Calendar({ value, onChange, range }: DatePickerProps) {
                     return (
                       <td
                         key={dateIndex}
-                        className="flex items-center justify-center w-10 h-10"
+                        className="flex h-10 w-10 items-center justify-center"
                       >
                         <p
                           onClick={() => handleSelectDate(date)}
-                          className={`text-sm font-medium cursor-pointer ${isCurrentMonth ? 'text-zinc-900' : 'text-zinc-300'
-                            } rounded-full flex items-center justify-center w-full h-full transition-all duration-300 ${isSelected || isStart || isEnd
+                          className={`cursor-pointer text-sm font-medium ${
+                            isCurrentMonth ? 'text-zinc-900' : 'text-zinc-300'
+                          } flex h-full w-full items-center justify-center rounded-full transition-all duration-300 ${
+                            isSelected || isStart || isEnd
                               ? 'bg-violet-600 text-zinc-50'
                               : isInRange
                                 ? 'bg-violet-200 text-violet-800'
                                 : isToday
                                   ? 'bg-violet-400 text-zinc-50'
                                   : 'hover:bg-violet-100'
-                            }`}
+                          }`}
                         >
                           {date.getDate()}
                         </p>
@@ -174,7 +176,7 @@ export function Calendar({ value, onChange, range }: DatePickerProps) {
                     )
                   })}
               </tr>
-            ),
+            )
           )}
         </tbody>
       </table>

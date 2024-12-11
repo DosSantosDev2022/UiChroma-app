@@ -30,7 +30,7 @@ const NavigationItem = forwardRef<HTMLLIElement, ComponentPropsWithRef<'li'>>(
   ({ className, ...props }, ref) => (
     <li
       className={twMerge(
-        'animation-hover flex h-10 w-full cursor-pointer  items-center px-2 py-1.5 hover:bg-foreground/10',
+        'animation-hover flex h-10 w-full cursor-pointer items-center  rounded-md px-2 py-1.5 hover:bg-muted',
         className
       )}
       {...props}

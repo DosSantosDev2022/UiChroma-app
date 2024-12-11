@@ -43,7 +43,7 @@ function ContentSections({
 
 function SectionNavigation({ children }: { children?: ReactNode }) {
   return (
-    <section className="sticky top-0 col-span-1 h-screen w-full space-y-6 border px-8 py-5">
+    <section className="sticky top-0 col-span-1 h-screen w-full space-y-2 border px-8 py-5">
       {children}
     </section>
   )

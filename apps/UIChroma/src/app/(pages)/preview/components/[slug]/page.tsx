@@ -46,13 +46,13 @@ export default async function ComponentDetails({
         <WrapperSections className="space-y-10 pb-0 pt-0">
           <div id="Início">
             <div className=" flex w-full flex-col">
-              <div className="mt-6 flex  items-center justify-start gap-3">
+              <div className="mt-2 flex  items-center justify-start gap-3">
                 <Title className={`${inter.className}`}>
                   {pageComponent.name}
                 </Title>
-                <Badge variant="primary" children={pageComponent.version} />
+                <Badge variant="accent" children={pageComponent.version} />
               </div>
-              <p className="mt-4 max-w-[500px] text-base font-normal text-muted-foreground ">
+              <p className="mt-2.5 max-w-[500px] text-base font-normal text-muted-foreground ">
                 {pageComponent.description}
               </p>
             </div>
@@ -70,7 +70,7 @@ export default async function ComponentDetails({
                     key={index}
                     className="flex items-center gap-2 text-foreground"
                   >
-                    <FaCircleCheck className="text-primary" size={18} />
+                    <FaCircleCheck className="text-accent" size={18} />
                     <span className="font-bold">{feature.name}:</span>
                     <span className="text-muted-foreground">
                       {feature.description}{' '}
@@ -197,10 +197,6 @@ export default async function ComponentDetails({
       </SectionPage>
 
       <SectionNavigation>
-        <Title as="h3" className="text-lg">
-          Navegue nessa página
-        </Title>
-
         <NavigateThroughSections links={links} />
       </SectionNavigation>
     </MainContainer>

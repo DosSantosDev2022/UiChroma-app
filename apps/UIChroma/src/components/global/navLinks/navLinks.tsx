@@ -22,7 +22,7 @@ import { HiTemplate } from 'react-icons/hi'
 import { IoMdColorPalette } from 'react-icons/io'
 import { TbComponents } from 'react-icons/tb'
 
-export async function NaigationLinks() {
+export async function NavigationLinks() {
   const { pageComponents } = await GET_COMPONENTS_NAME()
   const componentList = [...pageComponents].sort((a, b) =>
     a.name.localeCompare(b.name)

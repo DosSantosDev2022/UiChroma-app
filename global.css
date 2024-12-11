@@ -1,24 +1,25 @@
 
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background:206 13% 96%;
-    --foreground:204 28% 4%;
+    --background:285 1% 94%;
+    --foreground:0 0% 0%;
 
-    --primary:203 35% 28%;
-    --primary-hover:205 19% 41%;
-    --primary-foreground:0 0% 100%;
-    --secondary:206 13% 77%;
-    --secondary-hover:206 13% 70%;
-    --secondary-foreground:0 0% 27%;
-    --muted:206 13% 92%;
-    --muted-hover:206 13% 85%;
-    --muted-foreground:0 0% 42%;
-    --accent:233 35% 28%;
-    --accent-hover:236 19% 41%;
+    --primary:285 67% 1%;
+    --primary-hover:285 2% 19%;
+    --primary-foreground:285 1% 89%;
+    --secondary:285 1% 67%;
+    --secondary-hover:285 1% 57%;
+    --secondary-foreground:0 0% 17%;
+    --muted:285 1% 89%;
+    --muted-hover:285 1% 78%;
+    --muted-foreground:0 0% 39%;
+    --accent:200 70% 40%;
+    --accent-hover:204 43% 55%;
     --accent-foreground:0 0% 100%;
 
     --danger:0 65% 55%;
@@ -31,32 +32,32 @@
     --success-hover:140 45% 35%;
     --success-foreground:0 0% 98%;
 
-    --border:205 23% 10%;
-    --ring:205 25% 13%;
+    --border:0 0% 0%;
+    --ring:0 0% 0%;
 
-    --chart-1:203 35% 28%;
-    --chart-2:263 35% 28%;
-    --chart-3:323 35% 28%;
-    --chart-4:23 35% 28%;
-    --chart-5:83 35% 28%;
+    --chart-1:285 67% 1%;
+    --chart-2:345 67% 1%;
+    --chart-3:45 67% 1%;
+    --chart-4:105 67% 1%;
+    --chart-5:165 67% 1%;
  }
 
   .dark {
     --background:0 0% 0%;
     --foreground:0 0% 100%;
 
-    --primary:205 23% 10%;
-    --primary-hover:205 25% 13%;
-    --primary-foreground:206 13% 92%;
-    --secondary:204 22% 8%;
-    --secondary-hover:205 23% 10%;
-    --secondary-foreground:206 13% 85%;
-    --muted:204 24% 6%;
-    --muted-hover:205 21% 9%;
-    --muted-foreground:206 13% 77%;
-    --accent:236 26% 13%;
-    --accent-hover:235 28% 15%;
-    --accent-foreground:241 14% 92%;
+    --primary:0 0% 0%;
+    --primary-hover:0 0% 0%;
+    --primary-foreground:285 1% 89%;
+    --secondary:0 0% 0%;
+    --secondary-hover:0 0% 0%;
+    --secondary-foreground:285 1% 78%;
+    --muted:0 0% 0%;
+    --muted-hover:0 0% 0%;
+    --muted-foreground:285 1% 67%;
+    --accent:200 70% 40%;
+    --accent-hover:203 49% 22%;
+    --accent-foreground:0 0% 100%;
 
     --danger:0 65% 55%;
     --danger-hover:0 65% 45%;
@@ -66,23 +67,21 @@
     --warning-foreground:0 0% 10%;
     --success:140 45% 45%;
     --success-hover:140 45% 35%;
-    --success-foreground:206 13% 85%;
+    --success-foreground:285 1% 78%;
 
-    --border:204 33% 24%;
-    --ring:203 35% 28%;
+    --border:285 67% 1%;
+    --ring:285 67% 1%;
 
-    --chart-1:205 23% 10%;
-    --chart-2:266 25% 10%;
-    --chart-3:326 24% 10%;
-    --chart-4:24 26% 10%;
-    --chart-5:82 24% 10%;
+    --chart-1:0 0% 0%;
+    --chart-2:0 0% 0%;
+    --chart-3:0 0% 0%;
+    --chart-4:0 0% 0%;
+    --chart-5:0 0% 0%;
     } 
 }
   
 
-  
 
-  
 
 
 

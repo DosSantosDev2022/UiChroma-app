@@ -1,4 +1,4 @@
-import { colord, extend } from 'colord'
+import { Colord, colord, extend } from 'colord'
 import mixPlugin from 'colord/plugins/mix'
 
 extend([mixPlugin])
@@ -6,6 +6,23 @@ extend([mixPlugin])
 const toHslWithoutFormat = (color: string) => {
   const { h, s, l } = colord(color).toHsl()
   return `${h.toFixed(0)} ${s.toFixed(0)}% ${l.toFixed(0)}%`
+}
+
+const generateAccentColor = (base: Colord) => {
+  const hsl = base.toHsl()
+
+  // Para tons muito claros
+  if (hsl.l > 80) {
+    return colord({ h: 250, s: 60, l: 50 }) // Tom azul/roxo vibrante
+  }
+
+  // Para tons médios
+  if (hsl.l > 50) {
+    return base.rotate(120).saturate(0.3).lighten(0.1) // Gira para um tom mais distante (verde/azul)
+  }
+
+  // Para tons muito escuros
+  return colord({ h: 200, s: 70, l: 40 }) // Azul vibrante como fallback
 }
 
 // Gera um foreground bem contrastado
@@ -22,6 +39,9 @@ const generateContrastForeground = (color: string) => {
 
 export const generateTheme = (baseColor: string) => {
   const base = colord(baseColor)
+  // Gera a cor accent
+  const accentColor = generateAccentColor(base)
+  const darkAccentColor = generateAccentColor(base.mix('#000000', 0.7))
 
   return {
     name: 'Base Color',
@@ -44,13 +64,13 @@ export const generateTheme = (baseColor: string) => {
         generateContrastForeground(base.mix('#ffffff', 0.7).toHslString())
       ), // Ajustado
 
-      accent: toHslWithoutFormat(base.rotate(30).toHslString()),
+      accent: toHslWithoutFormat(accentColor.toHslString()),
       accent_hover: toHslWithoutFormat(
-        base.rotate(30).mix('#ffffff', 0.2).toHslString()
+        accentColor.mix('#ffffff', 0.2).toHslString()
       ),
       accent_foreground: toHslWithoutFormat(
-        generateContrastForeground(base.rotate(30).toHslString())
-      ), // Ajustado
+        generateContrastForeground(accentColor.toHslString())
+      ),
 
       muted: toHslWithoutFormat(base.mix('#ffffff', 0.9).toHslString()),
       muted_hover: toHslWithoutFormat(base.mix('#ffffff', 0.8).toHslString()),
@@ -105,14 +125,12 @@ export const generateTheme = (baseColor: string) => {
       dark_muted_foreground: toHslWithoutFormat(
         base.mix('#FFFFFF', 0.7).toHslString()
       ),
-      dark_accent: toHslWithoutFormat(
-        base.rotate(30).mix('#000000', 0.6).toHslString()
-      ),
+      dark_accent: toHslWithoutFormat(darkAccentColor.toHslString()),
       dark_accent_hover: toHslWithoutFormat(
-        base.rotate(30).mix('#000000', 0.5).toHslString()
+        darkAccentColor.mix('#000000', 0.5).toHslString()
       ),
       dark_accent_foreground: toHslWithoutFormat(
-        base.rotate(30).mix('#FFFFFF', 0.9).toHslString()
+        generateContrastForeground(darkAccentColor.toHslString())
       ),
 
       dark_danger: '0 65% 55%',

@@ -27,6 +27,6 @@ export const GET_RELEASES = async (
   return fetchHygraphQuery(
     query,
     { searchTerm: searchTerm || '' },
-    { cache: 'force-cache', revalidate: 60 * 60 * 24 }
+    { cache: 'no-cache' /* revalidate: 60 * 60 * 24 */ }
   )
 }

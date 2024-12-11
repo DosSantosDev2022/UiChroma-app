@@ -86,10 +86,6 @@ export default async function Starter() {
       </SectionPage>
 
       <SectionNavigation>
-        <Title as="h3" className="text-lg">
-          Navegue nessa página
-        </Title>
-
         <NavigateThroughSections links={links} />
       </SectionNavigation>
     </MainContainer>

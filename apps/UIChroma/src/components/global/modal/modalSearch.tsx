@@ -48,7 +48,7 @@ export default function Modal({ data }: ModalProps) {
     <>
       <Button
         sizes="full"
-        variant="outline"
+        variant="primary"
         className=" flex  w-[360px] items-center justify-start gap-4 border border-border/20 "
         onClick={handleOpenModal}
       >

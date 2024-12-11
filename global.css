@@ -1,77 +1,93 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 197 12% 96%;
-    --foreground: 195 20% 5%;
-    --primary: 195 27% 32%;
-    --primary-hover: 196 15% 44%;
-    --primary-foreground: 195 20% 5%;
-    --secondary: 197 12% 78%;
-    --secondary-hover: 196 12% 71%;
-    --secondary-foreground: 195 16% 8%;
-    --muted: 197 12% 93%;
-    --muted-hover: 197 12% 85%;
-    --muted-foreground: 196 18% 11%;
-    --accent: 225 27% 32%;
-    --accent-hover: 227 16% 44%;
+    --background:206 13% 96%;
+    --foreground:204 28% 4%;
 
-    --danger: hsl(0, 65%, 55%);
-    --danger-hover: hsl(0, 65%, 45%);
-    --danger-foreground: hsl(0, 0%, 98%);
-    --warning: hsl(40, 90%, 60%);
-    --warning-hover: hsl(40, 90%, 50%);
-    --warning-foreground: hsl(0, 0%, 10%);
-    --success: hsl(140, 45%, 45%);
-    --success-hover: hsl(140, 45%, 35%);
-    --success-foreground: hsl(0, 0%, 98%);
+    --primary:203 35% 28%;
+    --primary-hover:205 19% 41%;
+    --primary-foreground:0 0% 100%;
+    --secondary:206 13% 77%;
+    --secondary-hover:206 13% 70%;
+    --secondary-foreground:0 0% 27%;
+    --muted:206 13% 92%;
+    --muted-hover:206 13% 85%;
+    --muted-foreground:0 0% 42%;
+    --accent:233 35% 28%;
+    --accent-hover:236 19% 41%;
+    --accent-foreground:0 0% 100%;
 
-    --border: hsl(196, 18%, 11%);
-    --ring: hsl(196, 20%, 14%);
-    --chart-1: hsl(195, 27%, 32%);
-    --chart-2: hsl(255, 27%, 32%);
-    --chart-3: hsl(315, 27%, 32%);
-    --chart-4: hsl(15, 27%, 32%);
-    --chart-5: hsl(75, 27%, 32%);
-  }
+    --danger:0 65% 55%;
+    --danger-hover:0 65% 45%;
+    --danger-foreground:0 0% 98%;
+    --warning:40 90% 60%;
+    --warning-hover:40 90% 50%;
+    --warning-foreground:0 0% 10%;
+    --success:140 45% 45%;
+    --success-hover:140 45% 35%;
+    --success-foreground:0 0% 98%;
+
+    --border:205 23% 10%;
+    --ring:205 25% 13%;
+
+    --chart-1:203 35% 28%;
+    --chart-2:263 35% 28%;
+    --chart-3:323 35% 28%;
+    --chart-4:23 35% 28%;
+    --chart-5:83 35% 28%;
+ }
 
   .dark {
-    --background: hsl(195, 20%, 5%);
-    --foreground: hsl(197, 12%, 85%);
-    --primary: hsl(196, 18%, 11%);
-    --primary-hover: hsl(196, 20%, 14%);
-    --primary-foreground: hsl(197, 12%, 93%);
-    --secondary: hsl(195, 16%, 8%);
-    --secondary-hover: hsl(196, 18%, 11%);
-    --secondary-foreground: hsl(197, 12%, 85%);
-    --muted: hsl(195, 17%, 7%);
-    --muted-hover: hsl(196, 17%, 10%);
-    --muted-foreground: hsl(197, 12%, 78%);
-    --accent: hsl(226, 21%, 14%);
-    --accent-hover: hsl(226, 22%, 17%);
-    --accent-foreground: hsl(229, 13%, 93%);
+    --background:0 0% 0%;
+    --foreground:0 0% 100%;
 
-    --danger: hsl(0, 65%, 55%);
-    --danger-hover: hsl(0, 65%, 45%);
-    --danger-foreground: hsl(0, 0%, 98%);
-    --warning: hsl(40, 90%, 60%);
-    --warning-hover: hsl(40, 90%, 50%);
-    --warning-foreground: hsl(0, 0%, 10%);
-    --success: hsl(140, 45%, 45%);
-    --success-hover: hsl(140, 45%, 35%);
-    --success-foreground: hsl(197, 12%, 85%);
+    --primary:205 23% 10%;
+    --primary-hover:205 25% 13%;
+    --primary-foreground:206 13% 92%;
+    --secondary:204 22% 8%;
+    --secondary-hover:205 23% 10%;
+    --secondary-foreground:206 13% 85%;
+    --muted:204 24% 6%;
+    --muted-hover:205 21% 9%;
+    --muted-foreground:206 13% 77%;
+    --accent:236 26% 13%;
+    --accent-hover:235 28% 15%;
+    --accent-foreground:241 14% 92%;
 
-    --border: hsl(195, 16%, 8%);
-    --ring: hsl(196, 18%, 11%);
-    --chart-1: hsl(196, 18%, 11%);
-    --chart-2: hsl(257, 20%, 11%);
-    --chart-3: hsl(317, 19%, 11%);
-    --chart-4: hsl(15, 20%, 11%);
-    --chart-5: hsl(74, 19%, 11%);
-  }
+    --danger:0 65% 55%;
+    --danger-hover:0 65% 45%;
+    --danger-foreground:0 0% 98%;
+    --warning:40 90% 60%;
+    --warning-hover:40 90% 50%;
+    --warning-foreground:0 0% 10%;
+    --success:140 45% 45%;
+    --success-hover:140 45% 35%;
+    --success-foreground:206 13% 85%;
+
+    --border:204 33% 24%;
+    --ring:203 35% 28%;
+
+    --chart-1:205 23% 10%;
+    --chart-2:266 25% 10%;
+    --chart-3:326 24% 10%;
+    --chart-4:24 26% 10%;
+    --chart-5:82 24% 10%;
+    } 
 }
+  
+
+  
+
+  
+
+
+
+
+
 
 
 

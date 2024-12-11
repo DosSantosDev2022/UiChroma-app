@@ -1,13 +1,12 @@
-"use client";
-import { Colors } from "@/@types/colorsState";
-import { Title } from "@/components/global/title/title";
-import { ExampleofColors } from "@/components/pages/themes/exampleofColors";
-import { ExempleComponents } from "@/components/pages/themes/exempleComponents";
-import { defaultColors } from "@/enums/colors";
-import { generateTheme } from "@/utils/generateTheme";
-import { useState } from "react";
-import { ColorPicker } from "@/components/pages/themes/ColorPicker";
-import { ModalCodeCss } from "@/components/pages/themes/ModalCodeCss";
+'use client';
+import { Colors } from '@/@types/colorsState';
+import { Title } from '@/components/global/title/title';
+import { ColorPicker } from '@/components/pages/themes/ColorPicker';
+import { ExampleofColors } from '@/components/pages/themes/exampleofColors';
+import { ModalCodeCss } from '@/components/pages/themes/ModalCodeCss';
+import { defaultColors } from '@/enums/colors';
+import { generateTheme } from '@/utils/generateTheme';
+import { useState } from 'react';
 
 export default function ThemeCreatePage() {
   const [colors, setColors] = useState<Colors>(defaultColors);
@@ -17,22 +16,21 @@ export default function ThemeCreatePage() {
     const newTheme = generateTheme(hex); // Gerar tema baseado na cor
     setColors(newTheme.colors); // Atualizar estado com o novo tema
   };
-
+  console.log('cores geradas', colors);
   return (
     <div className="flex flex-col space-y-10">
-      <section className="mx-auto relative  p-2">
-        <div className="px-6 flex flex-col items-center justify-center gap-2 md:mb-6 mb-6">
-          <div className="md:my-14 md:mb-8 space-y-4">
-            <div className="text-center max-w-xl">
+      <section className="relative mx-auto p-2">
+        <div className=" mb-6 flex flex-col items-center  justify-center md:mb-6">
+          <div className="space-y-6 md:my-14 md:mb-8">
+            <div className="max-w-xl space-y-1 text-center">
               <Title className="text-6xl">Gerador de temas</Title>
-              <p className="text-muted-foreground font-normal text-base">
-                Pressione a barra de espaço, digite um código hexadecimal ou altere o
-                Valores HSL para criar uma escala de cores personalizada
+              <p className="text-base font-normal text-muted-foreground">
+                Pressione a barra de espaço, digite um código hexadecimal ou
+                altere o Valores HSL para criar uma escala de cores
+                personalizada
               </p>
             </div>
-            <div
-              className="w-full flex items-center justify-center border"
-            >
+            <div className="flex w-full flex-row items-center justify-between gap-2 p-2">
               <ColorPicker
                 color={colors.primary}
                 onChange={handleBaseColorChange}
@@ -44,7 +42,6 @@ export default function ThemeCreatePage() {
         </div>
         <ExampleofColors Colors={colors} />
       </section>
-      <ExempleComponents colors={colors} />
     </div>
   );
 }

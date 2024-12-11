@@ -60,10 +60,6 @@ export const themes = [
     url: 'themes/docs'
   },
   {
-    label: 'Temas prontos',
-    url: 'themes/template'
-  },
-  {
     label: 'Criar tema',
     url: 'themes/create'
   },

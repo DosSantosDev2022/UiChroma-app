@@ -11,13 +11,15 @@ export function ExampleofColors({ Colors }: ExampleofColorsProps) {
       {['primary', 'secondary', 'accent', 'muted', 'background', 'foreground'].map((key) => (
         <div
           key={key}
-          className="w-28 h-28 rounded-md border border-border cursor-pointer flex items-center justify-center"
-          style={{ backgroundColor: Colors[key as keyof Colors] }}
+          className="w-28 h-28 rounded-md border  cursor-pointer flex items-center justify-center"
+          style={{
+            backgroundColor: `hsl(${Colors[key as keyof Colors]})`,
+          }}
         >
           <span
             className="font-bold"
             style={{
-              color: colord(Colors[key as keyof Colors]).isLight() ? "#000" : "#FFF",
+              color: colord(`hsl(${Colors[key as keyof Colors]})`).isLight() ? "#000" : "#FFF",
             }}
           >{key.replace(/A[A-Z]/g, "$&").toLowerCase()} </span>
         </div>

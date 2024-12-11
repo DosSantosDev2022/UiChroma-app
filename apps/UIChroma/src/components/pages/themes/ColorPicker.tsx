@@ -25,7 +25,7 @@ export function ColorPicker({ color, onChange }: SelectorColorsProps) {
           <div className="flex items-center gap-2 flex-wrap">
             <div
               className="w-8 h-8 rounded-full border border-border cursor-pointer"
-              style={{ backgroundColor: color }}
+              style={{ backgroundColor: `hsl(${color})` }}
             />
           </div>
         </div>

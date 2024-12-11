@@ -9,73 +9,77 @@ export const generateCodeCss = (colors: Colors) => {
 
       @layer base {
         :root {
-          --background: ${colors.background};
-          --foreground: ${colors.foreground};
-          --primary: ${colors.primary};
-          --primary-hover: ${colors.primary_hover}
-          --primary-foreground: ${colors.primary_foreground};
-          --secondary: ${colors.secondary};
-          --secondary-hover: ${colors.secondary_hover}
-          --secondary-foreground: ${colors.secondary_foreground};
-          --muted: ${colors.muted};
-          --muted-hover: ${colors.muted_hover}
-          --muted-foreground: ${colors.muted_foreground};
-          --accent: ${colors.accent};
-          --accent-hover ${colors.accent_hover}
-          --accent-foreground: ${colors.accent_foreground};
+          --background:${colors.background};
+          --foreground:${colors.foreground};
 
-          --danger: ${colors.danger};
-          --danger-hover: ${colors.danger_hover}
-          --danger-foreground: ${colors.danger_foreground};
-          --warning: ${colors.warning}
-          --warning-hover: ${colors.warning_hover}
-          --warning-foreground: ${colors.warning_foreground}
-          --success: ${colors.success}
-          --success-hover: ${colors.success_hover}
-          --success-foreground: ${colors.success_foreground}
+          --primary:${colors.primary};
+          --primary-hover:${colors.primary_hover};
+          --primary-foreground:${colors.primary_foreground};
+          --secondary:${colors.secondary};
+          --secondary-hover:${colors.secondary_hover};
+          --secondary-foreground:${colors.secondary_foreground};
+          --muted:${colors.muted};
+          --muted-hover:${colors.muted_hover};
+          --muted-foreground:${colors.muted_foreground};
+          --accent:${colors.accent};
+          --accent-hover:${colors.accent_hover};
+          --accent-foreground:${colors.accent_foreground};
 
-          --border: ${colors.border};
-          --ring: ${colors.ring};
-          --chart-1: ${colors.chart1};
-          --chart-2: ${colors.chart2};
-          --chart-3: ${colors.chart3};
-          --chart-4: ${colors.chart4};
-          --chart-5: ${colors.chart5};
+          --danger:${colors.danger};
+          --danger-hover:${colors.danger_hover};
+          --danger-foreground:${colors.danger_foreground};
+          --warning:${colors.warning};
+          --warning-hover:${colors.warning_hover};
+          --warning-foreground:${colors.warning_foreground};
+          --success:${colors.success};
+          --success-hover:${colors.success_hover};
+          --success-foreground:${colors.success_foreground};
+
+          --border:${colors.border};
+          --ring:${colors.ring};
+
+          --chart-1:${colors.chart1};
+          --chart-2:${colors.chart2};
+          --chart-3:${colors.chart3};
+          --chart-4:${colors.chart4};
+          --chart-5:${colors.chart5};
        }
 
         .dark {
-          --background: ${colors.dark_background};
-          --foreground: ${colors.dark_foreground};
-          --primary: ${colors.dark_primary};
-          --primary-hover: ${colors.dark_primary_hover}
-          --primary-foreground: ${colors.dark_primary_foreground};
-          --secondary: ${colors.dark_secondary};
-          --secondary-hover: ${colors.dark_secondary_hover}
-          --secondary-foreground: ${colors.dark_secondary_foreground};
-          --muted: ${colors.dark_muted};
-          --muted-hover: ${colors.dark_muted_hover}
-          --muted-foreground: ${colors.dark_muted_foreground};
-          --accent: ${colors.dark_accent};
-          --accent-hover: ${colors.dark_accent_hover}
-          --accent-foreground: ${colors.dark_accent_foreground};
+          --background:${colors.dark_background};
+          --foreground:${colors.dark_foreground};
 
-          --danger: ${colors.dark_danger};
-          --danger-hover: ${colors.dark_danger_hover}
-          --danger-foreground: ${colors.dark_danger_foreground};
-          --warning: ${colors.dark_warning}
-          --warning: ${colors.dark_warning_hover}
-          --warning-foreground: ${colors.dark_warning_foreground}
-          --success: ${colors.dark_success}
-          --success: ${colors.dark_success_hover}
-          --success-foreground: ${colors.dark_secondary_foreground}
+          --primary:${colors.dark_primary};
+          --primary-hover:${colors.dark_primary_hover};
+          --primary-foreground:${colors.dark_primary_foreground};
+          --secondary:${colors.dark_secondary};
+          --secondary-hover:${colors.dark_secondary_hover};
+          --secondary-foreground:${colors.dark_secondary_foreground};
+          --muted:${colors.dark_muted};
+          --muted-hover:${colors.dark_muted_hover};
+          --muted-foreground:${colors.dark_muted_foreground};
+          --accent:${colors.dark_accent};
+          --accent-hover:${colors.dark_accent_hover};
+          --accent-foreground:${colors.dark_accent_foreground};
 
-          --border: ${colors.dark_border};
-          --ring: ${colors.dark_ring};
-          --chart-1: ${colors.dark_chart1};
-          --chart-2: ${colors.dark_chart2};
-          --chart-3: ${colors.dark_chart3};
-          --chart-4: ${colors.dark_chart4};
-          --chart-5: ${colors.dark_chart5};
+          --danger:${colors.dark_danger};
+          --danger-hover:${colors.dark_danger_hover};
+          --danger-foreground:${colors.dark_danger_foreground};
+          --warning:${colors.dark_warning};
+          --warning-hover:${colors.dark_warning_hover};
+          --warning-foreground:${colors.dark_warning_foreground};
+          --success:${colors.dark_success};
+          --success-hover:${colors.dark_success_hover};
+          --success-foreground:${colors.dark_secondary_foreground};
+
+          --border:${colors.dark_border};
+          --ring:${colors.dark_ring};
+
+          --chart-1:${colors.dark_chart1};
+          --chart-2:${colors.dark_chart2};
+          --chart-3:${colors.dark_chart3};
+          --chart-4:${colors.dark_chart4};
+          --chart-5:${colors.dark_chart5};
           } 
       }
         

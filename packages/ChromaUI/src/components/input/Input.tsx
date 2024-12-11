@@ -8,7 +8,7 @@ const InputRoot = React.forwardRef<
   <div
     ref={ref}
     className={twMerge(
-      'flex h-14 w-full items-center gap-3 rounded  bg-input  p-4 focus-within:ring-2 focus-within:ring-ring',
+      'flex h-14 w-full items-center gap-3 rounded  bg-input border border-border/20  p-4 focus-within:ring-1 focus-within:ring-ring',
       className,
     )}
     {...props}
@@ -49,4 +49,5 @@ const Field = React.forwardRef<
 
 Field.displayName = 'Field'
 
-export { InputRoot, InputIcon, Field }
+export { Field, InputIcon, InputRoot }
+

@@ -140,7 +140,7 @@ export const generateTheme = (baseColor: string) => {
       ),
       dark_chart5: toHslWithoutFormat(
         base.rotate(240).mix('#000000', 0.7).toHslString()
-      ),
-    },
+      )
+    }
   }
 }

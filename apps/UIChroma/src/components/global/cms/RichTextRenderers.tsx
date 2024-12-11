@@ -114,5 +114,5 @@ export const defaultRenderers = {
   // Small (texto pequeno)
   small: ({ children }: defaultRenderersProps) => (
     <small className="text-accent-foreground0 text-sm">{children}</small>
-  ),
+  )
 }

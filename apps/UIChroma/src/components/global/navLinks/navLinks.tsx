@@ -8,14 +8,14 @@ import {
   DropDownLink,
   DropDownList,
   DropDownProvider,
-  DropDownTrigger,
+  DropDownTrigger
 } from '@repo/chromaui/components/dropdown/Dropdown.tsx'
 import {
   NavigationIcon,
   NavigationItem,
   NavigationLink,
   NavigationList,
-  NavigationRoot,
+  NavigationRoot
 } from '@repo/chromaui/components/navigation/navigation.tsx'
 import Link from 'next/link'
 import { HiTemplate } from 'react-icons/hi'

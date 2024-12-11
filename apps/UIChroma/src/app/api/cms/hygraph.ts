@@ -14,11 +14,11 @@ export const fetchHygraphQuery = async <T>(
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Accept: 'application/json',
+      Accept: 'application/json'
     },
     cache,
     next: revalidate ? { revalidate } : undefined,
-    body: JSON.stringify({ query, variables }),
+    body: JSON.stringify({ query, variables })
   })
 
   const { data } = await response.json()

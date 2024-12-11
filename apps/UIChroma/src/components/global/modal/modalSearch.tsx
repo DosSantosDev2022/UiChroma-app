@@ -4,7 +4,7 @@ import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
 import {
   Field,
   InputIcon,
-  InputRoot,
+  InputRoot
 } from '@repo/ChromaUI/components/input/Input.tsx'
 import Link from 'next/link'
 import { ChangeEvent, useState } from 'react'

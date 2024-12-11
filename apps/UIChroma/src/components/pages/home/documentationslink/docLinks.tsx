@@ -16,7 +16,7 @@ interface LinksProps {
 const iconMap: { [key: string]: JSX.Element } = {
   Storybook: <SiStorybook size={20} />,
   Figma: <BiLogoFigma size={20} />,
-  GitHub: <FaGithub size={20} />,
+  GitHub: <FaGithub size={20} />
 }
 
 export function DocLinks({ links }: LinksProps) {

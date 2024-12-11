@@ -2,7 +2,7 @@
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
+  AvatarImage
 } from '@repo/chromaui/components/avatar/Avatar.tsx'
 
 export default function AvatarPreview() {

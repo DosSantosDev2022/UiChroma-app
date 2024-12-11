@@ -2,7 +2,7 @@
 import {
   ELLIPSIS_LEFT,
   ELLIPSIS_RIGTH,
-  usePagination,
+  usePagination
 } from '@/hooks/usePagination/index'
 import {
   Pagination,
@@ -11,14 +11,14 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious,
+  PaginationPrevious
 } from '@repo/chromaui/components/pagination/Pagination.tsx'
 
 export default function PaginationPreview() {
   const { isCurrentPage, pages } = usePagination({
     page: 1,
     limit: 10,
-    total: 100,
+    total: 100
   })
   return (
     <Pagination>

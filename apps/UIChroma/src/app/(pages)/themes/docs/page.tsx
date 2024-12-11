@@ -5,7 +5,7 @@ import {
   MainContainer,
   SectionNavigation,
   SectionPage,
-  WrapperSections,
+  WrapperSections
 } from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
 import { Title } from '@/components/global/title/title'

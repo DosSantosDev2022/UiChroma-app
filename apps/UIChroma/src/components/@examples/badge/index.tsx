@@ -9,16 +9,16 @@ export default function BedgePreview() {
   const types: BadgeType[] = [
     {
       variant: 'primary',
-      children: 'Primary',
+      children: 'Primary'
     },
     {
       variant: 'secondary',
-      children: 'Secondary',
+      children: 'Secondary'
     },
     {
       variant: 'accent',
-      children: 'Accent',
-    },
+      children: 'Accent'
+    }
   ]
 
   return (

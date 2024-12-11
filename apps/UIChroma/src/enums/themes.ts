@@ -3,7 +3,7 @@ export enum NavigationLinks {
   ESTRUTURA = 'Estrutura',
   DARK = 'Dark',
   CUSTOMIZATION = 'Personalização',
-  INTEGRATION = 'Integração',
+  INTEGRATION = 'Integração'
 }
 
 export const links = [
@@ -11,5 +11,5 @@ export const links = [
   { text: NavigationLinks.ESTRUTURA, url: NavigationLinks.ESTRUTURA },
   { text: NavigationLinks.DARK, url: NavigationLinks.DARK },
   { text: NavigationLinks.CUSTOMIZATION, url: NavigationLinks.CUSTOMIZATION },
-  { text: NavigationLinks.INTEGRATION, url: NavigationLinks.INTEGRATION },
+  { text: NavigationLinks.INTEGRATION, url: NavigationLinks.INTEGRATION }
 ]

@@ -9,14 +9,14 @@ export enum NavigationLinksSideBar {
   HOME = 'Home',
   GETTING_STARTED = 'Primeiros passos',
   DOCUMENTATION = 'Documentação',
-  RELEASES = 'Releases',
+  RELEASES = 'Releases'
 }
 
 export enum NavigationUrls {
   HOME = '/',
   GETTING_STARTED = '/gettingStarted',
   DOCUMENTATION = '/documentation',
-  RELEASES = '/releases',
+  RELEASES = '/releases'
 }
 
 interface LinkItem {
@@ -31,35 +31,35 @@ export const links: LinkItem[] = [
     id: uuid(),
     name: NavigationLinksSideBar.HOME,
     Url: NavigationUrls.HOME,
-    icon: FaHome,
+    icon: FaHome
   },
   {
     id: uuid(),
     name: NavigationLinksSideBar.GETTING_STARTED,
     Url: NavigationUrls.GETTING_STARTED,
-    icon: IoIosRocket,
+    icon: IoIosRocket
   },
   {
     id: uuid(),
     name: NavigationLinksSideBar.DOCUMENTATION,
     Url: NavigationUrls.DOCUMENTATION,
-    icon: IoDocumentText,
+    icon: IoDocumentText
   },
   {
     id: uuid(),
     name: NavigationLinksSideBar.RELEASES,
     Url: NavigationUrls.RELEASES,
-    icon: MdNewReleases,
-  },
+    icon: MdNewReleases
+  }
 ]
 
 export const themes = [
   {
     label: 'Documentação',
-    url: 'themes/docs',
+    url: 'themes/docs'
   },
   {
     label: 'Criar tema',
-    url: 'themes/create',
-  },
+    url: 'themes/create'
+  }
 ]

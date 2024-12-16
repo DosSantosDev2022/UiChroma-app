@@ -1,20 +1,59 @@
 'use client'
 import { Colors } from '@/@types/colorsState'
-import { Title } from '@/components/global/title/title'
-import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
-import { Field, InputRoot } from '@repo/ChromaUI/components/input/Input.tsx'
-import { Label } from '@repo/ChromaUI/components/label/Label.tsx'
+import { updateCssVariables } from '@/utils/stylesComponents'
+import { useEffect } from 'react'
+import * as Examples from '@/components/@examples'
+import { ContainerPreview } from './container'
 
 interface ExempleComponentsProps {
   colors: Colors
 }
 
 export function ExempleComponents({ colors }: ExempleComponentsProps) {
+  useEffect(() => {
+    updateCssVariables(colors)
+  }, [colors])
+  console.log('exemple', colors)
   return (
-    <div>
-      <Title as="h2" className="text-xl">
-        Demonstração em componentes
-      </Title>
+    <div id="demo-container" className="border px-6 py-4">
+      <div className="grid grid-cols-1 gap-6  lg:grid-cols-2">
+        {/* buttons preview */}
+        <ContainerPreview title="Componente button">
+          <Examples.ButtonPreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente Bedge">
+          <Examples.BadgePreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente Input">
+          <Examples.InputPreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente Calendar">
+          <Examples.CalendarPreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente Card">
+          <Examples.CardPreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente pagination">
+          <Examples.PaginationPreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente Select">
+          <Examples.SelectPreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente Carousel">
+          <Examples.CarouselPreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente DropDown">
+          <Examples.DropDownPreview />
+        </ContainerPreview>
+      </div>
     </div>
   )
 }

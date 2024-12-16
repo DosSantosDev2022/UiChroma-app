@@ -1,46 +1,43 @@
 'use client'
+
 import { useState } from 'react'
-import { SketchPicker } from 'react-color'
 
 interface SelectorColorsProps {
   color: string
-  onChange: (color: any) => void
+  onChange: (color: string) => void
 }
+
 export function ColorPicker({ color, onChange }: SelectorColorsProps) {
-  const [activePickers, setActivePickers] = useState(false)
-  const togglePicker = () => {
-    setActivePickers((prev) => !prev)
+  const [localColor, setLocalColor] = useState(color)
+
+  const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newColor = e.target.value
+    setLocalColor(newColor)
+    onChange(newColor) // Passa o valor para o pai
   }
 
   return (
-    <>
-      <div className="flex  h-14 w-full flex-col rounded-full border px-2 py-2.5 shadow-sm md:relative">
-        <div
-          onClick={togglePicker}
-          className="flex cursor-pointer items-center justify-between gap-2 duration-500 active:scale-95"
-        >
-          <label className="ml-4 font-semibold text-muted-foreground">
-            Base Color
-          </label>
-          <div className="flex flex-wrap items-center gap-2">
-            <div
-              className="h-8 w-8 cursor-pointer rounded-full border border-border"
-              style={{ backgroundColor: `hsl(${color})` }}
-            />
-          </div>
-        </div>
-        {activePickers && (
-          <div
-            className="absolute left-0 top-full z-50 mt-2"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <SketchPicker
-              color={color} // Cor atual como base
-              onChange={onChange} // Chamar função ao mudar cor
-            />
-          </div>
-        )}
-      </div>
-    </>
+    <div className="relativa flex w-full flex-1 items-center ">
+      <label
+        className="border-border/20  absolute ml-2 block h-9 w-9 cursor-pointer rounded-full border"
+        style={{
+          backgroundColor: localColor
+        }}
+      >
+        <input
+          type="color"
+          value={localColor}
+          onChange={handleColorChange}
+          className="cursor-pointer opacity-0"
+        />
+      </label>
+      <input
+        className="border-border/60 flex h-14 w-full rounded-full border bg-background px-3 py-1 pl-14 text-base font-medium text-muted-foreground shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+        type="text"
+        placeholder="colors"
+        value={localColor}
+        onChange={handleColorChange}
+      />
+    </div>
   )
 }

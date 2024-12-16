@@ -3,6 +3,7 @@ import { Colors } from '@/@types/colorsState'
 import { Title } from '@/components/global/title/title'
 import { ColorPicker } from '@/components/pages/themes/ColorPicker'
 import { ExampleofColors } from '@/components/pages/themes/exampleofColors'
+import { ExempleComponents } from '@/components/pages/themes/exempleComponents'
 import { ModalCodeCss } from '@/components/pages/themes/ModalCodeCss'
 import { defaultColors } from '@/enums/colors'
 import { generateTheme } from '@/utils/generateTheme'
@@ -12,8 +13,7 @@ export default function ThemeCreatePage() {
   const [colors, setColors] = useState<Colors>(defaultColors)
 
   const handleBaseColorChange = (color: any) => {
-    const { hex } = color // Usar o valor hexadecimal da cor
-    const newTheme = generateTheme(hex) // Gerar tema baseado na cor
+    const newTheme = generateTheme(color) // Gerar tema baseado na cor
     setColors(newTheme.colors) // Atualizar estado com o novo tema
   }
 
@@ -41,6 +41,10 @@ export default function ThemeCreatePage() {
           </div>
         </div>
         <ExampleofColors Colors={colors} />
+      </section>
+
+      <section>
+        <ExempleComponents colors={colors} />
       </section>
     </div>
   )

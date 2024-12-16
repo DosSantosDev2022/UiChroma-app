@@ -6,7 +6,7 @@ export default function ButtonPreview() {
       | 'primary'
       | 'secundary'
       | 'outline'
-      | 'highlight'
+      | 'accent'
       | 'disabled'
       | 'link'
       | 'danger'
@@ -17,7 +17,7 @@ export default function ButtonPreview() {
     { type: 'primary' },
     { type: 'secundary' },
     { type: 'outline' },
-    { type: 'highlight' },
+    { type: 'accent' },
     { type: 'disabled' },
     { type: 'link' },
     { type: 'danger' },

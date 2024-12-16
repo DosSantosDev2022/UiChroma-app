@@ -10,7 +10,7 @@ const TextArea = forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        'w-[464px] rounded bg-zinc-800 px-3 py-4 font-light text-zinc-200 outline-none focus:ring-2 focus:ring-zinc-900',
+        'w-full rounded border border-border/20 bg-muted px-3 py-4 font-light text-muted-foreground outline-none placeholder:text-muted-foreground focus:ring-2 focus:ring-ring',
         className
       )}
     />
@@ -18,4 +18,4 @@ const TextArea = forwardRef<
 })
 TextArea.displayName = 'textArea'
 
-export default TextArea
+export { TextArea }

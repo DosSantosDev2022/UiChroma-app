@@ -15,10 +15,7 @@ const NavigationList = forwardRef<
   ComponentPropsWithRef<'ul'>
 >(({ className, ...props }, ref) => (
   <ul
-    className={twMerge(
-      'space-y-4  scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground',
-      className
-    )}
+    className={twMerge('custom-scrollbar  space-y-4', className)}
     {...props}
     ref={ref}
   />
@@ -30,7 +27,7 @@ const NavigationItem = forwardRef<HTMLLIElement, ComponentPropsWithRef<'li'>>(
   ({ className, ...props }, ref) => (
     <li
       className={twMerge(
-        'animation-hover flex h-10 w-full cursor-pointer items-center  rounded-md px-2 py-1.5 hover:bg-muted',
+        'flex h-10 w-full cursor-pointer items-center overflow-hidden  rounded-md px-2 py-1.5 hover:bg-muted-hover',
         className
       )}
       {...props}
@@ -75,7 +72,11 @@ const NavigationIcon = forwardRef<
   HTMLSpanElement,
   ComponentPropsWithRef<'span'>
 >(({ className, ...props }, ref) => (
-  <span className={twMerge('', className)} {...props} ref={ref} />
+  <span
+    className={twMerge('text-muted-foreground', className)}
+    {...props}
+    ref={ref}
+  />
 ))
 
 NavigationIcon.displayName = 'NavigationIcon'

@@ -1,6 +1,11 @@
 import { links, themes } from '@/enums/sideBar'
 import { GET_COMPONENTS_NAME } from '@/utils/getComponentNames'
 import {
+  NavigationIcon,
+  NavigationItem,
+  NavigationList,
+  NavigationLink,
+  NavigationRoot,
   DropDownContainer,
   DropDownContent,
   DropDownIcon,
@@ -9,21 +14,15 @@ import {
   DropDownList,
   DropDownProvider,
   DropDownTrigger
-} from '@repo/chromaui/components/dropdown/Dropdown.tsx'
-import {
-  NavigationIcon,
-  NavigationItem,
-  NavigationLink,
-  NavigationList,
-  NavigationRoot
-} from '@repo/chromaui/components/navigation/navigation.tsx'
+} from '@repo/ChromaUI/components'
 import Link from 'next/link'
 import { HiTemplate } from 'react-icons/hi'
 import { IoMdColorPalette } from 'react-icons/io'
 import { TbComponents } from 'react-icons/tb'
 
-export async function NavigationLinks() {
+const NavigationLinks = async () => {
   const { pageComponents } = await GET_COMPONENTS_NAME()
+
   const componentList = [...pageComponents].sort((a, b) =>
     a.name.localeCompare(b.name)
   )
@@ -128,3 +127,5 @@ export async function NavigationLinks() {
     </>
   )
 }
+
+export { NavigationLinks }

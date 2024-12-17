@@ -1,24 +1,25 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: #f3f3f5;
-    --foreground: #05060a;
+    --background: #f4f4f5;
+    --foreground: #0a0a0b;
 
-    --primary: #1f2942;
-    --primary-hover: #474e64;
-    --primary-foreground: #fbfcfe;
-    --secondary: #b6b8c2;
-    --secondary-hover: #9fa2af;
-    --secondary-foreground: #3c3c3c;
-    --muted: #e4e4e7;
-    --muted-hover: #e9e9ec;
-    --muted-foreground: #666666;
-    --accent: #999999;
-    --accent-hover: #adadad;
-    --accent-foreground: #1a1a1a;
+    --primary: #3f3f46;
+    --primary-hover: #616167;
+    --primary-foreground: #ffffff;
+    --secondary: #c1c1c3;
+    --secondary-hover: #adadb0;
+    --secondary-foreground: #424242;
+    --muted: #d4d4d8;
+    --muted-hover: #e5e7eb;
+    --muted-foreground: #292929;
+    --accent: #6b29ae;
+    --accent-hover: #8233d1;
+    --accent-foreground: #ede8e8;
 
     --danger: #ff5a5a;
     --danger-hover: #e04848;
@@ -30,32 +31,33 @@
     --success-hover: #4cae4c;
     --success-foreground: #f8f8f8;
 
-    --border: #0f1118;
-    --ring: #12151e;
+    --border: #181819;
+    --ring: #1d1d1f;
+    --input: #f8f8f8;
 
-    --chart-1: #1f2942;
-    --chart-2: #381f42;
-    --chart-3: #421f29;
-    --chart-4: #42381f;
-    --chart-5: #29421f;
+    --chart-1: #3f3f46;
+    --chart-2: #463f46;
+    --chart-3: #463f3f;
+    --chart-4: #46463f;
+    --chart-5: #3f463f;
  }
 
   .dark {
     --background: #000000;
     --foreground: #FFFFFF;
 
-    --primary: #0f1118;
-    --primary-hover: #12151e;
-    --primary-foreground: #e6e7ea;
-    --secondary: #0a0c13;
-    --secondary-hover: #0f1118;
-    --secondary-foreground: #cecfd6;
-    --muted: #2c2c2d;
-    --muted-hover: #404041;
-    --muted-foreground: #f7f7f8;
-    --accent: #999999;
-    --accent-hover: #4a4a4a;
-    --accent-foreground: #1a1a1a;
+    --primary: #181819;
+    --primary-hover: #1d1d1f;
+    --primary-foreground: #eaeaeb;
+    --secondary: #121213;
+    --secondary-hover: #181819;
+    --secondary-foreground: #d5d5d7;
+    --muted: #232323;
+    --muted-hover: #323232;
+    --muted-foreground: #e5e5e5;
+    --accent: #6b29ae;
+    --accent-hover: #8233d1;
+    --accent-foreground: #ede8e8;
 
     --danger: #ff5a5a;
     --danger-hover: #e04848;
@@ -65,22 +67,27 @@
     --warning-foreground: #1a1a1a;
     --success: #5cb85c;
     --success-hover: #4cae4c;
-    --success-foreground: #cecfd6;
+    --success-foreground: #f8f8f8;
 
-    --border: #1c2439;
-    --ring: #1f2942;
+    --border: #36363c;
+    --ring: #3f3f46;
+    --input: #34343a;
 
-    --chart-1: #0f1118;
-    --chart-2: #160e19;
-    --chart-3: #1a0e11;
-    --chart-4: #19160d;
-    --chart-5: #12190e;
-    } 
+    --chart-1: #181819;
+    --chart-2: #191819;
+    --chart-3: #191818;
+    --chart-4: #191918;
+    --chart-5: #181918;
+  }
 }
-  
+
 
 
 /* Custom scrollbar styles */
 .custom-scrollbar {
-  @apply overflow-auto scrollbar-thin scrollbar-track-background scrollbar-thumb-accent;
+  @apply overflow-auto scrollbar-thin scrollbar-track-background scrollbar-thumb-muted;
 } 
+
+.animation-hover {
+  @apply duration-200 transition-all
+}

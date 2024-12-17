@@ -1,3 +1,4 @@
+'use client'
 import React, { ReactNode, useEffect, useMemo, useState } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
@@ -29,7 +30,7 @@ const CarouselButton = React.forwardRef<
   <button
     type="button"
     className={twMerge(
-      `absolute top-1/2 -translate-y-1/2 transform rounded-full bg-accent-foreground p-2 text-accent duration-300 hover:bg-accent-foreground/70 focus:outline-none active:scale-95 ${
+      `hover:bg-accent-foreground/70 absolute top-1/2 -translate-y-1/2 transform rounded-full bg-accent-foreground p-2 text-accent duration-300 focus:outline-none active:scale-95 ${
         direction === 'prev' ? 'left-4' : 'right-4'
       }`,
       className
@@ -115,7 +116,7 @@ const CarouselRoot = ({
               'h-2.5 w-2.5 rounded-full',
               currentIndex === index
                 ? 'bg-accent'
-                : 'bg-accent-foreground hover:bg-accent-foreground/70'
+                : 'hover:bg-accent-foreground/70 bg-accent-foreground'
             )}
             aria-label={`Go to slide ${index + 1}`}
           />

@@ -1,5 +1,6 @@
-import { Colors } from '@/@types/colorsState'
+'use client'
 import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
+import { useThemeStore } from '@/store/useThemeStore'
 import { generateCodeCss, generateTailwindConfig } from '@/utils/generateCode'
 import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
 import {
@@ -25,12 +26,8 @@ import { BiLogoCss3 } from 'react-icons/bi'
 import { IoCopy } from 'react-icons/io5'
 import { RiTailwindCssFill } from 'react-icons/ri'
 
-interface ModalCodeCssProps {
-  lightColors: Colors['light']
-  darkColors: Colors['dark']
-}
-
-export function ModalCodeCss({ darkColors, lightColors }: ModalCodeCssProps) {
+export function ModalCodeCss() {
+  const { darkColors, lightColors } = useThemeStore()
   const [activeTab, setActiveTab] = useState<'globalcss' | 'tailwindConfig'>(
     'globalcss'
   )

@@ -1,15 +1,14 @@
 import { Logo } from '@/assets/icons/Logo'
+import { Badge } from '@repo/ChromaUI/components/index'
 import { NavigationLinks } from '@/components/global/navLinks/navLinks'
 
-export function SideBar() {
+const SideBar = () => {
   return (
     <aside className="col-start-1 row-span-2 flex h-full flex-col justify-between border bg-background">
       <div className="custom-scrollbar flex flex-col gap-4 overflow-y-auto p-4">
         <div className="flex w-full items-center justify-between gap-4 px-2 py-1">
           <Logo />
-          <span className="flex items-center justify-center rounded-2xl border bg-accent px-2 py-1.5 text-xs font-medium text-accent-foreground">
-            V.1.0.0
-          </span>
+          <Badge variant="accent"> V.1.0.0</Badge>
         </div>
         <div className="flex flex-col gap-6">
           <NavigationLinks />
@@ -23,3 +22,5 @@ export function SideBar() {
     </aside>
   )
 }
+
+export { SideBar }

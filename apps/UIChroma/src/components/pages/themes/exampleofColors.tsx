@@ -3,10 +3,14 @@ import { Title } from '@/components/global/title/title'
 import { colord } from 'colord'
 
 interface ExampleofColorsProps {
-  Colors: Colors
+  lightColors: Colors
+  darkColors: Colors
 }
 
-export function ExampleofColors({ Colors }: ExampleofColorsProps) {
+export function ExampleofColors({
+  darkColors,
+  lightColors
+}: ExampleofColorsProps) {
   const colorKeys = [
     'primary',
     'secondary',
@@ -32,13 +36,13 @@ export function ExampleofColors({ Colors }: ExampleofColorsProps) {
               key={key}
               className="flex h-20 w-20 items-center justify-center rounded-2xl border p-1.5"
               style={{
-                backgroundColor: `${Colors[key as keyof Colors]}`
+                backgroundColor: `${lightColors[key as keyof Colors]}`
               }}
             >
               <span
                 className="text-[11.5px] font-bold"
                 style={{
-                  color: colord(`${Colors[key as keyof Colors]}`).isLight()
+                  color: colord(`${lightColors[key as keyof Colors]}`).isLight()
                     ? '#000'
                     : '#FFF'
                 }}
@@ -58,14 +62,14 @@ export function ExampleofColors({ Colors }: ExampleofColorsProps) {
               key={`dark-${key}`}
               className="flex h-20 w-20  items-center justify-center rounded-2xl border p-1.5"
               style={{
-                backgroundColor: `${Colors[`dark_${key}` as keyof Colors]}`
+                backgroundColor: `${darkColors[`dark_${key}` as keyof Colors]}`
               }}
             >
               <span
                 className="text-[11.5px] font-bold"
                 style={{
                   color: colord(
-                    `${Colors[`dark_${key}` as keyof Colors]}`
+                    `${darkColors[`dark_${key}` as keyof Colors]}`
                   ).isLight()
                     ? '#000'
                     : '#FFF'

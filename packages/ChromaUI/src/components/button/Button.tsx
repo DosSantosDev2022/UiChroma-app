@@ -1,8 +1,8 @@
-import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
+import * as React from 'react'
 import { ForwardedRef } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { FaSpinner } from 'react-icons/fa6'
+import { twMerge } from 'tailwind-merge'
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -10,16 +10,16 @@ export interface ButtonProps
   asChild?: boolean
   sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'
   variant?:
-    | 'primary'
-    | 'secundary'
-    | 'outline'
-    | 'accent'
-    | 'disabled'
-    | 'link'
-    | 'danger'
-    | 'warning'
-    | 'Shine'
-    | 'Swipe'
+  | 'primary'
+  | 'secundary'
+  | 'outline'
+  | 'accent'
+  | 'disabled'
+  | 'link'
+  | 'danger'
+  | 'warning'
+  | 'Shine'
+  | 'Swipe'
   ref?: ForwardedRef<HTMLButtonElement>
 }
 
@@ -27,7 +27,7 @@ const variantClasses = {
   primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
   secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
   outline:
-    'bg-transparent border border-border text-primary hover:bg-primary/80 hover:text-primary-foreground',
+    'bg-transparent border border-border/40 text-primary hover:bg-primary-hover hover:text-primary-foreground',
   accent: 'text-accent-foreground hover:bg-accent-hover duration-300 bg-accent',
   disabled: 'bg-opacity-80 bg-accent border text-accent-foreground',
   link: 'bg-transparent border-none underline-offset-4 hover:underline',

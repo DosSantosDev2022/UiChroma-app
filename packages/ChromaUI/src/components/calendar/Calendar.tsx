@@ -96,18 +96,18 @@ export function Calendar({ value, onChange, range }: DatePickerProps) {
   }
 
   return (
-    <div className="flex w-full max-w-[300px] flex-col items-center justify-center rounded-2xl border border-zinc-300 p-4">
+    <div className="border-border/20 flex w-full max-w-[300px] flex-col items-center justify-center rounded-2xl border p-4">
       <div className="mb-2 flex items-center gap-2">
-        <div className="flex w-full items-center justify-between gap-8 rounded-xl border border-zinc-300 px-0.5 py-0.5 text-sm font-medium text-zinc-900 ">
+        <div className="border-border/20 flex w-full items-center justify-between gap-8 rounded-xl border px-0.5 py-0.5 text-sm font-medium text-muted-foreground">
           <button
-            className="rounded-lg p-2 transition-all duration-500 hover:bg-violet-100 hover:text-violet-800"
+            className="rounded-lg p-2 transition-all duration-500 hover:bg-accent hover:text-accent-foreground"
             onClick={prevMonth}
           >
             <LuChevronLeft />
           </button>
           {format(currentDate, 'MMMM yyyy')}
           <button
-            className=" rounded-lg p-2 transition-all duration-500 hover:bg-violet-100 hover:text-violet-800"
+            className="rounded-lg p-2 transition-all duration-500 hover:bg-accent hover:text-accent-foreground"
             onClick={nextMonth}
           >
             <LuChevronRight />
@@ -124,7 +124,7 @@ export function Calendar({ value, onChange, range }: DatePickerProps) {
                   key={dayName}
                   className="flex h-10 w-10 items-center justify-center"
                 >
-                  <p className="flex h-full w-full items-center justify-center rounded-full text-sm font-medium text-gray-900">
+                  <p className="flex h-full w-full items-center justify-center rounded-full text-sm font-medium text-muted-foreground">
                     {dayName}
                   </p>
                 </td>
@@ -158,17 +158,19 @@ export function Calendar({ value, onChange, range }: DatePickerProps) {
                       >
                         <p
                           onClick={() => handleSelectDate(date)}
-                          className={`cursor-pointer text-sm font-medium ${
-                            isCurrentMonth ? 'text-zinc-900' : 'text-zinc-300'
-                          } flex h-full w-full items-center justify-center rounded-full transition-all duration-300 ${
-                            isSelected || isStart || isEnd
-                              ? 'bg-violet-600 text-zinc-50'
+                          className={`cursor-pointer text-sm font-medium 
+                            ${isCurrentMonth
+                              ? 'text-foreground'
+                              : 'text-muted-foreground'
+                            } flex h-full w-full items-center justify-center rounded-full transition-all duration-300 
+                             ${isSelected || isStart || isEnd
+                              ? 'bg-primary text-primary-foreground'
                               : isInRange
-                                ? 'bg-violet-200 text-violet-800'
+                                ? 'bg-accent text-accent-foreground'
                                 : isToday
-                                  ? 'bg-violet-400 text-zinc-50'
-                                  : 'hover:bg-violet-100'
-                          }`}
+                                  ? 'bg-accent text-accent-foreground'
+                                  : 'hover:bg-accent-hover'
+                            }`}
                         >
                           {date.getDate()}
                         </p>

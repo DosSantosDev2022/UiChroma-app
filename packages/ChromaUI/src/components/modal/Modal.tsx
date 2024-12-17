@@ -59,7 +59,7 @@ const ModalTitle = ({
 }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h4
     className={twMerge(
-      'text-lg font-semibold leading-none tracking-tight text-foreground',
+      'text-xl font-semibold leading-none tracking-tight text-foreground',
       className
     )}
     {...props}
@@ -73,7 +73,7 @@ const ModalDescription = ({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p
-    className={twMerge('text-sm text-muted-foreground', className)}
+    className={twMerge('text-base text-muted-foreground', className)}
     {...props}
   />
 )
@@ -167,7 +167,7 @@ const ModalContent = React.forwardRef<
     isOpen && (
       <div
         className={twMerge(
-          'fixed left-[50%] top-[50%] z-50 grid w-full max-w-3xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 sm:rounded-lg',
+          'fixed left-[50%] top-[50%] z-50 grid w-full max-w-3xl translate-x-[-50%] translate-y-[-50%] space-y-2 border bg-background p-6 shadow-lg duration-200 sm:rounded-lg',
           className
         )}
         ref={ref}

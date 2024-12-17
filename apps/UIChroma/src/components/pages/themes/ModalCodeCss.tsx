@@ -1,4 +1,3 @@
-'use client'
 import { Colors } from '@/@types/colorsState'
 import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
 import { generateCodeCss, generateTailwindConfig } from '@/utils/generateCode'
@@ -27,17 +26,19 @@ import { IoCopy } from 'react-icons/io5'
 import { RiTailwindCssFill } from 'react-icons/ri'
 
 interface ModalCodeCssProps {
-  colors: Colors
+  lightColors: Colors['light']
+  darkColors: Colors['dark']
 }
 
-export function ModalCodeCss({ colors }: ModalCodeCssProps) {
+export function ModalCodeCss({ darkColors, lightColors }: ModalCodeCssProps) {
   const [activeTab, setActiveTab] = useState<'globalcss' | 'tailwindConfig'>(
     'globalcss'
   )
+
   return (
     <ModalProvider>
       <ModalRoot>
-        <ModalTrigger className="h-14 w-28 rounded-full">
+        <ModalTrigger className="h-12 w-28 rounded-lg">
           Copiar
           <IoCopy size={18} />
         </ModalTrigger>
@@ -60,11 +61,7 @@ export function ModalCodeCss({ colors }: ModalCodeCssProps) {
                   sizes="icon"
                   data-active={activeTab === 'globalcss' ? 'true' : 'false'}
                   onClick={() => setActiveTab('globalcss')}
-                  className={`duration-300 active:scale-95 ${
-                    activeTab === 'globalcss'
-                      ? 'bg-secondary text-secondary-foreground hover:bg-secondary-hover'
-                      : ''
-                  } p-1`}
+                  className={`duration-300 active:scale-95 ${activeTab === 'globalcss' ? 'bg-secondary text-secondary-foreground hover:bg-secondary-hover' : ''} p-1`}
                 >
                   <BiLogoCss3 size={24} />
                 </Button>
@@ -74,11 +71,7 @@ export function ModalCodeCss({ colors }: ModalCodeCssProps) {
                     activeTab === 'tailwindConfig' ? 'true' : 'false'
                   }
                   onClick={() => setActiveTab('tailwindConfig')}
-                  className={`duration-300 active:scale-95 ${
-                    activeTab === 'tailwindConfig'
-                      ? 'bg-secondary text-secondary-foreground hover:bg-secondary-hover'
-                      : ''
-                  } p-1`}
+                  className={`duration-300 active:scale-95 ${activeTab === 'tailwindConfig' ? 'bg-secondary text-secondary-foreground hover:bg-secondary-hover' : ''} p-1`}
                 >
                   <RiTailwindCssFill size={18} />
                 </Button>
@@ -92,7 +85,7 @@ export function ModalCodeCss({ colors }: ModalCodeCssProps) {
                   <ClipBoardAction
                     copyText={
                       activeTab === 'globalcss'
-                        ? generateCodeCss(colors)
+                        ? generateCodeCss(lightColors, darkColors)
                         : generateTailwindConfig()
                     }
                   />
@@ -101,7 +94,7 @@ export function ModalCodeCss({ colors }: ModalCodeCssProps) {
                   <CodeBlock
                     code={
                       activeTab === 'globalcss'
-                        ? generateCodeCss(colors)
+                        ? generateCodeCss(lightColors, darkColors)
                         : generateTailwindConfig()
                     }
                   />

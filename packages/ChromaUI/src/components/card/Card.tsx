@@ -7,7 +7,10 @@ const Card = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={twMerge('rounded-lg border shadow-sm', className)}
+    className={twMerge(
+      'border-border/25 bg-background/20 rounded-lg border shadow-sm',
+      className
+    )}
     {...props}
   />
 ))
@@ -34,7 +37,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={twMerge(
-      'text-2xl font-semibold leading-none tracking-tight',
+      'text-2xl font-semibold leading-none tracking-tight text-foreground',
       className
     )}
     {...props}
@@ -47,7 +50,11 @@ const CardDescription = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
-  <p ref={ref} className={twMerge('text-sm', className)} {...props} />
+  <p
+    ref={ref}
+    className={twMerge('text-sm text-muted-foreground', className)}
+    {...props}
+  />
 ))
 
 CardDescription.displayName = 'CardDescription'
@@ -73,4 +80,4 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = 'CardFooter'
 
-export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }

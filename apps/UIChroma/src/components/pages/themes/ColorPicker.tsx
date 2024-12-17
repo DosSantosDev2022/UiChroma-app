@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 interface SelectorColorsProps {
   color: string
@@ -10,6 +10,10 @@ interface SelectorColorsProps {
 export function ColorPicker({ color, onChange }: SelectorColorsProps) {
   const [localColor, setLocalColor] = useState(color)
 
+  useEffect(() => {
+    setLocalColor(color)
+  }, [color])
+
   const handleColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = e.target.value
     setLocalColor(newColor)
@@ -17,9 +21,9 @@ export function ColorPicker({ color, onChange }: SelectorColorsProps) {
   }
 
   return (
-    <div className="relativa flex w-full flex-1 items-center ">
+    <div className="relative flex w-full flex-1 items-center ">
       <label
-        className="border-border/20  absolute ml-2 block h-9 w-9 cursor-pointer rounded-full border"
+        className="border-border/20 absolute  ml-2 block h-9 w-9 cursor-pointer rounded-full border"
         style={{
           backgroundColor: localColor
         }}

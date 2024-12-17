@@ -1,19 +1,22 @@
 'use client'
 import { Colors } from '@/@types/colorsState'
+import * as Examples from '@/components/@examples'
 import { updateCssVariables } from '@/utils/stylesComponents'
 import { useEffect } from 'react'
-import * as Examples from '@/components/@examples'
 import { ContainerPreview } from './container'
 
 interface ExempleComponentsProps {
-  colors: Colors
+  lightColors: Colors['light']
+  darkColors: Colors['dark']
 }
 
-export function ExempleComponents({ colors }: ExempleComponentsProps) {
+export function ExempleComponents({
+  lightColors,
+  darkColors
+}: ExempleComponentsProps) {
   useEffect(() => {
-    updateCssVariables(colors)
-  }, [colors])
-  console.log('exemple', colors)
+    updateCssVariables(lightColors, darkColors)
+  }, [lightColors, darkColors])
   return (
     <div id="demo-container" className="border px-6 py-4">
       <div className="grid grid-cols-1 gap-6  lg:grid-cols-2">

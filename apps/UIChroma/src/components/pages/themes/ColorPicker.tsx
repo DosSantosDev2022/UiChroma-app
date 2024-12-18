@@ -7,7 +7,7 @@ interface SelectorColorsProps {
   onChange: (color: string) => void
 }
 
-export function ColorPicker({ color, onChange }: SelectorColorsProps) {
+const ColorPicker = ({ color, onChange }: SelectorColorsProps) => {
   const [localColor, setLocalColor] = useState(color)
 
   useEffect(() => {
@@ -45,3 +45,6 @@ export function ColorPicker({ color, onChange }: SelectorColorsProps) {
     </div>
   )
 }
+
+export { ColorPicker }
+

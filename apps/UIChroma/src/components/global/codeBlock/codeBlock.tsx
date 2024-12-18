@@ -1,4 +1,3 @@
-import React from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
@@ -6,7 +5,7 @@ interface CodeBlockProps {
   code: string
 }
 
-export function CodeBlock({ code }: CodeBlockProps) {
+const CodeBlock = ({ code }: CodeBlockProps) => {
   return (
     <SyntaxHighlighter
       language="jsx"
@@ -30,3 +29,5 @@ export function CodeBlock({ code }: CodeBlockProps) {
     </SyntaxHighlighter>
   )
 }
+
+export { CodeBlock }

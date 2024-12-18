@@ -1,7 +1,7 @@
 import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { GET_HOME_PAGE_DATA } from '@/utils/getHomePageData'
-import { Button } from '@repo/chromaui/components/button/Button.tsx'
+import { Button } from '@repo/ChromaUI/components'
 import Link from 'next/link'
 
 export default async function Home() {

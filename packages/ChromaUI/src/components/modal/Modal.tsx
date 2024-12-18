@@ -7,6 +7,7 @@ import { twMerge } from 'tailwind-merge'
 interface ModalContextProps {
   isOpen: boolean
   toggleOpen: () => void
+  closeModal: () => void
 }
 
 const ModalContext = createContext<ModalContextProps | undefined>(undefined)
@@ -19,12 +20,38 @@ const useModalContext = () => {
   return context
 }
 
-const ModalProvider = ({ children }: { children: ReactNode }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const toggleOpen = () => setIsOpen((prev) => !prev)
+const ModalProvider = ({
+  children,
+  open,
+  onOpenChange
+}: {
+  children: ReactNode
+  open?: boolean
+  onOpenChange?: (isOpen: boolean) => void
+}) => {
+  const [internalOpen, setInternalOpen] = useState(false)
+  // Determina o estado atual com prioridade para o prop `open`
+  const isOpen = open !== undefined ? open : internalOpen
+
+  const toggleOpen = () => {
+    const newState = !isOpen
+    if (onOpenChange) {
+      onOpenChange(newState)
+    } else {
+      setInternalOpen(newState)
+    }
+  }
+
+  const closeModal = () => {
+    if (onOpenChange) {
+      onOpenChange(false)
+    } else {
+      setInternalOpen(false)
+    }
+  }
 
   return (
-    <ModalContext.Provider value={{ isOpen, toggleOpen }}>
+    <ModalContext.Provider value={{ isOpen, toggleOpen, closeModal }}>
       {children}
     </ModalContext.Provider>
   )
@@ -32,9 +59,16 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
 
 const ModalRoot = ({
   className,
+  open,
+  onOpenChange,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={twMerge('relative', className)} {...props} />
+}: React.HTMLAttributes<HTMLDivElement> & {
+  open?: boolean
+  onOpenChange?: (isOpen: boolean) => void
+}) => (
+  <ModalProvider open={open} onOpenChange={onOpenChange}>
+    <div className={twMerge('relative', className)} {...props} />
+  </ModalProvider>
 )
 
 ModalRoot.displayName = 'ModalRoot'
@@ -104,7 +138,7 @@ const ModalOverlay = React.forwardRef<
   return (
     <div
       className={twMerge(
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0  fixed inset-0 z-50 bg-black/80',
+        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0  fixed inset-0 z-50 backdrop-blur-sm',
         className
       )}
       ref={ref}
@@ -187,8 +221,9 @@ export {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  ModalProvider,
   ModalRoot,
   ModalTitle,
-  ModalTrigger
+  ModalTrigger,
+  useModalContext
 }
+

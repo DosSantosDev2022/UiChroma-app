@@ -1,5 +1,5 @@
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
-import Modal from '@/components/global/modal/modalSearch'
+import { ModalSearch } from '@/components/global/modal/modalSearch'
 import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
 import { IoLogoFigma } from 'react-icons/io5'
@@ -25,11 +25,11 @@ const GET_SEARCH = (): Promise<GetSearch> => {
   return fetchHygraphQuery(query)
 }
 
-export async function Header() {
+const Header = async () => {
   const { pageComponents } = await GET_SEARCH()
   return (
-    <header className="col-start-2 row-start-1  flex h-16 w-full items-center justify-between border-b  px-6 ">
-      <Modal data={pageComponents} />
+    <header className="col-start-2 row-start-1  flex h-16 w-full items-center justify-between border-b border-border px-6 ">
+      <ModalSearch data={pageComponents} />
 
       <div className="flex items-center gap-4">
         <Link className="duration-300 hover:scale-105" href={''}>
@@ -46,3 +46,6 @@ export async function Header() {
     </header>
   )
 }
+
+export { Header }
+

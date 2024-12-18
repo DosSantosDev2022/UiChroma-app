@@ -38,17 +38,19 @@ const AccordionContainer = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div
-    {...props}
-    ref={ref}
-    className={twMerge('relative w-full space-y-1', className)}
-  />
+  <AccordionProvider>
+    <div
+      {...props}
+      ref={ref}
+      className={twMerge('relative w-full space-y-1', className)}
+    />
+  </AccordionProvider>
 ))
 AccordionContainer.displayName = 'AccordionContainer'
 
 const AccordionTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.HtmlHTMLAttributes<HTMLButtonElement>
+  React.HTMLAttributes<HTMLButtonElement>
 >(({ className, ...props }, ref) => {
   const { toggleOpen, isOpen } = useAccordionContext()
   return (
@@ -63,9 +65,7 @@ const AccordionTrigger = React.forwardRef<
     >
       {props.children}
       <LuChevronDown
-        className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${
-          isOpen ? 'rotate-180' : ''
-        }`}
+        className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${isOpen ? 'rotate-180' : ''}`}
       />
     </button>
   )
@@ -93,28 +93,26 @@ const AccordionContent = React.forwardRef<
 })
 AccordionContent.displayName = 'AccordionContent'
 
-const AccordionQuestion = React.forwardRef<
-  HTMLSpanElement,
-  React.HTMLAttributes<HTMLSpanElement>
->(({ className, ...props }, ref) => (
+const AccordionQuestion = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
     className={twMerge('text-base font-semibold text-zinc-700', className)}
     {...props}
-    ref={ref}
   />
-))
+)
 AccordionQuestion.displayName = 'AccordionQuestion'
 
-const AccordionAnswer = React.forwardRef<
-  HTMLSpanElement,
-  React.HTMLAttributes<HTMLSpanElement>
->(({ className, ...props }, ref) => (
+const AccordionAnswer = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
     className={twMerge('text-start text-sm text-zinc-600', className)}
     {...props}
-    ref={ref}
   />
-))
+)
 AccordionAnswer.displayName = 'AccordionAnswer'
 
 export {
@@ -122,7 +120,6 @@ export {
   AccordionContainer,
   AccordionContent,
   AccordionContext,
-  AccordionProvider,
   AccordionQuestion,
   AccordionTrigger
 }

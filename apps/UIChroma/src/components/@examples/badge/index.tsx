@@ -1,11 +1,11 @@
-import { Badge } from '@repo/chromaui/components/bedge/Bedge.tsx'
+import { Badge } from '@repo/ChromaUI/components'
 
 type BadgeType = {
   variant: 'primary' | 'secondary' | 'accent'
   children: string
 }
 
-export default function BedgePreview() {
+const BedgePreview = () => {
   const types: BadgeType[] = [
     {
       variant: 'primary',
@@ -34,3 +34,5 @@ export default function BedgePreview() {
     </div>
   )
 }
+
+export default BedgePreview

@@ -1,24 +1,17 @@
 import { Title } from '@/components/global/title/title'
 import { ReactNode } from 'react'
-import { twMerge } from 'tailwind-merge'
 
 interface ContainerPreviewProps {
   children: ReactNode
   title?: string
-  className?: string
 }
 
-export function ContainerPreview({
-  children,
-  title,
-  className
-}: ContainerPreviewProps) {
+const ContainerPreview = ({ children, title }: ContainerPreviewProps) => {
   return (
     <div
-      className={twMerge(
-        'flex w-full flex-col items-start justify-center  gap-3 rounded-md border bg-muted/20 px-6 py-4 shadow-sm',
-        className
-      )}
+      className={
+        'bg-muted/20 flex w-full flex-col items-start  justify-center gap-3 rounded-md border px-6 py-4 shadow-sm'
+      }
     >
       <Title
         className="ml-1.5 text-base font-medium text-muted-foreground"
@@ -32,3 +25,6 @@ export function ContainerPreview({
     </div>
   )
 }
+
+export { ContainerPreview }
+

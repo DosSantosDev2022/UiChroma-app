@@ -1,7 +1,6 @@
 import { Colors } from '@/@types/colorsState'
 import { Title } from '@/components/global/title/title'
 import { ColorPicker } from '@/components/pages/themes/ColorPicker'
-import { useThemeStore } from '@/store/useThemeStore'
 
 interface ColorModeSelectorProps {
   title: string
@@ -17,7 +16,6 @@ const ColorModeSelector = ({
   colors,
   handleColorChange
 }: ColorModeSelectorProps) => {
-
   return (
     <div className="custom-scrollbar flex max-h-[380px] flex-col items-center overflow-y-auto rounded-md border px-2 py-2.5">
       <Title as="h4" className="text-xl">

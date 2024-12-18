@@ -1,13 +1,13 @@
 'use client'
-import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
 import {
+  Button,
   NavigationItem,
   NavigationList,
   NavigationRoot
-} from '@repo/chromaui/components/navigation/navigation.tsx'
+} from '@repo/ChromaUI/components'
+
 import { useState } from 'react'
 import { GoDotFill } from 'react-icons/go'
-import { Title } from '../title/title'
 
 interface NavigateThroughSectionsProps {
   links: {
@@ -16,9 +16,7 @@ interface NavigateThroughSectionsProps {
   }[]
 }
 
-export function NavigateThroughSections({
-  links
-}: NavigateThroughSectionsProps) {
+const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
   const [activeLink, setActiveLink] = useState<string>(links[0]?.url || '')
 
   const handleButtonClickScrollIntoView = (id: string) => {
@@ -31,12 +29,9 @@ export function NavigateThroughSections({
 
   return (
     <NavigationRoot>
-      <Title
-        as="h3"
-        className="mb-1 px-2 py-1 text-sm font-semibold text-muted-foreground"
-      >
+      <h3 className="mb-1 px-2 py-1 text-sm font-semibold text-muted-foreground">
         Navegue nessa página
-      </Title>
+      </h3>
       <NavigationList className="flex flex-col space-y-0">
         {links.map((link) => (
           <NavigationItem key={link.text}>
@@ -57,3 +52,6 @@ export function NavigateThroughSections({
     </NavigationRoot>
   )
 }
+
+export { NavigateThroughSections }
+

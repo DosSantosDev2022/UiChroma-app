@@ -3,6 +3,8 @@ import { ComponentProps } from 'react'
 
 type RichTextProps = ComponentProps<typeof CmsRichText>
 
-export function RichText({ ...props }: RichTextProps) {
+const RichText = ({ ...props }: RichTextProps) => {
   return <CmsRichText {...props} />
 }
+
+export { RichText }

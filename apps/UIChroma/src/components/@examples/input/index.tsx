@@ -1,11 +1,7 @@
-import {
-  Field,
-  InputIcon,
-  InputRoot
-} from '@repo/chromaui/components/input/Input.tsx'
+import { Field, InputIcon, InputRoot } from '@repo/ChromaUI/components'
 import { LuSearch } from 'react-icons/lu'
 
-export default function InputPreview() {
+const InputPreview = () => {
   return (
     <InputRoot className="w-[468px] ">
       <InputIcon>
@@ -15,3 +11,5 @@ export default function InputPreview() {
     </InputRoot>
   )
 }
+
+export default InputPreview

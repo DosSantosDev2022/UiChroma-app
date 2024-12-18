@@ -14,7 +14,7 @@
     --secondary: #c1c1c3;
     --secondary-hover: #adadb0;
     --secondary-foreground: #424242;
-    --muted: #d4d4d8;
+    --muted: #52525b;
     --muted-hover: #e5e7eb;
     --muted-foreground: #292929;
     --accent: #6b29ae;
@@ -31,7 +31,7 @@
     --success-hover: #4cae4c;
     --success-foreground: #f8f8f8;
 
-    --border: #181819;
+    --border: #e5e7eb;
     --ring: #1d1d1f;
     --input: #f8f8f8;
 

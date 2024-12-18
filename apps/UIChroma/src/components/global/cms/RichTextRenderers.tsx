@@ -6,7 +6,7 @@ interface defaultRenderersProps {
   children: ReactNode
 }
 
-export const defaultRenderers = {
+const defaultRenderers = {
   // Títulos
   h1: ({ children }: defaultRenderersProps) => (
     <h1 className={`${inter.className} text-6xl font-bold text-foreground`}>
@@ -41,7 +41,7 @@ export const defaultRenderers = {
 
   // Parágrafos
   p: ({ children }: defaultRenderersProps) => (
-    <p className="text-primary-900 w-full text-base font-normal">{children}</p>
+    <p className="w-full text-base font-normal text-muted">{children}</p>
   ),
 
   // Listas
@@ -55,7 +55,7 @@ export const defaultRenderers = {
 
   // Links
   a: ({ children, href }: { children: ReactNode; href?: string }) => (
-    <a href={href} className="text-primary hover:text-primary/80">
+    <a href={href} className="text-primary hover:text-primary-hover">
       {children}
     </a>
   ),
@@ -71,39 +71,39 @@ export const defaultRenderers = {
 
   // Bloco de código
   code_block: ({ children }: defaultRenderersProps) => (
-    <pre className="scrollbar-track-primary-900 scrollbar-thumb-primary-800 w-full overflow-x-auto rounded-xl bg-secondary-foreground px-10 py-5 shadow-lg scrollbar-thin">
-      <code className="text-secondary">{children}</code>
+    <pre className="custom-scrollbar w-full overflow-x-auto rounded-xl bg-primary px-10 py-5 shadow-lg">
+      <code className="text-primary-foreground">{children}</code>
     </pre>
   ),
 
   // Bloco de citação
   blockquote: ({ children }: defaultRenderersProps) => (
-    <blockquote className="border-l-4 border-accent-foreground pl-6 italic text-accent">
+    <blockquote className="border-l-4 border-border pl-6 italic text-muted-foreground">
       {children}
     </blockquote>
   ),
 
   // Tabelas
   table: ({ children }: defaultRenderersProps) => (
-    <table className="border-primary-300 w-full border-collapse border">
+    <table className="w-full border-collapse border border-border">
       {children}
     </table>
   ),
   th: ({ children }: defaultRenderersProps) => (
-    <th className="border-primary-300 border-b p-2 text-left">{children}</th>
+    <th className="border-b border-border p-2 text-left">{children}</th>
   ),
   td: ({ children }: defaultRenderersProps) => (
-    <td className="border-primary-300 border-b p-2">{children}</td>
+    <td className="border-b border-border p-2">{children}</td>
   ),
 
   // Span (texto em linha)
   span: ({ children }: defaultRenderersProps) => (
-    <span className="text-primary">{children}</span>
+    <span className="text-muted">{children}</span>
   ),
 
   // Strong (negrito)
   strong: ({ children }: defaultRenderersProps) => (
-    <strong className="font-bold">{children}</strong>
+    <strong className="font-bold text-foreground">{children}</strong>
   ),
 
   // Em (itálico)
@@ -113,6 +113,8 @@ export const defaultRenderers = {
 
   // Small (texto pequeno)
   small: ({ children }: defaultRenderersProps) => (
-    <small className="text-accent-foreground0 text-sm">{children}</small>
+    <small className="text-sm text-accent">{children}</small>
   )
 }
+
+export { defaultRenderers }

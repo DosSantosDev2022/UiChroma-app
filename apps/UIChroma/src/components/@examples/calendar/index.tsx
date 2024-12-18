@@ -1,5 +1,7 @@
-import { Calendar } from '@repo/chromaui/components/calendar/Calendar.tsx'
+import { Calendar } from '@repo/ChromaUI/components'
 
-export default function calendarPreview() {
+const CalendarPreview = () => {
   return <Calendar onChange={() => console.log()} value={new Date()} />
 }
+
+export default CalendarPreview

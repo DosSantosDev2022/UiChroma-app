@@ -1,5 +1,7 @@
-import { TextArea } from '@repo/chromaui/components/textArea/TextArea.tsx'
+import { TextArea } from '@repo/ChromaUI/components'
 
-export default function TextAreaPreview() {
+const TextAreaPreview = () => {
   return <TextArea placeholder="Deixe seu comentário" />
 }
+
+export default TextAreaPreview 

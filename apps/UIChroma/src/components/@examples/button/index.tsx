@@ -1,30 +1,30 @@
-import { Button } from '@repo/chromaui/components/button/Button.tsx'
+import { Button } from '@repo/ChromaUI/components'
 
-export default function ButtonPreview() {
+const ButtonPreview = () => {
   const variantes: {
     type:
-      | 'primary'
-      | 'secundary'
-      | 'outline'
-      | 'accent'
-      | 'disabled'
-      | 'link'
-      | 'danger'
-      | 'warning'
-      | 'Swipe'
-      | 'Shine'
+    | 'primary'
+    | 'secundary'
+    | 'outline'
+    | 'accent'
+    | 'disabled'
+    | 'link'
+    | 'danger'
+    | 'warning'
+    | 'Swipe'
+    | 'Shine'
   }[] = [
-    { type: 'primary' },
-    { type: 'secundary' },
-    { type: 'outline' },
-    { type: 'accent' },
-    { type: 'disabled' },
-    { type: 'link' },
-    { type: 'danger' },
-    { type: 'warning' },
-    { type: 'Swipe' },
-    { type: 'Shine' }
-  ]
+      { type: 'primary' },
+      { type: 'secundary' },
+      { type: 'outline' },
+      { type: 'accent' },
+      { type: 'disabled' },
+      { type: 'link' },
+      { type: 'danger' },
+      { type: 'warning' },
+      { type: 'Swipe' },
+      { type: 'Shine' }
+    ]
 
   return (
     <div className="flex w-full flex-wrap items-center  gap-2">
@@ -42,3 +42,5 @@ export default function ButtonPreview() {
     </div>
   )
 }
+
+export default ButtonPreview

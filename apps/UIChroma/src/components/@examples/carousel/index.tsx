@@ -1,10 +1,7 @@
-import {
-  CarouselContainer,
-  CarouselRoot
-} from '@repo/ChromaUI/components/Carousel/Carousel.tsx'
+import { CarouselContainer, CarouselRoot } from '@repo/ChromaUI/components'
 import Image from 'next/image'
 
-export default function CarouselPreview() {
+const CarouselPreview = () => {
   const images = [
     {
       id: 'slide01',
@@ -41,3 +38,5 @@ export default function CarouselPreview() {
     </>
   )
 }
+
+export default CarouselPreview

@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -53,4 +51,5 @@ const AvatarFallback = React.forwardRef<
 
 AvatarFallback.displayName = 'AvatarFallback'
 
-export { Avatar, AvatarImage, AvatarFallback }
+export { Avatar, AvatarFallback, AvatarImage }
+

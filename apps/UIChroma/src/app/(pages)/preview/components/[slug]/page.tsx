@@ -8,18 +8,19 @@ import {
 } from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
 import { Title } from '@/components/global/title/title'
-import { DocLinks } from '@/components/pages/home/documentationslink/docLinks'
 import ComponentPreview from '@/components/pages/preview/componentPreview/componentPreview'
+import { DocLinks } from '@/components/pages/preview/documentationslink/docLinks'
 import { links } from '@/enums/preview'
 import { GET_DETAILS_COMPONENT } from '@/utils/getDetailsComponentData'
-import { Badge } from '@repo/chromaui/components/bedge/Bedge.tsx'
 import {
+  Badge,
   ClipBoardAction,
   ClipBoardArea,
   ClipBoardContainer,
   ClipBoardHeader,
   ClipBoardLabel
-} from '@repo/chromaui/components/clipboard/Clipboard.tsx'
+} from '@repo/ChromaUI/components'
+
 import { redirect } from 'next/navigation'
 import { FaCircleCheck } from 'react-icons/fa6'
 

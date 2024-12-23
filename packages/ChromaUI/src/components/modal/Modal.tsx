@@ -137,10 +137,7 @@ const ModalOverlay = React.forwardRef<
   if (!isOpen) return null
   return (
     <div
-      className={twMerge(
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0  fixed inset-0 z-50 backdrop-blur-sm',
-        className
-      )}
+      className={twMerge('fixed inset-0 z-40 backdrop-blur-sm', className)}
       ref={ref}
       {...props}
     />
@@ -201,8 +198,9 @@ const ModalContent = React.forwardRef<
   return (
     isOpen && (
       <div
+        data-state={isOpen ? 'open' : 'closed'}
         className={twMerge(
-          'fixed left-[50%] top-[50%] z-50 grid w-full max-w-3xl translate-x-[-50%] translate-y-[-50%] space-y-2 border bg-background p-6 shadow-lg duration-200 sm:rounded-lg',
+          'fixed left-1/2 top-1/2 z-50 grid w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform space-y-2 border bg-background p-6 shadow-lg data-[state=open]:animate-zoom-in  sm:rounded-lg',
           className
         )}
         ref={ref}
@@ -226,4 +224,3 @@ export {
   ModalTrigger,
   useModalContext
 }
-

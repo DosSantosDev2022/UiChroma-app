@@ -1,5 +1,13 @@
 'use client'
-import React, { createContext, ReactNode, useContext, useState } from 'react'
+
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useRef,
+  useEffect
+} from 'react'
 import { LuChevronDown } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
@@ -19,7 +27,6 @@ const useAccordionContext = () => {
       'Accordion components must be used within a Accordion provider'
     )
   }
-
   return context
 }
 
@@ -34,64 +41,64 @@ const AccordionProvider = ({ children }: { children: ReactNode }) => {
   )
 }
 
-const AccordionContainer = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+const AccordionContainer = ({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
   <AccordionProvider>
-    <div
-      {...props}
-      ref={ref}
-      className={twMerge('relative w-full space-y-1', className)}
-    />
+    <div {...props} className={twMerge('relative w-full space-y-1', className)}>
+      {children}
+    </div>
   </AccordionProvider>
-))
-AccordionContainer.displayName = 'AccordionContainer'
+)
 
-const AccordionTrigger = React.forwardRef<
-  HTMLButtonElement,
-  React.HTMLAttributes<HTMLButtonElement>
->(({ className, ...props }, ref) => {
+const AccordionTrigger = ({
+  className,
+  children,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { toggleOpen, isOpen } = useAccordionContext()
   return (
     <button
       {...props}
       onClick={toggleOpen}
+      aria-expanded={isOpen}
       className={twMerge(
-        'flex h-16 w-full cursor-pointer items-center justify-between gap-2 rounded-t-md border px-4 py-2 focus:outline-none',
+        'flex h-16 w-full items-center justify-between gap-2 rounded-t-md border px-4 py-2 focus:outline-none',
         className
       )}
-      ref={ref}
     >
-      {props.children}
+      {children}
       <LuChevronDown
         className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${isOpen ? 'rotate-180' : ''}`}
       />
     </button>
   )
-})
-AccordionTrigger.displayName = 'AccordionTrigger'
+}
 
-const AccordionContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+const AccordionContent = ({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   const { isOpen } = useAccordionContext()
   return (
     <div
+      aria-hidden={!isOpen}
       {...props}
-      ref={ref}
       className={twMerge(
-        'overflow-hidden transition-all duration-500 ease-in-out',
-        isOpen ? 'max-h-screen animate-fade-in' : 'max-h-0 animate-fade-out',
+        'overflow-hidden ',
+        isOpen
+          ? 'animate-accordion-down  max-h-screen '
+          : 'animate-accordion-up max-h-0 ',
         className
       )}
     >
-      <div className="px-4 py-2">{props.children}</div>
+      <div className="px-4 py-2">{children}</div>
     </div>
   )
-})
-AccordionContent.displayName = 'AccordionContent'
+}
 
 const AccordionQuestion = ({
   className,
@@ -109,7 +116,7 @@ const AccordionAnswer = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-start text-sm text-zinc-600', className)}
+    className={twMerge('text-start text-sm text-muted', className)}
     {...props}
   />
 )

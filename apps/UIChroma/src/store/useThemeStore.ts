@@ -1,12 +1,14 @@
-import { create } from 'zustand'
 import { Colors } from '@/@types/colorsState'
 import { defaultColors } from '@/enums/colors'
 import { generateTheme } from '@/utils/generateTheme'
+import { create } from 'zustand'
 
 interface ThemeState {
   lightColors: Colors['light']
   darkColors: Colors['dark']
   readyColors: { light: Colors['light']; dark: Colors['dark'] }
+  selectedColor: string | null
+  setSelectedColor: (color: string) => void
   handleLightColorChange: (color: string, key: keyof Colors['light']) => void
   handleDarkColorChange: (color: string, key: keyof Colors['dark']) => void
   handleBaseColorChange: (color: any) => void
@@ -19,6 +21,7 @@ export const useThemeStore = create<ThemeState>((set) => ({
     light: defaultColors.light,
     dark: defaultColors.dark
   },
+  selectedColor: null,
 
   // Função para atualizar Light Mode
   handleLightColorChange: (color, key) =>
@@ -41,5 +44,7 @@ export const useThemeStore = create<ThemeState>((set) => ({
       darkColors: dark,
       readyColors: newTheme.colors
     })
-  }
+  },
+
+  setSelectedColor: (color) => set({ selectedColor: color })
 }))

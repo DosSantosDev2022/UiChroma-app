@@ -26,8 +26,8 @@ const BedgePreview = () => {
       {types.map((type) => (
         <Badge
           key={type.variant}
-          className="w-[85px]"
           variant={type.variant}
+          size={'lg'}
           children={type.children}
         />
       ))}

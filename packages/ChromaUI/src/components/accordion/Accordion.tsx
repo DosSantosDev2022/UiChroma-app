@@ -1,13 +1,5 @@
 'use client'
-
-import React, {
-  createContext,
-  useContext,
-  useState,
-  ReactNode,
-  useRef,
-  useEffect
-} from 'react'
+import React, { createContext, ReactNode, useContext, useState } from 'react'
 import { LuChevronDown } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
@@ -47,7 +39,7 @@ const AccordionContainer = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <AccordionProvider>
-    <div {...props} className={twMerge('relative w-full space-y-1', className)}>
+    <div {...props} className={twMerge('relative w-full', className)}>
       {children}
     </div>
   </AccordionProvider>
@@ -59,11 +51,15 @@ const AccordionTrigger = ({
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { toggleOpen, isOpen } = useAccordionContext()
+  const triggerId = 'accordion-trigger'
+  const contentId = 'accordion-content'
   return (
     <button
       {...props}
-      onClick={toggleOpen}
       aria-expanded={isOpen}
+      aria-controls={contentId}
+      id={triggerId}
+      onClick={toggleOpen}
       className={twMerge(
         'flex h-16 w-full items-center justify-between gap-2 rounded-t-md border px-4 py-2 focus:outline-none',
         className
@@ -83,19 +79,22 @@ const AccordionContent = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => {
   const { isOpen } = useAccordionContext()
+  const contentId = 'accordion-content'
   return (
     <div
+      data-state={isOpen ? 'open' : 'closed'}
       aria-hidden={!isOpen}
+      id={contentId}
       {...props}
       className={twMerge(
-        'overflow-hidden ',
+        'overflow-hidden transition-all',
         isOpen
-          ? 'animate-accordion-down  max-h-screen '
-          : 'animate-accordion-up max-h-0 ',
+          ? 'data-[state=open]:animate-accordion-down'
+          : 'max-h-0 data-[state=closed]:animate-accordion-up',
         className
       )}
     >
-      <div className="px-4 py-2">{children}</div>
+      <div className="mt-1  rounded-b-md border  px-4 py-2 ">{children}</div>
     </div>
   )
 }
@@ -105,7 +104,7 @@ const AccordionQuestion = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-base font-semibold text-zinc-700', className)}
+    className={twMerge('text-base font-semibold text-muted', className)}
     {...props}
   />
 )
@@ -130,3 +129,4 @@ export {
   AccordionQuestion,
   AccordionTrigger
 }
+

@@ -1,15 +1,14 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 import { ForwardedRef } from 'react'
-import { FaSpinner } from 'react-icons/fa6'
+import { ImSpinner2 } from 'react-icons/im'
 import { twMerge } from 'tailwind-merge'
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  isLoading?: boolean
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  loading?: boolean
   asChild?: boolean
   sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'
-  variant?:
+  variants?:
   | 'primary'
   | 'secundary'
   | 'outline'
@@ -18,8 +17,9 @@ export interface ButtonProps
   | 'link'
   | 'danger'
   | 'warning'
-  | 'Shine'
-  | 'Swipe'
+  | 'success'
+  | 'shine'
+  | 'swipe'
   ref?: ForwardedRef<HTMLButtonElement>
 }
 
@@ -27,32 +27,33 @@ const variantClasses = {
   primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
   secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
   outline:
-    'bg-transparent border border-border/40 text-primary hover:bg-primary-hover hover:text-primary-foreground',
-  accent: 'text-accent-foreground hover:bg-accent-hover duration-300 bg-accent',
-  disabled: 'bg-opacity-80 bg-accent border text-accent-foreground',
+    'bg-transparent border text-primary hover:bg-primary-hover hover:text-primary-foreground',
+  accent: 'text-accent-foreground hover:bg-accent-hover  bg-accent',
+  disabled: 'bg-opacity-50 bg-accent border text-accent-foreground',
   link: 'bg-transparent border-none underline-offset-4 hover:underline',
-  danger: 'bg-red-700 hover:bg-red-600 text-zinc-50',
-  warning: 'bg-yellow-400 text-zinc-900 hover:bg-yellow-300',
-  Shine:
-    'before:ease relative  overflow-hidden border border-primary bg-primary text-primary-foreground shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:shadow-primary-500 hover:before:-translate-x-40',
-  Swipe:
-    'text-zinc-50 hover:before:bg-redborder-red-500 relative  overflow-hidden border border-primary bg-primary text-primary-foreground shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-primary-500 before:transition-all before:duration-500 hover:text-white hover:shadow-primary-500 hover:before:left-0 hover:before:w-full'
+  danger: 'bg-danger hover:bg-danger-hover text-danger-foreground',
+  warning: 'bg-warning text-warning-foreground hover:bg-warning-hover',
+  success: 'bg-success hover:bg-success-hover text-success-foreground',
+  shine:
+    'before:ease relative  overflow-hidden border border-border bg-primary text-primary-foreground shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-primary-foreground before:opacity-10 before:duration-700 hover:shadow-primary hover:before:-translate-x-40',
+  swipe:
+    'hover:before:bg-accent-foreground hover:before:text-accent relative  overflow-hidden border bg-accent text-accent-foreground shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-accent before:transition-all before:duration-500 hover:text-accent-foreground hover:shadow-primary hover:before:left-0 hover:before:w-full'
 }
 const sizeClasses = {
-  xs: 'h-10 w-20  text-xs',
-  sm: 'h-12 w-24  text-sm',
-  lg: 'h-14 w-28  text-lg',
-  icon: 'h-9 w-9 p-1',
+  xs: 'h-10 text-sm',
+  sm: 'h-12 text-sm',
+  lg: 'h-14 text-lg',
+  icon: 'h-8 w-8 p-1',
   full: 'h-10 w-full text-lg'
 }
 
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className,
-      isLoading = false,
-      sizes = 'xs',
-      variant = 'primary',
+      loading = false,
+      sizes = 'sm',
+      variants = 'primary',
       asChild = false,
       ...props
     },
@@ -62,12 +63,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const _className = React.useMemo(
       () =>
         twMerge(
-          variantClasses[variant!],
+          variantClasses[variants!],
           sizeClasses[sizes!],
-          'appearance-none rounded-md px-3 py-2 flex gap-2 items-center justify-center font-normal transition-all duration-300',
+          'appearance-none rounded-md px-2.5 py-2 flex gap-2 duration-300 transition-all active:scale-95',
+          ' items-center justify-center font-normal ring-offset-background disabled:pointer-events-none disabled:opacity-60',
+          'transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
           className
         ),
-      [className, sizes, variant]
+      [className, sizes, variants]
     )
 
     // Definindo o componente a ser usado (Slot ou button)
@@ -78,14 +81,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={_className}
         {...props}
-        disabled={isLoading || variant === 'disabled'}
-        aria-busy={isLoading}
-        aria-live={isLoading ? 'polite' : undefined}
+        disabled={loading || variants === 'disabled'}
+        aria-busy={loading}
+        aria-live={loading ? 'polite' : undefined}
       >
-        {isLoading ? (
+        {loading ? (
           <>
             {props.children}
-            <FaSpinner size={18} className="animate-spin text-zinc-50" />
+            <ImSpinner2 size={18} className="animate-spin" />
           </>
         ) : (
           props.children
@@ -96,3 +99,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 )
 
 Button.displayName = 'Button'
+
+export { Button }
+export type { ButtonProps }
+

@@ -1,42 +1,31 @@
-import { Button } from '@repo/ChromaUI/components'
+import { Button, ButtonProps } from '@repo/ChromaUI/components'
 
 const ButtonPreview = () => {
-  const variantes: {
-    type:
-    | 'primary'
-    | 'secundary'
-    | 'outline'
-    | 'accent'
-    | 'disabled'
-    | 'link'
-    | 'danger'
-    | 'warning'
-    | 'Swipe'
-    | 'Shine'
-  }[] = [
-      { type: 'primary' },
-      { type: 'secundary' },
-      { type: 'outline' },
-      { type: 'accent' },
-      { type: 'disabled' },
-      { type: 'link' },
-      { type: 'danger' },
-      { type: 'warning' },
-      { type: 'Swipe' },
-      { type: 'Shine' }
-    ]
+  const variantes: ButtonProps['variants'][] = [
+    'primary',
+    'secundary',
+    'outline',
+    'accent',
+    'disabled',
+    'link',
+    'danger',
+    'warning',
+    'success',
+    'swipe',
+    'shine'
+  ]
 
   return (
-    <div className="flex w-full flex-wrap items-center  gap-2">
+    <div className="grid grid-cols-6 gap-2">
       {/* Exemplos do componente button utilizando as variantes */}
       {variantes.map((variant) => (
-        <Button key={variant.type} variant={variant.type} sizes="sm">
-          {variant.type}
+        <Button key={variant} variants={variant} sizes="xs">
+          {variant}
         </Button>
       ))}
 
-      {/* Exemplo do componente button recebendo estados */}
-      <Button isLoading variant={'primary'} sizes="sm">
+      {/* Exemplo do componente button recebendo estado de loading */}
+      <Button loading={true} variants={'secundary'} sizes="xs">
         Loading
       </Button>
     </div>

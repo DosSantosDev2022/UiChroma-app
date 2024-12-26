@@ -37,7 +37,7 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
           <NavigationItem key={link.text}>
             <Button
               onClick={() => handleButtonClickScrollIntoView(link.url)}
-              variant="link"
+              variants="link"
               sizes="full"
               className={`flex justify-start gap-2 text-base font-light text-muted-foreground 
                     duration-300 hover:scale-105 hover:font-bold hover:no-underline 

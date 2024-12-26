@@ -5,18 +5,27 @@ import {
   ModalContent,
   ModalDescription,
   ModalHeader,
+  ModalOverlay,
   ModalRoot,
   ModalTitle,
   ModalTrigger
 } from '@repo/ChromaUI/components'
+import { FaCheck } from 'react-icons/fa6'
 
 const ModalTemplates = () => {
-  const { handleBaseColorChange } = useThemeStore()
+  const { selectedColor, setSelectedColor, handleBaseColorChange } =
+    useThemeStore()
+
+  const handleColorClick = (color: string) => {
+    setSelectedColor(color)
+    handleBaseColorChange(color)
+  }
+
   return (
     <>
       <ModalRoot>
         <ModalTrigger className="h-12 w-28 rounded-lg">Templates</ModalTrigger>
-
+        <ModalOverlay variant="blur" />
         <ModalContent className="max-w-lg">
           <ModalHeader>
             <ModalTitle>Templates Tailwind CSS</ModalTitle>
@@ -31,11 +40,17 @@ const ModalTemplates = () => {
             {templateTailwindColors.map((color) => (
               <button
                 key={color.label}
-                onClick={() => handleBaseColorChange(color.value)}
+                onClick={() => handleColorClick(color.value)}
                 style={{ backgroundColor: color.value }}
-                className="h-8 w-8 rounded-lg border border-transparent"
+                className={`
+                   relative h-8 w-8 rounded-lg border duration-300 active:scale-75
+                  `}
                 title={color.label}
-              />
+              >
+                {selectedColor === color.value && (
+                  <FaCheck className="absolute inset-0 -top-1 left-4 h-4 w-4 rounded-full border-2 border-success bg-success text-success-foreground" />
+                )}
+              </button>
             ))}
           </div>
         </ModalContent>
@@ -45,3 +60,4 @@ const ModalTemplates = () => {
 }
 
 export { ModalTemplates }
+

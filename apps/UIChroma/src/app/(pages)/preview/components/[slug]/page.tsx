@@ -51,7 +51,11 @@ export default async function ComponentDetails({
                 <Title className={`${inter.className}`}>
                   {pageComponent.name}
                 </Title>
-                <Badge variant="accent" children={pageComponent.version} />
+                <Badge
+                  variant="accent"
+                  size="md"
+                  children={`v.${pageComponent.version}`}
+                />
               </div>
               <p className="mt-2.5 max-w-[500px] text-base font-normal text-muted-foreground ">
                 {pageComponent.description}

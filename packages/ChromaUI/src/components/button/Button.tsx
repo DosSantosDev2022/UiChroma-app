@@ -9,17 +9,17 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean
   sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'
   variants?:
-  | 'primary'
-  | 'secundary'
-  | 'outline'
-  | 'accent'
-  | 'disabled'
-  | 'link'
-  | 'danger'
-  | 'warning'
-  | 'success'
-  | 'shine'
-  | 'swipe'
+    | 'primary'
+    | 'secundary'
+    | 'outline'
+    | 'accent'
+    | 'disabled'
+    | 'link'
+    | 'danger'
+    | 'warning'
+    | 'success'
+    | 'shine'
+    | 'swipe'
   ref?: ForwardedRef<HTMLButtonElement>
 }
 
@@ -27,7 +27,7 @@ const variantClasses = {
   primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
   secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
   outline:
-    'bg-transparent border text-primary hover:bg-primary-hover hover:text-primary-foreground',
+    'text-accent bg-accent-foreground hover:bg-accent-hover hover:text-accent-foreground',
   accent: 'text-accent-foreground hover:bg-accent-hover  bg-accent',
   disabled: 'bg-opacity-50 bg-accent border text-accent-foreground',
   link: 'bg-transparent border-none underline-offset-4 hover:underline',
@@ -102,4 +102,3 @@ Button.displayName = 'Button'
 
 export { Button }
 export type { ButtonProps }
-

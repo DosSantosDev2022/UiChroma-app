@@ -1,6 +1,6 @@
 import { Logo } from '@/assets/icons/Logo'
-import { Badge } from '@repo/ChromaUI/components/index'
 import { NavigationLinks } from '@/components/global/navLinks/navLinks'
+import { Badge } from '@repo/ChromaUI/components/index'
 
 const SideBar = () => {
   return (
@@ -8,7 +8,9 @@ const SideBar = () => {
       <div className="custom-scrollbar flex flex-col gap-4 overflow-y-auto p-4">
         <div className="flex w-full items-center justify-between gap-4 px-2 py-1">
           <Logo />
-          <Badge variant="accent"> V.1.0.0</Badge>
+          <Badge variant="accent" size="md">
+            v.1.0.0
+          </Badge>
         </div>
         <div className="flex flex-col gap-6">
           <NavigationLinks />

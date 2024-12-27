@@ -1,10 +1,10 @@
 'use client'
 import { Colors } from '@/@types/colorsState'
 import * as Examples from '@/components/@examples'
+import { useThemeStore } from '@/store/useThemeStore'
 import { updateCssVariables } from '@/utils/stylesComponents'
 import { useEffect } from 'react'
 import { ContainerPreview } from './container'
-import { useThemeStore } from '@/store/useThemeStore'
 
 interface ExempleComponentsProps {
   lightColors: Colors['light']
@@ -39,6 +39,10 @@ export function ExempleComponents() {
 
         <ContainerPreview title="Componente Card">
           <Examples.CardPreview />
+        </ContainerPreview>
+
+        <ContainerPreview title="Componente Card Image">
+          <Examples.CardImagePreview />
         </ContainerPreview>
 
         <ContainerPreview title="Componente pagination">

@@ -79,7 +79,7 @@ const ModalHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={twMerge(
-      'flex w-full items-center justify-between space-y-1.5 px-1 py-1.5',
+      'flex w-full items-center justify-between space-y-1 px-1 py-1.5',
       className
     )}
     {...props}
@@ -108,7 +108,7 @@ const ModalDescription = ({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p
-    className={twMerge('text-base text-muted-foreground', className)}
+    className={twMerge('px-1 py-1.5 text-sm text-muted-foreground', className)}
     {...props}
   />
 )
@@ -131,13 +131,26 @@ ModalFooter.displayName = 'ModalFooter'
 
 const ModalOverlay = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+  React.HTMLAttributes<HTMLDivElement> & {
+    variant?: 'blur' | 'dark' | 'darkBlur'
+  }
+>(({ className, variant = 'blur', ...props }, ref) => {
   const { isOpen } = useModalContext()
   if (!isOpen) return null
+
+  const variantClasses = {
+    blur: 'backdrop-blur-sm',
+    darkBlur: 'backdrop-blur-sm bg-black/50',
+    dark: 'bg-black/50'
+  }
+
   return (
     <div
-      className={twMerge('fixed inset-0 z-40 backdrop-blur-sm', className)}
+      className={twMerge(
+        'fixed inset-0 z-40',
+        variantClasses[variant],
+        className
+      )}
       ref={ref}
       {...props}
     />
@@ -177,13 +190,13 @@ const ModalClose = React.forwardRef<
       value={'text'}
       onClick={toggleOpen}
       className={twMerge(
-        'flex h-8 w-8 items-center justify-between rounded-md bg-primary p-2 text-primary-foreground hover:bg-primary-hover',
+        'flex h-7 w-7 items-center justify-center rounded-md bg-primary  text-primary-foreground hover:bg-primary-hover',
         className
       )}
       {...props}
       ref={ref}
     >
-      <LuX size={16} />
+      <LuX size={18} />
     </button>
   )
 })
@@ -197,15 +210,18 @@ const ModalContent = React.forwardRef<
 
   return (
     isOpen && (
-      <div
-        data-state={isOpen ? 'open' : 'closed'}
-        className={twMerge(
-          'fixed left-1/2 top-1/2 z-50 grid w-full max-w-2xl -translate-x-1/2 -translate-y-1/2 transform space-y-2 border bg-background p-6 shadow-lg data-[state=open]:animate-zoom-in  sm:rounded-lg',
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div
+          data-state={isOpen ? 'open' : 'closed'}
+          className={twMerge(
+            'w-full max-w-2xl space-y-2 border bg-background p-6 shadow-lg sm:rounded-lg',
+            'data-[state=closed]:animate-zoom-out data-[state=open]:animate-zoom-in',
+            className
+          )}
+          ref={ref}
+          {...props}
+        />
+      </div>
     )
   )
 })

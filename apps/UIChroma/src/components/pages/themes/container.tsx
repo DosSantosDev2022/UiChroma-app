@@ -27,4 +27,3 @@ const ContainerPreview = ({ children, title }: ContainerPreviewProps) => {
 }
 
 export { ContainerPreview }
-

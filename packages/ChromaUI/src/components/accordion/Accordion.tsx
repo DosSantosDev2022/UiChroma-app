@@ -129,4 +129,3 @@ export {
   AccordionQuestion,
   AccordionTrigger
 }
-

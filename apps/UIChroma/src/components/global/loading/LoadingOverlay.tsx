@@ -12,4 +12,3 @@ const LoadingOverlay = () => {
 }
 
 export { LoadingOverlay }
-

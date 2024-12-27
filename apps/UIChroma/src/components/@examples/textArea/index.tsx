@@ -4,4 +4,4 @@ const TextAreaPreview = () => {
   return <TextArea placeholder="Deixe seu comentário" />
 }
 
-export default TextAreaPreview 
+export default TextAreaPreview

@@ -48,4 +48,3 @@ const Header = async () => {
 }
 
 export { Header }
-

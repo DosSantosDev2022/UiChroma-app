@@ -1,3 +1,3 @@
-const animations = require('./animations');
+const animations = require('./animations')
 
-module.exports = animations;
+module.exports = animations

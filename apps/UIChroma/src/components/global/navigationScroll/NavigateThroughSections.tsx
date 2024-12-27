@@ -54,4 +54,3 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
 }
 
 export { NavigateThroughSections }
-

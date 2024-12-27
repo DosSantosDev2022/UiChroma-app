@@ -60,4 +60,3 @@ const ModalTemplates = () => {
 }
 
 export { ModalTemplates }
-

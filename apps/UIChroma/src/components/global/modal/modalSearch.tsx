@@ -55,7 +55,7 @@ const ModalSearch = ({ data }: ModalProps) => {
         <BsSearch size={18} />
         Buscar...
       </ModalTrigger>
-      <ModalOverlay />
+      <ModalOverlay variant="blur" />
       <ModalContent>
         <ModalHeader>
           <ModalTitle>Encontre o seu componente</ModalTitle>
@@ -104,4 +104,3 @@ const ModalSearch = ({ data }: ModalProps) => {
 }
 
 export { ModalSearch }
-

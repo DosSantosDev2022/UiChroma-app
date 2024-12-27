@@ -46,4 +46,4 @@ const PaginationPreview = () => {
   )
 }
 
-export default PaginationPreview 
+export default PaginationPreview

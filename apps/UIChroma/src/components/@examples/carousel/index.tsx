@@ -1,40 +1,17 @@
-import { CarouselContainer, CarouselRoot } from '@repo/ChromaUI/components'
-import Image from 'next/image'
+import { Carousel } from '@repo/ChromaUI/components/'
 
 const CarouselPreview = () => {
   const images = [
-    {
-      id: 'slide01',
-      url: 'https://placehold.co/600x400/png',
-      alt: 'slide-01'
-    },
-    {
-      id: 'slide02',
-      url: 'https://placehold.co/600x400/png',
-      alt: 'slide-02'
-    },
-    {
-      id: 'slide03',
-      url: 'https://placehold.co/600x400/png',
-      alt: 'slide-03'
-    }
+    'https://sa-east-1.graphassets.com/clxmin3ph09z306lm77v5cn42/cm577hu9i1lgr0dm0vdk8bz7z',
+    'https://sa-east-1.graphassets.com/clxmin3ph09z306lm77v5cn42/cm577hu9w1lgw0dm0xix4el9s',
+    'https://sa-east-1.graphassets.com/clxmin3ph09z306lm77v5cn42/cm577hu9x1l5306lrvktybxvf'
   ]
 
   return (
     <>
-      <CarouselRoot>
-        {images.map((image) => (
-          <CarouselContainer key={image.id}>
-            <Image
-              fill
-              style={{ objectFit: 'cover' }}
-              quality={100}
-              src={image.url}
-              alt={image.alt}
-            />
-          </CarouselContainer>
-        ))}
-      </CarouselRoot>
+      <div className="mx-auto mt-8 w-full max-w-4xl">
+        <Carousel url={images} />
+      </div>
     </>
   )
 }

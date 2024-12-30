@@ -1,14 +1,13 @@
-import { Field, InputIcon, InputRoot } from '@repo/ChromaUI/components'
-import { LuSearch } from 'react-icons/lu'
+import { Input } from '@repo/ChromaUI/components'
+import { CiSearch } from 'react-icons/ci'
 
 const InputPreview = () => {
   return (
-    <InputRoot className="w-[468px] ">
-      <InputIcon>
-        <LuSearch />
-      </InputIcon>
-      <Field placeholder="Search.." />
-    </InputRoot>
+    <Input
+      variants="default"
+      icon={<CiSearch size={20} />}
+      placeholder="Buscar.."
+    />
   )
 }
 

@@ -1,12 +1,11 @@
 import {
-  DropDownContainer,
   DropDownContent,
   DropDownIcon,
   DropDownItem,
   DropDownLabel,
   DropDownLink,
   DropDownList,
-  DropDownProvider,
+  DropDownRoot,
   DropDownTrigger
 } from '@repo/ChromaUI/components'
 import { FaCreditCard, FaUser } from 'react-icons/fa'
@@ -38,24 +37,23 @@ const DropDownPreview = () => {
   ]
   return (
     <div>
-      <DropDownProvider>
-        <DropDownContainer>
-          <DropDownTrigger>Abrir menu dropdown</DropDownTrigger>
-          <DropDownContent>
-            <DropDownList>
-              <DropDownLabel>My accont</DropDownLabel>
-              {list.map((i) => (
-                <DropDownItem key={i.id}>
-                  <DropDownLink>
-                    <DropDownIcon>{i.icon}</DropDownIcon>
-                    {i.content}
-                  </DropDownLink>
-                </DropDownItem>
-              ))}
-            </DropDownList>
-          </DropDownContent>
-        </DropDownContainer>
-      </DropDownProvider>
+      <DropDownRoot>
+        <DropDownTrigger>Abrir dropdown</DropDownTrigger>
+
+        <DropDownContent position="sticky">
+          <DropDownLabel>My accont</DropDownLabel>
+          <DropDownList>
+            {list.map((i) => (
+              <DropDownItem key={i.id}>
+                <DropDownLink>
+                  <DropDownIcon>{i.icon}</DropDownIcon>
+                  {i.content}
+                </DropDownLink>
+              </DropDownItem>
+            ))}
+          </DropDownList>
+        </DropDownContent>
+      </DropDownRoot>
     </div>
   )
 }

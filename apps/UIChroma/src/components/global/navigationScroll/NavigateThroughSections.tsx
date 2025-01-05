@@ -1,9 +1,10 @@
 'use client'
 import {
   Button,
+  Navigation,
+  NavigationGroup,
   NavigationItem,
-  NavigationList,
-  NavigationRoot
+  NavigationList
 } from '@repo/ChromaUI/components'
 
 import { useState } from 'react'
@@ -28,28 +29,30 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
   }
 
   return (
-    <NavigationRoot>
-      <h3 className="mb-1 px-2 py-1 text-sm font-semibold text-muted-foreground">
+    <Navigation>
+      <h3 className="mb-1 px-2 py-1 text-sm font-semibold text-primary">
         Navegue nessa página
       </h3>
-      <NavigationList className="flex flex-col space-y-0">
-        {links.map((link) => (
-          <NavigationItem key={link.text}>
-            <Button
-              onClick={() => handleButtonClickScrollIntoView(link.url)}
-              variants="link"
-              sizes="full"
-              className={`flex justify-start gap-2 text-base font-light text-muted-foreground 
-                    duration-300 hover:scale-105 hover:font-bold hover:no-underline 
+      <NavigationGroup>
+        <NavigationList className="flex flex-col space-y-0">
+          {links.map((link) => (
+            <NavigationItem key={link.text}>
+              <Button
+                onClick={() => handleButtonClickScrollIntoView(link.url)}
+                variants="link"
+                sizes="full"
+                className={`justify-start gap-2 text-base font-light text-muted-foreground 
+                    hover:no-underline 
                     ${activeLink === link.url ? 'font-bold text-accent' : ''}`}
-            >
-              <GoDotFill size={12} />
-              {link.text}
-            </Button>
-          </NavigationItem>
-        ))}
-      </NavigationList>
-    </NavigationRoot>
+              >
+                <GoDotFill size={12} />
+                {link.text}
+              </Button>
+            </NavigationItem>
+          ))}
+        </NavigationList>
+      </NavigationGroup>
+    </Navigation>
   )
 }
 

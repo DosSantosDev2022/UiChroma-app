@@ -44,11 +44,24 @@ const DropDownRoot = React.forwardRef<
   React.ComponentPropsWithRef<'div'>
 >(({ className, ...props }, ref) => (
   <DropDownProvider>
-    <div {...props} className={twMerge('relative', className)} ref={ref} />
+    <div
+      {...props}
+      className={twMerge('relative h-full', className)}
+      ref={ref}
+    />
   </DropDownProvider>
 ))
 
 DropDownRoot.displayName = 'DropDownRoot'
+
+const DropDownGroup = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<'div'>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} {...props} className={twMerge('', className)} />
+))
+
+DropDownGroup.displayName = 'DropDownGroup'
 
 const DropDownTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -87,7 +100,8 @@ const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
           data-state={isOpen ? 'open' : 'closed'}
           {...props}
           className={twMerge(
-            `${position} mt-1 w-full min-w-[8rem] rounded-md border bg-background`,
+            `${position} mt-1 w-full min-w-[8rem] rounded-md border bg-background px-2 py-1.5`,
+            ' custom-scrollbar overflow-y-scroll',
             `data-[state=open]:animate-smooth-fadein`,
             `data-[state=closed]:animate-smooth-fadeout`,
             className
@@ -107,10 +121,7 @@ const DropDownList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ul
     {...props}
-    className={twMerge(
-      'custom-scrollbar flex flex-col gap-1 space-y-1 overflow-y-scroll px-2 py-1.5',
-      className
-    )}
+    className={twMerge('flex flex-col space-y-1', className)}
     ref={ref}
   />
 ))
@@ -205,6 +216,7 @@ DropDownIcon.displayName = 'DropDownIcon'
 export {
   DropDownButton,
   DropDownContent,
+  DropDownGroup,
   DropDownIcon,
   DropDownItem,
   DropDownLabel,

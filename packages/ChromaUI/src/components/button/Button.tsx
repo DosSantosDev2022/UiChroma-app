@@ -9,17 +9,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean
   sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'
   variants?:
-    | 'primary'
-    | 'secundary'
-    | 'outline'
-    | 'accent'
-    | 'disabled'
-    | 'link'
-    | 'danger'
-    | 'warning'
-    | 'success'
-    | 'shine'
-    | 'swipe'
+  | 'primary'
+  | 'secundary'
+  | 'outline'
+  | 'ghost'
+  | 'accent'
+  | 'disabled'
+  | 'link'
+  | 'danger'
+  | 'warning'
+  | 'success'
+  | 'shine'
+  | 'swipe'
   ref?: ForwardedRef<HTMLButtonElement>
 }
 
@@ -28,6 +29,8 @@ const variantClasses = {
   secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
   outline:
     'text-accent bg-accent-foreground hover:bg-accent-hover hover:text-accent-foreground',
+  ghost:
+    'bg-background text-primary hover:bg-muted-hover select-none outline-none focus:bg-muted-hover',
   accent: 'text-accent-foreground hover:bg-accent-hover  bg-accent',
   disabled: 'bg-opacity-50 bg-accent border text-accent-foreground',
   link: 'bg-transparent border-none underline-offset-4 hover:underline',
@@ -65,7 +68,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         twMerge(
           variantClasses[variants!],
           sizeClasses[sizes!],
-          'appearance-none rounded-md px-2.5 py-2 flex gap-2 duration-300 transition-all active:scale-95',
+          'appearance-none rounded-md px-2 py-1.5 flex gap-2 duration-300 transition-all active:scale-95',
           ' items-center justify-center font-normal ring-offset-background disabled:pointer-events-none disabled:opacity-60',
           'transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
           className
@@ -102,3 +105,4 @@ Button.displayName = 'Button'
 
 export { Button }
 export type { ButtonProps }
+

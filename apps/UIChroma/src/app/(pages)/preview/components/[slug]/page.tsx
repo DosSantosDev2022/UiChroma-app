@@ -76,10 +76,7 @@ export default async function ComponentDetails({
                     className="flex items-center gap-2 text-foreground"
                   >
                     <FaCircleCheck className="text-accent" size={18} />
-                    <span className="font-bold">{feature.name}:</span>
-                    <span className="text-muted-foreground">
-                      {feature.description}{' '}
-                    </span>
+                    <span className="font-bold">{feature.name}</span>
                   </li>
                 ))}
               </ul>

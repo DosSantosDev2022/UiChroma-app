@@ -28,14 +28,8 @@ const DocLinks = ({ links }: LinksProps) => {
 
         return (
           <li key={link.id}>
-            <Button
-              className="w-32 cursor-pointer text-base"
-              asChild
-              variant="Shine"
-            >
+            <Button asChild variants="shine">
               <Link
-                className="bg-primary-950 text-secondary-50 flex h-10 items-center 
-                justify-center gap-2 rounded-lg px-3 py-3.5"
                 aria-label={`link to ${link.label}`}
                 target="_blank"
                 href={link.url || ''}

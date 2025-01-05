@@ -14,5 +14,7 @@ export * from './modal/Modal'
 export * from './navigation/navigation'
 export * from './pagination/Pagination'
 export * from './select/Select'
+export * from './sidebar/sidebar'
 export * from './table/Table'
 export * from './textArea/TextArea'
+

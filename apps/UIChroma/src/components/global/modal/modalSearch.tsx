@@ -1,9 +1,7 @@
 'use client'
 
 import {
-  Field,
-  InputIcon,
-  InputRoot,
+  Input,
   ModalClose,
   ModalContent,
   ModalHeader,
@@ -64,18 +62,13 @@ const ModalSearch = ({ data }: ModalProps) => {
           </ModalClose>
         </ModalHeader>
         <form className="w-full">
-          <InputRoot>
-            <InputIcon>
-              <BsSearch />
-            </InputIcon>
-            <Field
-              placeholder="Buscar por componentes..."
-              type="text"
-              id="search"
-              value={searchTerm}
-              onChange={handleSearch}
-            />
-          </InputRoot>
+          <Input
+            placeholder="Buscar por componentes..."
+            type="text"
+            id="search"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
         </form>
         <div className="space-4  custom-scrollbar max-h-80 overflow-y-auto">
           {filtered.length > 0 ? (

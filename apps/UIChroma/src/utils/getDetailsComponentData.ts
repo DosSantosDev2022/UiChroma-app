@@ -21,7 +21,6 @@ export const GET_DETAILS_COMPONENT = async (
           features {
             id
             name
-            description
           }
           sourceCode {
             description

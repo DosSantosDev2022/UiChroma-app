@@ -32,7 +32,7 @@ const variantClasses = {
   ghost:
     'bg-background text-primary hover:bg-muted-hover select-none outline-none focus:bg-muted-hover',
   accent: 'text-accent-foreground hover:bg-accent-hover  bg-accent',
-  disabled: 'bg-opacity-50 bg-accent border text-accent-foreground',
+  disabled: 'bg-opacity-70 bg-accent border text-accent-foreground',
   link: 'bg-transparent border-none underline-offset-4 hover:underline',
   danger: 'bg-danger hover:bg-danger-hover text-danger-foreground',
   warning: 'bg-warning text-warning-foreground hover:bg-warning-hover',
@@ -68,7 +68,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         twMerge(
           variantClasses[variants!],
           sizeClasses[sizes!],
-          'appearance-none rounded-md px-2 py-1.5 flex gap-2 duration-300 transition-all active:scale-95',
+          'appearance-none rounded-md px-2 py-1.5 flex gap-1 duration-300 transition-all active:scale-95',
           ' items-center justify-center font-normal ring-offset-background disabled:pointer-events-none disabled:opacity-60',
           'transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
           className
@@ -91,7 +91,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {loading ? (
           <>
             {props.children}
-            <ImSpinner2 size={18} className="animate-spin" />
+            <ImSpinner2 size={16} className="animate-spin" />
           </>
         ) : (
           props.children

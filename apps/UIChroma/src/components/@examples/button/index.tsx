@@ -12,7 +12,8 @@ const ButtonPreview = () => {
     'warning',
     'success',
     'swipe',
-    'shine'
+    'shine',
+    'ghost'
   ]
 
   return (
@@ -25,7 +26,7 @@ const ButtonPreview = () => {
       ))}
 
       {/* Exemplo do componente button recebendo estado de loading */}
-      <Button loading={true} variants={'secundary'} sizes="xs">
+      <Button loading={true} variants={'success'} sizes="xs">
         Loading
       </Button>
     </div>

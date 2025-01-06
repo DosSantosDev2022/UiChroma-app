@@ -94,7 +94,9 @@ const AccordionContent = ({
         className
       )}
     >
-      <div className="mt-1  rounded-b-md border  px-4 py-2 ">{children}</div>
+      <div className="mb-1 mt-1 rounded-b-md border  px-4 py-2 ">
+        {children}
+      </div>
     </div>
   )
 }
@@ -104,7 +106,7 @@ const AccordionQuestion = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-base font-semibold text-muted', className)}
+    className={twMerge('text-base font-semibold text-primary', className)}
     {...props}
   />
 )
@@ -115,7 +117,7 @@ const AccordionAnswer = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-start text-sm text-muted', className)}
+    className={twMerge('text-start text-sm text-muted-foreground', className)}
     {...props}
   />
 )
@@ -129,3 +131,4 @@ export {
   AccordionQuestion,
   AccordionTrigger
 }
+

@@ -1,9 +1,9 @@
-type CMSIconProps = {
+interface CMSIconProps {
   icon: string
   className?: string
 }
 
-export function CMSIcon({ icon, className }: CMSIconProps) {
+const CMSIcon = ({ icon, className }: CMSIconProps) => {
   return (
     <div
       className={className}
@@ -13,3 +13,5 @@ export function CMSIcon({ icon, className }: CMSIconProps) {
     />
   )
 }
+
+export { CMSIcon }

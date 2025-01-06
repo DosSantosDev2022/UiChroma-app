@@ -1,5 +1,3 @@
-'use client'
-
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -27,6 +25,7 @@ const AvatarImage = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <img
     ref={ref}
+    alt="avatar profile image"
     className={twMerge('aspect-square h-full w-full object-cover', className)}
     {...props}
   />
@@ -42,7 +41,7 @@ const AvatarFallback = React.forwardRef<
   <div
     ref={ref}
     className={twMerge(
-      'flex h-full w-full items-center justify-center rounded-full bg-gray-200',
+      'flex h-full w-full items-center justify-center rounded-full bg-muted-foreground',
       className
     )}
     {...props}
@@ -53,4 +52,4 @@ const AvatarFallback = React.forwardRef<
 
 AvatarFallback.displayName = 'AvatarFallback'
 
-export { Avatar, AvatarImage, AvatarFallback }
+export { Avatar, AvatarFallback, AvatarImage }

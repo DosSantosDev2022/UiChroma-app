@@ -33,6 +33,7 @@
     "react-icons": "^5.2.1",
     "tailwind-merge": "^2.3.0",
     "tailwind-scrollbar": "^3.1.0",
-    "tailwindcss-animated": "^1.1.2"
+    "tailwindcss-animated": "^1.1.2",
+    "@repo/animations-ui": "workspace:*"
   }
 }

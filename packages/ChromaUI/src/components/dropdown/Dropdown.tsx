@@ -1,6 +1,13 @@
 'use client'
-import React, { createContext, ReactNode, useContext, useState } from 'react'
+import React, {
+  createContext,
+  ElementRef,
+  ReactNode,
+  useContext,
+  useState
+} from 'react'
 import { twMerge } from 'tailwind-merge'
+import { Button } from '../button/Button'
 
 interface DropDownContextProps {
   isOpen: boolean
@@ -32,26 +39,45 @@ const DropDownProvider = ({ children }: { children: ReactNode }) => {
   )
 }
 
-const DropDownContainer = React.forwardRef<
+const DropDownRoot = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.ComponentPropsWithRef<'div'>
 >(({ className, ...props }, ref) => (
-  <div {...props} className={twMerge('relative', className)} ref={ref} />
+  <DropDownProvider>
+    <div
+      {...props}
+      className={twMerge('relative h-full', className)}
+      ref={ref}
+    />
+  </DropDownProvider>
 ))
 
-DropDownContainer.displayName = 'DropDownContainer'
+DropDownRoot.displayName = 'DropDownRoot'
+
+const DropDownGroup = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<'div'>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} {...props} className={twMerge('', className)} />
+))
+
+DropDownGroup.displayName = 'DropDownGroup'
 
 const DropDownTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.HTMLAttributes<HTMLButtonElement>
+  React.ComponentPropsWithRef<'button'>
 >(({ className, ...props }, ref) => {
-  const { toggleOpen } = useDropDownContext()
+  const { toggleOpen, isOpen } = useDropDownContext()
   return (
     <button
       onClick={toggleOpen}
+      aria-expanded={isOpen}
       {...props}
       className={twMerge(
-        'animation-hover flex h-10 w-full items-center justify-start gap-1 rounded border bg-background px-2 py-1.5 text-foreground hover:bg-foreground/10  ',
+        'flex h-10 w-full items-center justify-start gap-1 rounded border px-2 py-1.5',
+        'transition-all duration-300',
+        'bg-background text-primary hover:bg-muted-hover',
+        'select-none outline-none focus:bg-muted-hover',
         className
       )}
       ref={ref}
@@ -61,8 +87,8 @@ const DropDownTrigger = React.forwardRef<
 
 DropDownTrigger.displayName = 'DropDownTrigger'
 
-interface DropDownContentProps extends React.HTMLAttributes<HTMLDivElement> {
-  position?: 'absolute' | 'relative' | 'fixed' | 'static' | 'sticky'
+interface DropDownContentProps extends React.ComponentPropsWithRef<'div'> {
+  position?: 'absolute' | 'sticky'
 }
 
 const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
@@ -71,9 +97,13 @@ const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
     return (
       isOpen && (
         <div
+          data-state={isOpen ? 'open' : 'closed'}
           {...props}
           className={twMerge(
-            `${position} mt-1 w-full rounded-md border  bg-background`,
+            `${position} mt-1 w-full min-w-[8rem] rounded-md border bg-background px-2 py-1.5`,
+            ' custom-scrollbar overflow-y-scroll',
+            `data-[state=open]:animate-smooth-fadein`,
+            `data-[state=closed]:animate-smooth-fadeout`,
             className
           )}
           ref={ref}
@@ -87,14 +117,11 @@ DropDownContent.displayName = 'DropDownContent'
 
 const DropDownList = React.forwardRef<
   HTMLUListElement,
-  React.HTMLAttributes<HTMLUListElement>
+  React.ComponentPropsWithRef<'ul'>
 >(({ className, ...props }, ref) => (
   <ul
     {...props}
-    className={twMerge(
-      'custom-scrollbar mt-2 flex flex-col gap-1 space-y-1 overflow-y-scroll px-4',
-      className
-    )}
+    className={twMerge('flex flex-col space-y-1', className)}
     ref={ref}
   />
 ))
@@ -103,12 +130,12 @@ DropDownList.displayName = 'DropDownList'
 
 const DropDownItem = React.forwardRef<
   HTMLLIElement,
-  React.HTMLAttributes<HTMLLIElement>
+  React.ComponentPropsWithRef<'li'>
 >(({ className, ...props }, ref) => (
   <li
     {...props}
     className={twMerge(
-      'animation-hover cursor-pointer px-2  py-1.5 hover:bg-foreground/10',
+      'cursor-pointer px-2 py-1.5 hover:bg-muted-hover',
       className
     )}
     ref={ref}
@@ -119,30 +146,31 @@ DropDownItem.displayName = 'DropDownItem'
 
 const DropDownLabel = React.forwardRef<
   HTMLLabelElement,
-  React.HTMLAttributes<HTMLLabelElement>
+  React.ComponentPropsWithRef<'label'>
 >(({ className, ...props }, ref) => {
   return (
-    <label
-      className={twMerge(
-        ' text-background-foreground ml-1.5 border-b-border px-2 py-1.5 text-sm font-semibold',
-        className
-      )}
-      ref={ref}
-      {...props}
-    />
+    <div className="w-full p-2">
+      <label
+        className={twMerge(
+          'ml-1.5 text-sm font-semibold text-muted-foreground ',
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    </div>
   )
 })
 
 DropDownLabel.displayName = 'DropDownLabel'
 
-interface DropDownLinkProps
-  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface DropDownLinkProps extends React.ComponentPropsWithRef<'a'> {
   asChild?: boolean
 }
 
 const DropDownLink = React.forwardRef<HTMLAnchorElement, DropDownLinkProps>(
   ({ className, asChild, children, ...props }, ref) => {
-    if (asChild) {
+    if (asChild && React.isValidElement(children)) {
       return React.cloneElement(children as React.ReactElement, {
         ...props,
         ref
@@ -152,11 +180,12 @@ const DropDownLink = React.forwardRef<HTMLAnchorElement, DropDownLinkProps>(
     return (
       <a
         className={twMerge(
-          'text-background-foreground flex w-full items-center justify-start  gap-2 text-sm font-semibold',
+          'flex w-full items-center justify-start gap-2 text-sm font-semibold text-primary',
           className
         )}
         {...props}
         ref={ref}
+        children={children}
       />
     )
   }
@@ -164,42 +193,36 @@ const DropDownLink = React.forwardRef<HTMLAnchorElement, DropDownLinkProps>(
 
 DropDownLink.displayName = 'DropDownLink'
 
-const DropDownAction = React.forwardRef<
-  HTMLButtonElement,
-  React.HTMLAttributes<HTMLButtonElement>
+const DropDownButton = React.forwardRef<
+  ElementRef<typeof Button>,
+  React.ComponentPropsWithRef<typeof Button>
 >(({ className, ...props }, ref) => {
-  return <button className={twMerge('', className)} {...props} ref={ref} />
+  return <Button className={twMerge('', className)} {...props} ref={ref} />
 })
 
-DropDownAction.displayName = 'DropDownAction'
+DropDownButton.displayName = 'DropDownButton'
 
 const DropDownIcon = React.forwardRef<
   HTMLElement,
-  React.HTMLAttributes<HTMLElement>
+  React.ComponentPropsWithRef<'i'>
 >(({ className, ...props }, ref) => {
   return (
-    <i
-      className={twMerge(
-        'text-background-foreground flex h-6 w-6 items-center justify-center',
-        className
-      )}
-      {...props}
-      ref={ref}
-    />
+    <i className={twMerge('text-primary', className)} {...props} ref={ref} />
   )
 })
 
 DropDownIcon.displayName = 'DropDownIcon'
 
 export {
-  DropDownAction,
-  DropDownContainer,
+  DropDownButton,
   DropDownContent,
+  DropDownGroup,
   DropDownIcon,
   DropDownItem,
   DropDownLabel,
   DropDownLink,
   DropDownList,
   DropDownProvider,
+  DropDownRoot,
   DropDownTrigger
 }

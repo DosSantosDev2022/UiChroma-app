@@ -15,58 +15,64 @@ interface ReleasePageParams {
 export default async function ReleasePage({ searchParams }: ReleasePageParams) {
   const { releasePage } = await GET_RELEASES(searchParams.query)
 
-  if (!releasePage) {
-    return (
-      <div>
-        <h1>Releases não encontradas</h1>
-      </div>
-    )
-  }
-
   return (
     <div className="relative flex h-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
       <SearchReleases />
-      <div className="flex flex-col gap-3">
-        <Title>{releasePage.title}</Title>
-        <p className="text-base font-normal text-muted-foreground">
-          {releasePage.description}
-        </p>
-      </div>
-
-      <div className="mb-20 mt-20 space-y-4">
-        {releasePage.releases.map((release) => (
-          <div
-            key={release.id}
-            className="flex flex-col gap-2 rounded-md border p-4 shadow-sm"
-          >
-            <div className="flex flex-col gap-2">
-              <span className="text-sm font-normal text-muted-foreground">
-                {format(new Date(release.date), 'dd/MM/yyyy')}
-              </span>
-              <div className="flex items-center gap-3">
-                <Title as="h4" className="text-xl font-bold text-foreground">
-                  {release.title}
-                </Title>
-                <Badge variant="accent" children={release.version} />
-              </div>
-            </div>
-
-            <ul className="flex flex-col gap-4">
-              {release.commits.map((commit) => (
-                <li
-                  key={commit.id}
-                  className="gap-2 text-base font-light leading-7 tracking-wider"
-                >
-                  <RichText
-                    renderers={defaultRenderers}
-                    content={commit.description.raw}
-                  />
-                </li>
-              ))}
-            </ul>
+      {!releasePage || !releasePage.releases.length ? (
+        <div className="mt-10 flex flex-col items-center justify-center">
+          <Title>Releases não encontradas</Title>
+          <p className="text-base text-muted-foreground">
+            Nenhum componente encontrado para sua pesquisa.
+          </p>
+        </div>
+      ) : (
+        <>
+          <div className="flex flex-col gap-3 border">
+            <Title>{releasePage.title}</Title>
+            <p className="text-base font-normal text-muted-foreground">
+              {releasePage.description}
+            </p>
           </div>
-        ))}
-      </div>
+
+          <div className="mb-20 mt-20 space-y-4">
+            {releasePage.releases.map((release) => (
+              <div
+                key={release.id}
+                className="flex flex-col gap-2 rounded-md border p-4 shadow-sm"
+              >
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm font-normal text-muted-foreground">
+                    {format(new Date(release.date), 'dd/MM/yyyy')}
+                  </span>
+                  <div className="flex items-center gap-3">
+                    <Title
+                      as="h4"
+                      className="text-xl font-bold text-foreground"
+                    >
+                      {release.title}
+                    </Title>
+                    <Badge variant="accent" children={release.version} />
+                  </div>
+                </div>
+
+                <ul className="flex flex-col gap-4">
+                  {release.commits.map((commit) => (
+                    <li
+                      key={commit.id}
+                      className="gap-2 text-base font-light leading-7 tracking-wider"
+                    >
+                      <RichText
+                        renderers={defaultRenderers}
+                        content={commit.description.raw}
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   )
 }

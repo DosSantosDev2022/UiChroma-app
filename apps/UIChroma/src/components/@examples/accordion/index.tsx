@@ -2,12 +2,11 @@ import {
   AccordionAnswer,
   AccordionContainer,
   AccordionContent,
-  AccordionProvider,
   AccordionQuestion,
   AccordionTrigger
-} from '@repo/chromaui/components/accordion/Accordion.tsx'
+} from '@repo/ChromaUI/components'
 
-export default function AccordionPreview() {
+const AccordionPreview = () => {
   const faqs = [
     {
       id: '0001',
@@ -38,17 +37,17 @@ export default function AccordionPreview() {
   return (
     <div className="w-full">
       {faqs.map((faq, index) => (
-        <AccordionProvider key={index}>
-          <AccordionContainer>
-            <AccordionTrigger>
-              <AccordionQuestion>{faq.question}</AccordionQuestion>
-            </AccordionTrigger>
-            <AccordionContent>
-              <AccordionAnswer>{faq.answer}</AccordionAnswer>
-            </AccordionContent>
-          </AccordionContainer>
-        </AccordionProvider>
+        <AccordionContainer key={index}>
+          <AccordionTrigger>
+            <AccordionQuestion>{faq.question}</AccordionQuestion>
+          </AccordionTrigger>
+          <AccordionContent>
+            <AccordionAnswer>{faq.answer}</AccordionAnswer>
+          </AccordionContent>
+        </AccordionContainer>
       ))}
     </div>
   )
 }
+
+export default AccordionPreview

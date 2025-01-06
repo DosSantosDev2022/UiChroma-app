@@ -2,26 +2,32 @@
 import React, { ComponentPropsWithRef, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-const NavigationRoot = forwardRef<HTMLElement, ComponentPropsWithRef<'nav'>>(
+const Navigation = forwardRef<HTMLElement, ComponentPropsWithRef<'nav'>>(
   ({ className, ...props }, ref) => (
-    <nav className={twMerge('w-full', className)} {...props} ref={ref} />
+    <nav
+      className={twMerge('h-full w-full space-y-1', className)}
+      {...props}
+      ref={ref}
+    />
   )
 )
 
-NavigationRoot.displayName = 'NavigationRoot'
+Navigation.displayName = 'Navigation'
+
+const NavigationGroup = forwardRef<
+  HTMLDivElement,
+  ComponentPropsWithRef<'div'>
+>(({ className, ...props }, ref) => (
+  <div ref={ref} {...props} className={twMerge('custom-scrollbar')} />
+))
+
+NavigationGroup.displayName = 'NavigationGroup'
 
 const NavigationList = forwardRef<
   HTMLUListElement,
   ComponentPropsWithRef<'ul'>
 >(({ className, ...props }, ref) => (
-  <ul
-    className={twMerge(
-      'space-y-4  scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground',
-      className
-    )}
-    {...props}
-    ref={ref}
-  />
+  <ul className={twMerge('', className)} {...props} ref={ref} />
 ))
 
 NavigationList.displayName = 'NavigationList'
@@ -30,7 +36,8 @@ const NavigationItem = forwardRef<HTMLLIElement, ComponentPropsWithRef<'li'>>(
   ({ className, ...props }, ref) => (
     <li
       className={twMerge(
-        'animation-hover flex h-10 w-full cursor-pointer  items-center px-2 py-1.5 hover:bg-foreground/10',
+        'flex h-10 w-full cursor-pointer items-center overflow-hidden rounded-md px-2 py-1.5',
+        'transition-colors duration-300 hover:bg-muted-hover',
         className
       )}
       {...props}
@@ -58,13 +65,15 @@ const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>(
     return (
       <a
         className={twMerge(
-          `flex w-full items-center justify-start gap-2  text-sm font-semibold text-foreground
+          `flex w-full items-center justify-start gap-2  text-sm font-semibold text-primary
            `,
           className
         )}
         {...props}
         ref={ref}
-      />
+      >
+        {children}
+      </a>
     )
   }
 )
@@ -75,15 +84,16 @@ const NavigationIcon = forwardRef<
   HTMLSpanElement,
   ComponentPropsWithRef<'span'>
 >(({ className, ...props }, ref) => (
-  <span className={twMerge('', className)} {...props} ref={ref} />
+  <span className={twMerge('text-primary', className)} {...props} ref={ref} />
 ))
 
 NavigationIcon.displayName = 'NavigationIcon'
 
 export {
+  Navigation,
+  NavigationGroup,
   NavigationIcon,
   NavigationItem,
   NavigationLink,
-  NavigationList,
-  NavigationRoot
+  NavigationList
 }

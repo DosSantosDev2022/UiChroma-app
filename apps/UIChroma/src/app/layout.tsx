@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import { inter } from '@/assets/fonts'
 import { Header } from '@/components/global/header/Header'
-import { SideBar } from '@/components/global/sideBar/SideBar'
+import { AppSidebar } from '@/components/global/sideBar/SideBar'
 import '../../../../global.css'
 
 export const metadata: Metadata = {
@@ -20,14 +20,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className} antialiased`}>
-        <div className="grid h-screen grid-cols-[260px_1fr] grid-rows-[auto_1fr] overflow-hidden">
-          <SideBar />
+      <body
+        className={`${inter.className} overflow-hidden bg-background text-foreground antialiased`}
+      >
+        <div className="flex h-screen w-screen flex-row overflow-hidden ">
+          <AppSidebar />
 
-          <Header />
-          <main className="col-start-2 row-start-2 overflow-auto bg-background p-4 text-foreground scrollbar-thin scrollbar-track-background scrollbar-thumb-foreground">
-            {children}
-          </main>
+          <div className="flex flex-1 flex-col">
+            <Header />
+            <main className="custom-scrollbar min-h-0 flex-1 overflow-auto   p-4">
+              {children}
+            </main>
+          </div>
         </div>
       </body>
     </html>

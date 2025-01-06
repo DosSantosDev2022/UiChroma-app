@@ -8,18 +8,19 @@ import {
 } from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
 import { Title } from '@/components/global/title/title'
-import { DocLinks } from '@/components/pages/home/documentationslink/docLinks'
 import ComponentPreview from '@/components/pages/preview/componentPreview/componentPreview'
+import { DocLinks } from '@/components/pages/preview/documentationslink/docLinks'
 import { links } from '@/enums/preview'
 import { GET_DETAILS_COMPONENT } from '@/utils/getDetailsComponentData'
-import { Badge } from '@repo/chromaui/components/bedge/Bedge.tsx'
 import {
+  Badge,
   ClipBoardAction,
   ClipBoardArea,
   ClipBoardContainer,
   ClipBoardHeader,
   ClipBoardLabel
-} from '@repo/chromaui/components/clipboard/Clipboard.tsx'
+} from '@repo/ChromaUI/components'
+
 import { redirect } from 'next/navigation'
 import { FaCircleCheck } from 'react-icons/fa6'
 
@@ -46,13 +47,17 @@ export default async function ComponentDetails({
         <WrapperSections className="space-y-10 pb-0 pt-0">
           <div id="Início">
             <div className=" flex w-full flex-col">
-              <div className="mt-6 flex  items-center justify-start gap-3">
+              <div className="mt-2 flex  items-center justify-start gap-3">
                 <Title className={`${inter.className}`}>
                   {pageComponent.name}
                 </Title>
-                <Badge variant="primary" children={pageComponent.version} />
+                <Badge
+                  variant="accent"
+                  size="md"
+                  children={`v.${pageComponent.version}`}
+                />
               </div>
-              <p className="mt-4 max-w-[500px] text-base font-normal text-muted-foreground ">
+              <p className="mt-2.5 max-w-[500px] text-base font-normal text-muted-foreground ">
                 {pageComponent.description}
               </p>
             </div>
@@ -70,11 +75,8 @@ export default async function ComponentDetails({
                     key={index}
                     className="flex items-center gap-2 text-foreground"
                   >
-                    <FaCircleCheck className="text-primary" size={18} />
-                    <span className="font-bold">{feature.name}:</span>
-                    <span className="text-muted-foreground">
-                      {feature.description}{' '}
-                    </span>
+                    <FaCircleCheck className="text-accent" size={18} />
+                    <span className="font-bold">{feature.name}</span>
                   </li>
                 ))}
               </ul>
@@ -197,10 +199,6 @@ export default async function ComponentDetails({
       </SectionPage>
 
       <SectionNavigation>
-        <Title as="h3" className="text-lg">
-          Navegue nessa página
-        </Title>
-
         <NavigateThroughSections links={links} />
       </SectionNavigation>
     </MainContainer>

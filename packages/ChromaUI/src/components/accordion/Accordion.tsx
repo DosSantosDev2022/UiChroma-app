@@ -19,7 +19,6 @@ const useAccordionContext = () => {
       'Accordion components must be used within a Accordion provider'
     )
   }
-
   return context
 }
 
@@ -34,87 +33,92 @@ const AccordionProvider = ({ children }: { children: ReactNode }) => {
   )
 }
 
-const AccordionContainer = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    {...props}
-    ref={ref}
-    className={twMerge('relative w-full space-y-1', className)}
-  />
-))
-AccordionContainer.displayName = 'AccordionContainer'
+const AccordionContainer = ({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => (
+  <AccordionProvider>
+    <div {...props} className={twMerge('relative w-full', className)}>
+      {children}
+    </div>
+  </AccordionProvider>
+)
 
-const AccordionTrigger = React.forwardRef<
-  HTMLButtonElement,
-  React.HtmlHTMLAttributes<HTMLButtonElement>
->(({ className, ...props }, ref) => {
+const AccordionTrigger = ({
+  className,
+  children,
+  ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
   const { toggleOpen, isOpen } = useAccordionContext()
+  const triggerId = 'accordion-trigger'
+  const contentId = 'accordion-content'
   return (
     <button
       {...props}
+      aria-expanded={isOpen}
+      aria-controls={contentId}
+      id={triggerId}
       onClick={toggleOpen}
       className={twMerge(
-        'flex h-16 w-full cursor-pointer items-center justify-between gap-2 rounded-t-md border px-4 py-2 focus:outline-none',
+        'flex h-16 w-full items-center justify-between gap-2 rounded-t-md border px-4 py-2 focus:outline-none',
         className
       )}
-      ref={ref}
     >
-      {props.children}
+      {children}
       <LuChevronDown
-        className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${
-          isOpen ? 'rotate-180' : ''
-        }`}
+        className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${isOpen ? 'rotate-180' : ''}`}
       />
     </button>
   )
-})
-AccordionTrigger.displayName = 'AccordionTrigger'
+}
 
-const AccordionContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+const AccordionContent = ({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
   const { isOpen } = useAccordionContext()
+  const contentId = 'accordion-content'
   return (
     <div
+      data-state={isOpen ? 'open' : 'closed'}
+      aria-hidden={!isOpen}
+      id={contentId}
       {...props}
-      ref={ref}
       className={twMerge(
-        'overflow-hidden transition-all duration-500 ease-in-out',
-        isOpen ? 'max-h-screen animate-fade-in' : 'max-h-0 animate-fade-out',
+        'overflow-hidden transition-all',
+        isOpen
+          ? 'data-[state=open]:animate-accordion-down'
+          : 'max-h-0 data-[state=closed]:animate-accordion-up',
         className
       )}
     >
-      <div className="px-4 py-2">{props.children}</div>
+      <div className="mt-1  rounded-b-md border  px-4 py-2 ">{children}</div>
     </div>
   )
-})
-AccordionContent.displayName = 'AccordionContent'
+}
 
-const AccordionQuestion = React.forwardRef<
-  HTMLSpanElement,
-  React.HTMLAttributes<HTMLSpanElement>
->(({ className, ...props }, ref) => (
+const AccordionQuestion = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-base font-semibold text-zinc-700', className)}
+    className={twMerge('text-base font-semibold text-muted', className)}
     {...props}
-    ref={ref}
   />
-))
+)
 AccordionQuestion.displayName = 'AccordionQuestion'
 
-const AccordionAnswer = React.forwardRef<
-  HTMLSpanElement,
-  React.HTMLAttributes<HTMLSpanElement>
->(({ className, ...props }, ref) => (
+const AccordionAnswer = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-start text-sm text-zinc-600', className)}
+    className={twMerge('text-start text-sm text-muted', className)}
     {...props}
-    ref={ref}
   />
-))
+)
 AccordionAnswer.displayName = 'AccordionAnswer'
 
 export {
@@ -122,7 +126,6 @@ export {
   AccordionContainer,
   AccordionContent,
   AccordionContext,
-  AccordionProvider,
   AccordionQuestion,
   AccordionTrigger
 }

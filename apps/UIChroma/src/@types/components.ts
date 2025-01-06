@@ -8,7 +8,6 @@ type DocsLinks = {
 type Features = {
   id: string
   name: string
-  description: string
 }
 
 type Utilities = {

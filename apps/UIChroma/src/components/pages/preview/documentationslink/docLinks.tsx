@@ -1,4 +1,4 @@
-import { Button } from '@repo/ChromaUI/components/button/Button.tsx'
+import { Button } from '@repo/ChromaUI/components'
 import Link from 'next/link'
 import { BiLogoFigma } from 'react-icons/bi'
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'
@@ -19,7 +19,7 @@ const iconMap: { [key: string]: JSX.Element } = {
   GitHub: <FaGithub size={20} />
 }
 
-export function DocLinks({ links }: LinksProps) {
+const DocLinks = ({ links }: LinksProps) => {
   return (
     <ul className="mt-6 flex w-full flex-wrap gap-3">
       {links?.map((link) => {
@@ -28,14 +28,8 @@ export function DocLinks({ links }: LinksProps) {
 
         return (
           <li key={link.id}>
-            <Button
-              className="w-32 cursor-pointer text-base"
-              asChild
-              variant="Shine"
-            >
+            <Button asChild variants="shine">
               <Link
-                className="bg-primary-950 text-secondary-50 flex h-10 items-center 
-                justify-center gap-2 rounded-lg px-3 py-3.5"
                 aria-label={`link to ${link.label}`}
                 target="_blank"
                 href={link.url || ''}
@@ -50,3 +44,5 @@ export function DocLinks({ links }: LinksProps) {
     </ul>
   )
 }
+
+export { DocLinks }

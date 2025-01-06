@@ -1,128 +1,104 @@
-import React, { ReactNode, useEffect, useMemo, useState } from 'react'
+'use client'
+import React from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
+import useCarousel from '../../hooks/useCarousel'
 
 interface CarouselProps {
-  children: ReactNode
+  url: string[] // Array de URLs de imagens
   className?: string
   autoPlay?: boolean
   autoPlayInterval?: number
 }
 
-const CarouselContainer = React.forwardRef<
-  HTMLDivElement,
-  React.HtmlHTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    className={twMerge('relative h-full w-full', className)}
-    {...props}
-    ref={ref}
-  />
-))
-
-CarouselContainer.displayName = 'CarouselContainer'
-
-const CarouselButton = React.forwardRef<
-  HTMLButtonElement,
-  React.HTMLAttributes<HTMLButtonElement> & { direction: 'prev' | 'next' }
->(({ direction, className, ...props }, ref) => (
+const CarouselButton = ({
+  direction,
+  onClick
+}: {
+  direction: 'prev' | 'next'
+  onClick: () => void
+}) => (
   <button
     type="button"
+    onClick={onClick}
+    aria-label={direction === 'prev' ? 'Previous Slide' : 'Next Slide'}
     className={twMerge(
-      `absolute top-1/2 -translate-y-1/2 transform rounded-full bg-accent-foreground p-2 text-accent duration-300 hover:bg-accent-foreground/70 focus:outline-none active:scale-95 ${
-        direction === 'prev' ? 'left-4' : 'right-4'
-      }`,
-      className
+      'absolute top-1/2 -translate-y-1/2 transform rounded-full p-2',
+      'bg-primary text-primary-foreground duration-300 hover:bg-primary-hover hover:text-primary-foreground focus:outline-none active:scale-95',
+      direction === 'prev' ? 'left-4' : 'right-4'
     )}
-    {...props}
-    ref={ref}
-  />
-))
+  >
+    {direction === 'prev' ? <IoIosArrowBack /> : <IoIosArrowForward />}
+  </button>
+)
 
-CarouselButton.displayName = 'CarouselButton'
+interface CarouselIndicatorsProps {
+  url: string[]
+  goToSlide: (index: number) => void
+}
 
-const CarouselRoot = ({
-  children,
+const CarouselIndicators = ({ url, goToSlide }: CarouselIndicatorsProps) => (
+  <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-2">
+    {url.map((_, index) => (
+      <button
+        key={index}
+        type="button"
+        onClick={() => goToSlide(index)}
+        aria-label={`Go to slide ${index + 1}`}
+        className={twMerge(
+          'h-2 w-2 rounded-full bg-secondary transition-all duration-300',
+          'hover:bg-secondary-hover-hover hover:scale-110',
+          `active:bg-primary`
+        )}
+      />
+    ))}
+  </div>
+)
+
+const Carousel = ({
+  url,
   className,
   autoPlay = false,
   autoPlayInterval = 5000
 }: CarouselProps) => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const items = useMemo(() => React.Children.toArray(children), [children])
-  const totalItems = items.length
-
-  // Funções de navegação
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalItems)
-  }
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems)
-  }
-
-  // AutoPlay
-  useEffect(() => {
-    if (autoPlay) {
-      const interval = setInterval(nextSlide, autoPlayInterval)
-      return () => clearInterval(interval)
-    }
-  }, [autoPlay, autoPlayInterval])
+  const { currentIndex, nextSlide, prevSlide, goToSlide } = useCarousel(
+    url.length,
+    autoPlay,
+    autoPlayInterval
+  )
 
   return (
     <div
-      className={twMerge(
-        'relative h-96 w-full  overflow-hidden border',
-        className
-      )}
+      className={twMerge('relative h-96 w-full overflow-hidden', className)}
       aria-live="polite"
     >
       {/* Conteúdo do Carrossel */}
       <div
-        className="flex h-full w-full transition-transform duration-700 ease-in-out"
+        className="flex h-full transition-transform duration-700 ease-in-out"
         style={{
-          transform: `translateX(-${currentIndex * 100}%)`,
-          width: '100%'
+          transform: `translateX(-${currentIndex * 100}%)`
         }}
       >
-        {React.Children.map(items, (child) => (
-          <div className="h-full w-full flex-shrink-0">{child}</div>
+        {url.map((url, index) => (
+          <div key={index} className="h-full w-full flex-shrink-0">
+            <img
+              src={url}
+              alt={`Slide image ${index + 1}`}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </div>
         ))}
       </div>
 
-      {/* Navegação */}
-      <CarouselButton
-        direction="prev"
-        onClick={prevSlide}
-        aria-label="Previous Slide"
-      >
-        <IoIosArrowBack />
-      </CarouselButton>
-      <CarouselButton
-        direction="next"
-        onClick={nextSlide}
-        aria-label="Next Slide"
-      >
-        <IoIosArrowForward />
-      </CarouselButton>
+      {/* Botões de navegação */}
+      <CarouselButton direction="prev" onClick={prevSlide} />
+      <CarouselButton direction="next" onClick={nextSlide} />
 
-      {/* Indicadores */}
-      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 transform space-x-2">
-        {items.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            className={twMerge(
-              'h-2.5 w-2.5 rounded-full',
-              currentIndex === index
-                ? 'bg-accent'
-                : 'bg-accent-foreground hover:bg-accent-foreground/70'
-            )}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
-      </div>
+      {/* indicadores */}
+      <CarouselIndicators url={url} goToSlide={goToSlide} />
     </div>
   )
 }
 
-export { CarouselContainer, CarouselRoot }
+export { Carousel }

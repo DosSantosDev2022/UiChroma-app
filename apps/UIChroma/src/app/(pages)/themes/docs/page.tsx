@@ -72,7 +72,6 @@ export default async function ThemesPage() {
         </SectionPage>
 
         <SectionNavigation>
-          <Title className="text-lg">Navegue por essa página</Title>
           <NavigateThroughSections links={links} />
         </SectionNavigation>
       </MainContainer>

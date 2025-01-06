@@ -4,9 +4,9 @@ import {
   SelectProvider,
   SelectRoot,
   SelectTrigger
-} from '@repo/chromaui/components/select/Select.tsx'
+} from '@repo/ChromaUI/components'
 
-export default function SelectPreview() {
+const SelectPreview = () => {
   const options = [
     {
       label: 'Opção 01'
@@ -38,3 +38,5 @@ export default function SelectPreview() {
     </SelectProvider>
   )
 }
+
+export default SelectPreview

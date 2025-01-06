@@ -1,17 +1,14 @@
-import {
-  Field,
-  InputIcon,
-  InputRoot
-} from '@repo/chromaui/components/input/Input.tsx'
-import { LuSearch } from 'react-icons/lu'
+import { Input } from '@repo/ChromaUI/components'
+import { CiSearch } from 'react-icons/ci'
 
-export default function InputPreview() {
+const InputPreview = () => {
   return (
-    <InputRoot className="w-[468px] ">
-      <InputIcon>
-        <LuSearch />
-      </InputIcon>
-      <Field placeholder="Search.." />
-    </InputRoot>
+    <Input
+      variants="default"
+      icon={<CiSearch size={20} />}
+      placeholder="Buscar.."
+    />
   )
 }
+
+export default InputPreview

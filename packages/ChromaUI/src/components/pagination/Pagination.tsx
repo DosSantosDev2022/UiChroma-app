@@ -54,8 +54,8 @@ const PaginationLink = ({
   <a
     aria-current={isActive ? 'page' : 'false'}
     className={twMerge(
-      ` flex h-10 w-10 items-center justify-center rounded-lg border p-2 duration-300 hover:opacity-70
-      ${isActive ? 'bg-zinc-50 text-zinc-700' : 'bg-zinc-700 text-zinc-50'}`,
+      ` flex h-10 w-10 items-center justify-center rounded-lg border p-2 duration-300 hover:bg-primary-hover
+      ${isActive ? 'bg-accent text-accent-foreground' : 'bg-primary text-primary-foreground'}`,
       className
     )}
     {...props}
@@ -113,9 +113,9 @@ PaginationEllipsis.displayName = 'PaginationEllipsis'
 export {
   Pagination,
   PaginationContent,
+  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
-  PaginationPrevious,
   PaginationNext,
-  PaginationEllipsis
+  PaginationPrevious
 }

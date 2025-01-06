@@ -12,9 +12,9 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious
-} from '@repo/chromaui/components/pagination/Pagination.tsx'
+} from '@repo/ChromaUI/components'
 
-export default function PaginationPreview() {
+const PaginationPreview = () => {
   const { isCurrentPage, pages } = usePagination({
     page: 1,
     limit: 10,
@@ -45,3 +45,5 @@ export default function PaginationPreview() {
     </Pagination>
   )
 }
+
+export default PaginationPreview

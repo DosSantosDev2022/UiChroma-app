@@ -1,14 +1,13 @@
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { RichText } from '@/components/global/cms/rich-text'
 import {
+  ContentSections,
   MainContainer,
   SectionNavigation,
   SectionPage,
-  WrapperSections,
-  ContentSections
+  WrapperSections
 } from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
-import { Title } from '@/components/global/title/title'
 import { links } from '@/enums/documentation'
 import { GET_STARTER_PAGE_DATA } from '@/utils/getStartPageData'
 
@@ -18,7 +17,9 @@ export default async function Starter() {
   return (
     <MainContainer>
       <SectionPage>
-        <Title>{documentationPage.title}</Title>
+        <h1 className="text-4xl font-extrabold tracking-wide text-foreground">
+          {documentationPage.title}
+        </h1>
         <WrapperSections>
           <ContentSections id="Introdução">
             {documentationPage.section && (
@@ -86,10 +87,6 @@ export default async function Starter() {
       </SectionPage>
 
       <SectionNavigation>
-        <Title as="h3" className="text-lg">
-          Navegue nessa página
-        </Title>
-
         <NavigateThroughSections links={links} />
       </SectionNavigation>
     </MainContainer>

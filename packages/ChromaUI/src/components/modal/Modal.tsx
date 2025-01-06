@@ -1,3 +1,4 @@
+'use client'
 import * as React from 'react'
 import { createContext, ReactNode, useContext, useState } from 'react'
 import { LuX } from 'react-icons/lu'
@@ -6,6 +7,7 @@ import { twMerge } from 'tailwind-merge'
 interface ModalContextProps {
   isOpen: boolean
   toggleOpen: () => void
+  closeModal: () => void
 }
 
 const ModalContext = createContext<ModalContextProps | undefined>(undefined)
@@ -18,12 +20,38 @@ const useModalContext = () => {
   return context
 }
 
-const ModalProvider = ({ children }: { children: ReactNode }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const toggleOpen = () => setIsOpen((prev) => !prev)
+const ModalProvider = ({
+  children,
+  open,
+  onOpenChange
+}: {
+  children: ReactNode
+  open?: boolean
+  onOpenChange?: (isOpen: boolean) => void
+}) => {
+  const [internalOpen, setInternalOpen] = useState(false)
+  // Determina o estado atual com prioridade para o prop `open`
+  const isOpen = open !== undefined ? open : internalOpen
+
+  const toggleOpen = () => {
+    const newState = !isOpen
+    if (onOpenChange) {
+      onOpenChange(newState)
+    } else {
+      setInternalOpen(newState)
+    }
+  }
+
+  const closeModal = () => {
+    if (onOpenChange) {
+      onOpenChange(false)
+    } else {
+      setInternalOpen(false)
+    }
+  }
 
   return (
-    <ModalContext.Provider value={{ isOpen, toggleOpen }}>
+    <ModalContext.Provider value={{ isOpen, toggleOpen, closeModal }}>
       {children}
     </ModalContext.Provider>
   )
@@ -31,9 +59,16 @@ const ModalProvider = ({ children }: { children: ReactNode }) => {
 
 const ModalRoot = ({
   className,
+  open,
+  onOpenChange,
   ...props
-}: React.HTMLAttributes<HTMLDivElement>) => (
-  <div className={twMerge('relative', className)} {...props} />
+}: React.HTMLAttributes<HTMLDivElement> & {
+  open?: boolean
+  onOpenChange?: (isOpen: boolean) => void
+}) => (
+  <ModalProvider open={open} onOpenChange={onOpenChange}>
+    <div className={twMerge('relative', className)} {...props} />
+  </ModalProvider>
 )
 
 ModalRoot.displayName = 'ModalRoot'
@@ -44,7 +79,7 @@ const ModalHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={twMerge(
-      'flex w-full items-center justify-between space-y-1.5 px-1 py-1.5',
+      'flex w-full items-center justify-between space-y-1 px-1 py-1.5',
       className
     )}
     {...props}
@@ -59,7 +94,7 @@ const ModalTitle = ({
 }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h4
     className={twMerge(
-      'text-lg font-semibold leading-none tracking-tight text-foreground',
+      'text-xl font-semibold leading-none tracking-tight text-foreground',
       className
     )}
     {...props}
@@ -73,7 +108,7 @@ const ModalDescription = ({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p
-    className={twMerge('text-sm text-muted-foreground', className)}
+    className={twMerge('px-1 py-1.5 text-sm text-muted-foreground', className)}
     {...props}
   />
 )
@@ -96,14 +131,24 @@ ModalFooter.displayName = 'ModalFooter'
 
 const ModalOverlay = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
+  React.HTMLAttributes<HTMLDivElement> & {
+    variant?: 'blur' | 'dark' | 'darkBlur'
+  }
+>(({ className, variant = 'blur', ...props }, ref) => {
   const { isOpen } = useModalContext()
   if (!isOpen) return null
+
+  const variantClasses = {
+    blur: 'backdrop-blur-sm',
+    darkBlur: 'backdrop-blur-sm bg-black/50',
+    dark: 'bg-black/50'
+  }
+
   return (
     <div
       className={twMerge(
-        'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0  fixed inset-0 z-50 bg-black/80',
+        'fixed inset-0 z-40',
+        variantClasses[variant],
         className
       )}
       ref={ref}
@@ -145,13 +190,13 @@ const ModalClose = React.forwardRef<
       value={'text'}
       onClick={toggleOpen}
       className={twMerge(
-        'flex h-8 w-8 items-center justify-between rounded-md bg-primary p-2 text-primary-foreground hover:bg-primary-hover',
+        'flex h-7 w-7 items-center justify-center rounded-md bg-primary  text-primary-foreground hover:bg-primary-hover',
         className
       )}
       {...props}
       ref={ref}
     >
-      <LuX size={16} />
+      <LuX size={18} />
     </button>
   )
 })
@@ -165,14 +210,18 @@ const ModalContent = React.forwardRef<
 
   return (
     isOpen && (
-      <div
-        className={twMerge(
-          'fixed left-[50%] top-[50%] z-50 grid w-full max-w-3xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-6 shadow-lg duration-200 sm:rounded-lg',
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
+      <div className="fixed inset-0 z-50 flex items-center justify-center">
+        <div
+          data-state={isOpen ? 'open' : 'closed'}
+          className={twMerge(
+            'w-full max-w-2xl space-y-2 border bg-background p-6 shadow-lg sm:rounded-lg',
+            'data-[state=closed]:animate-smooth-fadeout data-[state=open]:animate-smooth-fadein',
+            className
+          )}
+          ref={ref}
+          {...props}
+        />
+      </div>
     )
   )
 })
@@ -186,8 +235,8 @@ export {
   ModalFooter,
   ModalHeader,
   ModalOverlay,
-  ModalProvider,
   ModalRoot,
   ModalTitle,
-  ModalTrigger
+  ModalTrigger,
+  useModalContext
 }

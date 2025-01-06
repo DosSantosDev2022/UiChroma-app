@@ -1,4 +1,4 @@
-
+import animations from "@repo/animations-ui"
 const baseConfig = {
   content: [
     '../../apps/*/src/**/*.{js,ts,jsx,tsx}', // Para aplicações no monorepo
@@ -7,96 +7,43 @@ const baseConfig = {
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
+        background: 'var(--background)',
+        foreground: 'var(--foreground)',
 
-        primary: 'hsl(var(--primary))',
-        'primary-hover': 'hsl(var(--primary-hover))',
-        'primary-foreground': 'hsl(var(--primary-foreground))',
-        secondary: 'hsl(var(--secondary))',
-        'secondary-hover': 'hsl(var(--secondary-hover))',
-        'secondary-foreground': 'hsl(var(--secondary-foreground))',
-        muted: 'hsl(var(--muted))',
-        'muted-hover': 'hsl(var(--muted-hover))',
-        'muted-foreground': 'hsl(var(--muted-foreground))',
-        accent: 'hsl(var(--accent))',
-        'accent-hover': 'hsl(var(--accent-hover))',
-        'accent-foreground': 'hsl(var(--accent-foreground))',
+        primary: 'var(--primary)',
+        'primary-hover': 'var(--primary-hover)',
+        'primary-foreground': 'var(--primary-foreground)',
+        secondary: 'var(--secondary)',
+        'secondary-hover': 'var(--secondary-hover)',
+        'secondary-foreground': 'var(--secondary-foreground)',
+        muted: 'var(--muted)',
+        'muted-hover': 'var(--muted-hover)',
+        'muted-foreground': 'var(--muted-foreground)',
+        accent: 'var(--accent)',
+        'accent-hover': 'var(--accent-hover)',
+        'accent-foreground': 'var(--accent-foreground)',
 
-        danger: 'hsl(var(--danger))',
-        'danger-hover': 'hsl(var(--danger-hover))',
-        'danger-foreground': 'hsl(var(--danger-foreground))',
-        warning: 'hsl(var(--warning))',
-        'warning-hover': 'hsl(var(--warning-hover))',
-        'warning-foreground': 'hsl(var(--warning-foreground))',
-        success: 'hsl(var(--success))',
-        'success-hover': 'hsl(var(--success-hover))',
-        'success-foreground': 'hsl(var(--success-foreground))',
+        danger: 'var(--danger)',
+        'danger-hover': 'var(--danger-hover)',
+        'danger-foreground': 'var(--danger-foreground)',
+        warning: 'var(--warning)',
+        'warning-hover': 'var(--warning-hover)',
+        'warning-foreground': 'var(--warning-foreground)',
+        success: 'var(--success)',
+        'success-hover': 'var(--success-hover)',
+        'success-foreground': 'var(--success-foreground)',
 
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
+        border: 'var(--border)',
+        input: 'var(--input)',
+        ring: 'var(--ring)',
 
-        'chart-1': 'hsl(var(--chart-1))',
-        'chart-2': 'hsl(var(--chart-2))',
-        'chart-3': 'hsl(var(--chart-3))',
-        'chart-4': 'hsl(var(--chart-4))',
-        'chart-5': 'hsl(var(--chart-5))',
+        'chart-1': 'var(--chart-1)',
+        'chart-2': 'var(--chart-2)',
+        'chart-3': 'var(--chart-3)',
+        'chart-4': 'var(--chart-4)',
+        'chart-5': 'var(--chart-5)',
       },
-      keyframes: {
-        'fade-in': {
-          '0%': { opacity: '0' },
-          '100%': { opacity: '1' },
-        },
-        'fade-out': {
-          '0%': { opacity: '1' },
-          '100%': { opacity: '0' },
-        },
-        'slide-in-from-top': {
-          '0%': { transform: 'translateY(-100%)' },
-          '100%': { transform: 'translateY(0)' },
-        },
-        'slide-out-to-top': {
-          '0%': { transform: 'translateY(0)' },
-          '100%': { transform: 'translateY(-100%)' },
-        },
-        'slide-in-from-bottom': {
-          '0%': { transform: 'translateY(100%)' },
-          '100%': { transform: 'translateY(0)' },
-        },
-        'slide-out-to-bottom': {
-          '0%': { transform: 'translateY(0)' },
-          '100%': { transform: 'translateY(100%)' },
-        },
-        'slide-in-from-left': {
-          '0%': { transform: 'translateX(-100%)' },
-          '100%': { transform: 'translateX(0)' },
-        },
-        'slide-out-to-left': {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-100%)' },
-        },
-        'slide-in-from-right': {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(0)' },
-        },
-        'slide-out-to-right': {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(100%)' },
-        },
-      },
-      animation: {
-        'fade-in': 'fade-in 0.5s ease-out forwards',
-        'fade-out': 'fade-out 0.5s ease-out forwards',
-        'slide-in-from-top': 'slide-in-from-top 0.5s ease-out forwards',
-        'slide-out-to-top': 'slide-out-to-top 0.5s ease-out forwards',
-        'slide-in-from-bottom': 'slide-in-from-bottom 0.5s ease-out forwards',
-        'slide-out-to-bottom': 'slide-out-to-bottom 0.5s ease-out forwards',
-        'slide-in-from-left': 'slide-in-from-left 0.5s ease-out forwards',
-        'slide-out-to-left': 'slide-out-to-left 0.5s ease-out forwards',
-        'slide-in-from-right': 'slide-in-from-right 0.5s ease-out forwards',
-        'slide-out-to-right': 'slide-out-to-right 0.5s ease-out forwards',
-      },
+      ...animations
     },
   },
   plugins: [

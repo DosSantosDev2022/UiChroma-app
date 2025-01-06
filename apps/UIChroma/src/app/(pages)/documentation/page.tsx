@@ -6,7 +6,6 @@ import {
   WrapperSections
 } from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
-import { Title } from '@/components/global/title/title'
 import { links } from '@/enums/documentation'
 
 export default async function DocumentationPage() {
@@ -18,9 +17,6 @@ export default async function DocumentationPage() {
         </WrapperSections>
       </SectionPage>
       <SectionNavigation>
-        <Title as="h3" className="text-lg">
-          Navegue nessa página
-        </Title>
         <NavigateThroughSections links={links} />
       </SectionNavigation>
     </MainContainer>

@@ -3,7 +3,7 @@ import { twMerge } from 'tailwind-merge'
 
 const Card = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => {
   return (
     <div
@@ -21,7 +21,7 @@ Card.displayName = 'Card'
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -33,8 +33,8 @@ const CardHeader = React.forwardRef<
 CardHeader.displayName = 'CardHeader'
 
 const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HtmlHTMLAttributes<HTMLParagraphElement>
+  HTMLHeadingElement,
+  React.ComponentPropsWithoutRef<'h3'>
 >(({ className, ...props }, ref) => (
   <h3
     ref={ref}
@@ -50,7 +50,7 @@ CardTitle.displayName = 'CardTitle'
 
 const CardDescription = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
+  React.ComponentPropsWithoutRef<'p'>
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
@@ -63,7 +63,7 @@ CardDescription.displayName = 'CardDescription'
 
 const CardContent = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -76,7 +76,7 @@ CardContent.displayName = 'CardContent'
 
 const CardFooter = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
+  React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -88,3 +88,4 @@ const CardFooter = React.forwardRef<
 CardFooter.displayName = 'CardFooter'
 
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
+

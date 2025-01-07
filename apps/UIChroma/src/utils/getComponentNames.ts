@@ -5,6 +5,7 @@ export interface QueryProps {
     id: string
     slug: string
     name: string
+    developing: boolean
   }[]
 }
 
@@ -15,6 +16,7 @@ export const GET_COMPONENTS_NAME = async (): Promise<QueryProps> => {
         id
         slug
         name
+        developing
       }
     }
   `

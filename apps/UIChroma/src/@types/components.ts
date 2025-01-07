@@ -44,5 +44,6 @@ export interface ComponentsPageData {
       blockCode: string
     }
     dependencies: Dependencies[]
+    developing: boolean
   }
 }

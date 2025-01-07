@@ -41,6 +41,22 @@ export default async function ComponentDetails({
     redirect('/not-found')
   }
 
+  if (pageComponent.developing) {
+    return (
+      <div className="flex h-full w-full items-start justify-center border p-3">
+        <div className="w-full space-y-3">
+          <h1 className="text-4xl font-bold text-accent">
+            {pageComponent.name} está em desenvolvimento 🚧
+          </h1>
+          <p className="mt-2 text-lg text-muted-foreground">
+            Este componente ainda está sendo desenvolvido ou em manutenção e
+            estará disponível em breve.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <MainContainer>
       <SectionPage>

@@ -3,14 +3,24 @@ import { twMerge } from 'tailwind-merge'
 
 const TextArea = forwardRef<
   HTMLTextAreaElement,
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>
->(({ className, ...props }, ref) => {
+  React.ComponentPropsWithRef<'textarea'> & {
+    variants?: 'success' | 'error' | 'default'
+  }
+>(({ className, variants = 'default', ...props }, ref) => {
+  const variantClasses = {
+    default: 'focus-within:ring-2 focus-within:ring-ring',
+    success: 'focus-within:ring-2 focus-within:ring-success',
+    error: 'focus-within:ring-2 focus-within:ring-danger'
+  }
   return (
     <textarea
       {...props}
       ref={ref}
       className={twMerge(
-        'border-border/20 w-full rounded border bg-muted px-3 py-4 font-light text-muted-foreground outline-none placeholder:text-muted-foreground focus:ring-2 focus:ring-ring',
+        'w-full rounded border bg-transparent px-3 py-4 font-light text-muted-foreground',
+        'outline-none placeholder:text-muted-foreground',
+        'transition-all duration-300',
+        variantClasses[variants],
         className
       )}
     />
@@ -19,3 +29,4 @@ const TextArea = forwardRef<
 TextArea.displayName = 'textArea'
 
 export { TextArea }
+

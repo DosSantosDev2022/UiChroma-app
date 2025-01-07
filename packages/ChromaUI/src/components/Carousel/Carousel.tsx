@@ -1,11 +1,11 @@
 'use client'
-import React from 'react'
+import React, { ReactNode, useEffect, useRef } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
 import useCarousel from '../../hooks/useCarousel'
 
 interface CarouselProps {
-  url: string[] // Array de URLs de imagens
+  children: React.ReactNode
   className?: string
   autoPlay?: boolean
   autoPlayInterval?: number
@@ -24,31 +24,41 @@ const CarouselButton = ({
     aria-label={direction === 'prev' ? 'Previous Slide' : 'Next Slide'}
     className={twMerge(
       'absolute top-1/2 -translate-y-1/2 transform rounded-full p-2',
-      'bg-primary text-primary-foreground duration-300 hover:bg-primary-hover hover:text-primary-foreground focus:outline-none active:scale-95',
+      'bg-transparent text-primary-foreground duration-300 hover:bg-primary-hover hover:text-primary-foreground focus:outline-none active:scale-95',
       direction === 'prev' ? 'left-4' : 'right-4'
     )}
   >
-    {direction === 'prev' ? <IoIosArrowBack /> : <IoIosArrowForward />}
+    {direction === 'prev' ? (
+      <IoIosArrowBack size={20} />
+    ) : (
+      <IoIosArrowForward size={20} />
+    )}
   </button>
 )
 
 interface CarouselIndicatorsProps {
-  url: string[]
+  itemsLength: number
+  currentIndex: number
   goToSlide: (index: number) => void
 }
 
-const CarouselIndicators = ({ url, goToSlide }: CarouselIndicatorsProps) => (
+const CarouselIndicators = ({
+  currentIndex,
+  itemsLength,
+  goToSlide
+}: CarouselIndicatorsProps) => (
   <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-2">
-    {url.map((_, index) => (
+    {Array.from({ length: itemsLength }).map((_, index) => (
       <button
         key={index}
         type="button"
         onClick={() => goToSlide(index)}
         aria-label={`Go to slide ${index + 1}`}
         className={twMerge(
-          'h-2 w-2 rounded-full bg-secondary transition-all duration-300',
-          'hover:bg-secondary-hover-hover hover:scale-110',
-          `active:bg-primary`
+          'h-2 w-2 rounded-full transition-all duration-300',
+          index === currentIndex
+            ? 'scale-110 bg-primary'
+            : 'bg-secondary hover:bg-primary-hover'
         )}
       />
     ))}
@@ -56,16 +66,21 @@ const CarouselIndicators = ({ url, goToSlide }: CarouselIndicatorsProps) => (
 )
 
 const Carousel = ({
-  url,
+  children,
   className,
   autoPlay = false,
   autoPlayInterval = 5000
 }: CarouselProps) => {
-  const { currentIndex, nextSlide, prevSlide, goToSlide } = useCarousel(
-    url.length,
-    autoPlay,
-    autoPlayInterval
-  )
+  const { currentIndex, nextSlide, prevSlide, goToSlide, updateItemsLength } =
+    useCarousel(autoPlay, autoPlayInterval)
+
+  const itemsRef = useRef<ReactNode[]>([])
+
+  useEffect(() => {
+    const childrenArray = React.Children.toArray(children)
+    itemsRef.current = childrenArray
+    updateItemsLength(childrenArray.length)
+  }, [children, updateItemsLength])
 
   return (
     <div
@@ -79,14 +94,9 @@ const Carousel = ({
           transform: `translateX(-${currentIndex * 100}%)`
         }}
       >
-        {url.map((url, index) => (
+        {itemsRef.current.map((child, index) => (
           <div key={index} className="h-full w-full flex-shrink-0">
-            <img
-              src={url}
-              alt={`Slide image ${index + 1}`}
-              className="h-full w-full object-cover"
-              loading="lazy"
-            />
+            {child}
           </div>
         ))}
       </div>
@@ -96,9 +106,14 @@ const Carousel = ({
       <CarouselButton direction="next" onClick={nextSlide} />
 
       {/* indicadores */}
-      <CarouselIndicators url={url} goToSlide={goToSlide} />
+      <CarouselIndicators
+        itemsLength={itemsRef.current.length}
+        currentIndex={currentIndex}
+        goToSlide={goToSlide}
+      />
     </div>
   )
 }
 
 export { Carousel }
+

@@ -74,10 +74,10 @@ const DropDownTrigger = React.forwardRef<
       aria-expanded={isOpen}
       {...props}
       className={twMerge(
-        'flex h-10 w-full items-center justify-start gap-1 rounded border px-2 py-1.5',
+        'flex h-10 w-full items-center justify-center gap-1 rounded border px-2 py-1.5',
         'transition-all duration-300',
         'bg-background text-primary hover:bg-muted-hover',
-        'select-none outline-none focus:bg-muted-hover',
+        'select-none outline-none focus:bg-muted-hover focus:ring-1 focus:ring-muted focus:ring-offset-1',
         className
       )}
       ref={ref}
@@ -100,8 +100,8 @@ const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
           data-state={isOpen ? 'open' : 'closed'}
           {...props}
           className={twMerge(
-            `${position} mt-1 w-full min-w-[8rem] rounded-md border bg-background px-2 py-1.5`,
-            ' custom-scrollbar overflow-y-scroll',
+            `${position} mt-1 w-full rounded-md  border bg-background px-2 py-1.5 sm:w-full`,
+            ' custom-scrollbar overflow-y-scroll shadow-md',
             `data-[state=open]:animate-smooth-fadein`,
             `data-[state=closed]:animate-smooth-fadeout`,
             className
@@ -135,7 +135,7 @@ const DropDownItem = React.forwardRef<
   <li
     {...props}
     className={twMerge(
-      'cursor-pointer px-2 py-1.5 hover:bg-muted-hover',
+      'cursor-pointer px-2 py-1.5 hover:bg-muted-hover focus:ring-2 focus:ring-primary focus:ring-offset-2',
       className
     )}
     ref={ref}
@@ -152,7 +152,7 @@ const DropDownLabel = React.forwardRef<
     <div className="w-full p-2">
       <label
         className={twMerge(
-          'ml-1.5 text-sm font-semibold text-muted-foreground ',
+          'border-b-2 pb-1 pt-1 text-start text-sm font-semibold text-muted-foreground ',
           className
         )}
         ref={ref}
@@ -180,7 +180,7 @@ const DropDownLink = React.forwardRef<HTMLAnchorElement, DropDownLinkProps>(
     return (
       <a
         className={twMerge(
-          'flex w-full items-center justify-start gap-2 text-sm font-semibold text-primary',
+          'flex w-full items-center justify-start gap-1.5 text-sm font-semibold text-primary',
           className
         )}
         {...props}
@@ -226,3 +226,4 @@ export {
   DropDownRoot,
   DropDownTrigger
 }
+

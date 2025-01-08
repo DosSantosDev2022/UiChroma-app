@@ -1,6 +1,6 @@
 import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
-import { GET_HOME_PAGE_DATA } from '@/utils/getHomePageData'
+import { GET_HOME_PAGE_DATA } from '@/services/getHomePageData'
 import { Button } from '@repo/ChromaUI/components'
 import Link from 'next/link'
 
@@ -20,14 +20,14 @@ export default async function Home() {
 
         <div className="mt-4 flex w-full items-center justify-start gap-2">
           <Button
-            variant="Shine"
+            variants="shine"
             asChild
             className="flex w-40 items-center justify-center text-base"
           >
             <Link href={'/starter'}>Primeiros passos</Link>
           </Button>
           <Button
-            variant="outline"
+            variants="outline"
             asChild
             className="flex w-40 items-center justify-center text-base"
           >

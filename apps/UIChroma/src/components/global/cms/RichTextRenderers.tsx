@@ -41,7 +41,9 @@ const defaultRenderers = {
 
   // Parágrafos
   p: ({ children }: defaultRenderersProps) => (
-    <p className="w-full text-base font-normal text-muted">{children}</p>
+    <p className="w-full text-base font-normal text-muted-foreground">
+      {children}
+    </p>
   ),
 
   // Listas
@@ -71,7 +73,7 @@ const defaultRenderers = {
 
   // Bloco de código
   code_block: ({ children }: defaultRenderersProps) => (
-    <pre className="custom-scrollbar w-full overflow-x-auto rounded-xl bg-primary px-10 py-5 shadow-lg">
+    <pre className="custom-scrollbar w-full overflow-x-auto rounded-xl bg-foreground px-10 py-5 shadow-lg">
       <code className="text-primary-foreground">{children}</code>
     </pre>
   ),
@@ -118,3 +120,4 @@ const defaultRenderers = {
 }
 
 export { defaultRenderers }
+

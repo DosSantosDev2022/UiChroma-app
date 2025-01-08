@@ -106,7 +106,10 @@ const AccordionQuestion = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-base font-semibold text-primary', className)}
+    className={twMerge(
+      'text-base font-semibold text-muted-foreground',
+      className
+    )}
     {...props}
   />
 )

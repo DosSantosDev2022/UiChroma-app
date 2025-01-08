@@ -169,7 +169,9 @@ const ModalTrigger = React.forwardRef<
       value={'text'}
       onClick={toggleOpen}
       className={twMerge(
-        ' flex h-10 w-full items-center justify-center gap-2 rounded-md border bg-primary px-2 py-1.5 text-sm text-primary-foreground ring-offset-primary duration-300 hover:bg-primary-hover focus:ring-ring active:scale-95',
+        ' flex h-10 w-full items-center justify-center gap-2 rounded-md border px-2 py-1.5 text-sm',
+        'bg-background text-foreground hover:bg-muted-hover ',
+        'ring-offset-primary duration-300  focus:ring-ring active:scale-95',
         className
       )}
       {...props}
@@ -240,3 +242,4 @@ export {
   ModalTrigger,
   useModalContext
 }
+

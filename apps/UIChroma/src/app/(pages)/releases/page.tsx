@@ -2,8 +2,8 @@ import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { Title } from '@/components/global/title/title'
 import { SearchReleases } from '@/components/pages/releases/searchRelease/searchReleases'
-import { GET_RELEASES } from '@/utils/getReleasesData'
-import { Badge } from '@repo/chromaui/components/bedge/Bedge.tsx'
+import { GET_RELEASES } from '@/services/getReleasesData'
+import { Badge } from '@repo/ChromaUI/components'
 import { format } from 'date-fns'
 
 interface ReleasePageParams {
@@ -27,7 +27,7 @@ export default async function ReleasePage({ searchParams }: ReleasePageParams) {
         </div>
       ) : (
         <>
-          <div className="flex flex-col gap-3 border">
+          <div className="flex flex-col gap-3">
             <Title>{releasePage.title}</Title>
             <p className="text-base font-normal text-muted-foreground">
               {releasePage.description}

@@ -11,7 +11,7 @@ import { Title } from '@/components/global/title/title'
 import ComponentPreview from '@/components/pages/preview/componentPreview/componentPreview'
 import { DocLinks } from '@/components/pages/preview/documentationslink/docLinks'
 import { links } from '@/enums/preview'
-import { GET_DETAILS_COMPONENT } from '@/utils/getDetailsComponentData'
+import { GET_DETAILS_COMPONENT } from '@/services/getDetailsComponentData'
 import {
   Badge,
   ClipBoardAction,

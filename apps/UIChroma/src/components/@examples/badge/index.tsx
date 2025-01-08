@@ -1,7 +1,7 @@
 import { Badge } from '@repo/ChromaUI/components'
 
 type BadgeType = {
-  variant: 'primary' | 'secondary' | 'accent'
+  variant: 'primary' | 'secondary' | 'accent' | 'muted'
   children: string
 }
 
@@ -18,6 +18,10 @@ const BedgePreview = () => {
     {
       variant: 'accent',
       children: 'Accent'
+    },
+    {
+      variant: 'muted',
+      children: 'Muted'
     }
   ]
 

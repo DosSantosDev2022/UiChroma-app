@@ -60,7 +60,7 @@ const CalendarPreview = () => {
           range={range} // Modo de intervalo
         />
 
-        <p className="mt-4 text-sm text-muted">
+        <p className="mt-4 text-sm text-muted-foreground">
           <span className="font-bold text-primary">Data Selecionada:</span>{' '}
           {renderSelectedDate()}
         </p>

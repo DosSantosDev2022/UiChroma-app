@@ -74,7 +74,7 @@ const DropDownTrigger = React.forwardRef<
       aria-expanded={isOpen}
       {...props}
       className={twMerge(
-        'flex h-10 w-full items-center justify-center gap-1 rounded border px-2 py-1.5',
+        'flex  w-full items-center justify-center gap-1 rounded border px-2 py-1.5',
         'transition-all duration-300',
         'bg-background text-primary hover:bg-muted-hover',
         'select-none outline-none focus:bg-muted-hover focus:ring-1 focus:ring-muted focus:ring-offset-1',
@@ -89,18 +89,37 @@ DropDownTrigger.displayName = 'DropDownTrigger'
 
 interface DropDownContentProps extends React.ComponentPropsWithRef<'div'> {
   position?: 'absolute' | 'sticky'
+  alignment?:
+  | 'top'
+  | 'bottom'
+  | 'top-left'
+  | 'top-right'
+  | 'bottom-left'
+  | 'bottom-right'
 }
 
 const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
-  ({ className, position = 'absolute', ...props }, ref) => {
+  (
+    { className, position = 'absolute', alignment = 'bottom', ...props },
+    ref
+  ) => {
     const { isOpen } = useDropDownContext()
+
+    const alignmentClasses = {
+      top: 'bottom-full',
+      bottom: 'top-full',
+      'top-left': 'bottom-0 right-full mr-1',
+      'top-right': 'bottom-0 left-full ml-1',
+      'bottom-left': 'top-0 right-full mr-1',
+      'bottom-right': 'top-0 left-full ml-1'
+    }
     return (
       isOpen && (
         <div
           data-state={isOpen ? 'open' : 'closed'}
           {...props}
           className={twMerge(
-            `${position} mt-1 w-full rounded-md  border bg-background px-2 py-1.5 sm:w-full`,
+            `${position} ${alignmentClasses[alignment]} mt-1 w-full rounded-md  border bg-background px-2 py-1.5 sm:w-full`,
             ' custom-scrollbar overflow-y-scroll shadow-md',
             `data-[state=open]:animate-smooth-fadein`,
             `data-[state=closed]:animate-smooth-fadeout`,

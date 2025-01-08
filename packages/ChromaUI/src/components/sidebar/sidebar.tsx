@@ -84,11 +84,11 @@ const SideBar = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        'col-start-1 row-span-2 flex h-full flex-col justify-between border bg-background p-4',
+        '  flex h-full flex-col justify-between border bg-background p-4',
         '',
         isOpenSideBar
-          ? 'w-64 translate-x-0 animate-expand-dimensions'
-          : '-translate-x-full sm:w-20 sm:translate-x-0',
+          ? 'w-72 translate-x-0 animate-expand-dimensions'
+          : '-translate-x-full p-2 sm:w-20 sm:translate-x-0',
         className
       )}
     />
@@ -128,13 +128,15 @@ const SideBarLogo = React.forwardRef<
     <div
       ref={ref}
       {...props}
-      className={twMerge('flex items-center justify-start gap-2', className)}
+      className={twMerge(
+        'flex w-full items-center  space-x-1',
+        `${isOpenSideBar ? 'justify-start' : 'justify-center'}`,
+        className
+      )}
     >
       {icon}
       {isOpenSideBar && (
-        <span className="ml-1 text-xl font-extrabold text-primary">
-          {label}
-        </span>
+        <span className="text-xl font-extrabold text-primary">{label}</span>
       )}
     </div>
   )
@@ -194,7 +196,7 @@ const SideBarFooter = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `${isOpenSideBar ? 'flex w-full flex-col items-center p-2 text-center text-xs font-light tracking-wide text-muted' : 'hidden'}`,
+        `${isOpenSideBar ? 'flex w-full flex-col items-start p-2' : 'hidden'}`,
         '',
         className
       )}
@@ -217,6 +219,30 @@ const SideBarSeparator = React.forwardRef<
 ))
 
 SideBarSeparator.displayName = 'SideBarSeparator'
+
+const SideBarLabel = React.forwardRef<
+  HTMLSpanElement,
+  React.ComponentPropsWithRef<'span'> & { label?: string }
+>(({ className, label, ...props }, ref) => {
+  const { isOpenSideBar } = useSideBarContext()
+  return (
+    isOpenSideBar && (
+      <span
+        data-sidebar="separator"
+        ref={ref}
+        {...props}
+        className={twMerge(
+          'ml-1 truncate text-sm font-medium text-muted',
+          className
+        )}
+      >
+        {label}
+      </span>
+    )
+  )
+})
+
+SideBarLabel.displayName = 'SideBarLabel'
 
 const SideBarNavigation = React.forwardRef<
   HTMLElement,
@@ -252,7 +278,7 @@ const SideBarItem = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        'mt-1 cursor-pointer list-none rounded-md px-1.5 py-2 text-sm text-primary hover:bg-muted-hover',
+        'mt-1 cursor-pointer list-none truncate rounded-md px-1.5 py-2 text-sm text-muted-foreground hover:bg-muted-hover',
         'flex items-center  gap-2',
         `${isOpenSideBar ? 'justify-start' : 'justify-center'}`,
         className
@@ -320,12 +346,11 @@ const SideBarDropContent = React.forwardRef<
         ref={ref}
         {...props}
         className={twMerge(
-          ' flex flex-col space-y-1 rounded-md border bg-background p-1 opacity-0',
-          isOpenSideBar ? '' : 'absolute -right-full',
-          isOpenDropDown
-            ? 'custom-scrollbar max-h-60  animate-smooth-fadein overflow-auto opacity-100'
-            : ' max-h-0',
-          'transition-all duration-300',
+          'flex flex-col space-y-1 rounded-md border bg-background  p-1 shadow-lg',
+          isOpenSideBar ? 'relative' : 'absolute',
+          'custom-scrollbar max-h-60 animate-smooth-fadein overflow-y-auto', // Animação e limites de altura
+          'transition-all duration-300', // Suaviza a transição
+          'z-50',
           className
         )}
       >
@@ -357,7 +382,7 @@ const SideBarDropItem = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        'cursor-pointer list-none rounded-md px-1.5 py-2 text-sm text-primary hover:bg-muted-hover',
+        'cursor-pointer list-none truncate rounded-md px-1.5 py-2 text-sm text-muted-foreground hover:bg-muted-hover',
         className
       )}
     >
@@ -378,6 +403,7 @@ export {
   SideBarFooter,
   SideBarHeader,
   SideBarItem,
+  SideBarLabel,
   SideBarList,
   SideBarLogo,
   SideBarNavigation,

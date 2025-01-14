@@ -10,16 +10,21 @@ interface ColorModeSelectorProps {
     color: string,
     key: keyof Colors['light'] | keyof Colors['dark'] // Pode ser uma chave de 'light' ou 'dark'
   ) => void
+  onClick: () => void
 }
 
 const ColorModeSelector = ({
   title,
   colors,
-  handleColorChange
+  handleColorChange,
+  onClick
 }: ColorModeSelectorProps) => {
   return (
-    <div className=" flex  flex-col items-center space-y-4   px-2 py-2.5">
-      <div className="flex w-full items-center justify-start rounded-md border px-2 py-1.5">
+    <div className=" flex  flex-col items-center space-y-4  px-2 py-2.5">
+      <div
+        onClick={onClick}
+        className="flex w-full cursor-pointer items-center justify-start rounded-md border px-2 py-1.5 duration-300 active:scale-95"
+      >
         <HiColorSwatch className="mr-2 h-5 w-5 text-primary" />
 
         <Title as="h4" className="text-xl">

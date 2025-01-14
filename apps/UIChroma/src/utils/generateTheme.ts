@@ -3,7 +3,7 @@ import mixPlugin from 'colord/plugins/mix'
 
 extend([mixPlugin])
 
-// Gera uma cor accent harmoniosa
+// Gera uma cor accent harmoniosa com mais suavidade
 const generateAccentColor = (base: Colord) => {
   const hsl = base.toHsl()
 
@@ -14,29 +14,29 @@ const generateAccentColor = (base: Colord) => {
 
   // Para tons médios (luminância > 50)
   if (hsl.l > 50) {
-    return base.rotate(120).saturate(0.3).lighten(0.1)
+    return base.rotate(45).saturate(0.2).lighten(0.15) // Ajuste para não ser tão saturado
   }
 
   // Para tons escuros
-  return base.darken(0.3).saturate(0.3).lighten(0.6)
+  return base.darken(0.25).saturate(0.25).lighten(0.5) // Menos escuro e saturado
 }
 
-// Gera um foreground com bom contraste (escurece se for claro e clareia se for escuro)
+// Gera um foreground com bom contraste (escurece ou clareia com harmonia)
 const generateContrastForeground = (color: string) => {
   const base = colord(color)
+  const isLight = base.isLight()
 
-  // Se a cor base for clara, escureça o foreground
-  if (base.isLight()) {
-    return base.darken(0.5).desaturate(0.2).toHex()
+  // Ajuste de contraste suave
+  if (isLight) {
+    return base.darken(0.4).desaturate(0.1).toHex() // Menos escuro
   }
 
-  // Se a cor base for escura, clareie o foreground
-  return base.lighten(0.8).saturate(0.2).toHex()
+  return base.lighten(0.8).saturate(0.1).toHex() // Menos claro
 }
 
-// Gera uma cor muted suave
+// Gera uma cor muted mais suave
 const generateMutedColor = (base: Colord) => {
-  return base.desaturate(0.7).lighten(0.4)
+  return base.desaturate(0.6).lighten(0.3) // Suaviza mais para um tom agradável
 }
 
 export const generateTheme = (baseColor: string) => {
@@ -56,7 +56,7 @@ export const generateTheme = (baseColor: string) => {
         foreground: base.mix('#000000', 0.9).toHex(),
 
         primary: base.toHex(),
-        primary_hover: base.mix('#ffffff', 0.2).toHex(),
+        primary_hover: base.mix('#ffffff', 0.15).toHex(), // Menos saturado
         primary_foreground: generateContrastForeground(base.toHex()),
 
         secondary: base.mix('#ffffff', 0.7).toHex(),
@@ -66,7 +66,7 @@ export const generateTheme = (baseColor: string) => {
         ),
 
         accent: accentColor.toHex(),
-        accent_hover: accentColor.mix('#ffffff', 0.2).toHex(),
+        accent_hover: accentColor.mix('#ffffff', 0.1).toHex(), // Menos saturado para hover
         accent_foreground: generateContrastForeground(accentColor.toHex()),
 
         muted: mutedColor.toHex(),
@@ -89,10 +89,10 @@ export const generateTheme = (baseColor: string) => {
         input: base.mix('#cbd5e1', 0.15).toHex(),
 
         chart1: base.toHex(),
-        chart2: base.rotate(60).toHex(),
-        chart3: base.rotate(120).toHex(),
-        chart4: base.rotate(180).toHex(),
-        chart5: base.rotate(240).toHex()
+        chart2: base.rotate(30).toHex(), // Menos intensidade
+        chart3: base.rotate(60).toHex(),
+        chart4: base.rotate(90).toHex(),
+        chart5: base.rotate(120).toHex()
       },
 
       // Dark mode
@@ -131,10 +131,10 @@ export const generateTheme = (baseColor: string) => {
         input: base.mix('#00000', 0.18).toHex(),
 
         chart1: base.mix('#000000', 0.7).toHex(),
-        chart2: base.rotate(60).mix('#000000', 0.7).toHex(),
-        chart3: base.rotate(120).mix('#000000', 0.7).toHex(),
-        chart4: base.rotate(180).mix('#000000', 0.7).toHex(),
-        chart5: base.rotate(240).mix('#000000', 0.7).toHex()
+        chart2: base.rotate(30).mix('#000000', 0.7).toHex(),
+        chart3: base.rotate(60).mix('#000000', 0.7).toHex(),
+        chart4: base.rotate(90).mix('#000000', 0.7).toHex(),
+        chart5: base.rotate(120).mix('#000000', 0.7).toHex()
       }
     }
   }

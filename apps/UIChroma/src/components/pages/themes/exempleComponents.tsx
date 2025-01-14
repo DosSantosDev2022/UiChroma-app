@@ -11,14 +11,17 @@ interface ExempleComponentsProps {
   darkColors: Colors['dark']
 }
 
-export function ExempleComponents() {
+export function ExempleComponents({ theme }: { theme: 'light' | 'dark' }) {
   const { darkColors, lightColors } = useThemeStore()
   useEffect(() => {
-    updateCssVariables(lightColors, darkColors)
-  }, [lightColors, darkColors])
+    updateCssVariables(theme, lightColors, darkColors)
+  }, [lightColors, darkColors, theme])
 
   return (
-    <div id="demo-container" className="border px-6 py-4">
+    <div
+      id="demo-container"
+      className={`rounded-md border border-border bg-background px-6 py-4 text-foreground`}
+    >
       <div className="grid grid-cols-1 gap-6  lg:grid-cols-2">
         {/* buttons preview */}
         <ContainerPreview title="Componente button">

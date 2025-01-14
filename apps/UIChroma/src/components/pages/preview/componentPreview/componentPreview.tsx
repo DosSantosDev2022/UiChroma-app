@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import { AiOutlineLoading3Quarters } from 'react-icons/ai'
+import { FaDesktop, FaMobileAlt, FaTabletAlt } from 'react-icons/fa'
 
 interface ComponentData {
   name: string
@@ -17,6 +18,7 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
   const [viewMode, setViewMode] = useState<'desktop' | 'tablet' | 'mobile'>(
     'desktop'
   )
+
   const iframeRef = useRef<HTMLIFrameElement | null>(null)
 
   const VIEWPORT_SIZES = {
@@ -48,24 +50,28 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
   useEffect(() => {
     if (iframeRef.current && Component) {
       const iframeDocument = iframeRef.current.contentDocument
+
       if (iframeDocument) {
-        iframeDocument.body.innerHTML = '' // Limpa o conteúdo do iframe
-        const componentElement = React.createElement(Component)
-        const container = document.createElement('div')
-        iframeDocument.body.appendChild(container)
+        // Limpa o conteúdo do iframe apenas na primeira renderização
+        if (!iframeDocument.body.firstChild) {
+          iframeDocument.body.innerHTML = '' // Limpa o conteúdo
+          const componentElement = React.createElement(Component)
+          const container = document.createElement('div')
+          iframeDocument.body.appendChild(container)
 
-        // Adicionando o CSS local do Tailwind diretamente no iframe
-        const styleElement = iframeDocument.createElement('link')
-        styleElement.rel = 'stylesheet'
-        styleElement.href = '/_next/static/css/app/layout.css' // Ajuste para o caminho correto do seu CSS
-        iframeDocument.head.appendChild(styleElement)
+          // Adiciona o CSS local do Tailwind diretamente no iframe
+          const styleElement = iframeDocument.createElement('link')
+          styleElement.rel = 'stylesheet'
+          styleElement.href = '/_next/static/css/app/layout.css' // Ajuste para o caminho correto do seu CSS
+          iframeDocument.head.appendChild(styleElement)
 
-        // Renderiza o componente dentro do iframe usando createRoot
-        const root = ReactDOM.createRoot(container)
-        root.render(componentElement)
+          // Renderiza o componente dentro do iframe usando createRoot
+          const root = ReactDOM.createRoot(container)
+          root.render(componentElement)
+        }
       }
     }
-  }, [Component, viewMode])
+  }, [Component])
 
   if (!Component) {
     return (
@@ -83,18 +89,20 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
         {(['desktop', 'tablet', 'mobile'] as const).map((mode) => (
           <button
             key={mode}
-            className={`rounded border px-4 py-2 duration-300 active:scale-95 ${viewMode === mode
+            className={`rounded border px-2 py-2.5 text-sm duration-300 active:scale-95 ${viewMode === mode
                 ? 'bg-accent text-accent-foreground'
                 : 'bg-secondary text-secondary-foreground'
               }`}
             onClick={() => handleViewportChange(mode)}
           >
+            {mode === 'desktop' && <FaDesktop className="mr-2 inline-block" />}
+            {mode === 'tablet' && <FaTabletAlt className="mr-2 inline-block" />}
+            {mode === 'mobile' && <FaMobileAlt className="mr-2 inline-block" />}
             {mode.charAt(0).toUpperCase() + mode.slice(1)}
           </button>
         ))}
       </div>
 
-      {/* Component Preview */}
       <div
         className="rounded border p-1 shadow"
         style={{

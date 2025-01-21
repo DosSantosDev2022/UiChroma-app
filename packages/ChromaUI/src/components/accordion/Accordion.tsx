@@ -61,7 +61,7 @@ const AccordionTrigger = ({
       id={triggerId}
       onClick={toggleOpen}
       className={twMerge(
-        'flex h-16 w-full items-center justify-between gap-2 rounded-t-md border px-4 py-2 focus:outline-none',
+        'flex h-16 w-full items-center justify-between gap-2 rounded-t-md border border-border px-4 py-2 focus:outline-none',
         className
       )}
     >
@@ -94,7 +94,7 @@ const AccordionContent = ({
         className
       )}
     >
-      <div className="mt-1  rounded-b-md border  px-4 py-2 ">{children}</div>
+      <div className="mb-1 mt-1 rounded-b-md  px-4 py-2 ">{children}</div>
     </div>
   )
 }
@@ -104,7 +104,10 @@ const AccordionQuestion = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-base font-semibold text-muted', className)}
+    className={twMerge(
+      'text-start text-base font-semibold text-foreground sm:text-lg',
+      className
+    )}
     {...props}
   />
 )
@@ -115,7 +118,10 @@ const AccordionAnswer = ({
   ...props
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
-    className={twMerge('text-start text-sm text-muted', className)}
+    className={twMerge(
+      'text-start text-base text-foreground sm:text-lg',
+      className
+    )}
     {...props}
   />
 )

@@ -8,7 +8,9 @@ interface ThemeState {
   darkColors: Colors['dark']
   readyColors: { light: Colors['light']; dark: Colors['dark'] }
   selectedColor: string | null
+  theme: 'light' | 'dark'
   setSelectedColor: (color: string) => void
+  setTheme: (theme: 'light' | 'dark') => void
   handleLightColorChange: (color: string, key: keyof Colors['light']) => void
   handleDarkColorChange: (color: string, key: keyof Colors['dark']) => void
   handleBaseColorChange: (color: any) => void
@@ -22,6 +24,7 @@ export const useThemeStore = create<ThemeState>((set) => ({
     dark: defaultColors.dark
   },
   selectedColor: null,
+  theme: 'light',
 
   // Função para atualizar Light Mode
   handleLightColorChange: (color, key) =>
@@ -46,5 +49,6 @@ export const useThemeStore = create<ThemeState>((set) => ({
     })
   },
 
-  setSelectedColor: (color) => set({ selectedColor: color })
+  setSelectedColor: (color) => set({ selectedColor: color }),
+  setTheme: (theme) => set({ theme })
 }))

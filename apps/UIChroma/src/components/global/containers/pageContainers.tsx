@@ -7,7 +7,7 @@ const MainContainer = ({ children }: { children: ReactNode }) => {
 
 const SectionPage = ({ children }: { children: ReactNode }) => {
   return (
-    <section className="col-span-3 w-full rounded-md  border border-border p-4">
+    <section className="col-span-3 w-full rounded-md  border border-border p-4 shadow-sm">
       {children}
     </section>
   )
@@ -43,7 +43,7 @@ const ContentSections = ({
 
 const SectionNavigation = ({ children }: { children?: ReactNode }) => {
   return (
-    <section className="sticky top-0 col-span-1 h-screen w-full space-y-2 border border-border px-8 py-5">
+    <section className="sticky top-0 col-span-1 h-screen w-full space-y-2 border border-border px-8 py-5 shadow-sm">
       {children}
     </section>
   )

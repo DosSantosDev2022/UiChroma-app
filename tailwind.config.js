@@ -1,9 +1,10 @@
-import animations from "@repo/animations-ui"
+import animations from "@repo/animations-ui";
 const baseConfig = {
   content: [
     '../../apps/*/src/**/*.{js,ts,jsx,tsx}', // Para aplicações no monorepo
     '../../packages/*/src/**/*.{js,ts,jsx,tsx}', // Para pacotes compartilhados
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {

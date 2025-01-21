@@ -11,7 +11,7 @@ import { Title } from '@/components/global/title/title'
 import ComponentPreview from '@/components/pages/preview/componentPreview/componentPreview'
 import { DocLinks } from '@/components/pages/preview/documentationslink/docLinks'
 import { links } from '@/enums/preview'
-import { GET_DETAILS_COMPONENT } from '@/utils/getDetailsComponentData'
+import { GET_DETAILS_COMPONENT } from '@/services/getDetailsComponentData'
 import {
   Badge,
   ClipBoardAction,
@@ -39,6 +39,22 @@ export default async function ComponentDetails({
 
   if (!pageComponent) {
     redirect('/not-found')
+  }
+
+  if (pageComponent.developing) {
+    return (
+      <div className="flex h-full w-full items-center justify-center border border-border p-14">
+        <div className="flex w-full flex-col items-center justify-center space-y-3 text-center">
+          <h1 className=" text-4xl font-bold text-foreground">
+            {pageComponent.name} está em desenvolvimento 🚧
+          </h1>
+          <p className="mt-2 max-w-[720px] font-normal text-muted-foreground">
+            Este componente ainda está em desenvolvimento ou em manutenção,
+            estamos trabalhando para disponibiliza-lo o mais breve possível.
+          </p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -75,7 +91,7 @@ export default async function ComponentDetails({
                     key={index}
                     className="flex items-center gap-2 text-foreground"
                   >
-                    <FaCircleCheck className="text-accent" size={18} />
+                    <FaCircleCheck className="text-primary" size={18} />
                     <span className="font-bold">{feature.name}</span>
                   </li>
                 ))}
@@ -88,9 +104,8 @@ export default async function ComponentDetails({
               <Title as="h3" className={`${inter.className}`}>
                 Preview
               </Title>
-              <div className="flex  h-full w-full flex-shrink-0 items-start justify-center rounded-lg border bg-transparent p-8 shadow-sm">
-                <ComponentPreview componentData={pageComponent} />
-              </div>
+
+              <ComponentPreview componentData={pageComponent} />
             </div>
 
             <div id="CopyCode" className="space-y-4">

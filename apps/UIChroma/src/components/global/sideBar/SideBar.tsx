@@ -1,6 +1,6 @@
 import { Logo } from '@/assets/icons/Logo'
 import { links, themes } from '@/enums/sideBar'
-import { GET_COMPONENTS_NAME } from '@/utils/getComponentNames'
+import { GET_COMPONENTS_NAME } from '@/services/getComponentNames'
 import {
   SideBar,
   SideBarContent,
@@ -9,7 +9,6 @@ import {
   SideBarDropList,
   SideBarDropRoot,
   SideBarDropTrigger,
-  SideBarFooter,
   SideBarHeader,
   SideBarItem,
   SideBarList,
@@ -32,11 +31,8 @@ const AppSidebar = async () => {
   return (
     <SideBarRoot>
       <SideBar>
-        <SideBarHeader trigger>
+        <SideBarHeader>
           <SideBarLogo label="Chroma" icon={<Logo />} />
-          {/* <Badge variant="accent" size="md">
-            v.1.0.0
-          </Badge> */}
         </SideBarHeader>
         <SideBarContent>
           <SideBarNavigation>
@@ -75,10 +71,16 @@ const AppSidebar = async () => {
                   {componentList.map((component, index) => (
                     <SideBarDropItem key={index}>
                       <Link
+                        className="space-x-2"
                         id={component.id}
                         href={`/preview/components/${component.slug}`}
                       >
                         {component.name}
+                        {component.developing && (
+                          <span className="ml-2  rounded-lg  bg-accent px-1 py-0.5 text-xs text-accent-foreground">
+                            in-dev
+                          </span>
+                        )}
                       </Link>
                     </SideBarDropItem>
                   ))}
@@ -87,11 +89,6 @@ const AppSidebar = async () => {
             </SideBarDropRoot>
           </SideBarNavigation>
         </SideBarContent>
-
-        <SideBarFooter>
-          <span>© 2024 DosSantosDev.</span>
-          <span>Todos os direitos reservados.</span>
-        </SideBarFooter>
       </SideBar>
     </SideBarRoot>
   )

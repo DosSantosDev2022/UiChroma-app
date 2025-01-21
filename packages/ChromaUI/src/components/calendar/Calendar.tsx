@@ -20,16 +20,16 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
   } = useCalendar({ value, onChange, range })
 
   return (
-    <div className="flex w-full max-w-80 flex-col items-center justify-center rounded-2xl border p-4">
+    <div className="flex w-full max-w-80 flex-col items-center justify-center rounded-2xl border border-border p-4 shadow-sm">
       <div className="mb-2 flex w-full items-center gap-2">
-        <div className="flex w-full items-center justify-between gap-8 rounded-xl  border p-1 text-sm font-medium text-muted-foreground">
-          <Button variants="outline" sizes="icon" onClick={prevMonth}>
+        <div className="flex w-full items-center justify-between gap-8 rounded-xl  border border-border p-1 text-sm font-medium text-muted-foreground">
+          <Button variants="ghost" sizes="icon" onClick={prevMonth}>
             <LuChevronLeft />
           </Button>
           <span className="capitalize">
             {format(currentDate, 'MMMM yyyy', { locale: ptBR })}
           </span>
-          <Button variants="outline" sizes="icon" onClick={nextMonth}>
+          <Button variants="ghost" sizes="icon" onClick={nextMonth}>
             <LuChevronRight />
           </Button>
         </div>
@@ -43,7 +43,9 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
                   key={dayName}
                   className="flex w-full items-center justify-center px-1 py-1.5"
                 >
-                  <p className="text-sm font-normal text-muted">{dayName}</p>
+                  <p className="text-sm font-normal text-muted-foreground">
+                    {dayName}
+                  </p>
                 </td>
               )
             )}
@@ -76,15 +78,15 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
                         <p
                           onClick={() => handleSelectDate(date)}
                           className={`flex h-full w-full cursor-pointer 
-                            items-center justify-center rounded-full p-4 text-sm font-medium transition-all duration-200 hover:bg-accent-hover hover:text-accent-foreground
-                            ${isCurrentMonth ? '' : 'text-secondary'} 
+                            items-center justify-center rounded-full p-4 text-sm font-medium text-muted-foreground transition-all duration-200 hover:bg-accent-hover
+                            ${isCurrentMonth ? '' : 'opacity-30'} 
                             ${
                               isToday
-                                ? 'bg-accent-foreground text-accent'
+                                ? 'bg-accent text-accent-foreground'
                                 : isSelected
                                   ? 'bg-accent text-accent-foreground'
                                   : isStart || isEnd
-                                    ? 'bg-accent-foreground text-accent'
+                                    ? 'bg-primary text-primary-foreground'
                                     : isInRange
                                       ? 'bg-accent text-accent-foreground hover:bg-accent-hover'
                                       : ''

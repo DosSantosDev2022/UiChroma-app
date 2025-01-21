@@ -1,6 +1,68 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
+const AvatarContainer = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<'div'>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={twMerge('flex w-full items-start space-x-2', className)}
+    {...props}
+  />
+))
+
+AvatarContainer.displayName = 'AvatarContainer'
+
+const AvatarWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<'div'>
+>(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={twMerge('grid flex-1 text-left leading-tight', className)}
+    {...props}
+  />
+))
+
+AvatarWrapper.displayName = 'AvatarWrapper'
+
+const AvatarName = React.forwardRef<
+  HTMLSpanElement,
+  React.ComponentPropsWithRef<'span'>
+>(({ className, ...props }, ref) => {
+  return (
+    <span
+      ref={ref}
+      {...props}
+      className={twMerge(
+        'truncate text-sm  font-semibold  text-muted-foreground',
+        className
+      )}
+    />
+  )
+})
+
+AvatarName.displayName = 'AvatarName'
+
+const AvatarLabel = React.forwardRef<
+  HTMLSpanElement,
+  React.ComponentPropsWithRef<'span'>
+>(({ className, ...props }, ref) => {
+  return (
+    <span
+      ref={ref}
+      {...props}
+      className={twMerge(
+        'truncate text-xs font-normal text-muted-foreground',
+        className
+      )}
+    />
+  )
+})
+
+AvatarLabel.displayName = 'AvatarLabel'
+
 // Componente Avatar
 const Avatar = React.forwardRef<
   HTMLDivElement,
@@ -52,4 +114,12 @@ const AvatarFallback = React.forwardRef<
 
 AvatarFallback.displayName = 'AvatarFallback'
 
-export { Avatar, AvatarFallback, AvatarImage }
+export {
+  Avatar,
+  AvatarContainer,
+  AvatarFallback,
+  AvatarImage,
+  AvatarLabel,
+  AvatarName,
+  AvatarWrapper
+}

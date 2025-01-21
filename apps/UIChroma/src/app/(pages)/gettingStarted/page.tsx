@@ -9,7 +9,7 @@ import {
 } from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
 import { links } from '@/enums/documentation'
-import { GET_STARTER_PAGE_DATA } from '@/utils/getStartPageData'
+import { GET_STARTER_PAGE_DATA } from '@/services/getStartPageData'
 
 export default async function Starter() {
   const { documentationPage } = await GET_STARTER_PAGE_DATA()

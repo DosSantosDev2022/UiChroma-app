@@ -23,12 +23,12 @@ export default function RootLayout({
       <body
         className={`${inter.className} overflow-hidden bg-background text-foreground antialiased`}
       >
-        <div className="flex h-screen w-screen flex-row overflow-hidden ">
+        <div className="flex h-screen w-screen flex-row overflow-hidden">
           <AppSidebar />
 
           <div className="flex flex-1 flex-col">
             <Header />
-            <main className="custom-scrollbar min-h-0 flex-1 overflow-auto   p-4">
+            <main className="custom-scrollbar min-h-0 flex-1 overflow-auto p-4">
               {children}
             </main>
           </div>

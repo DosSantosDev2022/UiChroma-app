@@ -24,7 +24,7 @@ export function ExampleofColors({
   ]
 
   return (
-    <div className="flex flex-col items-center justify-center gap-6 rounded border px-6 py-4 shadow-sm">
+    <div className="flex flex-col items-center justify-center gap-6 rounded border border-border px-6 py-4 shadow-sm">
       {/* Exibindo cores do tema Light */}
       <div className="flex flex-col ">
         <Title as="h4" className="mb-2  text-xl">
@@ -34,7 +34,7 @@ export function ExampleofColors({
           {colorKeys.map((key) => (
             <div
               key={key}
-              className="flex h-20 w-20 items-center justify-center rounded-2xl border p-1.5"
+              className="flex h-20 w-20 items-center justify-center rounded-2xl border border-border p-1.5"
               style={{
                 backgroundColor: `${lightColors[key as keyof Colors]}`
               }}
@@ -60,7 +60,7 @@ export function ExampleofColors({
           {colorKeys.map((key) => (
             <div
               key={`dark-${key}`}
-              className="flex h-20 w-20  items-center justify-center rounded-2xl border p-1.5"
+              className="flex h-20 w-20  items-center justify-center rounded-2xl border border-border p-1.5"
               style={{
                 backgroundColor: `${darkColors[`dark_${key}` as keyof Colors]}`
               }}

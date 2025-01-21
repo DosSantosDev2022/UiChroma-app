@@ -5,6 +5,7 @@ import {
   AvatarImage,
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle
@@ -19,11 +20,11 @@ const CardPreview = () => {
       </CardHeader>
 
       <CardContent>
-        <p className="text-sm text-muted-foreground">
+        <CardDescription>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus
           quia, nulla! Maiores et perferendis eaque, exercitationem praesentium
           nihil.
-        </p>
+        </CardDescription>
       </CardContent>
       <CardFooter className="gap-2">
         <Avatar>

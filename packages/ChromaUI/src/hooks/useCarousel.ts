@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react'
 
-function useCarousel(
-  itemsLength: number,
-  autoPlay: boolean,
-  autoPlayInterval: number
-) {
+function useCarousel(autoPlay: boolean, autoPlayInterval: number) {
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [itemsLength, setItemsLength] = useState(0)
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % itemsLength)
+    if (itemsLength > 0) {
+      setCurrentIndex((prev) => (prev + 1) % itemsLength)
+    }
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + itemsLength) % itemsLength)
+    if (itemsLength > 0) {
+      setCurrentIndex((prev) => (prev - 1 + itemsLength) % itemsLength)
+    }
   }
 
   const goToSlide = (index: number) => {
@@ -39,7 +40,11 @@ function useCarousel(
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [prevSlide, nextSlide])
 
-  return { currentIndex, nextSlide, prevSlide, goToSlide }
+  const updateItemsLength = (length: number) => {
+    setItemsLength(length)
+  }
+
+  return { currentIndex, nextSlide, prevSlide, goToSlide, updateItemsLength }
 }
 
 export default useCarousel

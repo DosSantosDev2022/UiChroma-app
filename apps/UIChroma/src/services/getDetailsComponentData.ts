@@ -43,6 +43,7 @@ export const GET_DETAILS_COMPONENT = async (
             description
             command
           }
+          developing
         }
      }
   `

@@ -14,7 +14,7 @@ const CardImage = React.forwardRef<
     <div
       ref={ref}
       className={twMerge(
-        'max-w-xsma relative h-96 max-h-96 w-80 overflow-hidden rounded-2xl border p-0 shadow-sm',
+        'max-w-xsma relative h-96 max-h-96 w-80 overflow-hidden rounded-2xl p-0 shadow-sm',
         className
       )}
       {...props}

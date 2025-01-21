@@ -10,7 +10,7 @@ import {
 import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
 import { Title } from '@/components/global/title/title'
 import { links } from '@/enums/themes'
-import { GET_THEMES_PAGE_DATA } from '@/utils/getThemesPageData'
+import { GET_THEMES_PAGE_DATA } from '@/services/getThemesPageData'
 
 export default async function ThemesPage() {
   const { documentationPage } = await GET_THEMES_PAGE_DATA()

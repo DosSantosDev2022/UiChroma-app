@@ -10,24 +10,24 @@ const NavigationPreview = () => {
   const links = [
     {
       label: 'Home',
-      url: '/home'
+      url: '#'
     },
     {
       label: 'About',
-      url: '/about'
+      url: '#'
     },
     {
       label: 'Contact',
-      url: '/contact'
+      url: '#'
     },
     {
       label: 'Blog',
-      url: '/blog'
+      url: '#'
     }
   ]
 
   return (
-    <>
+    <div className="mx-auto">
       <Navigation>
         <NavigationGroup>
           <NavigationList>
@@ -39,7 +39,7 @@ const NavigationPreview = () => {
           </NavigationList>
         </NavigationGroup>
       </Navigation>
-    </>
+    </div>
   )
 }
 

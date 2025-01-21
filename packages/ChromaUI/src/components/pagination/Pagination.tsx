@@ -54,7 +54,7 @@ const PaginationLink = ({
   <a
     aria-current={isActive ? 'page' : 'false'}
     className={twMerge(
-      ` flex h-10 w-10 items-center justify-center rounded-lg border p-2 duration-300 hover:bg-primary-hover
+      ` flex h-10 w-10 items-center justify-center rounded-lg  p-2 duration-300 hover:bg-primary-hover
       ${isActive ? 'bg-accent text-accent-foreground' : 'bg-primary text-primary-foreground'}`,
       className
     )}

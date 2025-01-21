@@ -27,7 +27,7 @@ export default async function Home() {
             <Link href={'/starter'}>Primeiros passos</Link>
           </Button>
           <Button
-            variants="outline"
+            variants="shine"
             asChild
             className="flex w-40 items-center justify-center text-base"
           >

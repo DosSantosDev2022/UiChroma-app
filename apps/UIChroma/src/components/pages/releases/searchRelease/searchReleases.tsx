@@ -40,4 +40,3 @@ const SearchReleases = () => {
 }
 
 export { SearchReleases }
-

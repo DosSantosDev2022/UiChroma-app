@@ -162,7 +162,7 @@ const sideBarPreview = () => {
               </AvatarContainer>
             </DropDownTrigger>
 
-            <DropDownContent alignment="top-right" position="absolute">
+            <DropDownContent position="absolute">
               <DropDownLabel>My accont</DropDownLabel>
               <DropDownList>
                 {list.map((i) => (

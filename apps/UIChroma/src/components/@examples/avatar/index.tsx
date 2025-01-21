@@ -34,29 +34,39 @@ const AvatarPreview = () => {
   ]
 
   return (
-    <div className="flex w-full space-x-1">
-      <div className="flex w-full items-center justify-center gap-2 rounded-md p-6">
-        {avatarItens.map((avatar) => (
-          <Avatar key={avatar.id}>
-            <AvatarImage src={avatar.img} />
-            <AvatarFallback>{avatar.fallback}</AvatarFallback>
-          </Avatar>
-        ))}
-      </div>
-
-      <div className="flex w-full flex-col items-center justify-center gap-2 rounded-md p-6">
-        {avatarItens.map((avatar) => (
-          <AvatarContainer key={avatar.id}>
-            <Avatar>
+    <div className="flex w-full flex-col gap-2 sm:flex-row">
+      <div className="flex w-full items-center justify-center gap-2 rounded-md border border-border p-2">
+        <div className="flex flex-col items-center space-y-6">
+          <span className="text-md font-normal text-foreground">
+            Avatar simples
+          </span>
+          {avatarItens.map((avatar) => (
+            <Avatar key={avatar.id}>
               <AvatarImage src={avatar.img} />
               <AvatarFallback>{avatar.fallback}</AvatarFallback>
             </Avatar>
-            <AvatarWrapper>
-              <AvatarName>{avatar.name}</AvatarName>
-              <AvatarLabel>{avatar.label}</AvatarLabel>
-            </AvatarWrapper>
-          </AvatarContainer>
-        ))}
+          ))}
+        </div>
+      </div>
+
+      <div className="flex w-full flex-col items-center justify-center gap-2 rounded-md border border-border p-2">
+        <div className="flex flex-col items-center space-y-6">
+          <span className="text-md font-normal text-foreground">
+            Avatar completo
+          </span>
+          {avatarItens.map((avatar) => (
+            <AvatarContainer key={avatar.id}>
+              <Avatar>
+                <AvatarImage src={avatar.img} />
+                <AvatarFallback>{avatar.fallback}</AvatarFallback>
+              </Avatar>
+              <AvatarWrapper>
+                <AvatarName>{avatar.name}</AvatarName>
+                <AvatarLabel>{avatar.label}</AvatarLabel>
+              </AvatarWrapper>
+            </AvatarContainer>
+          ))}
+        </div>
       </div>
     </div>
   )

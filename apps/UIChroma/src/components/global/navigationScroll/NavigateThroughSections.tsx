@@ -23,7 +23,7 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
 
   return (
     <Navigation>
-      <h3 className="mb-1 px-2 py-1 text-sm font-semibold text-primary">
+      <h3 className="mb-1 px-2 py-1 text-sm font-semibold">
         Navegue nessa página
       </h3>
       <div>
@@ -39,7 +39,7 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
                 sizes="full"
                 className={`justify-start gap-2 text-base font-light text-muted-foreground 
                     hover:no-underline 
-                    ${activeLink === link.url ? 'font-bold text-accent' : ''}`}
+                    ${activeLink === link.url ? 'font-bold text-primary' : ''}`}
               >
                 <GoDotFill size={12} />
                 {link.text}
@@ -53,4 +53,3 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
 }
 
 export { NavigateThroughSections }
-

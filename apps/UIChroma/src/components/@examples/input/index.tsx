@@ -5,7 +5,7 @@ import { RiLockPasswordFill } from 'react-icons/ri'
 
 const InputPreview = () => {
   return (
-    <div className="flex w-full flex-col space-y-4">
+    <div className="flex w-full flex-col space-y-4 p-2">
       <div className="space-y-1">
         <label>
           Variante: <span className="font-bold">default</span>

@@ -32,9 +32,9 @@ export function ModalCodeCss() {
 
   return (
     <ModalRoot>
-      <ModalTrigger className="h-12 w-28 rounded-lg">
+      <ModalTrigger className="w-24 rounded-lg">
         Copiar
-        <IoCopy size={18} />
+        <IoCopy size={16} />
       </ModalTrigger>
       <ModalOverlay />
       <ModalContent>

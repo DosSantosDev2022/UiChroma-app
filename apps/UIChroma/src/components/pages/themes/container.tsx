@@ -10,7 +10,7 @@ const ContainerPreview = ({ children, title }: ContainerPreviewProps) => {
   return (
     <div
       className={
-        'bg-muted/20 flex w-full flex-col items-start  justify-center gap-3 rounded-md border px-6 py-4 shadow-sm'
+        'flex w-full flex-col items-start justify-center gap-3 rounded-md border px-6 py-4 dark:border-border'
       }
     >
       <Title
@@ -19,7 +19,7 @@ const ContainerPreview = ({ children, title }: ContainerPreviewProps) => {
       >
         {title}
       </Title>
-      <div className="flex w-full grow flex-col items-center justify-center border px-2 py-3">
+      <div className="flex w-full grow flex-col items-center justify-center px-2 py-3">
         {children}
       </div>
     </div>

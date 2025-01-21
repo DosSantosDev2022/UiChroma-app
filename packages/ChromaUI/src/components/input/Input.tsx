@@ -16,8 +16,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div
         className={twMerge(
-          'flex h-12 w-full items-center gap-1 rounded border bg-input p-3',
+          'flex h-12 w-full items-center gap-1 rounded p-3',
           'transition-all duration-300',
+          'border border-border bg-input',
           variantClasses[variants],
           className
         )}
@@ -41,4 +42,3 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = 'Input'
 
 export { Input }
-

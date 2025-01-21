@@ -81,12 +81,12 @@ PopoverTrigger.displayName = 'PopoverTrigger'
 interface PopoverContentProps extends React.ComponentPropsWithRef<'div'> {
   position?: 'absolute' | 'sticky'
   alignment?:
-  | 'top'
-  | 'bottom'
-  | 'top-left'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom-right'
+    | 'top'
+    | 'bottom'
+    | 'top-left'
+    | 'top-right'
+    | 'bottom-left'
+    | 'bottom-right'
 }
 
 const PopoverContent = React.forwardRef<HTMLDivElement, PopoverContentProps>(
@@ -191,4 +191,3 @@ export {
   PopoverRoot,
   PopoverTrigger
 }
-

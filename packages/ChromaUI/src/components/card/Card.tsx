@@ -9,7 +9,7 @@ const Card = React.forwardRef<
     <div
       ref={ref}
       className={twMerge(
-        'border-border/20 space-y-3 rounded-lg border bg-background p-4 shadow-sm',
+        'border-border/20 space-y-3 rounded-lg border border-border bg-background p-4 shadow-sm',
         className
       )}
       {...props}
@@ -88,4 +88,3 @@ const CardFooter = React.forwardRef<
 CardFooter.displayName = 'CardFooter'
 
 export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
-

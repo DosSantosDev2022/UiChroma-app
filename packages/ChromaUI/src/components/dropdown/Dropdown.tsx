@@ -1,13 +1,6 @@
 'use client'
-import React, {
-  createContext,
-  ElementRef,
-  ReactNode,
-  useContext,
-  useState
-} from 'react'
+import React, { createContext, ReactNode, useContext, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Button } from '../button/Button'
 
 interface DropDownContextProps {
   isOpen: boolean
@@ -44,24 +37,11 @@ const DropDownRoot = React.forwardRef<
   React.ComponentPropsWithRef<'div'>
 >(({ className, ...props }, ref) => (
   <DropDownProvider>
-    <div
-      {...props}
-      className={twMerge('relative h-full', className)}
-      ref={ref}
-    />
+    <div {...props} className={twMerge('relative', className)} ref={ref} />
   </DropDownProvider>
 ))
 
 DropDownRoot.displayName = 'DropDownRoot'
-
-const DropDownGroup = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithRef<'div'>
->(({ className, ...props }, ref) => (
-  <div ref={ref} {...props} className={twMerge('', className)} />
-))
-
-DropDownGroup.displayName = 'DropDownGroup'
 
 const DropDownTrigger = React.forwardRef<
   HTMLButtonElement,
@@ -74,10 +54,10 @@ const DropDownTrigger = React.forwardRef<
       aria-expanded={isOpen}
       {...props}
       className={twMerge(
-        'flex  w-full items-center justify-center gap-1 rounded border px-2 py-1.5',
+        'flex h-10 w-full items-center justify-start gap-1 rounded border border-border px-2 py-1.5',
         'transition-all duration-300',
-        'bg-background text-primary hover:bg-muted-hover',
-        'select-none outline-none focus:bg-muted-hover focus:ring-1 focus:ring-muted focus:ring-offset-1',
+        'bg-background text-foreground hover:bg-muted-hover',
+        'select-none outline-none focus:bg-muted-hover',
         className
       )}
       ref={ref}
@@ -89,38 +69,18 @@ DropDownTrigger.displayName = 'DropDownTrigger'
 
 interface DropDownContentProps extends React.ComponentPropsWithRef<'div'> {
   position?: 'absolute' | 'sticky'
-  alignment?:
-  | 'top'
-  | 'bottom'
-  | 'top-left'
-  | 'top-right'
-  | 'bottom-left'
-  | 'bottom-right'
 }
 
 const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
-  (
-    { className, position = 'absolute', alignment = 'bottom', ...props },
-    ref
-  ) => {
+  ({ className, position = 'absolute', ...props }, ref) => {
     const { isOpen } = useDropDownContext()
-
-    const alignmentClasses = {
-      top: 'bottom-full',
-      bottom: 'top-full',
-      'top-left': 'bottom-0 right-full mr-1',
-      'top-right': 'bottom-0 left-full ml-1',
-      'bottom-left': 'top-0 right-full mr-1',
-      'bottom-right': 'top-0 left-full ml-1'
-    }
     return (
       isOpen && (
         <div
           data-state={isOpen ? 'open' : 'closed'}
           {...props}
           className={twMerge(
-            `${position} ${alignmentClasses[alignment]} mt-1 w-full rounded-md  border bg-background px-2 py-1.5 sm:w-full`,
-            ' custom-scrollbar overflow-y-scroll shadow-md',
+            `${position} mt-1 w-full min-w-[8rem] rounded-md border border-border bg-background`,
             `data-[state=open]:animate-smooth-fadein`,
             `data-[state=closed]:animate-smooth-fadeout`,
             className
@@ -140,7 +100,10 @@ const DropDownList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <ul
     {...props}
-    className={twMerge('flex flex-col space-y-1', className)}
+    className={twMerge(
+      'custom-scrollbar flex flex-col gap-1 space-y-1 overflow-y-scroll px-2 py-1.5',
+      className
+    )}
     ref={ref}
   />
 ))
@@ -154,7 +117,7 @@ const DropDownItem = React.forwardRef<
   <li
     {...props}
     className={twMerge(
-      'cursor-pointer px-2 py-1.5 hover:bg-muted-hover focus:ring-2 focus:ring-primary focus:ring-offset-2',
+      'cursor-pointer px-2 py-1.5 hover:bg-muted-hover',
       className
     )}
     ref={ref}
@@ -171,7 +134,7 @@ const DropDownLabel = React.forwardRef<
     <div className="w-full p-2">
       <label
         className={twMerge(
-          'border-b-2 pb-1 pt-1 text-start text-sm font-semibold text-muted-foreground ',
+          'ml-1.5 text-sm font-semibold text-muted-foreground',
           className
         )}
         ref={ref}
@@ -199,7 +162,7 @@ const DropDownLink = React.forwardRef<HTMLAnchorElement, DropDownLinkProps>(
     return (
       <a
         className={twMerge(
-          'flex w-full items-center justify-start gap-1.5 text-sm font-semibold text-primary',
+          'flex w-full items-center justify-start gap-2 text-sm font-semibold text-foreground',
           className
         )}
         {...props}
@@ -212,30 +175,19 @@ const DropDownLink = React.forwardRef<HTMLAnchorElement, DropDownLinkProps>(
 
 DropDownLink.displayName = 'DropDownLink'
 
-const DropDownButton = React.forwardRef<
-  ElementRef<typeof Button>,
-  React.ComponentPropsWithRef<typeof Button>
->(({ className, ...props }, ref) => {
-  return <Button className={twMerge('', className)} {...props} ref={ref} />
-})
-
-DropDownButton.displayName = 'DropDownButton'
-
 const DropDownIcon = React.forwardRef<
   HTMLElement,
   React.ComponentPropsWithRef<'i'>
 >(({ className, ...props }, ref) => {
   return (
-    <i className={twMerge('text-primary', className)} {...props} ref={ref} />
+    <i className={twMerge('text-foreground', className)} {...props} ref={ref} />
   )
 })
 
 DropDownIcon.displayName = 'DropDownIcon'
 
 export {
-  DropDownButton,
   DropDownContent,
-  DropDownGroup,
   DropDownIcon,
   DropDownItem,
   DropDownLabel,
@@ -245,4 +197,3 @@ export {
   DropDownRoot,
   DropDownTrigger
 }
-

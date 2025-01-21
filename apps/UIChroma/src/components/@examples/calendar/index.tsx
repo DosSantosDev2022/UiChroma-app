@@ -39,21 +39,19 @@ const CalendarPreview = () => {
 
   return (
     <div className="flex w-full flex-col items-center justify-center">
-      <div className="flex w-full items-center justify-center">
-        <div className="flex w-full items-center justify-center gap-1">
-          <div className="flex w-full items-center justify-end gap-4">
-            <p className=" text-center text-sm font-medium text-muted-foreground">
-              {range ? 'Calendar com range de data' : 'Calendar com data única'}
-            </p>
-            <Button sizes="sm" variants="primary" onClick={handleModeRange}>
-              Alterar
-            </Button>
-          </div>
-        </div>
+      <div className="mb-10 flex w-full items-center justify-end gap-4 p-2">
+        <p className=" text-center text-sm font-medium text-muted-foreground">
+          {range ? 'Calendar com range de data' : 'Calendar com data única'}
+        </p>
+        <Button sizes="xs" variants="primary" onClick={handleModeRange}>
+          Alterar
+        </Button>
       </div>
 
       <div className="flex w-full flex-col items-center justify-center p-4">
-        <h4 className="mb-4 text-xl font-bold">Selecione uma Data</h4>
+        <h4 className="mb-4 text-xl font-bold text-foreground">
+          Selecione uma Data
+        </h4>
         <Calendar
           value={selectedDate} // Valor atualizado com a data
           onChange={handleDateChange} // Atualiza a data selecionada

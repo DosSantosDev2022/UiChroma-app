@@ -6,29 +6,53 @@ import { ExempleComponents } from '@/components/pages/themes/exempleComponents'
 import { ModalCodeCss } from '@/components/pages/themes/ModalCodeCss'
 import { ModalTemplates } from '@/components/pages/themes/modaltemplates'
 import { useThemeStore } from '@/store/useThemeStore'
+import { Button } from '@repo/ChromaUI/components'
+import Link from 'next/link'
+import { useEffect } from 'react'
 
 export default function ThemeCreatePage() {
-  const { readyColors, handleLightColorChange, handleDarkColorChange } =
-    useThemeStore()
+  const {
+    readyColors,
+    handleLightColorChange,
+    handleDarkColorChange,
+    theme,
+    setTheme
+  } = useThemeStore()
+
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [theme])
 
   return (
     <div className="flex flex-col space-y-10">
       <section className="relative mx-auto p-2">
-        <div className="mb-6 flex flex-col items-center justify-center md:mb-6">
-          <div className="w-full space-y-6  p-2 md:my-14 md:mb-8">
-            <div className="space-y-1 ">
-              <div className="space-y-1  text-center">
-                <Title className="text-6xl">Gerador de temas</Title>
-                <p className="text-base font-normal text-muted-foreground">
-                  Selecione as cores abaixo para personalizar seu tema.
-                </p>
-              </div>
-
-              {/* Seletor de cores prontas */}
-              <div className="flex w-full items-center justify-center gap-2 p-4">
-                <ModalTemplates />
-                <ModalCodeCss />
-              </div>
+        <div className="z-10 col-span-12 grid items-start gap-x-6 gap-y-14 border border-border p-2 text-center md:gap-y-9 lg:grid-cols-2 lg:text-left">
+          <div className="grid h-full gap-y-4 border border-border p-6">
+            <div className="space-y-4">
+              <Title className="text-7xl">Chroma UI generator</Title>
+              <p className="text-base font-normal text-muted-foreground">
+                Crie facilmente temas personalizados a partir de uma única cor
+                que você pode copiar e colar em seus aplicativos.
+              </p>
+              <Button
+                className="rounded-md"
+                asChild
+                sizes="sm"
+                variants="primary"
+              >
+                <Link href={'docs'}>Documentação</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="grid space-x-2 border border-border">
+            {/* Seletor de cores prontas */}
+            <div className="flex w-full items-start gap-1.5 p-4">
+              <ModalTemplates />
+              <ModalCodeCss />
             </div>
 
             <div className="flex w-full flex-row items-center justify-between gap-4">
@@ -37,6 +61,7 @@ export default function ThemeCreatePage() {
                 title="Light mode"
                 colors={readyColors.light}
                 handleColorChange={handleLightColorChange}
+                onClick={() => setTheme('light')}
               />
 
               {/* Seletor para o Dark Mode */}
@@ -44,14 +69,14 @@ export default function ThemeCreatePage() {
                 title="Dark mode"
                 colors={readyColors.dark}
                 handleColorChange={handleDarkColorChange}
+                onClick={() => setTheme('dark')}
               />
             </div>
           </div>
         </div>
-        {/* <ExampleofColors lightColors={lightColors} darkColors={darkColors} /> */}
       </section>
 
-      <section>
+      <section className="rounded-md border border-border px-6 py-4">
         <ExempleComponents />
       </section>
     </div>

@@ -23,8 +23,8 @@ const ClipBoardAction = React.forwardRef<HTMLButtonElement, ClipBoardProps>(
     return (
       <button
         className={twMerge(
-          'flex items-center gap-2  rounded-md  p-1.5 text-muted transition-all duration-500',
-          'bg-muted-foreground hover:bg-muted-hover hover:text-muted-foreground',
+          'flex items-center gap-2 rounded-md p-1.5 transition-all duration-500',
+          'bg-primary text-primary-foreground hover:bg-primary-hover',
           className
         )}
         ref={ref}
@@ -55,7 +55,7 @@ const ClipBoardHeader = React.forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        `flex h-12 w-full items-center justify-between rounded-md bg-foreground px-2 py-3`,
+        `flex h-12 w-full items-center justify-between rounded-md bg-foreground px-2 py-3 dark:bg-muted`,
         className
       )}
     />
@@ -71,7 +71,10 @@ const ClipBoardLabel = React.forwardRef<
     <h6
       {...props}
       ref={ref}
-      className={twMerge('text-base font-normal text-background', className)}
+      className={twMerge(
+        'text-base font-normal text-foreground dark:text-muted-foreground',
+        className
+      )}
     />
   )
 })
@@ -86,7 +89,7 @@ const ClipBoardArea = React.forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        'from h-full w-full rounded-md bg-foreground',
+        'custom-scrollbar mt-2 h-full w-full rounded-md bg-foreground dark:bg-muted',
         className
       )}
     />
@@ -101,4 +104,3 @@ export {
   ClipBoardHeader,
   ClipBoardLabel
 }
-

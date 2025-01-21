@@ -21,9 +21,9 @@ const ColorPicker = ({ color, onChange }: SelectorColorsProps) => {
   }
 
   return (
-    <div className="relative flex w-full flex-1 items-center ">
+    <div className="relative flex w-full flex-1 items-center  ">
       <label
-        className="border-border/20 absolute  ml-2 block h-9 w-9 cursor-pointer rounded-full border"
+        className=" absolute  ml-2 block h-9 w-9 cursor-pointer rounded-full border border-border "
         style={{
           backgroundColor: localColor
         }}
@@ -36,7 +36,7 @@ const ColorPicker = ({ color, onChange }: SelectorColorsProps) => {
         />
       </label>
       <input
-        className="border-border/60 flex h-14 w-full rounded-full border bg-background px-3 py-1 pl-14 text-base font-medium text-muted-foreground shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+        className="flex h-14 w-full rounded-full border border-border bg-background px-3 py-1 pl-14 text-base font-medium text-muted-foreground shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
         type="text"
         placeholder="colors"
         value={localColor}

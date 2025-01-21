@@ -84,7 +84,7 @@ const SideBar = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        '  flex h-full flex-col justify-between border bg-background p-4',
+        '  flex h-full flex-col justify-between border border-border bg-background p-4',
         '',
         isOpenSideBar
           ? 'w-72 translate-x-0 animate-expand-dimensions'
@@ -136,7 +136,9 @@ const SideBarLogo = React.forwardRef<
     >
       {icon}
       {isOpenSideBar && (
-        <span className="text-xl font-extrabold text-primary">{label}</span>
+        <span className="text-xl font-extrabold text-accent-foreground">
+          {label}
+        </span>
       )}
     </div>
   )
@@ -346,7 +348,7 @@ const SideBarDropContent = React.forwardRef<
         ref={ref}
         {...props}
         className={twMerge(
-          'flex flex-col space-y-1 rounded-md border bg-background  p-1 shadow-lg',
+          'flex flex-col space-y-1 rounded-md bg-background p-1',
           isOpenSideBar ? 'relative' : 'absolute',
           'custom-scrollbar max-h-60 animate-smooth-fadein overflow-y-auto', // Animação e limites de altura
           'transition-all duration-300', // Suaviza a transição
@@ -411,4 +413,3 @@ export {
   SideBarSeparator,
   SideBarTrigger
 }
-

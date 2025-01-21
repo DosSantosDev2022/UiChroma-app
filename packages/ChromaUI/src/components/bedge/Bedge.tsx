@@ -26,7 +26,7 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
     return (
       <span
         className={twMerge(
-          `inline-flex items-center justify-center rounded-full border px-2.5 py-1.5 text-xs font-semibold`,
+          `inline-flex items-center justify-center rounded-full  px-2.5 py-1.5 text-xs font-semibold`,
           `transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2`,
           variantClasses[variant],
           variantSizes[size],

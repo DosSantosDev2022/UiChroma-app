@@ -41,13 +41,13 @@ const defaultRenderers = {
 
   // Parágrafos
   p: ({ children }: defaultRenderersProps) => (
-    <p className="w-full text-base font-normal text-muted-foreground">
-      {children}
-    </p>
+    <p className="w-full text-base font-normal text-foreground">{children}</p>
   ),
 
   // Listas
-  li: ({ children }: defaultRenderersProps) => <li>{children}</li>,
+  li: ({ children }: defaultRenderersProps) => (
+    <li className="text-muted-foreground">{children}</li>
+  ),
   ul: ({ children }: defaultRenderersProps) => (
     <ul className="ml-6 mt-1 list-disc space-y-4 px-2">{children}</ul>
   ),
@@ -73,8 +73,10 @@ const defaultRenderers = {
 
   // Bloco de código
   code_block: ({ children }: defaultRenderersProps) => (
-    <pre className="custom-scrollbar w-full overflow-x-auto rounded-xl bg-foreground px-10 py-5 shadow-lg">
-      <code className="text-primary-foreground">{children}</code>
+    <pre className="custom-scrollbar w-full overflow-x-auto rounded-xl border border-border bg-foreground px-10 py-5 dark:bg-muted">
+      <code className="text-background dark:text-muted-foreground">
+        {children}
+      </code>
     </pre>
   ),
 
@@ -120,4 +122,3 @@ const defaultRenderers = {
 }
 
 export { defaultRenderers }
-

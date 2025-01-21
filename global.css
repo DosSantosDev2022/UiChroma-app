@@ -1,82 +1,83 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: #f2f2f2;
-    --foreground: #0e0e1b;
+    --background: hsl(255 100% 100%);
+    --foreground: hsl(255 5% 10%);
 
-    --primary: #1e3a8a;
-    --primary-hover: #535da1;
-    --primary-foreground: #ffffff;
-    --secondary: #7686ad;
-    --secondary-hover: #8d97b4;
-    --secondary-foreground: #ffffff;
-    --muted: #bfbfbf;
-    --muted-hover: #e7e7e7;
-    --muted-foreground: #3b3b3b;
-    --accent: #4776fa;
-    --accent-hover: #798ffc;
-    --accent-foreground: #ffffff;
+    --primary: hsl(255 69% 51%);
+    --primary-hover: hsl(255, 59%, 68%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(255 30% 90%);
+    --secondary-hover: hsl(0, 0%, 76%);
+    --secondary-foreground: hsl(0 0% 0%);
+    --muted: hsl(217 30% 95%);
+    --muted-hover: hsl(0, 0%, 89%);
+    --muted-foreground: hsl(255 5% 40%);
+    --accent: hsl(217 30% 90%);
+    --accent-hover: hsl(217 30% 100%);
+    --accent-foreground: hsl(255 5% 15%);
 
-    --danger: #ff5a5a;
-    --danger-hover: #e04848;
-    --danger-foreground: #f8f8f8;
-    --warning: #f5c542;
-    --warning-hover: #e6b63c;
-    --warning-foreground: #1a1a1a;
-    --success: #5cb85c;
-    --success-hover: #4cae4c;
-    --success-foreground: #f8f8f8;
+    --danger: hsl(0, 100%, 67%);
+    --danger-hover: hsl(0, 72%, 60%);
+    --danger-foreground: hsl(0, 0%, 97%);
+    --warning: hsl(46, 89%, 60%);
+    --warning-hover: hsl(46, 76%, 56%);
+    --warning-foreground: hsl(0, 0%, 10%);
+    --success: hsl(122, 37%, 58%);
+    --success-hover: hsl(122, 41%, 51%);
+    --success-foreground: hsl(0, 0%, 97%);
 
-    --border: #14162b;
-    --ring: #161b37;
-    --input: #f2f2f2;
+    --border: hsl(0, 0%, 89%);
+    --ring: hsl(255 69% 51%);
+    --input: hsl(0, 0%, 91%);
 
-    --chart-1: #1e3a8a;
-    --chart-2: #6d1e8a;
-    --chart-3: #8a1e3b;
-    --chart-4: #8a6d1e;
-    --chart-5: #3b8a1e;
+    --chart-1: hsl(202, 80%, 24%);
+    --chart-2: hsl(232, 80%, 24%);
+    --chart-3: hsl(262, 80%, 24%);
+    --chart-4: hsl(292, 80%, 24%);
+    --chart-5: hsl(322, 80%, 24%);
  }
 
   .dark {
-    --background: #000000;
-    --foreground: #FFFFFF;
+    --background: hsl(253, 47%, 7%);
+    --foreground: hsl(255 5% 100%);
 
-    --primary: #14162b;
-    --primary-hover: #161b37;
-    --primary-foreground: #e9e9f3;
-    --secondary: #10101f;
-    --secondary-hover: #14162b;
-    --secondary-foreground: #d4d4e7;
-    --muted: #262626;
-    --muted-hover: #363636;
-    --muted-foreground: #eaeaea;
-    --accent: #999999;
-    --accent-hover: #4a4a4a;
-    --accent-foreground: #1a1a1a;
+    --primary: hsl(255 69% 51%);
+    --primary-hover: hsl(255, 66%, 45%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(255 30% 20%);
+    --secondary-hover: hsl(255 30% 30%);
+    --secondary-foreground: hsl(0 0% 100%);
+    --muted: hsl(217 30% 25%);
+    --muted-hover: hsl(218, 15%, 28%);
+    --muted-foreground: hsl(260, 16%, 85%);
+    --accent: hsl(217 30% 25%);
+    --accent-hover: hsl(217 30% 35%);
+    --accent-foreground: hsl(255 5% 95%);
 
-    --danger: #ff5a5a;
-    --danger-hover: #e04848;
-    --danger-foreground: #f8f8f8;
-    --warning: #f5c542;
-    --warning-hover: #e6b63c;
-    --warning-foreground: #1a1a1a;
-    --success: #5cb85c;
-    --success-hover: #4cae4c;
-    --success-foreground: #f8f8f8;
+    --danger: hsl(0, 100%, 67%);
+    --danger-hover: hsl(0, 72%, 60%);
+    --danger-foreground: hsl(0, 0%, 97%);
+    --warning: hsl(46, 89%, 60%);
+    --warning-hover: hsl(46, 76%, 56%);
+    --warning-foreground: hsl(0, 0%, 10%);
+    --success: hsl(122, 37%, 58%);
+    --success-hover: hsl(122, 41%, 51%);
+    --success-foreground: hsl(0, 0%, 97%);
 
-    --border: #1e3274;
-    --ring: #1e3a8a;
-    --input: #ffffff;
+    --border: hsl(256, 48%, 15%);
+    --ring: hsl(255 69% 51%);
+    --input: hsl(255, 48%, 17%);
 
-    --chart-1: #14162b;
-    --chart-2: #24122b;
-    --chart-3: #2c1216;
-    --chart-4: #2b2311;
-    --chart-5: #192b12;
+    --chart-1: hsl(208, 38%, 10%);
+    --chart-2: hsl(256, 55%, 9%);
+    --chart-3: hsl(272, 61%, 9%);
+    --chart-4: hsl(294, 43%, 10%);
+    --chart-5: hsl(328, 43%, 10%);
   }
 }
 
@@ -84,7 +85,7 @@
 
 /* Custom scrollbar styles */
 .custom-scrollbar {
-  @apply overflow-auto scrollbar-thin scrollbar-track-background scrollbar-thumb-muted;
+  @apply overflow-auto scrollbar-thin scrollbar-track-background scrollbar-thumb-foreground;
 } 
 
 .animation-hover {

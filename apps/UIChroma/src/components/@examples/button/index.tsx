@@ -17,7 +17,7 @@ const ButtonPreview = () => {
   ]
 
   return (
-    <div className="grid grid-cols-6 gap-2">
+    <div className="flex w-full flex-wrap gap-2">
       {/* Exemplos do componente button utilizando as variantes */}
       {variantes.map((variant) => (
         <Button key={variant} variants={variant} sizes="xs">

@@ -8,8 +8,19 @@ import { MdSunny } from 'react-icons/md'
 const SelectTheme = () => {
   const { theme, setTheme } = useThemeStore()
 
+  const applyThemeToIframe = () => {
+    const iframe = document.querySelector('iframe')
+    if (iframe && iframe.contentDocument) {
+      const iframehtml = iframe.contentDocument.documentElement
+      if (iframehtml) {
+        iframehtml.classList.toggle('dark', theme === 'dark')
+      }
+    }
+  }
+
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
+    applyThemeToIframe()
   }, [theme])
 
   const handleThemeToggle = () => {
@@ -32,4 +43,3 @@ const SelectTheme = () => {
 }
 
 export { SelectTheme }
-

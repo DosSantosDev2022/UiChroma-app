@@ -85,14 +85,15 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
   return (
     <div className="flex w-full flex-col items-center justify-center p-2 shadow-sm">
       {/* View Mode Selection */}
-      <div className="mb-4 flex w-full items-center gap-2 rounded-md border p-4">
+      <div className="mb-4 flex w-full items-center gap-2 rounded-md  p-4">
         {(['desktop', 'tablet', 'mobile'] as const).map((mode) => (
           <button
             key={mode}
-            className={`rounded border px-2 py-2.5 text-sm duration-300 active:scale-95 ${viewMode === mode
-                ? 'bg-accent text-accent-foreground'
-                : 'bg-secondary text-secondary-foreground'
-              }`}
+            className={`rounded px-2 py-2.5 text-sm duration-300 active:scale-95 ${
+              viewMode === mode
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-muted text-muted-foreground'
+            }`}
             onClick={() => handleViewportChange(mode)}
           >
             {mode === 'desktop' && <FaDesktop className="mr-2 inline-block" />}
@@ -104,7 +105,7 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
       </div>
 
       <div
-        className="rounded border p-1 shadow"
+        className="rounded border border-border p-10 shadow"
         style={{
           width: VIEWPORT_SIZES[viewMode].width,
           height: VIEWPORT_SIZES[viewMode].height,
@@ -115,13 +116,6 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
           ref={iframeRef}
           title="Componente Preview"
           className="h-full w-full overflow-hidden"
-          style={{
-            width: '100%',
-            height: '100%',
-            border: 'none',
-            overflow: 'auto',
-            transition: 'width 0.3s ease'
-          }}
         />
       </div>
     </div>

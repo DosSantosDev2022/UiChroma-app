@@ -16,7 +16,7 @@ export default async function ReleasePage({ searchParams }: ReleasePageParams) {
   const { releasePage } = await GET_RELEASES(searchParams.query)
 
   return (
-    <div className="relative flex h-full max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
+    <div className="relative mb-10 flex max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
       <SearchReleases />
       {!releasePage || !releasePage.releases.length ? (
         <div className="mt-10 flex flex-col items-center justify-center">
@@ -38,7 +38,7 @@ export default async function ReleasePage({ searchParams }: ReleasePageParams) {
             {releasePage.releases.map((release) => (
               <div
                 key={release.id}
-                className="flex flex-col gap-2 rounded-md border p-4 shadow-sm"
+                className="flex flex-col gap-2 rounded-md border border-border p-4 shadow-sm"
               >
                 <div className="flex flex-col gap-2">
                   <span className="text-sm font-normal text-muted-foreground">
@@ -51,7 +51,7 @@ export default async function ReleasePage({ searchParams }: ReleasePageParams) {
                     >
                       {release.title}
                     </Title>
-                    <Badge variant="accent" children={release.version} />
+                    <Badge variant="primary" children={release.version} />
                   </div>
                 </div>
 

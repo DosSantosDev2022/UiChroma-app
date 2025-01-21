@@ -53,7 +53,10 @@ const AvatarLabel = React.forwardRef<
     <span
       ref={ref}
       {...props}
-      className={twMerge('truncate text-xs font-normal text-muted', className)}
+      className={twMerge(
+        'truncate text-xs font-normal text-muted-foreground',
+        className
+      )}
     />
   )
 })
@@ -120,4 +123,3 @@ export {
   AvatarName,
   AvatarWrapper
 }
-

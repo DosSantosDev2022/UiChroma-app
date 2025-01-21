@@ -25,7 +25,7 @@ const CarouselButton = ({
     className={twMerge(
       'absolute top-1/2 -translate-y-1/2 transform rounded-full p-2',
       'bg-transparent text-primary-foreground duration-300 hover:bg-primary-hover hover:text-primary-foreground focus:outline-none active:scale-95',
-      direction === 'prev' ? 'left-4' : 'right-4'
+      direction === 'prev' ? 'left-2 sm:left-4' : 'right-2 sm:right-4'
     )}
   >
     {direction === 'prev' ? (
@@ -47,7 +47,7 @@ const CarouselIndicators = ({
   itemsLength,
   goToSlide
 }: CarouselIndicatorsProps) => (
-  <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 space-x-2">
+  <div className="absolute bottom-4  left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse">
     {Array.from({ length: itemsLength }).map((_, index) => (
       <button
         key={index}
@@ -55,7 +55,7 @@ const CarouselIndicators = ({
         onClick={() => goToSlide(index)}
         aria-label={`Go to slide ${index + 1}`}
         className={twMerge(
-          'h-2 w-2 rounded-full transition-all duration-300',
+          'h-1.5 w-1.5 rounded-full transition-all duration-300 sm:h-2 sm:w-2',
           index === currentIndex
             ? 'scale-110 bg-primary'
             : 'bg-secondary hover:bg-primary-hover'
@@ -84,7 +84,11 @@ const Carousel = ({
 
   return (
     <div
-      className={twMerge('relative h-96 w-full overflow-hidden', className)}
+      className={twMerge(
+        'relative h-56 w-full overflow-hidden sm:h-72 md:h-96',
+        'flex items-center justify-center',
+        className
+      )}
       aria-live="polite"
     >
       {/* Conteúdo do Carrossel */}
@@ -95,7 +99,10 @@ const Carousel = ({
         }}
       >
         {itemsRef.current.map((child, index) => (
-          <div key={index} className="h-full w-full flex-shrink-0">
+          <div
+            key={index}
+            className="flex h-full w-full flex-shrink-0 items-center justify-center"
+          >
             {child}
           </div>
         ))}
@@ -105,7 +112,7 @@ const Carousel = ({
       <CarouselButton direction="prev" onClick={prevSlide} />
       <CarouselButton direction="next" onClick={nextSlide} />
 
-      {/* indicadores */}
+      {/* Indicadores */}
       <CarouselIndicators
         itemsLength={itemsRef.current.length}
         currentIndex={currentIndex}
@@ -116,4 +123,3 @@ const Carousel = ({
 }
 
 export { Carousel }
-

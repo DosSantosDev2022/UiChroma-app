@@ -11,6 +11,7 @@ import {
   ModalTrigger
 } from '@repo/ChromaUI/components'
 import { FaCheck } from 'react-icons/fa6'
+import { MdPalette } from 'react-icons/md'
 
 const ModalTemplates = () => {
   const { selectedColor, setSelectedColor, handleBaseColorChange } =
@@ -24,7 +25,10 @@ const ModalTemplates = () => {
   return (
     <>
       <ModalRoot>
-        <ModalTrigger className="h-12 w-28 rounded-lg">Templates</ModalTrigger>
+        <ModalTrigger className="w-28 rounded-lg">
+          Templates
+          <MdPalette size={16} />
+        </ModalTrigger>
         <ModalOverlay variant="blur" />
         <ModalContent className="max-w-lg">
           <ModalHeader>
@@ -35,7 +39,7 @@ const ModalTemplates = () => {
             Escolha uma cor base para gerar seu tema baseando-se nas cores do
             Tailwind css:
           </ModalDescription>
-          <div className="custom-scrollbar mt-2 flex max-h-[220px]  flex-wrap gap-4 overflow-y-auto  rounded-md border bg-background px-2 py-2.5">
+          <div className="custom-scrollbar mt-2 flex max-h-[220px]  flex-wrap gap-4 overflow-y-auto  rounded-md border border-border bg-background px-2 py-2.5">
             {/* Lista de cores prontas (você pode definir essas cores como quiser) */}
             {templateTailwindColors.map((color) => (
               <button
@@ -43,7 +47,7 @@ const ModalTemplates = () => {
                 onClick={() => handleColorClick(color.value)}
                 style={{ backgroundColor: color.value }}
                 className={`
-                   relative h-8 w-8 rounded-lg border duration-300 active:scale-75
+                   relative h-8 w-8 rounded-lg duration-300 active:scale-75
                   `}
                 title={color.label}
               >

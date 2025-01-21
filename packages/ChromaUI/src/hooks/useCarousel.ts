@@ -5,11 +5,15 @@ function useCarousel(autoPlay: boolean, autoPlayInterval: number) {
   const [itemsLength, setItemsLength] = useState(0)
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % itemsLength)
+    if (itemsLength > 0) {
+      setCurrentIndex((prev) => (prev + 1) % itemsLength)
+    }
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + itemsLength) % itemsLength)
+    if (itemsLength > 0) {
+      setCurrentIndex((prev) => (prev - 1 + itemsLength) % itemsLength)
+    }
   }
 
   const goToSlide = (index: number) => {

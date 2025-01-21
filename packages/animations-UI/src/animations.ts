@@ -69,77 +69,77 @@ module.exports = {
       '60%': { transform: 'scale(1.05)', opacity: '0.5' },
       '100%': { transform: 'scale(0.9)', opacity: '0' }
     },
-    "fade-in-bouncedown": {
-      "0%": {
+    'fade-in-bouncedown': {
+      '0%': {
         opacity: 0,
-        transform: "translate3d(0%, -100%, 0)",
+        transform: 'translate3d(0%, -100%, 0)'
       },
-      "33%": {
+      '33%': {
         opacity: 0.5,
-        transform: "translate3d(0%, 0%, 0)",
+        transform: 'translate3d(0%, 0%, 0)'
       },
-      "66%": {
+      '66%': {
         opacity: 0.7,
-        transform: "translate3d(0%, -20%, 0)",
+        transform: 'translate3d(0%, -20%, 0)'
       },
-      "100%": {
+      '100%': {
         opacity: 1,
-        transform: "translate3d(0, 0, 0)",
-      },
+        transform: 'translate3d(0, 0, 0)'
+      }
     },
-    "fade-in-bounceup": {
-      "0%": {
+    'fade-in-bounceup': {
+      '0%': {
         opacity: 0,
-        transform: "translate3d(0%, 100%, 0)",
+        transform: 'translate3d(0%, 100%, 0)'
       },
-      "33%": {
+      '33%': {
         opacity: 0.5,
-        transform: "translate3d(0%, 0%, 0)",
+        transform: 'translate3d(0%, 0%, 0)'
       },
-      "66%": {
+      '66%': {
         opacity: 0.7,
-        transform: "translate3d(0%, 20%, 0)",
+        transform: 'translate3d(0%, 20%, 0)'
       },
-      "100%": {
+      '100%': {
         opacity: 1,
-        transform: "translate3d(0, 0, 0)",
-      },
+        transform: 'translate3d(0, 0, 0)'
+      }
     },
-    "fade-in-bounce-right": {
-      "0%": {
+    'fade-in-bounce-right': {
+      '0%': {
         opacity: 0,
-        transform: "translate3d(100%, 0%, 0)",
+        transform: 'translate3d(100%, 0%, 0)'
       },
-      "33%": {
+      '33%': {
         opacity: 0.5,
-        transform: "translate3d(0%, 0%, 0)",
+        transform: 'translate3d(0%, 0%, 0)'
       },
-      "66%": {
+      '66%': {
         opacity: 0.7,
-        transform: "translate3d(20%, 0%, 0)",
+        transform: 'translate3d(20%, 0%, 0)'
       },
-      "100%": {
+      '100%': {
         opacity: 1,
-        transform: "translate3d(0, 0, 0)",
-      },
+        transform: 'translate3d(0, 0, 0)'
+      }
     },
-    "fade-in-bounce-left": {
-      "0%": {
+    'fade-in-bounce-left': {
+      '0%': {
         opacity: 0,
-        transform: "translate3d(-100%, 0%, 0)",
+        transform: 'translate3d(-100%, 0%, 0)'
       },
-      "33%": {
+      '33%': {
         opacity: 0.5,
-        transform: "translate3d(0%, 0%, 0)",
+        transform: 'translate3d(0%, 0%, 0)'
       },
-      "66%": {
+      '66%': {
         opacity: 0.7,
-        transform: "translate3d(-20%, 0%, 0)",
+        transform: 'translate3d(-20%, 0%, 0)'
       },
-      "100%": {
+      '100%': {
         opacity: 1,
-        transform: "translate3d(0, 0, 0)",
-      },
+        transform: 'translate3d(0, 0, 0)'
+      }
     },
     // flip
     'flip-up': {
@@ -229,39 +229,39 @@ module.exports = {
       '100%': { transform: 'scaleX(1)', transformOrigin: 'left' }
     },
     'expand-dimensions': {
-      '0%': { opacity: '0', translateX: '80px' },
-      '100%': { opacity: '1', translateX: 'full' },
+      '0%': { opacity: '0', translateX: '0' },
+      '100%': { opacity: '1', translateX: 'full' }
     },
-    // drop 
-    "drop-in": {
-      "0%": {
-        opacity: "0",
-        transform: "scale(0)",
+    // drop
+    'drop-in': {
+      '0%': {
+        opacity: '0',
+        transform: 'scale(0)'
       },
-      "100%": {
-        opacity: "1",
-        transform: "scale(1)",
-      },
+      '100%': {
+        opacity: '1',
+        transform: 'scale(1)'
+      }
     },
-    "drop-out": {
-      "0%": {
-        opacity: "1",
-        transform: "scale(1)",
-        animationTimingFunction: "cubic-bezier(0.34, 1.61, 0.7, 1)",
+    'drop-out': {
+      '0%': {
+        opacity: '1',
+        transform: 'scale(1)',
+        animationTimingFunction: 'cubic-bezier(0.34, 1.61, 0.7, 1)'
       },
-      "100%": {
-        opacity: "0",
-        transform: "scale(0)"
-      },
+      '100%': {
+        opacity: '0',
+        transform: 'scale(0)'
+      }
     },
     //smooth
     'smooth-fadein': {
       '0%': { opacity: '0', transform: 'scale(0.95)' },
-      '100%': { opacity: '1', transform: 'scale(1)' },
+      '100%': { opacity: '1', transform: 'scale(1)' }
     },
     'smooth-fadeout': {
       '0%': { opacity: '1', transform: 'scale(1)' },
-      '100%': { opacity: '0', transform: 'scale(0.95)' },
+      '100%': { opacity: '0', transform: 'scale(0.95)' }
     },
     //others
     shrink: {
@@ -331,7 +331,7 @@ module.exports = {
     'expand-down': 'expand-down 0.3s ease-in',
     'expand-left': 'expand-left 0.3s ease-out',
     'expand-right': 'expand-right 0.3s ease-out',
-    'expand-dimensions': 'expand-dimensions 0.40s cubic-bezier(0.4, 0, 0.2, 1)',
+    'expand-dimensions': 'expand-dimensions 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
     //drop
     'drop-in': 'drop-in 0.2s ease-out',
     'drop-out': 'drop-out 0.2s ease-in ',

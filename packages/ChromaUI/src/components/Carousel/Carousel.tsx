@@ -47,7 +47,7 @@ const CarouselIndicators = ({
   itemsLength,
   goToSlide
 }: CarouselIndicatorsProps) => (
-  <div className="absolute bottom-4  left-1/2 z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse">
+  <div className="absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 space-x-3 p-2 sm:p-0 rtl:space-x-reverse">
     {Array.from({ length: itemsLength }).map((_, index) => (
       <button
         key={index}

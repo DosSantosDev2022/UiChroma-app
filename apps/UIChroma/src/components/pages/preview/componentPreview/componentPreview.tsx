@@ -89,10 +89,11 @@ const ComponentPreview: React.FC<Props> = ({ componentData }) => {
         {(['desktop', 'tablet', 'mobile'] as const).map((mode) => (
           <button
             key={mode}
-            className={`rounded px-2 py-2.5 text-sm duration-300 active:scale-95 ${viewMode === mode
+            className={`rounded px-2 py-2.5 text-sm duration-300 active:scale-95 ${
+              viewMode === mode
                 ? 'bg-primary text-primary-foreground'
                 : 'bg-muted text-muted-foreground'
-              }`}
+            }`}
             onClick={() => handleViewportChange(mode)}
           >
             {mode === 'desktop' && <FaDesktop className="mr-2 inline-block" />}

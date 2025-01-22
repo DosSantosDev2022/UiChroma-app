@@ -8,18 +8,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean
   sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'
   variants?:
-  | 'primary'
-  | 'secundary'
-  | 'outline'
-  | 'ghost'
-  | 'accent'
-  | 'disabled'
-  | 'link'
-  | 'danger'
-  | 'warning'
-  | 'success'
-  | 'shine'
-  | 'swipe'
+    | 'primary'
+    | 'secundary'
+    | 'outline'
+    | 'ghost'
+    | 'accent'
+    | 'disabled'
+    | 'link'
+    | 'danger'
+    | 'warning'
+    | 'success'
+    | 'shine'
+    | 'swipe'
   ref?: ForwardedRef<HTMLButtonElement>
 }
 
@@ -97,4 +97,3 @@ Button.displayName = 'Button'
 
 export { Button }
 export type { ButtonProps }
-

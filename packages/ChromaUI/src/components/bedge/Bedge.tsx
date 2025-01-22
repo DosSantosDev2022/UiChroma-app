@@ -7,7 +7,7 @@ interface BadgeProps extends ComponentProps<'span'> {
   children?: string
 }
 
-export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
+const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
   ({ className, variant = 'accent', size = 'xs', children, ...props }, ref) => {
     const variantClasses = {
       primary: 'bg-primary text-primary-foreground',
@@ -42,3 +42,5 @@ export const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 )
 
 Badge.displayName = 'Badge'
+
+export { Badge }

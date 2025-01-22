@@ -17,18 +17,13 @@ const ButtonPreview = () => {
   ]
 
   return (
-    <div className="flex w-full flex-wrap gap-2">
+    <div className="flex w-full flex-wrap gap-6">
       {/* Exemplos do componente button utilizando as variantes */}
       {variantes.map((variant) => (
         <Button key={variant} variants={variant} sizes="xs">
           {variant}
         </Button>
       ))}
-
-      {/* Exemplo do componente button recebendo estado de loading */}
-      <Button loading={true} variants={'success'} sizes="xs">
-        Loading
-      </Button>
     </div>
   )
 }

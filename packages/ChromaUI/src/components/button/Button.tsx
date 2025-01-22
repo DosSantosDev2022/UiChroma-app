@@ -1,7 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import * as React from 'react'
 import { ForwardedRef } from 'react'
-import { ImSpinner2 } from 'react-icons/im'
 import { twMerge } from 'tailwind-merge'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -40,7 +39,7 @@ const variantClasses = {
   shine:
     'before:ease relative  overflow-hidden bg-primary text-primary-foreground shadow-2xl transition-all before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-primary-foreground before:opacity-10 before:duration-700 hover:shadow-primary hover:before:-translate-x-40',
   swipe:
-    'hover:before:bg-accent-foreground hover:before:text-accent relative  overflow-hidden bg-accent text-accent-foreground shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-accent before:transition-all before:duration-500 hover:text-accent-foreground hover:shadow-primary hover:before:left-0 hover:before:w-full'
+    'hover:before:bg-accent-foreground hover:before:text-accent relative overflow-hidden bg-accent text-accent-foreground shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-accent before:transition-all before:duration-500 hover:text-accent-foreground hover:shadow-primary hover:before:left-0 hover:before:w-full'
 }
 const sizeClasses = {
   xs: 'h-10 w-24 text-sm',
@@ -68,7 +67,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         twMerge(
           variantClasses[variants!],
           sizeClasses[sizes!],
-          'appearance-none rounded-md px-2 py-1.5 flex gap-1 duration-300 transition-all active:scale-95',
+          'appearance-none rounded-md px-2 py-1.5 flex gap-1 duration-300 transition-all active:scale-75',
           ' items-center justify-center font-normal ring-offset-background disabled:pointer-events-none disabled:opacity-60',
           'transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
           className
@@ -84,18 +83,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={_className}
         {...props}
-        disabled={loading || variants === 'disabled'}
+        disabled={variants === 'disabled'}
         aria-busy={loading}
         aria-live={loading ? 'polite' : undefined}
       >
-        {loading ? (
-          <>
-            {props.children}
-            <ImSpinner2 size={16} className="animate-spin" />
-          </>
-        ) : (
-          props.children
-        )}
+        {props.children}
       </Comp>
     )
   }

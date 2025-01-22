@@ -5,25 +5,35 @@ import {
   usePagination
 } from '@/hooks/usePagination/index'
 import {
+  PageButton,
   Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious
 } from '@repo/ChromaUI/components'
+import { useState } from 'react'
 
 const PaginationPreview = () => {
+  const [currentPage, setCurrentPage] = useState(1)
   const { isCurrentPage, pages } = usePagination({
-    page: 1,
+    page: currentPage,
     limit: 10,
     total: 100
   })
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page)
+  }
+
   return (
     <Pagination>
       <PaginationContent>
-        <PaginationPrevious />
+        <PaginationPrevious
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(currentPage - 1)}
+        />
         {pages.map((page, index) => {
           if (page === ELLIPSIS_LEFT || page === ELLIPSIS_RIGTH) {
             return <PaginationEllipsis key={index}>{page}</PaginationEllipsis>
@@ -31,16 +41,20 @@ const PaginationPreview = () => {
 
           return (
             <PaginationItem key={index}>
-              <PaginationLink
-                href={`?page=${page}`}
+              <PageButton
+                onClick={() => handlePageChange(Number(page))}
                 aria-current={isCurrentPage(Number(page)) ? 'page' : 'false'}
+                isActive={page === currentPage}
               >
                 {page}
-              </PaginationLink>
+              </PageButton>
             </PaginationItem>
           )
         })}
-        <PaginationNext />
+        <PaginationNext
+          disabled={currentPage === pages[pages.length - 1]}
+          onClick={() => handlePageChange(currentPage + 1)}
+        />
       </PaginationContent>
     </Pagination>
   )

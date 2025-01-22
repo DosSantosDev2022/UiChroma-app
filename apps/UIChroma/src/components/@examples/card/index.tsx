@@ -16,7 +16,7 @@ const CardPreview = () => {
     <Card>
       <CardHeader>
         <span className="text-sm text-muted-foreground">Members only</span>
-        <CardTitle>Can coffee make you a better developer?</CardTitle>
+        <CardTitle>Can coffee make you a better developer ?</CardTitle>
       </CardHeader>
 
       <CardContent>

@@ -61,13 +61,18 @@ const AccordionTrigger = ({
       id={triggerId}
       onClick={toggleOpen}
       className={twMerge(
-        'flex h-16 w-full items-center justify-between gap-2 rounded-t-md border border-border px-4 py-2 focus:outline-none',
+        'flex h-16 w-full items-center justify-between gap-2',
+        'rounded-t-md border border-border px-4 py-2 focus:outline-none',
         className
       )}
     >
       {children}
       <LuChevronDown
-        className={`h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out ${isOpen ? 'rotate-180' : ''}`}
+        className={twMerge(
+          `h-4 w-4 shrink-0 transition-transform duration-500 ease-in-out`,
+          ` ${isOpen ? 'rotate-180' : ''}`,
+          'text-foreground'
+        )}
       />
     </button>
   )
@@ -94,7 +99,7 @@ const AccordionContent = ({
         className
       )}
     >
-      <div className="mb-1 mt-1 rounded-b-md  px-4 py-2 ">{children}</div>
+      <div className="my-1 rounded-b-md px-4 py-2">{children}</div>
     </div>
   )
 }
@@ -105,7 +110,7 @@ const AccordionQuestion = ({
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
     className={twMerge(
-      'text-start text-base font-semibold text-foreground sm:text-lg',
+      'text-start text-sm font-semibold text-foreground sm:text-lg',
       className
     )}
     {...props}
@@ -119,7 +124,7 @@ const AccordionAnswer = ({
 }: React.HTMLAttributes<HTMLSpanElement>) => (
   <span
     className={twMerge(
-      'text-start text-base text-foreground sm:text-lg',
+      'text-start text-sm text-foreground sm:text-lg',
       className
     )}
     {...props}

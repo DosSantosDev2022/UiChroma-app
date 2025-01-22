@@ -44,37 +44,51 @@ PaginationItem.displayName = 'PaginationItem'
 
 type PaginationLinkProps = {
   isActive?: boolean
-} & React.ComponentProps<'a'>
+  radius?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
+} & React.ComponentProps<'button'>
 
-const PaginationLink = ({
+const PageButton = ({
   className,
   isActive,
+  radius = 'lg',
   ...props
-}: PaginationLinkProps) => (
-  <a
-    aria-current={isActive ? 'page' : 'false'}
-    className={twMerge(
-      ` flex h-10 w-10 items-center justify-center rounded-lg  p-2 duration-300 hover:bg-primary-hover
-      ${isActive ? 'bg-accent text-accent-foreground' : 'bg-primary text-primary-foreground'}`,
-      className
-    )}
-    {...props}
-  />
-)
+}: PaginationLinkProps) => {
+  const variantClasses = {
+    xs: 'rounded',
+    sm: 'rounded-sm',
+    md: 'rounded-md',
+    lg: 'rounded-lg',
+    xl: 'rounded-xl',
+    full: 'rounded-full'
+  }
 
-PaginationLink.displayName = 'PaginationLink'
+  return (
+    <button
+      aria-current={isActive ? 'page' : 'false'}
+      className={twMerge(
+        variantClasses[radius],
+        ` flex h-10 w-10 items-center justify-center p-2 transition-all duration-300 ease-in hover:scale-95
+      ${isActive ? 'bg-primary-foreground text-primary' : 'bg-primary text-primary-foreground'}`,
+        className
+      )}
+      {...props}
+    />
+  )
+}
+
+PageButton.displayName = 'PageButton'
 
 const PaginationPrevious = ({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
+}: React.ComponentProps<typeof PageButton>) => (
+  <PageButton
     aria-label="go to previous page"
     className={twMerge('cursor-pointer gap-1 pl-2.5', className)}
     {...props}
   >
     <LuChevronLeft className="h-4 w-4" />
-  </PaginationLink>
+  </PageButton>
 )
 
 PaginationPrevious.displayName = 'PaginationPrevious'
@@ -82,14 +96,14 @@ PaginationPrevious.displayName = 'PaginationPrevious'
 const PaginationNext = ({
   className,
   ...props
-}: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
+}: React.ComponentProps<typeof PageButton>) => (
+  <PageButton
     aria-label="go to Next page"
     className={twMerge('cursor-pointer gap-1 pr-2.5', className)}
     {...props}
   >
     <LuChevronRight className="h-4 w-4" />
-  </PaginationLink>
+  </PageButton>
 )
 
 PaginationNext.displayName = 'PaginationNext'
@@ -100,7 +114,10 @@ const PaginationEllipsis = ({
 }: React.ComponentProps<'span'>) => (
   <span
     aria-hidden
-    className={twMerge('flex h-9 w-9 items-center justify-center', className)}
+    className={twMerge(
+      'flex h-9 w-9 items-center justify-center text-foreground',
+      className
+    )}
     {...props}
   >
     <LuMoreHorizontal className="h-4 w-4" />
@@ -111,11 +128,11 @@ const PaginationEllipsis = ({
 PaginationEllipsis.displayName = 'PaginationEllipsis'
 
 export {
+  PageButton,
   Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-  PaginationLink,
   PaginationNext,
   PaginationPrevious
 }

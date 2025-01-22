@@ -67,7 +67,7 @@ const ModalRoot = ({
   onOpenChange?: (isOpen: boolean) => void
 }) => (
   <ModalProvider open={open} onOpenChange={onOpenChange}>
-    <div className={twMerge('relative', className)} {...props} />
+    <div className={twMerge('', className)} {...props} />
   </ModalProvider>
 )
 
@@ -161,9 +161,18 @@ ModalOverlay.displayName = 'ModalOverlay'
 
 const ModalTrigger = React.forwardRef<
   HTMLButtonElement,
-  React.HTMLAttributes<HTMLButtonElement>
->(({ className, ...props }, ref) => {
+  React.HTMLAttributes<HTMLButtonElement> & {
+    size?: 'sm' | 'lg' | 'xl' | 'full'
+  }
+>(({ className, size = 'full', ...props }, ref) => {
   const { toggleOpen } = useModalContext()
+  const variantClasses = {
+    sm: 'w-24',
+    lg: 'w-36',
+    xl: 'w-48',
+    full: 'w-fulll'
+  }
+
   return (
     <button
       value={'text'}
@@ -172,6 +181,7 @@ const ModalTrigger = React.forwardRef<
         ' flex h-10 w-full items-center justify-center gap-2 rounded-md border border-border px-2 py-1.5 text-sm',
         'bg-background text-foreground hover:bg-muted-hover ',
         'ring-offset-primary duration-300  focus:ring-ring active:scale-95',
+        variantClasses[size],
         className
       )}
       {...props}

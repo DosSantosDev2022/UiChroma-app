@@ -293,10 +293,10 @@ module.exports = {
     //specific components
     'accordion-down': {
       '0%': { maxHeight: '0', opacity: '0' },
-      '100%': { maxHeight: '500px', opacity: '1' }
+      '100%': { maxHeight: '100%', opacity: '1' }
     },
     'accordion-up': {
-      '0%': { maxHeight: '500px', opacity: '1' },
+      '0%': { maxHeight: '100%', opacity: '1' },
       '100%': { maxHeight: '0', opacity: '0' }
     }
   },

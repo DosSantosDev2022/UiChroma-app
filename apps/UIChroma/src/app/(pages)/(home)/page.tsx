@@ -10,9 +10,9 @@ export default async function Home() {
     <div className=" flex h-full max-w-4xl flex-col px-4 sm:px-6 lg:px-8">
       <section className="flex h-full flex-col pb-10 pt-16">
         <div className="space-y-6">
-          {documentationPage.section && (
+          {documentationPage.sectionOne && (
             <RichText
-              content={documentationPage?.section.content.raw}
+              content={documentationPage?.sectionOne.content.raw}
               renderers={defaultRenderers}
             />
           )}
@@ -37,9 +37,9 @@ export default async function Home() {
       </section>
 
       <article className="mt-10 space-y-6  px-2 py-3">
-        {documentationPage.section02 && (
+        {documentationPage.sectionTwo && (
           <RichText
-            content={documentationPage.section02.content.raw}
+            content={documentationPage.sectionTwo.content.raw}
             renderers={defaultRenderers}
           />
         )}

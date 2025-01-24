@@ -5,82 +5,81 @@
 
 @layer base {
   :root {
-    --background: hsl(255 100% 100%);
-    --foreground: hsl(255 5% 10%);
+    --background: #ffffff;
+    --foreground: #1a1a1a;
 
-    --primary: hsl(255 69% 51%);
-    --primary-hover: hsl(255, 59%, 68%);
-    --primary-foreground: hsl(0 0% 100%);
-    --secondary: hsl(255 30% 90%);
-    --secondary-hover: hsl(0, 0%, 76%);
-    --secondary-foreground: hsl(0 0% 0%);
-    --muted: hsl(217 30% 95%);
-    --muted-hover: hsl(0, 0%, 89%);
-    --muted-foreground: hsl(255 5% 40%);
-    --accent: hsl(217 30% 90%);
-    --accent-hover: hsl(217 30% 100%);
-    --accent-foreground: hsl(255 5% 15%);
+    --primary: #5d3f97;
+    --primary-hover: #8e6f9c;
+    --primary-foreground: #ffffff;
+    --secondary: #99b3ff;
+    --secondary-hover: #c2c2c2;
+    --secondary-foreground: #000000;
+    --muted: #99b3cc;
+    --muted-hover: #e1e1e1;
+    --muted-foreground: #4c4c66;
+    --accent: #99b3ff;
+    --accent-hover: #b3c2ff;
+    --accent-foreground: #262626;
 
-    --danger: hsl(0, 100%, 67%);
-    --danger-hover: hsl(0, 72%, 60%);
-    --danger-foreground: hsl(0, 0%, 97%);
-    --warning: hsl(46, 89%, 60%);
-    --warning-hover: hsl(46, 76%, 56%);
-    --warning-foreground: hsl(0, 0%, 10%);
-    --success: hsl(122, 37%, 58%);
-    --success-hover: hsl(122, 41%, 51%);
-    --success-foreground: hsl(0, 0%, 97%);
+    --danger: #e11d48;
+    --danger-hover: #be123c;
+    --danger-foreground: #f1f1f1;
+    --warning: #f59e0b;
+    --warning-hover: #d97706;
+    --warning-foreground: #1f2937;
+    --success: #10b981;
+    --success-hover: #059669;
+    --success-foreground: #f1f1f1;
 
-    --border: hsl(0, 0%, 89%);
-    --ring: hsl(255 69% 51%);
-    --input: hsl(0, 0%, 91%);
+    --border: #e1e1e1;
+    --ring: #5d3f97;
+    --input: #e6e6e6;
 
-    --chart-1: hsl(202, 80%, 24%);
-    --chart-2: hsl(232, 80%, 24%);
-    --chart-3: hsl(262, 80%, 24%);
-    --chart-4: hsl(292, 80%, 24%);
-    --chart-5: hsl(322, 80%, 24%);
- }
+    --chart-1: #334d66;
+    --chart-2: #3a4c66;
+    --chart-3: #411f66;
+    --chart-4: #4a1e66;
+    --chart-5: #521f66;
+  }
 
   .dark {
-    --background: hsl(253, 47%, 7%);
-    --foreground: hsl(255 5% 100%);
+    --background: #1e1e31;
+    --foreground: #ffffff;
 
-    --primary: hsl(255 69% 51%);
-    --primary-hover: hsl(255, 66%, 45%);
-    --primary-foreground: hsl(0 0% 100%);
-    --secondary: hsl(255 30% 20%);
-    --secondary-hover: hsl(255 30% 30%);
-    --secondary-foreground: hsl(0 0% 100%);
-    --muted: hsl(217 30% 25%);
-    --muted-hover: hsl(218, 15%, 28%);
-    --muted-foreground: hsl(260, 16%, 85%);
-    --accent: hsl(217 30% 25%);
-    --accent-hover: hsl(217 30% 35%);
-    --accent-foreground: hsl(255 5% 95%);
+    --primary: #5d3f97;
+    --primary-hover: #4d3b74;
+    --primary-foreground: #ffffff;
+    --secondary: #4c4c66;
+    --secondary-hover: #333333;
+    --secondary-foreground: #ffffff;
+    --muted: #3c4f66;
+    --muted-hover: #353f4d;
+    --muted-foreground: #a6a6d9;
+    --accent: #3c4f66;
+    --accent-hover: #4d4f66;
+    --accent-foreground: #f2f2f2;
 
-    --danger: hsl(0, 100%, 67%);
-    --danger-hover: hsl(0, 72%, 60%);
-    --danger-foreground: hsl(0, 0%, 97%);
-    --warning: hsl(46, 89%, 60%);
-    --warning-hover: hsl(46, 76%, 56%);
-    --warning-foreground: hsl(0, 0%, 10%);
-    --success: hsl(122, 37%, 58%);
-    --success-hover: hsl(122, 41%, 51%);
-    --success-foreground: hsl(0, 0%, 97%);
+    --danger: #e11d48;
+    --danger-hover: #be123c;
+    --danger-foreground: #f1f1f1;
+    --warning: #f59e0b;
+    --warning-hover: #d97706;
+    --warning-foreground: #1f2937;
+    --success: #10b981;
+    --success-hover: #059669;
+    --success-foreground: #f1f1f1;
 
-    --border: hsl(256, 48%, 15%);
-    --ring: hsl(255 69% 51%);
-    --input: hsl(255, 48%, 17%);
+    --border: #5f4e7c;
+    --ring: #5d3f97;
+    --input: #444444;
 
-    --chart-1: hsl(208, 38%, 10%);
-    --chart-2: hsl(256, 55%, 9%);
-    --chart-3: hsl(272, 61%, 9%);
-    --chart-4: hsl(294, 43%, 10%);
-    --chart-5: hsl(328, 43%, 10%);
+    --chart-1: #1c1c26;
+    --chart-2: #410f2c;
+    --chart-3: #441933;
+    --chart-4: #472e33;
+    --chart-5: #5c1c33;
   }
 }
-
 
 
 /* Custom scrollbar styles */

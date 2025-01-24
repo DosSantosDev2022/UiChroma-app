@@ -5,13 +5,13 @@ extend([mixPlugin])
 
 // Gera uma cor accent harmoniosa com mais suavidade
 const generateAccentColor = (base: Colord) => {
-  const hsl = base.toHsl()
+  const hex = base.toHex()
 
-  if (hsl.l > 80) {
+  if (base.brightness() > 0.8) {
     return colord('#4f46e5') // Tom azul/roxo vibrante
   }
 
-  if (hsl.l > 50) {
+  if (base.brightness() > 0.5) {
     return base.rotate(45).saturate(0.2).lighten(0.15)
   }
 
@@ -24,10 +24,10 @@ const generateContrastForeground = (color: string) => {
   const isLight = base.isLight()
 
   if (isLight) {
-    return base.darken(0.4).desaturate(0.1).toHslString()
+    return base.darken(0.4).desaturate(0.1).toHex()
   }
 
-  return base.lighten(0.8).saturate(0.1).toHslString()
+  return base.lighten(0.8).saturate(0.1).toHex()
 }
 
 // Gera uma cor muted mais suave
@@ -46,95 +46,91 @@ export const generateTheme = (baseColor: string) => {
     name: 'Base Color',
     colors: {
       light: {
-        background: base.mix('#ffffff', 0.95).toHslString(),
-        foreground: base.mix('#000000', 0.9).toHslString(),
+        background: base.mix('#ffffff', 0.95).toHex(),
+        foreground: base.mix('#000000', 0.9).toHex(),
 
-        primary: base.toHslString(),
-        primary_hover: base.mix('#ffffff', 0.15).toHslString(),
-        primary_foreground: generateContrastForeground(base.toHslString()),
+        primary: base.toHex(),
+        primary_hover: base.mix('#ffffff', 0.15).toHex(),
+        primary_foreground: generateContrastForeground(base.toHex()),
 
-        secondary: base.mix('#ffffff', 0.7).toHslString(),
-        secondary_hover: base.mix('#ffffff', 0.6).toHslString(),
+        secondary: base.mix('#ffffff', 0.7).toHex(),
+        secondary_hover: base.mix('#ffffff', 0.6).toHex(),
         secondary_foreground: generateContrastForeground(
-          base.mix('#ffffff', 0.7).toHslString()
+          base.mix('#ffffff', 0.7).toHex()
         ),
 
-        accent: accentColor.toHslString(),
-        accent_hover: accentColor.mix('#ffffff', 0.1).toHslString(),
-        accent_foreground: generateContrastForeground(
-          accentColor.toHslString()
-        ),
+        accent: accentColor.toHex(),
+        accent_hover: accentColor.mix('#ffffff', 0.1).toHex(),
+        accent_foreground: generateContrastForeground(accentColor.toHex()),
 
-        danger: 'hsl(0, 100%, 67%)',
-        danger_hover: 'hsl(0, 72%, 60%)',
-        danger_foreground: 'hsl(0, 0%, 97%)',
+        danger: '#e11d48', // Hex direto
+        danger_hover: '#be123c',
+        danger_foreground: '#ffffff', // Hex direto
 
-        warning: 'hsl(46, 89%, 60%)',
-        warning_hover: 'hsl(46, 76%, 56%)',
-        warning_foreground: 'hsl(0, 0%, 10%)',
+        warning: '#f59e0b',
+        warning_hover: '#d97706',
+        warning_foreground: '#1f2937',
 
-        success: 'hsl(122, 37%, 58%)',
-        success_hover: 'hsl(122, 41%, 51%)',
-        success_foreground: 'hsl(0, 0%, 97%)',
+        success: '#10b981',
+        success_hover: '#059669',
+        success_foreground: '#ffffff',
 
-        muted: mutedColor.toHslString(),
-        muted_hover: mutedColor.mix('#ffffff', 0.3).toHslString(),
-        muted_foreground: generateContrastForeground(mutedColor.toHslString()),
+        muted: mutedColor.toHex(),
+        muted_hover: mutedColor.mix('#ffffff', 0.3).toHex(),
+        muted_foreground: generateContrastForeground(mutedColor.toHex()),
 
-        border: base.mix('#ffff', 0.95).toHslString(),
-        ring: base.mix('#000000', 0.6).toHslString(),
-        input: base.mix('#cbd5e1', 0.15).toHslString(),
+        border: base.mix('#ffff', 0.95).toHex(),
+        ring: base.mix('#000000', 0.6).toHex(),
+        input: base.mix('#cbd5e1', 0.15).toHex(),
 
-        chart1: base.toHslString(),
-        chart2: base.rotate(30).toHslString(), // Menos intensidade
-        chart3: base.rotate(60).toHslString(),
-        chart4: base.rotate(90).toHslString(),
-        chart5: base.rotate(120).toHslString()
+        chart1: base.toHex(),
+        chart2: base.rotate(30).toHex(), // Menos intensidade
+        chart3: base.rotate(60).toHex(),
+        chart4: base.rotate(90).toHex(),
+        chart5: base.rotate(120).toHex()
       },
 
       dark: {
-        background: base.mix('#000000', 0.95).toHslString(),
-        foreground: base.mix('#ffffff', 0.9).toHslString(),
+        background: base.mix('#000000', 0.95).toHex(),
+        foreground: base.mix('#ffffff', 0.9).toHex(),
 
-        primary: base.mix('#000000', 0.7).toHslString(),
-        primary_hover: base.mix('#000000', 0.6).toHslString(),
-        primary_foreground: base.mix('#FFFFFF', 0.9).toHslString(),
+        primary: base.mix('#000000', 0.7).toHex(),
+        primary_hover: base.mix('#000000', 0.6).toHex(),
+        primary_foreground: base.mix('#FFFFFF', 0.9).toHex(),
 
-        secondary: base.mix('#000000', 0.8).toHslString(),
-        secondary_hover: base.mix('#000000', 0.7).toHslString(),
-        secondary_foreground: base.mix('#FFFFFF', 0.8).toHslString(),
+        secondary: base.mix('#000000', 0.8).toHex(),
+        secondary_hover: base.mix('#000000', 0.7).toHex(),
+        secondary_foreground: base.mix('#FFFFFF', 0.8).toHex(),
 
-        muted: mutedColor.mix('#000000', 0.8).toHslString(),
-        muted_hover: mutedColor.mix('#000000', 0.7).toHslString(),
-        muted_foreground: mutedColor.mix('#FFFFFF', 0.7).toHslString(),
+        muted: mutedColor.mix('#000000', 0.8).toHex(),
+        muted_hover: mutedColor.mix('#000000', 0.7).toHex(),
+        muted_foreground: mutedColor.mix('#FFFFFF', 0.7).toHex(),
 
-        accent: darkAccentColor.toHslString(),
-        accent_hover: darkAccentColor.mix('#000000', 0.5).toHslString(),
-        accent_foreground: generateContrastForeground(
-          darkAccentColor.toHslString()
-        ),
+        accent: darkAccentColor.toHex(),
+        accent_hover: darkAccentColor.mix('#000000', 0.5).toHex(),
+        accent_foreground: generateContrastForeground(darkAccentColor.toHex()),
 
-        danger: 'hsl(0, 100%, 67%)',
-        danger_hover: 'hsl(0, 72%, 60%)',
-        danger_foreground: 'hsl(0, 0%, 97%)',
+        danger: '#e11d48',
+        danger_hover: '#be123c',
+        danger_foreground: '#ffffff',
 
-        warning: 'hsl(46, 89%, 60%)',
-        warning_hover: 'hsl(46, 76%, 56%)',
-        warning_foreground: 'hsl(0, 0%, 10%)',
+        warning: '#f59e0b',
+        warning_hover: '#d97706',
+        warning_foreground: '#1f2937',
 
-        success: 'hsl(122, 37%, 58%)',
-        success_hover: 'hsl(122, 41%, 51%)',
-        success_foreground: 'hsl(0, 0%, 97%)',
+        success: '#10b981',
+        success_hover: '#059669',
+        success_foreground: '#ffffff',
 
-        border: base.mix('#000000', 0.9).toHslString(),
-        ring: base.toHslString(),
-        input: base.mix('#00000', 0.18).toHslString(),
+        border: base.mix('#000000', 0.9).toHex(),
+        ring: base.toHex(),
+        input: base.mix('#00000', 0.18).toHex(),
 
-        chart1: base.mix('#000000', 0.7).toHslString(),
-        chart2: base.rotate(30).mix('#000000', 0.7).toHslString(),
-        chart3: base.rotate(60).mix('#000000', 0.7).toHslString(),
-        chart4: base.rotate(90).mix('#000000', 0.7).toHslString(),
-        chart5: base.rotate(120).mix('#000000', 0.7).toHslString()
+        chart1: base.mix('#000000', 0.7).toHex(),
+        chart2: base.rotate(30).mix('#000000', 0.7).toHex(),
+        chart3: base.rotate(60).mix('#000000', 0.7).toHex(),
+        chart4: base.rotate(90).mix('#000000', 0.7).toHex(),
+        chart5: base.rotate(120).mix('#000000', 0.7).toHex()
       }
     }
   }

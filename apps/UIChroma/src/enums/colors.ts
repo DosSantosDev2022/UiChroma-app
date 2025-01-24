@@ -11,7 +11,7 @@ export const defaultColors: Colors = {
     secondary: '#c1bebd',
     secondary_hover: '#ada9a8',
     secondary_foreground: '#3f3f3f',
-    accent: '#e4e4e7 ',
+    accent: '#e4e4e7',
     accent_hover: '#e9e9ec',
     accent_foreground: '#666666',
     muted: '#999999',
@@ -65,17 +65,17 @@ export const defaultColors: Colors = {
     warning_foreground: '#1a1a1a',
     success: '#5cb85c',
     success_hover: '#4cae4c',
-    success_foreground: '2#d5d3d3',
+    success_foreground: '#d5d3d3',
 
     border: '#362f2f',
-    ring: '#3f36',
+    ring: '#362f2f',
     input: '#362f2f',
 
     chart1: '#181515',
     chart2: '#181815',
     chart3: '#181815',
     chart4: '#151818',
-    chart5: ' #15151'
+    chart5: '#151515'
   }
 }
 

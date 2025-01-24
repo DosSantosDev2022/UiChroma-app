@@ -1,5 +1,5 @@
 import React from 'react'
-import { LuChevronLeft, LuChevronRight, LuMoreHorizontal } from 'react-icons/lu'
+import { LuChevronLeft, LuChevronRight, LuMoveHorizontal } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
 const Pagination = React.forwardRef<HTMLElement, React.ComponentProps<'nav'>>(
@@ -120,7 +120,7 @@ const PaginationEllipsis = ({
     )}
     {...props}
   >
-    <LuMoreHorizontal className="h-4 w-4" />
+    <LuMoveHorizontal className="h-4 w-4" />
     <span className="sr-only">More pages</span>
   </span>
 )

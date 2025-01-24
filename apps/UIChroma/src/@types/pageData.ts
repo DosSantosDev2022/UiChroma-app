@@ -14,10 +14,12 @@ export interface PageDataTypes {
     id: string
     title: string
     slug: string
-    section: Section | null
-    section02: Section | null
-    section03: Section | null
-    section04: Section | null
-    section05: Section | null
+    sectionOne: Section | null
+    sectionTwo: Section | null
+    sectionThree: Section | null
+    sectionFour: Section | null
+    sectionFive: Section | null
+    sectionSix: Section | null
+    sectionSeven: Section | null
   }
 }

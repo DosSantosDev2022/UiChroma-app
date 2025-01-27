@@ -55,7 +55,8 @@ const ClipBoardHeader = React.forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        `flex h-12 w-full items-center justify-between rounded-md bg-foreground px-2 py-3 dark:bg-muted`,
+        `flex h-12 w-full items-center justify-between rounded-md  px-2 py-3`,
+        `border border-border bg-background shadow`,
         className
       )}
     />
@@ -71,10 +72,7 @@ const ClipBoardLabel = React.forwardRef<
     <h6
       {...props}
       ref={ref}
-      className={twMerge(
-        'text-base font-normal text-foreground dark:text-muted-foreground',
-        className
-      )}
+      className={twMerge('text-base font-normal text-foreground', className)}
     />
   )
 })

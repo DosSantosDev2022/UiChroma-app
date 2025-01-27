@@ -29,7 +29,7 @@ const variantClasses = {
   outline:
     'text-accent bg-accent-foreground hover:bg-accent-hover hover:text-accent-foreground',
   ghost:
-    'bg-background text-muted-foreground hover:bg-muted-hover select-none outline-none focus:bg-muted-hover',
+    'bg-background text-foreground hover:bg-muted-hover select-none outline-none focus:bg-muted-hover',
   accent: 'text-accent-foreground hover:bg-accent-hover  bg-accent',
   disabled: 'bg-opacity-70 bg-accent text-accent-foreground',
   link: 'bg-transparent border-none underline-offset-4 hover:underline text-muted-foreground',

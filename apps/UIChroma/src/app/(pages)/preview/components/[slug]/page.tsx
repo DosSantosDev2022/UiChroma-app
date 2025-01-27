@@ -6,12 +6,12 @@ import {
   SectionPage,
   WrapperSections
 } from '@/components/global/containers/pageContainers'
-import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
-import { Title } from '@/components/global/title/title'
-import ComponentPreview from '@/components/pages/preview/componentPreview/componentPreview'
-import { DocLinks } from '@/components/pages/preview/documentationslink/docLinks'
+import { NavigateThroughSections } from '@/components/global/NavigateThroughSections'
+import { Title } from '@/components/global/title'
+import ComponentPreview from '@/components/pages/preview/component-Preview'
+import { DocLinks } from '@/components/pages/preview/doc-Links'
 import { links } from '@/enums/preview'
-import { GET_DETAILS_COMPONENT } from '@/services/getDetailsComponentData'
+import { GET_DETAILS_COMPONENT } from '@/services/get-Details-Component'
 import {
   Badge,
   ClipBoardAction,

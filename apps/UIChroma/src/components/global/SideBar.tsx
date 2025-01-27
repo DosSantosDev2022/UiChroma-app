@@ -1,6 +1,6 @@
 import { Logo } from '@/assets/icons/Logo'
 import { links, themes } from '@/enums/sideBar'
-import { GET_COMPONENTS_NAME } from '@/services/getComponentNames'
+import { GET_COMPONENTS_NAME } from '@/services/get-Component-Names'
 import {
   SideBar,
   SideBarContent,

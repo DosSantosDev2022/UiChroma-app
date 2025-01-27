@@ -1,26 +1,32 @@
-type DocsLinks = {
+interface DocsLinks {
   id: string
   title: string
   label: string
   url: string
 }
 
-type Features = {
+interface Features {
   id: string
   name: string
 }
 
-type Utilities = {
+interface Utilities {
   title: string
   description: string
   blockCode: string
 }
 
-type Dependencies = {
+interface Dependencies {
   id: string
   title: string
   description: string
   command: string
+}
+
+interface blockCode {
+  title: string
+  description: string
+  blockCode: string
 }
 
 export interface ComponentsPageData {
@@ -32,17 +38,9 @@ export interface ComponentsPageData {
     description: string
     docsLinks: DocsLinks[]
     features: Features[]
-    sourceCode: {
-      description: string
-      title: string
-      blockCode: string
-    }
+    sourceCode: blockCode
     utilities: Utilities
-    sampleCode: {
-      title: string
-      description: string
-      blockCode: string
-    }
+    sampleCode: blockCode
     dependencies: Dependencies[]
     developing: boolean
   }

@@ -1,4 +1,4 @@
-import { Colors } from '@/@types/colorsState'
+import { Colors } from '@/@types/colors-themes-types'
 
 export const defaultColors: Colors = {
   // Tema modo light

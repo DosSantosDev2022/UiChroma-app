@@ -7,12 +7,13 @@ import {
   SectionPage,
   WrapperSections
 } from '@/components/global/containers/pageContainers'
-import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
+import { NavigateThroughSections } from '@/components/global/NavigateThroughSections'
 import { links } from '@/enums/documentation'
-import { GET_STARTER_PAGE_DATA } from '@/services/getStartPageData'
+import { GET_PAGE_DATA } from '@/services/get-page-data'
 
 export default async function Starter() {
-  const { documentationPage } = await GET_STARTER_PAGE_DATA()
+  const slug = 'getStarted'
+  const { documentationPage } = await GET_PAGE_DATA(slug)
 
   return (
     <MainContainer>
@@ -22,63 +23,63 @@ export default async function Starter() {
         </h1>
         <WrapperSections>
           <ContentSections id="Introdução">
-            {documentationPage.section && (
+            {documentationPage.sectionOne && (
               <RichText
-                content={documentationPage.section?.content.raw}
+                content={documentationPage.sectionOne?.content.raw}
                 renderers={defaultRenderers}
               />
             )}
           </ContentSections>
 
           <ContentSections id="Primeiros-Passos">
-            {documentationPage.section02 && (
+            {documentationPage.sectionTwo && (
               <RichText
-                content={documentationPage.section02?.content.raw}
+                content={documentationPage.sectionTwo?.content.raw}
                 renderers={defaultRenderers}
               />
             )}
           </ContentSections>
 
           <ContentSections id="Instalação">
-            {documentationPage.section03 && (
+            {documentationPage.sectionThree && (
               <RichText
-                content={documentationPage.section03?.content.raw}
+                content={documentationPage.sectionThree?.content.raw}
                 renderers={defaultRenderers}
               />
             )}
           </ContentSections>
 
           <ContentSections id="Usando">
-            {documentationPage.section04 && (
+            {documentationPage.sectionFour && (
               <RichText
-                content={documentationPage.section04?.content.raw}
+                content={documentationPage.sectionFour?.content.raw}
                 renderers={defaultRenderers}
               />
             )}
           </ContentSections>
 
           <ContentSections id="Personalização">
-            {documentationPage.section04 && (
+            {documentationPage.sectionFive && (
               <RichText
-                content={documentationPage.section04?.content.raw}
+                content={documentationPage.sectionFive?.content.raw}
                 renderers={defaultRenderers}
               />
             )}
           </ContentSections>
 
           <ContentSections id="Exemplos">
-            {documentationPage.section04 && (
+            {documentationPage.sectionSix && (
               <RichText
-                content={documentationPage.section04?.content.raw}
+                content={documentationPage.sectionSix?.content.raw}
                 renderers={defaultRenderers}
               />
             )}
           </ContentSections>
 
           <ContentSections id="Exemplos2">
-            {documentationPage.section04 && (
+            {documentationPage.sectionSeven && (
               <RichText
-                content={documentationPage.section04?.content.raw}
+                content={documentationPage.sectionSeven?.content.raw}
                 renderers={defaultRenderers}
               />
             )}

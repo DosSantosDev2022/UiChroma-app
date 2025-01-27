@@ -1,5 +1,6 @@
+'use client'
 import { templateTailwindColors } from '@/enums/colors'
-import { useThemeStore } from '@/store/useThemeStore'
+import { useThemeStore } from '@/store/use-Theme-Store'
 import {
   ModalClose,
   ModalContent,

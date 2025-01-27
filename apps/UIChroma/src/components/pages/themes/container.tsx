@@ -1,4 +1,4 @@
-import { Title } from '@/components/global/title/title'
+import { Title } from '@/components/global/title'
 import { ReactNode } from 'react'
 
 interface ContainerPreviewProps {

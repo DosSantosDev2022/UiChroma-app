@@ -1,5 +1,5 @@
-import { ModalSearch } from '@/components/global/modal/modalSearch'
-import { GET_SEARCH } from '@/services/getSearch'
+import { ModalSearch } from '@/components/global/header/modalSearch'
+import { GET_SEARCH } from '@/services/get-Search'
 import { Badge } from '@repo/ChromaUI/components'
 import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'

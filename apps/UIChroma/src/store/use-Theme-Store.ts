@@ -1,6 +1,6 @@
-import { Colors } from '@/@types/colorsState'
+import { Colors } from '@/@types/colors-themes-types'
 import { defaultColors } from '@/enums/colors'
-import { generateTheme } from '@/utils/generateTheme'
+import { generateTheme } from '@/utils/generate-Theme'
 import { create } from 'zustand'
 
 interface ThemeState {

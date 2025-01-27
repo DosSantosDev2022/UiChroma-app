@@ -1,8 +1,8 @@
 import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
-import { Title } from '@/components/global/title/title'
-import { SearchReleases } from '@/components/pages/releases/searchRelease/searchReleases'
-import { GET_RELEASES } from '@/services/getReleasesData'
+import { Title } from '@/components/global/title'
+import { SearchReleases } from '@/components/pages/releases/search-Releases'
+import { GET_RELEASES } from '@/services/get-Releases'
 import { Badge } from '@repo/ChromaUI/components'
 import { format } from 'date-fns'
 

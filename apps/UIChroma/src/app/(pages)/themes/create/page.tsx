@@ -1,32 +1,12 @@
-'use client'
-
-import { Title } from '@/components/global/title/title'
-import ColorModeSelector from '@/components/pages/themes/ColorModeSelector'
+import { Title } from '@/components/global/title'
+import { ColorModeSelector } from '@/components/pages/themes/ColorModeSelector'
 import { ExempleComponents } from '@/components/pages/themes/exempleComponents'
 import { ModalCodeCss } from '@/components/pages/themes/ModalCodeCss'
 import { ModalTemplates } from '@/components/pages/themes/modaltemplates'
-import { useThemeStore } from '@/store/useThemeStore'
 import { Button } from '@repo/ChromaUI/components'
 import Link from 'next/link'
-import { useEffect } from 'react'
 
 export default function ThemeCreatePage() {
-  const {
-    readyColors,
-    handleLightColorChange,
-    handleDarkColorChange,
-    theme,
-    setTheme
-  } = useThemeStore()
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [theme])
-
   return (
     <div className="flex flex-col space-y-10">
       <section className="relative mx-auto p-2">
@@ -57,20 +37,9 @@ export default function ThemeCreatePage() {
 
             <div className="flex w-full flex-row items-center justify-between gap-4">
               {/* Seletor para o Light Mode */}
-              <ColorModeSelector
-                title="Light mode"
-                colors={readyColors.light}
-                handleColorChange={handleLightColorChange}
-                onClick={() => setTheme('light')}
-              />
-
+              <ColorModeSelector mode="light" />
               {/* Seletor para o Dark Mode */}
-              <ColorModeSelector
-                title="Dark mode"
-                colors={readyColors.dark}
-                handleColorChange={handleDarkColorChange}
-                onClick={() => setTheme('dark')}
-              />
+              <ColorModeSelector mode="dark" />
             </div>
           </div>
         </div>

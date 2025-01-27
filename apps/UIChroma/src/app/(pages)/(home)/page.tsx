@@ -1,11 +1,12 @@
 import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
-import { GET_HOME_PAGE_DATA } from '@/services/getHomePageData'
+import { GET_PAGE_DATA } from '@/services/get-page-data'
 import { Button } from '@repo/ChromaUI/components'
 import Link from 'next/link'
 
 export default async function Home() {
-  const { documentationPage } = await GET_HOME_PAGE_DATA()
+  const slug = 'home-page'
+  const { documentationPage } = await GET_PAGE_DATA(slug)
   return (
     <div className=" flex h-full max-w-4xl flex-col px-4 sm:px-6 lg:px-8">
       <section className="flex h-full flex-col pb-10 pt-16">

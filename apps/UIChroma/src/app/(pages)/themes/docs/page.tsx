@@ -7,13 +7,14 @@ import {
   SectionPage,
   WrapperSections
 } from '@/components/global/containers/pageContainers'
-import { NavigateThroughSections } from '@/components/global/navigationScroll/NavigateThroughSections'
-import { Title } from '@/components/global/title/title'
+import { NavigateThroughSections } from '@/components/global/NavigateThroughSections'
+import { Title } from '@/components/global/title'
 import { links } from '@/enums/themes'
-import { GET_THEMES_PAGE_DATA } from '@/services/getThemesPageData'
+import { GET_PAGE_DATA } from '@/services/get-page-data'
 
 export default async function ThemesPage() {
-  const { documentationPage } = await GET_THEMES_PAGE_DATA()
+  const slug = 'themes'
+  const { documentationPage } = await GET_PAGE_DATA(slug)
   return (
     <>
       <MainContainer>
@@ -21,49 +22,49 @@ export default async function ThemesPage() {
           <WrapperSections>
             <ContentSections id="Introdução">
               <Title>{documentationPage.title}</Title>
-              {documentationPage.section && (
+              {documentationPage.sectionOne && (
                 <RichText
-                  content={documentationPage.section.content.raw}
+                  content={documentationPage.sectionOne.content.raw}
                   renderers={defaultRenderers}
                 />
               )}
             </ContentSections>
 
             <ContentSections id="Estrutura">
-              <Title>{documentationPage.section02?.title}</Title>
-              {documentationPage.section02 && (
+              <Title>{documentationPage.sectionTwo?.title}</Title>
+              {documentationPage.sectionTwo && (
                 <RichText
-                  content={documentationPage.section02.content.raw}
+                  content={documentationPage.sectionTwo.content.raw}
                   renderers={defaultRenderers}
                 />
               )}
             </ContentSections>
 
             <ContentSections id="Dark">
-              <Title>{documentationPage.section03?.title}</Title>
-              {documentationPage.section03 && (
+              <Title>{documentationPage.sectionThree?.title}</Title>
+              {documentationPage.sectionThree && (
                 <RichText
-                  content={documentationPage.section03.content.raw}
+                  content={documentationPage.sectionThree.content.raw}
                   renderers={defaultRenderers}
                 />
               )}
             </ContentSections>
 
             <ContentSections id="Personalização">
-              <Title>{documentationPage.section04?.title}</Title>
-              {documentationPage.section04 && (
+              <Title>{documentationPage.sectionFour?.title}</Title>
+              {documentationPage.sectionFour && (
                 <RichText
-                  content={documentationPage.section04.content.raw}
+                  content={documentationPage.sectionFour.content.raw}
                   renderers={defaultRenderers}
                 />
               )}
             </ContentSections>
 
             <ContentSections id="Integração">
-              <Title>{documentationPage.section05?.title}</Title>
-              {documentationPage.section05 && (
+              <Title>{documentationPage.sectionFive?.title}</Title>
+              {documentationPage.sectionFive && (
                 <RichText
-                  content={documentationPage.section05.content.raw}
+                  content={documentationPage.sectionFive.content.raw}
                   renderers={defaultRenderers}
                 />
               )}

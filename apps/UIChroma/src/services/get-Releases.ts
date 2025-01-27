@@ -1,9 +1,9 @@
-import { MyQueryResponse } from '@/@types/releases'
+import { ReleasePage } from '@/@types/page-releases-Types'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_RELEASES = async (
   searchTerm?: string
-): Promise<MyQueryResponse> => {
+): Promise<ReleasePage> => {
   const query = `
     query MyQuery($searchTerm: String) {
       releasePage(where: { slug: "release-page" }) {

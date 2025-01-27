@@ -1,4 +1,4 @@
-import { ComponentsPageData } from '@/@types/components'
+import { ComponentsPageData } from '@/@types/page-components-types'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_DETAILS_COMPONENT = async (

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import { inter } from '@/assets/fonts'
 import { Header } from '@/components/global/header/Header'
-import { AppSidebar } from '@/components/global/sideBar/SideBar'
+import { AppSidebar } from '@/components/global/SideBar'
 import '../../../../global.css'
 
 export const metadata: Metadata = {

@@ -1,7 +1,7 @@
 'use client'
 import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
-import { useThemeStore } from '@/store/useThemeStore'
-import { generateCodeCss, generateTailwindConfig } from '@/utils/generateCode'
+import { useThemeStore } from '@/store/use-Theme-Store'
+import { generateCodeCss, generateTailwindConfig } from '@/utils/generate-Code'
 import {
   Button,
   ClipBoardAction,

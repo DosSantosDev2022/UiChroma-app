@@ -1,9 +1,9 @@
 'use client'
 import * as Examples from '@/components/@examples'
 import { ContainerPreview } from './container'
-import { useThemeStore } from '@/store/useThemeStore'
+import { useThemeStore } from '@/store/use-Theme-Store'
 import { useEffect } from 'react'
-import { updateCssVariables } from '@/utils/updateCssVariables'
+import { updateCssVariables } from '@/utils/update-Css-Variables'
 
 export function ExempleComponents() {
   const { theme, lightColors, darkColors } = useThemeStore()

@@ -73,7 +73,7 @@ export default async function ComponentDetails({
                   children={`v.${pageComponent.version}`}
                 />
               </div>
-              <p className="mt-2.5 max-w-[500px] text-base font-normal text-muted-foreground ">
+              <p className="mt-2.5 max-w-[500px] text-base font-normal text-muted-foreground">
                 {pageComponent.description}
               </p>
             </div>
@@ -87,10 +87,7 @@ export default async function ComponentDetails({
               </Title>
               <ul className="flex flex-col items-start gap-2">
                 {pageComponent.features.map((feature, index) => (
-                  <li
-                    key={index}
-                    className="flex items-center gap-2 text-foreground"
-                  >
+                  <li key={index} className="flex items-center gap-2">
                     <FaCircleCheck className="text-primary" size={18} />
                     <span className="font-bold">{feature.name}</span>
                   </li>
@@ -190,7 +187,7 @@ export default async function ComponentDetails({
               </Title>
               {pageComponent.dependencies.map((dep) => (
                 <div
-                  className="flex w-full flex-col items-start gap-4 text-zinc-600"
+                  className="flex w-full flex-col items-start gap-4"
                   key={dep.id}
                 >
                   <p className="flex items-center gap-3 text-base font-normal text-muted-foreground">

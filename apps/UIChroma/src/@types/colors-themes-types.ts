@@ -26,8 +26,8 @@ export type Colors = {
     success_foreground: string // contraste da cor sucess
 
     border: string // cor para bordas sempre suave contrastanto com a background
-    ring: string // cor para rings
     input: string // cor de fundo para elementos de input , deve ser uma cor bem clara
+    ring: string // cor para rings
 
     chart1: string // core para gráficos
     chart2: string // core para gráficos
@@ -63,8 +63,8 @@ export type Colors = {
     success_foreground: string // contraste da cor sucess
 
     border: string // cor para bordas um tom escuro contrastando com background
-    ring: string // cor para rings
     input: string // cor de fundo para elementos de input, deve ser tom escuro proximo da cor background
+    ring: string // cor para rings
 
     chart1: string // core para gráficos
     chart2: string // core para gráficos

@@ -280,7 +280,7 @@ const SideBarItem = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        'mt-1 cursor-pointer list-none truncate rounded-md px-1.5 py-2 text-sm text-muted-foreground hover:bg-muted-hover',
+        'mt-1 cursor-pointer list-none truncate rounded-md px-1.5 py-2 text-sm text-foreground hover:bg-muted-hover',
         'flex items-center  gap-2',
         `${isOpenSideBar ? 'justify-start' : 'justify-center'}`,
         className

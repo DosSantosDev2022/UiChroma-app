@@ -3,17 +3,17 @@ import { Colors } from '@/@types/colors-themes-types'
 export const defaultColors: Colors = {
   // Tema modo light
   light: {
-    background: '#f4f4f4',
-    foreground: '#0a0808',
-    primary: '#3f3636',
-    primary_hover: '#625a5a',
+    background: '#ffffff',
+    foreground: '#1a1a1a',
+    primary: '#5d3f97',
+    primary_hover: '#432e6e',
     primary_foreground: '#ffffff',
-    secondary: '#c1bebd',
-    secondary_hover: '#ada9a8',
-    secondary_foreground: '#3f3f3f',
-    accent: '#e4e4e7',
-    accent_hover: '#e9e9ec',
-    accent_foreground: '#666666',
+    secondary: '#99b3ff',
+    secondary_hover: '#c2c2c2',
+    secondary_foreground: '#000000',
+    accent: '#99b3ff',
+    accent_hover: '#b3c2ff',
+    accent_foreground: '#262626',
     muted: '#999999',
     muted_hover: '#adadad',
     muted_foreground: '#1a1a1a',
@@ -29,8 +29,8 @@ export const defaultColors: Colors = {
     success_foreground: '#f8f8f8',
 
     border: '#181515',
-    ring: '#1d1a1a',
     input: '#1d1a1a',
+    ring: '#1d1a1a',
 
     chart1: '#3f3636',
     chart2: '#3f3f36',

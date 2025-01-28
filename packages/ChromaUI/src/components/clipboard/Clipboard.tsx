@@ -24,7 +24,7 @@ const ClipBoardAction = React.forwardRef<HTMLButtonElement, ClipBoardProps>(
       <button
         className={twMerge(
           'flex items-center gap-2 rounded-md p-1.5 transition-all duration-500',
-          'bg-primary text-primary-foreground hover:bg-primary-hover',
+          'bg-muted text-muted-foreground hover:bg-muted-hover',
           className
         )}
         ref={ref}
@@ -102,3 +102,4 @@ export {
   ClipBoardHeader,
   ClipBoardLabel
 }
+

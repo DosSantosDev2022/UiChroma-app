@@ -9,39 +9,37 @@ interface defaultRenderersProps {
 const defaultRenderers = {
   // Títulos
   h1: ({ children }: defaultRenderersProps) => (
-    <h1 className={`${inter.className} text-6xl font-bold text-foreground`}>
-      {children}
-    </h1>
+    <h1 className={`${inter.className} text-6xl font-bold`}>{children}</h1>
   ),
   h2: ({ children }: defaultRenderersProps) => (
-    <h2 className="text-start text-4xl font-extrabold tracking-tight text-foreground">
+    <h2 className="text-start text-4xl font-extrabold tracking-tight">
       {children}
     </h2>
   ),
   h3: ({ children }: defaultRenderersProps) => (
-    <h3 className="text-start text-2xl font-semibold tracking-tight text-foreground">
+    <h3 className="text-start text-2xl font-semibold tracking-tight">
       {children}
     </h3>
   ),
   h4: ({ children }: defaultRenderersProps) => (
-    <h4 className="text-start text-lg font-semibold tracking-tight text-foreground">
+    <h4 className="text-start text-lg font-semibold tracking-tight">
       {children}
     </h4>
   ),
   h5: ({ children }: defaultRenderersProps) => (
-    <h5 className="text-md text-start font-semibold tracking-tight text-foreground">
+    <h5 className="text-md text-start font-semibold tracking-tight">
       {children}
     </h5>
   ),
   h6: ({ children }: defaultRenderersProps) => (
-    <h6 className="text-start text-xl font-extrabold tracking-tight text-foreground">
+    <h6 className="text-start text-xl font-extrabold tracking-tight">
       {children}
     </h6>
   ),
 
   // Parágrafos
   p: ({ children }: defaultRenderersProps) => (
-    <p className="w-full text-base font-normal text-foreground">{children}</p>
+    <p className="w-full text-base font-normal">{children}</p>
   ),
 
   // Listas
@@ -57,7 +55,7 @@ const defaultRenderers = {
 
   // Links
   a: ({ children, href }: { children: ReactNode; href?: string }) => (
-    <a href={href} className="text-primary hover:text-primary-hover">
+    <a href={href} className="text-accent hover:text-accent-hover">
       {children}
     </a>
   ),
@@ -102,12 +100,12 @@ const defaultRenderers = {
 
   // Span (texto em linha)
   span: ({ children }: defaultRenderersProps) => (
-    <span className="text-muted">{children}</span>
+    <span className="text-muted-foreground">{children}</span>
   ),
 
   // Strong (negrito)
   strong: ({ children }: defaultRenderersProps) => (
-    <strong className="font-bold text-foreground">{children}</strong>
+    <strong className="font-bold">{children}</strong>
   ),
 
   // Em (itálico)

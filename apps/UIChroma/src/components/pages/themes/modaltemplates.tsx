@@ -65,3 +65,4 @@ const ModalTemplates = () => {
 }
 
 export { ModalTemplates }
+

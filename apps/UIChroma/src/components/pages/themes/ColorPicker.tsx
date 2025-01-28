@@ -46,3 +46,4 @@ const ColorPicker = ({ color, onChange }: SelectorColorsProps) => {
 }
 
 export { ColorPicker }
+

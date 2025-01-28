@@ -76,7 +76,7 @@ const ModalSearch = ({ data }: ModalProps) => {
               {filtered.map((filter) => (
                 <li className="flex flex-col space-y-2" key={filter.id}>
                   <Link
-                    className="w-full rounded-md border p-2 text-foreground transition-all duration-200 hover:bg-muted-hover hover:text-muted-foreground"
+                    className="w-full rounded-md border p-2 transition-all duration-200 hover:bg-muted-hover hover:text-muted-foreground"
                     href={`/preview/components/${filter.slug}`}
                     onClick={() => handleOpenChange(false)}
                   >
@@ -97,3 +97,4 @@ const ModalSearch = ({ data }: ModalProps) => {
 }
 
 export { ModalSearch }
+

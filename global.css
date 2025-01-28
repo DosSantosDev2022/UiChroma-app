@@ -9,7 +9,7 @@
     --foreground: #1a1a1a;
 
     --primary: #5d3f97;
-    --primary-hover: #8e6f9c;
+    --primary-hover: #432e6e;
     --primary-foreground: #ffffff;
     --secondary: #99b3ff;
     --secondary-hover: #c2c2c2;
@@ -43,7 +43,7 @@
   }
 
   .dark {
-    --background: #1e1e31;
+    --background: #000000;
     --foreground: #ffffff;
 
     --primary: #5d3f97;

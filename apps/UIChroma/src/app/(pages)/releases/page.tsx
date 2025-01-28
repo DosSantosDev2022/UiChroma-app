@@ -45,10 +45,7 @@ export default async function ReleasePage({ searchParams }: ReleasePageParams) {
                     {format(new Date(release.date), 'dd/MM/yyyy')}
                   </span>
                   <div className="flex items-center gap-3">
-                    <Title
-                      as="h4"
-                      className="text-xl font-bold text-foreground"
-                    >
+                    <Title as="h4" className="text-xl font-bold">
                       {release.title}
                     </Title>
                     <Badge variant="primary" children={release.version} />

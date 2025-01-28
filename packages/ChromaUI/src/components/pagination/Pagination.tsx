@@ -1,5 +1,7 @@
 import React from 'react'
-import { LuChevronLeft, LuChevronRight, LuMoveHorizontal } from 'react-icons/lu'
+import { BsThreeDots } from 'react-icons/bs'
+import { LuChevronLeft, LuChevronRight } from 'react-icons/lu'
+
 import { twMerge } from 'tailwind-merge'
 
 const Pagination = React.forwardRef<HTMLElement, React.ComponentProps<'nav'>>(
@@ -67,7 +69,7 @@ const PageButton = ({
       aria-current={isActive ? 'page' : 'false'}
       className={twMerge(
         variantClasses[radius],
-        ` flex h-10 w-10 items-center justify-center p-2 transition-all duration-300 ease-in hover:scale-95
+        ` flex h-10 w-10 items-center justify-center border border-border p-2 transition-all duration-300 ease-in hover:scale-95
       ${isActive ? 'bg-primary-foreground text-primary' : 'bg-primary text-primary-foreground'}`,
         className
       )}
@@ -120,7 +122,7 @@ const PaginationEllipsis = ({
     )}
     {...props}
   >
-    <LuMoveHorizontal className="h-4 w-4" />
+    <BsThreeDots className="h-4 w-4" />
     <span className="sr-only">More pages</span>
   </span>
 )
@@ -136,3 +138,4 @@ export {
   PaginationNext,
   PaginationPrevious
 }
+

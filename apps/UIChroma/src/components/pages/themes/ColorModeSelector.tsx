@@ -1,6 +1,6 @@
 'use client'
 
-import { Colors } from '@/@types/colors-themes-types'
+import { Colors, Theme } from '@/@types/colors-themes-types'
 import { Title } from '@/components/global/title'
 import { ColorPicker } from '@/components/pages/themes/ColorPicker'
 import { FaMoon } from 'react-icons/fa'
@@ -14,11 +14,12 @@ interface ColorModeSelectorProps {
 
 const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
   const {
-    readyColors,
-    handleLightColorChange,
-    handleDarkColorChange,
+    darkColors,
+    lightColors,
     setTheme,
-    theme
+    theme,
+    handleLightColorChange,
+    handleDarkColorChange
   } = useThemeStore()
 
   useEffect(() => {
@@ -29,7 +30,7 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
     }
   }, [theme])
 
-  const colors = mode === 'light' ? readyColors.light : readyColors.dark
+  const colors = mode === 'light' ? lightColors : darkColors
   const handleColorChange =
     mode === 'light' ? handleLightColorChange : handleDarkColorChange
 
@@ -51,7 +52,7 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
       </div>
       <div className="custom-scrollbar max-h-[360px] overflow-y-auto rounded-md border border-border px-2 py-1.5 shadow-sm">
         {Object.keys(colors).map((key) => {
-          const colorKey = key as keyof Colors['light'] | keyof Colors['dark']
+          const colorKey = key as keyof Theme['light'] | keyof Theme['dark']
           return (
             <div key={key} className="mt-6 flex flex-col items-start">
               <span className="mb-2 ml-6 text-start text-sm capitalize text-muted-foreground">

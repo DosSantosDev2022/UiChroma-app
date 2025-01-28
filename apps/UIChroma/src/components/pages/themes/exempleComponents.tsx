@@ -1,4 +1,5 @@
 'use client'
+
 import * as Examples from '@/components/@examples'
 import { ContainerPreview } from './container'
 import { useThemeStore } from '@/store/use-Theme-Store'
@@ -9,12 +10,11 @@ export function ExempleComponents() {
   const { theme, lightColors, darkColors } = useThemeStore()
 
   useEffect(() => {
-    updateCssVariables(theme, lightColors, darkColors)
+    updateCssVariables(theme, lightColors, darkColors) // Aplica as variáveis CSS com base no tema
   }, [theme, lightColors, darkColors])
 
   return (
-    <div id="demo-container" className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-      {/* buttons preview */}
+    <div className="grid grid-cols-1 gap-6 bg-background text-foreground lg:grid-cols-2">
       <ContainerPreview title="Componente button">
         <Examples.ButtonPreview />
       </ContainerPreview>

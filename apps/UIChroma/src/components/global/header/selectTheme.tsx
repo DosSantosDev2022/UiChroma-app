@@ -36,7 +36,7 @@ const SelectTheme = () => {
   }, [setTheme])
 
   return (
-    <Button onClick={handleThemeToggle} sizes="icon">
+    <Button variants="accent" onClick={handleThemeToggle} sizes="icon">
       {theme === 'light' ? <MdSunny /> : <FaMoon />}
     </Button>
   )

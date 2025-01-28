@@ -1,11 +1,12 @@
-import { Colors } from '@/@types/colors-themes-types'
+import { Theme } from '@/@types/colors-themes-types'
 
-export const defaultColors: Colors = {
+export const defaultTheme: Theme = {
   // Tema modo light
+  label: 'defaultTheme',
   light: {
     background: '#ffffff',
     foreground: '#1a1a1a',
-    primary: '#5d3f97',
+    primary: '#1a1a1a',
     primary_hover: '#432e6e',
     primary_foreground: '#ffffff',
     secondary: '#99b3ff',
@@ -79,114 +80,143 @@ export const defaultColors: Colors = {
   }
 }
 
-export const templateTailwindColors = [
-  // Slate
-  { label: 'Slate-500', value: '#64748b' },
-  { label: 'Slate-700', value: '#334155' },
-  { label: 'Slate-900', value: '#0f172a' },
-
-  // Gray
-  { label: 'Gray-500', value: '#6b7280' },
-  { label: 'Gray-700', value: '#374151' },
-  { label: 'Gray-900', value: '#111827' },
-
-  // Zinc
-  { label: 'Zinc-500', value: '#71717a' },
-  { label: 'Zinc-700', value: '#3f3f46' },
-  { label: 'Zinc-900', value: '#18181b' },
-
-  // Neutral
-  { label: 'Neutral-500', value: '#737373' },
-  { label: 'Neutral-700', value: '#404040' },
-  { label: 'Neutral-900', value: '#171717' },
-
-  // Stone
-  { label: 'Stone-500', value: '#78716c' },
-  { label: 'Stone-700', value: '#44403c' },
-  { label: 'Stone-900', value: '#1c1917' },
-
-  // Red
-  { label: 'Red-500', value: '#ef4444' },
-  { label: 'Red-700', value: '#b91c1c' },
-  { label: 'Red-900', value: '#7f1d1d' },
-
-  // Orange
-  { label: 'Orange-500', value: '#f97316' },
-  { label: 'Orange-700', value: '#c2410c' },
-  { label: 'Orange-900', value: '#7c2d12' },
-
-  // Amber
-  { label: 'Amber-500', value: '#f59e0b' },
-  { label: 'Amber-700', value: '#b45309' },
-  { label: 'Amber-900', value: '#78350f' },
-
-  // Yellow
-  { label: 'Yellow-500', value: '#eab308' },
-  { label: 'Yellow-700', value: '#a16207' },
-  { label: 'Yellow-900', value: '#713f12' },
-
-  // Lime
-  { label: 'Lime-500', value: '#84cc16' },
-  { label: 'Lime-700', value: '#4d7c0f' },
-  { label: 'Lime-900', value: '#365314' },
-
-  // Green
-  { label: 'Green-500', value: '#22c55e' },
-  { label: 'Green-700', value: '#15803d' },
-  { label: 'Green-900', value: '#14532d' },
-
-  // Emerald
-  { label: 'Emerald-500', value: '#10b981' },
-  { label: 'Emerald-700', value: '#047857' },
-  { label: 'Emerald-900', value: '#064e3b' },
-
-  // Teal
-  { label: 'Teal-500', value: '#14b8a6' },
-  { label: 'Teal-700', value: '#0f766e' },
-  { label: 'Teal-900', value: '#134e4a' },
-
-  // Cyan
-  { label: 'Cyan-500', value: '#06b6d4' },
-  { label: 'Cyan-700', value: '#0e7490' },
-  { label: 'Cyan-900', value: '#164e63' },
-
-  // Sky
-  { label: 'Sky-500', value: '#0ea5e9' },
-  { label: 'Sky-700', value: '#0369a1' },
-  { label: 'Sky-900', value: '#0c4a6e' },
-
-  // Blue
-  { label: 'Blue-500', value: '#3b82f6' },
-  { label: 'Blue-700', value: '#1d4ed8' },
-  { label: 'Blue-900', value: '#1e3a8a' },
-
-  // Indigo
-  { label: 'Indigo-500', value: '#6366f1' },
-  { label: 'Indigo-700', value: '#4338ca' },
-  { label: 'Indigo-900', value: '#312e81' },
-
-  // Violet
-  { label: 'Violet-500', value: '#8b5cf6' },
-  { label: 'Violet-700', value: '#6d28d9' },
-  { label: 'Violet-900', value: '#4c1d95' },
-
-  // Purple
-  { label: 'Purple-500', value: '#a855f7' },
-  { label: 'Purple-700', value: '#7e22ce' },
-  { label: 'Purple-900', value: '#581c87' },
-
-  // Fuchsia
-  { label: 'Fuchsia-500', value: '#d946ef' },
-  { label: 'Fuchsia-700', value: '#a21caf' },
-  { label: 'Fuchsia-900', value: '#701a75' },
-
-  // Pink
-  { label: 'Pink-500', value: '#ec4899' },
-  { label: 'Pink-700', value: '#be185d' },
-  { label: 'Pink-900', value: '#831843' },
-
-  // Rose
-  { label: 'Rose-500', value: '#f43f5e' },
-  { label: 'Rose-700', value: '#be123c' },
-  { label: 'Rose-900', value: '#881337' }
+export const themes: Theme[] = [
+  {
+    label: 'Slate',
+    light: {
+      background: '#ffffff',
+      foreground: '#0A0C16',
+      primary: '#121726',
+      primary_hover: '#020617',
+      primary_foreground: '#F5F9FF',
+      secondary: '#94a3b8',
+      secondary_hover: '#c2c2c2',
+      secondary_foreground: '#121726',
+      accent: '#EEF4FD',
+      accent_hover: '#c2c2c2',
+      accent_foreground: '#121726',
+      muted: '#f3f4f6',
+      muted_hover: '#f3f4f6',
+      muted_foreground: '#6b7280',
+      danger: '#F25555',
+      danger_hover: '#e04848',
+      danger_foreground: '#F5F9FF',
+      warning: '#f5c542',
+      warning_hover: '#e6b63c',
+      warning_foreground: '#1a1a1a',
+      success: '#5cb85c',
+      success_hover: '#4cae4c',
+      success_foreground: '#f8f8f8',
+      border: '#DDE4F0',
+      input: '#DDE4F0',
+      ring: '#0A0C16',
+      chart1: '#EB7260',
+      chart2: '#2DA597',
+      chart3: '#235D6A',
+      chart4: '#CCEF8F',
+      chart5: '#DCE076'
+    },
+    dark: {
+      background: '#0A0C16',
+      foreground: '#F5F9FF',
+      primary: '#F5F9FF',
+      primary_hover: '#e8e8e8',
+      primary_foreground: '#121726',
+      secondary: '#1C202A',
+      secondary_hover: '#181515',
+      secondary_foreground: '#F5F9FF',
+      accent: '#1C202A',
+      accent_hover: '#404041',
+      accent_foreground: '#F5F9FF',
+      muted: '#1C202A',
+      muted_hover: '#4a4a4a',
+      muted_foreground: '#9aa0a7',
+      danger: '#ff5a5a',
+      danger_hover: '#e04848',
+      danger_foreground: '#f8f8f8',
+      warning: '#f5c542',
+      warning_hover: '#e6b63c',
+      warning_foreground: '#1a1a1a',
+      success: '#5cb85c',
+      success_hover: '#4cae4c',
+      success_foreground: '#d5d3d3',
+      border: '#1C202A',
+      ring: '#D5E1F2',
+      input: '#1C202A',
+      chart1: '#4A91F2',
+      chart2: '#35B384',
+      chart3: '#EDB64B',
+      chart4: '#C678DD',
+      chart5: '#EF4F77'
+    }
+  },
+  {
+    label: 'Tema Escuro',
+    light: {
+      background: '#333333',
+      foreground: '#D1D1D1',
+      primary: '#6200EE',
+      primary_hover: '#3700B3',
+      primary_foreground: '#FFFFFF',
+      secondary: '#03DAC6',
+      secondary_hover: '#018786',
+      secondary_foreground: '#000000',
+      accent: '#FFBB86',
+      accent_hover: '#FF80AB',
+      accent_foreground: '#000000',
+      muted: '#757575',
+      muted_hover: '#616161',
+      muted_foreground: '#D1D1D1',
+      danger: '#CF6679',
+      danger_hover: '#B00020',
+      danger_foreground: '#F8F8F8',
+      warning: '#FFAB00',
+      warning_hover: '#F57F17',
+      warning_foreground: '#000000',
+      success: '#4CAF50',
+      success_hover: '#388E3C',
+      success_foreground: '#FFFFFF',
+      border: '#BBBBBB',
+      input: '#303030',
+      ring: '#6200EE',
+      chart1: '#FF5722',
+      chart2: '#9C27B0',
+      chart3: '#3F51B5',
+      chart4: '#009688',
+      chart5: '#8BC34A'
+    },
+    dark: {
+      background: '#121212',
+      foreground: '#EAEAEA',
+      primary: '#BB86FC',
+      primary_hover: '#3700B3',
+      primary_foreground: '#000000',
+      secondary: '#03DAC6',
+      secondary_hover: '#018786',
+      secondary_foreground: '#000000',
+      accent: '#FFBB86FC',
+      accent_hover: '#FF80AB',
+      accent_foreground: '#000000',
+      muted: '#757575',
+      muted_hover: '#616161',
+      muted_foreground: '#D1D1D1',
+      danger: '#CF6679',
+      danger_hover: '#B00020',
+      danger_foreground: '#F8F8F8',
+      warning: '#FFAB00',
+      warning_hover: '#F57F17',
+      warning_foreground: '#000000',
+      success: '#4CAF50',
+      success_hover: '#388E3C',
+      success_foreground: '#FFFFFF',
+      border: '#333333',
+      ring: '#BB86FC',
+      input: '#303030',
+      chart1: '#FF5722',
+      chart2: '#9C27B0',
+      chart3: '#3F51B5',
+      chart4: '#009688',
+      chart5: '#8BC34A'
+    }
+  }
 ]

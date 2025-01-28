@@ -1,9 +1,9 @@
-import { Colors } from '@/@types/colors-themes-types'
+import { Theme } from '@/@types/colors-themes-types'
 
 export const updateCssVariables = (
   theme: 'light' | 'dark',
-  lightColors: Colors['light'],
-  darkColors: Colors['dark']
+  lightColors: Theme['light'],
+  darkColors: Theme['dark']
 ) => {
   if (typeof document !== 'undefined') {
     const demoContainer = document.querySelector(

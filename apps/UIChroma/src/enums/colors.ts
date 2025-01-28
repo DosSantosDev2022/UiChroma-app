@@ -194,7 +194,7 @@ export const themes: Theme[] = [
       secondary: '#03DAC6',
       secondary_hover: '#018786',
       secondary_foreground: '#000000',
-      accent: '#FFBB86FC',
+      accent: '#FFBB86',
       accent_hover: '#FF80AB',
       accent_foreground: '#000000',
       muted: '#757575',

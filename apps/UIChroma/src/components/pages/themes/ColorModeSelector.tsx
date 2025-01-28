@@ -18,8 +18,8 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
     lightColors,
     setTheme,
     theme,
-    handleLightColorChange,
-    handleDarkColorChange
+    updateDarkColor,
+    updateLightColor
   } = useThemeStore()
 
   useEffect(() => {
@@ -32,7 +32,11 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
 
   const colors = mode === 'light' ? lightColors : darkColors
   const handleColorChange =
-    mode === 'light' ? handleLightColorChange : handleDarkColorChange
+    mode === 'light'
+      ? (newColor: string, key: keyof Theme['light']) =>
+          updateLightColor(key, newColor)
+      : (newColor: string, key: keyof Theme['dark']) =>
+          updateDarkColor(key, newColor)
 
   const icon =
     mode === 'dark' ? <FaMoon className="mr-2" /> : <MdSunny className="mr-2" />

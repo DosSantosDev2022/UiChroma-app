@@ -16,12 +16,10 @@ import { FaCheck } from 'react-icons/fa6'
 import { MdPalette } from 'react-icons/md'
 
 const ModalTemplates = () => {
-  const { selectedColor, setSelectedColor, handleBaseColorChange, setTheme } =
-    useThemeStore()
+  const { selectedColor, setSelectedColor, setTheme } = useThemeStore()
 
   const handleColorClick = (colorLabel: string) => {
     setSelectedColor(colorLabel)
-    handleBaseColorChange(colorLabel) // Atualiza as cores no store com base no tema
     setTheme('light') // Definindo o tema para 'light' após seleção
   }
 

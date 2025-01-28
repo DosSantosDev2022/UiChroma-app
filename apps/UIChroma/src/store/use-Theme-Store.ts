@@ -1,28 +1,11 @@
 import { create } from 'zustand'
 import { defaultTheme, themes } from '@/enums/colors'
 import { Theme } from '@/@types/colors-themes-types'
-
-interface ThemeState {
-  lightColors: Theme['light']
-  darkColors: Theme['dark']
-  selectedColor: string | null
-  theme: 'light' | 'dark'
-  setSelectedColor: (colorLabel: string) => void
-  setTheme: (theme: 'light' | 'dark') => void
-  handleBaseColorChange: (colorLabel: string) => void
-  handleLightColorChange: (
-    newColor: string,
-    colorKey: keyof Theme['light']
-  ) => void
-  handleDarkColorChange: (
-    newColor: string,
-    colorKey: keyof Theme['dark']
-  ) => void
-}
+import { ThemeState } from '@/@types/theme-store-types'
 
 const getInitialTheme = (): Theme => themes[0] || defaultTheme
 
-export const useThemeStore = create<ThemeState>((set) => {
+export const useThemeStore = create<ThemeState>((set, get) => {
   const initialTheme = getInitialTheme()
 
   return {
@@ -31,49 +14,33 @@ export const useThemeStore = create<ThemeState>((set) => {
     selectedColor: null,
     theme: 'light',
 
-    // Função para atualizar o tema
+    // Define o tema (light/dark)
     setTheme: (theme) => set({ theme }),
 
-    // Função para atualizar a cor base selecionada
+    // Atualiza o tema e cores selecionadas
     setSelectedColor: (colorLabel) => {
-      set({ selectedColor: colorLabel })
-      const selectedTheme = themes.find((theme) => theme.label === colorLabel)
-
-      if (selectedTheme) {
-        set({
-          lightColors: selectedTheme.light,
-          darkColors: selectedTheme.dark
-        })
-      }
-    },
-
-    // Função que altera as cores de acordo com o tema selecionado
-    handleBaseColorChange: (colorLabel) => {
       const selectedTheme =
         themes.find((theme) => theme.label === colorLabel) || defaultTheme
 
-      if (selectedTheme) {
-        set({
-          lightColors: selectedTheme.light,
-          darkColors: selectedTheme.dark
-        })
-      }
-    },
-
-    handleLightColorChange: (newColor, colorKey) => {
-      set((state) => {
-        const updatedLightColors = { ...state.lightColors }
-        updatedLightColors[colorKey] = newColor
-        return { lightColors: updatedLightColors }
+      set({
+        selectedColor: colorLabel,
+        lightColors: selectedTheme.light,
+        darkColors: selectedTheme.dark
       })
     },
 
-    handleDarkColorChange: (newColor, colorKey) => {
-      set((state) => {
-        const updatedDarkColors = { ...state.darkColors }
-        updatedDarkColors[colorKey] = newColor
-        return { darkColors: updatedDarkColors }
-      })
+    // Atualiza uma cor específica no tema claro
+    updateLightColor: (colorKey, newColor) => {
+      set((state) => ({
+        lightColors: { ...state.lightColors, [colorKey]: newColor }
+      }))
+    },
+
+    // Atualiza uma cor específica no tema escuro
+    updateDarkColor: (colorKey, newColor) => {
+      set((state) => ({
+        darkColors: { ...state.darkColors, [colorKey]: newColor }
+      }))
     }
   }
 })

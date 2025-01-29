@@ -25,11 +25,11 @@ export type Colors = {
   border: string
   input: string
   ring: string
-  chart1: string
-  chart2: string
-  chart3: string
-  chart4: string
-  chart5: string
+  chart1?: string
+  chart2?: string
+  chart3?: string
+  chart4?: string
+  chart5?: string
 }
 
 export type Theme = {

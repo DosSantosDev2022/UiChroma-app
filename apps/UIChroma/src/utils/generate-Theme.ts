@@ -1,10 +1,11 @@
+import { Theme } from '@/@types/colors-themes-types'
 import { Colord, colord, extend } from 'colord'
 import a11yPlugin from 'colord/plugins/a11y'
 import mixPlugin from 'colord/plugins/mix'
 
 extend([a11yPlugin, mixPlugin])
 
-// Função para gerar contraste de foreground
+// Gera contraste foreground baseado no background
 const generateContrast = (
   color: string,
   lightContrast = '#ffffff',
@@ -14,44 +15,58 @@ const generateContrast = (
   return base.contrast(lightContrast) >= 4.5 ? lightContrast : darkContrast
 }
 
-// Função para criar cores secundárias
-const generateSecondaryColor = (base: Colord) => base.lighten(0.45)
+// Define as cores secundárias mais claras
+const generateSecondaryColor = (base: Colord) =>
+  base.desaturate(0.3).lighten(0.6)
 
-// Função para criar cores suaves (muted)
-const generateMutedColor = (base: Colord, mode: 'light' | 'dark') => {
-  return mode === 'light'
-    ? base.darken(0.2).toHex()
-    : base.saturate(0.2).toHex()
-} // Cinza padrão
+// Define cores suaves (muted) com base no tema
+const generateMutedColor = (mode: 'light' | 'dark') => {
+  if (mode === 'light') {
+    return {
+      muted: '#f3f4f6',
+      mutedForeground: '#6b7280', // Corrigido para 'mutedForeground'
+      muted_hover: '#f3f4f6'
+    }
+  } else {
+    return {
+      muted: '#1C202A',
+      mutedForeground: '#9aa0a7',
+      muted_hover: '#4a4a4a'
+    }
+  }
+}
 
-// Função para gerar cores de destaque (accent)
+// Gera cores de destaque (accent)
 const generateAccentColor = (primary: Colord, secondary: Colord) =>
-  primary.mix(secondary, 0.5).saturate(0.3)
+  primary.mix(secondary, 0.5).saturate(0.4).lighten(0.3)
 
-// Função para gerar tons de hover
+// Gera tons de hover
 const generateHoverColor = (base: Colord) => base.lighten(0.1)
 
 // Função para gerar tons de gráficos
 const generateChartColors = (base: Colord) =>
-  Array.from({ length: 5 }, (_, i) =>
-    base
-      .rotate(i * 30)
-      .saturate(0.3 + i * 0.1)
-      .lighten(0.1)
-      .toHex()
+  Array.from(
+    { length: 5 },
+    (_, i) =>
+      base
+        .rotate(i * 30)
+        .saturate(0.3 + i * 0.1)
+        .lighten(0.1)
+        .toHex() || '#00000'
   )
 
-// Função para criar cores de borda
+// Define as cores de borda
 const generateBorderColor = (background: Colord, mode: 'light' | 'dark') => {
   return mode === 'light'
     ? background.darken(0.1).toHex() // Light mode: mais escura
     : background.lighten(0.1).toHex() // Dark mode: mais clara
 }
 
+// Gera cores de input
 const generateInputColor = (background: Colord, mode: 'light' | 'dark') => {
   return mode === 'light'
-    ? background.darken(0.1).toHex() // Light mode: mais escura
-    : background.lighten(0.1).toHex() // Dark mode: mais clara
+    ? background.lighten(0.1).toHex()
+    : background.darken(0.1).toHex()
 }
 
 // Função para gerar cores principais
@@ -66,12 +81,11 @@ const generateModeColors = (
   const isLight = mode === 'light'
 
   const background = isLight
-    ? base.lighten(0.9).toHex()
-    : base.darken(0.8).toHex()
+    ? base.lighten(0.9).mix(base).toHex()
+    : base.darken(0.8).mix(base).toHex()
   const foreground = generateContrast(background)
 
-  const muted = generateMutedColor(base, mode)
-  const mutedForeground = generateContrast(muted, '#a1a1aa', '#3f3f46')
+  const mutedColors = generateMutedColor(mode)
 
   const border = generateBorderColor(base, mode)
   const input = generateInputColor(base, mode)
@@ -88,9 +102,9 @@ const generateModeColors = (
     secondary_foreground: generateContrast(secondary.toHex()),
     secondary_hover: generateHoverColor(secondary).toHex(),
 
-    muted: muted,
-    muted_foreground: mutedForeground,
-    muted_hover: generateHoverColor(colord(muted)).toHex(),
+    muted: mutedColors.muted,
+    muted_foreground: mutedColors.mutedForeground,
+    muted_hover: mutedColors.muted_hover,
 
     accent: accent.toHex(),
     accent_foreground: generateContrast(accent.toHex()),
@@ -121,7 +135,7 @@ const generateModeColors = (
 }
 
 // Função principal para criar o tema
-export const generateTheme = (primaryColor: string) => {
+export const generateTheme = (primaryColor: string): Theme => {
   const baseLight = colord('#f7fafc') // Cor base para o modo claro
   const baseDark = colord('#18181b') // Cor base para o modo escuro
   const primary = colord(primaryColor)
@@ -130,24 +144,22 @@ export const generateTheme = (primaryColor: string) => {
   const chartColors = generateChartColors(primary)
 
   return {
-    name: 'Generated Theme',
-    colors: {
-      light: generateModeColors(
-        baseLight,
-        'light',
-        primary,
-        secondary,
-        accent,
-        chartColors
-      ),
-      dark: generateModeColors(
-        baseDark,
-        'dark',
-        primary,
-        secondary,
-        accent,
-        chartColors
-      )
-    }
+    label: 'Generated Theme',
+    light: generateModeColors(
+      baseLight,
+      'light',
+      primary,
+      secondary,
+      accent,
+      chartColors
+    ),
+    dark: generateModeColors(
+      baseDark,
+      'dark',
+      primary,
+      secondary,
+      accent,
+      chartColors
+    )
   }
 }

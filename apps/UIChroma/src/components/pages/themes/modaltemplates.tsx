@@ -2,6 +2,7 @@
 
 import { themes } from '@/enums/colors'
 import { useThemeStore } from '@/store/use-Theme-Store'
+import { generateTheme } from '@/utils/generate-Theme'
 import {
   ModalClose,
   ModalContent,
@@ -14,13 +15,19 @@ import {
 } from '@repo/ChromaUI/components'
 import { FaCheck } from 'react-icons/fa6'
 import { MdPalette } from 'react-icons/md'
+import { ColorPicker } from './ColorPicker'
 
 const ModalTemplates = () => {
-  const { selectedColor, setSelectedColor, setTheme } = useThemeStore()
+  const { selectedColor, setSelectedColor, setTheme, setCustomColor } =
+    useThemeStore()
 
   const handleColorClick = (colorLabel: string) => {
     setSelectedColor(colorLabel)
     setTheme('light') // Definindo o tema para 'light' após seleção
+  }
+  const handleCustomColor = (color: string) => {
+    setCustomColor(color)
+    generateTheme(color)
   }
 
   return (
@@ -55,6 +62,9 @@ const ModalTemplates = () => {
               </button>
             ))}
           </div>
+          <div className="px-2 py-3">
+            <ColorPicker color="" onChange={handleCustomColor} />
+          </div>
         </ModalContent>
       </ModalRoot>
     </>
@@ -62,3 +72,4 @@ const ModalTemplates = () => {
 }
 
 export { ModalTemplates }
+

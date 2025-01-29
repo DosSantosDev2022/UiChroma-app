@@ -1,11 +1,12 @@
-import { create } from 'zustand'
-import { defaultTheme, themes } from '@/enums/colors'
 import { Theme } from '@/@types/colors-themes-types'
 import { ThemeState } from '@/@types/theme-store-types'
+import { defaultTheme, themes } from '@/enums/colors'
+import { generateTheme } from '@/utils/generate-Theme'
+import { create } from 'zustand'
 
 const getInitialTheme = (): Theme => themes[0] || defaultTheme
 
-export const useThemeStore = create<ThemeState>((set, get) => {
+export const useThemeStore = create<ThemeState>((set) => {
   const initialTheme = getInitialTheme()
 
   return {
@@ -13,6 +14,7 @@ export const useThemeStore = create<ThemeState>((set, get) => {
     darkColors: initialTheme.dark,
     selectedColor: null,
     theme: 'light',
+    customColor: '',
 
     // Define o tema (light/dark)
     setTheme: (theme) => set({ theme }),
@@ -26,6 +28,17 @@ export const useThemeStore = create<ThemeState>((set, get) => {
         selectedColor: colorLabel,
         lightColors: selectedTheme.light,
         darkColors: selectedTheme.dark
+      })
+    },
+
+    // Define uma cor customizada
+    setCustomColor: (color) => {
+      const theme = generateTheme(color)
+      set({
+        customColor: color,
+        lightColors: theme.light,
+        darkColors: theme.dark,
+        selectedColor: null
       })
     },
 

@@ -13,7 +13,7 @@ export default function ThemeCreatePage() {
         <div className="z-10 col-span-12 grid items-start gap-x-6 gap-y-14 border border-border p-2 text-center md:gap-y-9 lg:grid-cols-2 lg:text-left">
           <div className="grid h-full gap-y-4 border border-border p-6">
             <div className="space-y-4">
-              <Title className="text-7xl">Chroma UI generator</Title>
+              <Title className="text-6xl">Chroma UI generator</Title>
               <p className="text-base font-normal text-muted-foreground">
                 Crie facilmente temas personalizados a partir de uma única cor
                 que você pode copiar e colar em seus aplicativos.

@@ -10,10 +10,10 @@ export default function ThemeCreatePage() {
   return (
     <div className="flex flex-col space-y-10">
       <section className="relative mx-auto p-2">
-        <div className="z-10 col-span-12 grid items-start gap-x-6 gap-y-14 border border-border p-2 text-center md:gap-y-9 lg:grid-cols-2 lg:text-left">
-          <div className="grid h-full gap-y-4 border border-border p-6">
+        <div className="z-10 grid grid-cols-12 items-start gap-x-6 gap-y-14 border border-border p-2 text-center md:gap-y-9 lg:text-left">
+          <div className="col-span-5 h-full gap-y-4 border border-border p-6">
             <div className="space-y-4">
-              <Title className="text-6xl">Chroma UI generator</Title>
+              <Title className="text-5xl">Gerador de temas UI</Title>
               <p className="text-base font-normal text-muted-foreground">
                 Crie facilmente temas personalizados a partir de uma única cor
                 que você pode copiar e colar em seus aplicativos.
@@ -22,20 +22,20 @@ export default function ThemeCreatePage() {
                 className="rounded-md"
                 asChild
                 sizes="sm"
-                variants="primary"
+                variants="shine"
               >
                 <Link href={'docs'}>Documentação</Link>
               </Button>
             </div>
           </div>
-          <div className="grid space-x-2 border border-border">
+          <div className="col-span-7 space-x-2 border border-border p-2">
             {/* Seletor de cores prontas */}
             <div className="flex w-full items-start gap-1.5 p-4">
               <ModalTemplates />
               <ModalCodeCss />
             </div>
 
-            <div className="flex w-full flex-row items-center justify-between gap-4">
+            <div className="flex items-center justify-between gap-2">
               {/* Seletor para o Light Mode */}
               <ColorModeSelector mode="light" />
               {/* Seletor para o Dark Mode */}

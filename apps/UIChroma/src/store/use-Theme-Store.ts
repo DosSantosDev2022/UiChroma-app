@@ -2,6 +2,7 @@ import { Theme } from '@/@types/colors-themes-types'
 import { ThemeState } from '@/@types/theme-store-types'
 import { defaultTheme, themes } from '@/enums/colors'
 import { generateTheme } from '@/utils/generate-Theme'
+import { HslColor } from 'react-colorful'
 import { create } from 'zustand'
 
 const getInitialTheme = (): Theme => themes[0] || defaultTheme
@@ -54,6 +55,16 @@ export const useThemeStore = create<ThemeState>((set) => {
       set((state) => ({
         darkColors: { ...state.darkColors, [colorKey]: newColor }
       }))
+    },
+
+    // seleciona cor base para tema
+    handleColorClick: (colorLabel: string) => {
+      useThemeStore.getState().setSelectedColor(colorLabel)
+    },
+
+    // seleciona uma cor customizada para o tema
+    handleCustomColor: (color: HslColor) => {
+      useThemeStore.getState().setCustomColor(color)
     }
   }
 })

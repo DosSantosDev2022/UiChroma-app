@@ -1,6 +1,7 @@
 'use client'
 import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
 import { useThemeStore } from '@/store/use-Theme-Store'
+import { formatColors } from '@/utils/formatColors'
 import { generateCodeCss, generateTailwindConfig } from '@/utils/generate-Code'
 import {
   Button,
@@ -76,7 +77,10 @@ export function ModalCodeCss() {
                 <ClipBoardAction
                   copyText={
                     activeTab === 'globalcss'
-                      ? generateCodeCss(lightColors, darkColors)
+                      ? generateCodeCss(
+                          formatColors(lightColors),
+                          formatColors(darkColors)
+                        )
                       : generateTailwindConfig()
                   }
                 />
@@ -85,7 +89,10 @@ export function ModalCodeCss() {
                 <CodeBlock
                   code={
                     activeTab === 'globalcss'
-                      ? generateCodeCss(lightColors, darkColors)
+                      ? generateCodeCss(
+                          formatColors(lightColors),
+                          formatColors(darkColors)
+                        )
                       : generateTailwindConfig()
                   }
                 />

@@ -35,9 +35,9 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
   const handleColorChange =
     mode === 'light'
       ? (newColor: string, key: keyof Theme['light']) =>
-        updateLightColor(key, newColor)
+          updateLightColor(key, newColor)
       : (newColor: string, key: keyof Theme['dark']) =>
-        updateDarkColor(key, newColor)
+          updateDarkColor(key, newColor)
 
   const icon =
     mode === 'dark' ? <FaMoon className="mr-2" /> : <MdSunny className="mr-2" />
@@ -45,7 +45,7 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
   const title = mode === 'dark' ? 'Dark Mode' : 'Light Mode'
 
   return (
-    <div className=" flex flex-col items-center space-y-4 px-2 py-2.5">
+    <div className=" flex w-full flex-col items-center space-y-4 px-2 py-2.5">
       <div
         onClick={() => setTheme(mode)}
         className="flex w-full cursor-pointer items-center justify-start rounded-md border border-border px-2 py-1.5 duration-300 active:scale-95"
@@ -60,21 +60,23 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
           const colorKey = key as keyof Theme['light'] | keyof Theme['dark']
           return (
             <div key={key} className="mt-6 flex flex-col items-start">
-              <span className="mb-2 ml-6 text-start text-sm capitalize text-muted-foreground">
+              <span className="mb-2 ml-2 text-start text-sm capitalize text-muted-foreground">
                 {colorKey}
               </span>
               {/* Div para abrir o picker */}
-              <div className="flex items-center justify-center gap-6">
+              <div className="flex w-full items-center justify-start gap-2 rounded border border-border p-2">
                 <div
-                  className="h-10 w-10 cursor-pointer rounded-md border duration-300 active:scale-95"
+                  className="h-8 w-8 cursor-pointer rounded-full border border-border duration-300 active:scale-95"
                   style={{ backgroundColor: colors[colorKey] }}
                   onClick={() => setOpenPicker(openPicker === key ? null : key)}
                 />
-                <span>{colors[colorKey]}</span>
+                <span className="truncate text-sm text-muted-foreground">
+                  {colors[colorKey]}
+                </span>
               </div>
               {/* Picker visível apenas se a cor for clicada */}
               {openPicker === key && (
-                <div className="absolute left-1/3 top-14 z-10 mt-2 rounded-md bg-white p-2 shadow-md dark:bg-gray-800">
+                <div className="absolute left-1/3 top-14 z-10 mt-2 rounded-md p-2 shadow-md">
                   <HslStringColorPicker
                     color={colors[colorKey]}
                     onChange={(newColor: string) =>
@@ -92,4 +94,3 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
 }
 
 export { ColorModeSelector }
-

@@ -4,6 +4,7 @@ import { themes } from '@/enums/colors'
 import { useThemeStore } from '@/store/use-Theme-Store'
 import { generateTheme } from '@/utils/generate-Theme'
 import {
+  Button,
   ModalClose,
   ModalContent,
   ModalDescription,
@@ -11,24 +12,22 @@ import {
   ModalOverlay,
   ModalRoot,
   ModalTitle,
-  ModalTrigger
+  ModalTrigger,
+  useModalContext
 } from '@repo/ChromaUI/components'
 import { HslColor } from 'colord'
+import { useState } from 'react'
 import { HslColorPicker } from 'react-colorful'
+import { FaPlus } from 'react-icons/fa'
 import { FaCheck } from 'react-icons/fa6'
 import { MdPalette } from 'react-icons/md'
 
 const ModalTemplates = () => {
-  const { selectedColor, setSelectedColor, setTheme, setCustomColor } =
-    useThemeStore()
+  const { selectedColor, handleColorClick, handleCustomColor } = useThemeStore()
+  const [isShowPicker, setIsShowPicker] = useState(false)
 
-  const handleColorClick = (colorLabel: string) => {
-    setSelectedColor(colorLabel)
-    setTheme('light') // Definindo o tema para 'light' após seleção
-  }
-  const handleCustomColor = (color: HslColor) => {
-    setCustomColor(color)
-    generateTheme(color)
+  const handleShowPicker = () => {
+    setIsShowPicker(!isShowPicker)
   }
 
   return (
@@ -48,24 +47,41 @@ const ModalTemplates = () => {
             Escolha um tema base para gerar seu tema baseando-se nas cores do
             Tailwind CSS:
           </ModalDescription>
-          <div className="custom-scrollbar mt-2 flex max-h-[220px]  flex-wrap gap-4 overflow-y-auto  rounded-md border border-border bg-background px-2 py-2.5">
+          <div className="custom-scrollbar grid grid-cols-3 gap-2 border border-border p-3">
             {themes.map((color) => (
               <button
                 key={color.label}
                 onClick={() => handleColorClick(color.label)}
-                style={{ backgroundColor: color.light.primary }}
-                className={`relative h-8 w-8 rounded-lg duration-300 active:scale-75`}
+                className={`relative inline-flex h-8 items-center justify-start rounded-md border border-border p-3 shadow duration-300 active:scale-95`}
                 title={color.label}
               >
                 {selectedColor === color.label && (
-                  <FaCheck className="absolute inset-0 -top-1 left-4 h-4 w-4 rounded-full border-2 border-success bg-success text-success-foreground" />
+                  <FaCheck className="absolute inset-0 -top-2 left-[85%] h-5 w-5 rounded-full border-2 border-success bg-success text-success-foreground" />
                 )}
+                <span
+                  className={`mr-1 flex h-6 w-6 shrink-0 -translate-x-1 items-center justify-center rounded-full`}
+                  style={{ backgroundColor: color.light.primary }}
+                />
+                <p className="text-muted-foreground">{color.label}</p>
               </button>
             ))}
           </div>
-          <div className="px-2 py-3">
-            <HslColorPicker onChange={handleCustomColor} />
+          <div>
+            <Button
+              variants="primary"
+              className="gap-6"
+              onClick={handleShowPicker}
+              sizes="full"
+            >
+              Nova cor base
+              <FaPlus />
+            </Button>
           </div>
+          {isShowPicker && (
+            <div className="px-2 py-3">
+              <HslColorPicker onChange={handleCustomColor} />
+            </div>
+          )}
         </ModalContent>
       </ModalRoot>
     </>
@@ -73,4 +89,3 @@ const ModalTemplates = () => {
 }
 
 export { ModalTemplates }
-

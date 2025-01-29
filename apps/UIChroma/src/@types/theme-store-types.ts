@@ -1,4 +1,4 @@
-import { HslColor } from 'colord'
+import { HslColor } from 'react-colorful'
 import { Theme } from './colors-themes-types'
 
 export interface ThemeState {
@@ -12,4 +12,6 @@ export interface ThemeState {
   setTheme: (theme: 'light' | 'dark') => void
   updateLightColor: (colorKey: keyof Theme['light'], newColor: string) => void
   updateDarkColor: (colorKey: keyof Theme['dark'], newColor: string) => void
+  handleColorClick: (colorLabel: string) => void
+  handleCustomColor: (color: HslColor) => void
 }

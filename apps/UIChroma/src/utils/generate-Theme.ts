@@ -65,8 +65,8 @@ const generateBorderColor = (background: Colord, mode: 'light' | 'dark') => {
 // Gera cores de input
 const generateInputColor = (background: Colord, mode: 'light' | 'dark') => {
   return mode === 'light'
-    ? background.lighten(0.1).toHex()
-    : background.darken(0.1).toHex()
+    ? background.lighten(0.1).toHex() // Light mode: mais escura
+    : background.darken(0.1).toHex() // Dark mode: mais clara
 }
 
 // Função para gerar cores principais

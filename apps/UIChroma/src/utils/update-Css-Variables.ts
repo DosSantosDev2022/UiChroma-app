@@ -6,9 +6,7 @@ export const updateCssVariables = (
   darkColors: Theme['dark']
 ) => {
   if (typeof document !== 'undefined') {
-    const demoContainer = document.querySelector(
-      '#demo-container'
-    ) as HTMLElement
+    const demoContainer = document.querySelector('#CssVariables') as HTMLElement
     if (demoContainer) {
       const colors = theme === 'dark' ? darkColors : lightColors
 
@@ -79,7 +77,7 @@ export const updateCssVariables = (
         '--success-foreground',
         `${colors.success_foreground}`
       )
-
+      demoContainer.style.setProperty('--input', `${colors.input}`)
       demoContainer.style.setProperty('--ring', `${colors.ring}`)
       demoContainer.style.setProperty('--border', `${colors.border}`)
 

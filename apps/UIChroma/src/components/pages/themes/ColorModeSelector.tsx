@@ -1,12 +1,12 @@
 'use client'
 
-import { Colors, Theme } from '@/@types/colors-themes-types'
+import { Theme } from '@/@types/colors-themes-types'
 import { Title } from '@/components/global/title'
-import { ColorPicker } from '@/components/pages/themes/ColorPicker'
+import { useThemeStore } from '@/store/use-Theme-Store'
+import { useEffect, useState } from 'react'
+import { HslStringColorPicker } from 'react-colorful'
 import { FaMoon } from 'react-icons/fa'
 import { MdSunny } from 'react-icons/md'
-import { useThemeStore } from '@/store/use-Theme-Store'
-import { useEffect } from 'react'
 
 interface ColorModeSelectorProps {
   mode: 'light' | 'dark'
@@ -21,6 +21,7 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
     updateDarkColor,
     updateLightColor
   } = useThemeStore()
+  const [openPicker, setOpenPicker] = useState<string | null>(null)
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -34,9 +35,9 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
   const handleColorChange =
     mode === 'light'
       ? (newColor: string, key: keyof Theme['light']) =>
-          updateLightColor(key, newColor)
+        updateLightColor(key, newColor)
       : (newColor: string, key: keyof Theme['dark']) =>
-          updateDarkColor(key, newColor)
+        updateDarkColor(key, newColor)
 
   const icon =
     mode === 'dark' ? <FaMoon className="mr-2" /> : <MdSunny className="mr-2" />
@@ -62,12 +63,26 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
               <span className="mb-2 ml-6 text-start text-sm capitalize text-muted-foreground">
                 {colorKey}
               </span>
-              <ColorPicker
-                color={colors[colorKey]}
-                onChange={(newColor: string) =>
-                  handleColorChange(newColor, colorKey)
-                }
-              />
+              {/* Div para abrir o picker */}
+              <div className="flex items-center justify-center gap-6">
+                <div
+                  className="h-10 w-10 cursor-pointer rounded-md border duration-300 active:scale-95"
+                  style={{ backgroundColor: colors[colorKey] }}
+                  onClick={() => setOpenPicker(openPicker === key ? null : key)}
+                />
+                <span>{colors[colorKey]}</span>
+              </div>
+              {/* Picker visível apenas se a cor for clicada */}
+              {openPicker === key && (
+                <div className="absolute left-1/3 top-14 z-10 mt-2 rounded-md bg-white p-2 shadow-md dark:bg-gray-800">
+                  <HslStringColorPicker
+                    color={colors[colorKey]}
+                    onChange={(newColor: string) =>
+                      handleColorChange(newColor, colorKey)
+                    }
+                  />
+                </div>
+              )}
             </div>
           )
         })}
@@ -77,3 +92,4 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
 }
 
 export { ColorModeSelector }
+

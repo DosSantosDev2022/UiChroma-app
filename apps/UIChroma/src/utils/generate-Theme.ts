@@ -2,6 +2,7 @@ import { Theme } from '@/@types/colors-themes-types'
 import { Colord, colord, extend } from 'colord'
 import a11yPlugin from 'colord/plugins/a11y'
 import mixPlugin from 'colord/plugins/mix'
+import { HslColor } from 'react-colorful'
 
 extend([a11yPlugin, mixPlugin])
 
@@ -12,7 +13,9 @@ const generateContrast = (
   darkContrast = '#000000'
 ) => {
   const base = colord(color)
-  return base.contrast(lightContrast) >= 4.5 ? lightContrast : darkContrast
+  return base.contrast(lightContrast) >= 4.5
+    ? colord(lightContrast).toHslString()
+    : colord(darkContrast).toHslString()
 }
 
 // Define as cores secundárias mais claras
@@ -23,15 +26,15 @@ const generateSecondaryColor = (base: Colord) =>
 const generateMutedColor = (mode: 'light' | 'dark') => {
   if (mode === 'light') {
     return {
-      muted: '#f3f4f6',
-      mutedForeground: '#6b7280', // Corrigido para 'mutedForeground'
-      muted_hover: '#f3f4f6'
+      muted: colord('#f3f4f6').toHslString(),
+      mutedForeground: colord('#6b7280').toHslString(),
+      muted_hover: colord('#f3f4f6').toHslString()
     }
   } else {
     return {
-      muted: '#1C202A',
-      mutedForeground: '#9aa0a7',
-      muted_hover: '#4a4a4a'
+      muted: colord('#1C202A').toHslString(),
+      mutedForeground: colord('#9aa0a7').toHslString(),
+      muted_hover: colord('#4a4a4a').toHslString()
     }
   }
 }
@@ -43,6 +46,17 @@ const generateAccentColor = (primary: Colord, secondary: Colord) =>
 // Gera tons de hover
 const generateHoverColor = (base: Colord) => base.lighten(0.1)
 
+// Função para gerar cores dinâmicas
+const generateStatusColor = (baseColor: string) => {
+  const color = colord(baseColor)
+
+  return {
+    base: color.toHslString(),
+    foreground: generateContrast(color.toHslString()),
+    hover: generateHoverColor(color).toHslString()
+  }
+}
+
 // Função para gerar tons de gráficos
 const generateChartColors = (base: Colord) =>
   Array.from(
@@ -52,21 +66,21 @@ const generateChartColors = (base: Colord) =>
         .rotate(i * 30)
         .saturate(0.3 + i * 0.1)
         .lighten(0.1)
-        .toHex() || '#00000'
+        .toHslString() || '#00000'
   )
 
 // Define as cores de borda
 const generateBorderColor = (background: Colord, mode: 'light' | 'dark') => {
   return mode === 'light'
-    ? background.darken(0.1).toHex() // Light mode: mais escura
-    : background.lighten(0.1).toHex() // Dark mode: mais clara
+    ? background.darken(0.1).toHslString() // Light mode: mais escura
+    : background.lighten(0.1).toHslString() // Dark mode: mais clara
 }
 
 // Gera cores de input
 const generateInputColor = (background: Colord, mode: 'light' | 'dark') => {
   return mode === 'light'
-    ? background.lighten(0.1).toHex() // Light mode: mais escura
-    : background.darken(0.1).toHex() // Dark mode: mais clara
+    ? background.lighten(0.1).toHslString() // Light mode: mais escura
+    : background.darken(0.1).toHslString() // Dark mode: mais clara
 }
 
 // Função para gerar cores principais
@@ -81,11 +95,27 @@ const generateModeColors = (
   const isLight = mode === 'light'
 
   const background = isLight
-    ? base.lighten(0.9).mix(base).toHex()
-    : base.darken(0.8).mix(base).toHex()
+    ? base.lighten(0.9).mix(base).toHslString()
+    : base.darken(0.8).mix(base).toHslString()
   const foreground = generateContrast(background)
 
   const mutedColors = generateMutedColor(mode)
+
+  const {
+    base: danger,
+    foreground: danger_foreground,
+    hover: danger_hover
+  } = generateStatusColor('#dc2626')
+  const {
+    base: warning,
+    foreground: warning_foreground,
+    hover: warning_hover
+  } = generateStatusColor('#fbbf24')
+  const {
+    base: success,
+    foreground: success_foreground,
+    hover: success_hover
+  } = generateStatusColor('#10b981')
 
   const border = generateBorderColor(base, mode)
   const input = generateInputColor(base, mode)
@@ -94,37 +124,37 @@ const generateModeColors = (
     background,
     foreground,
 
-    primary: primary.toHex(),
-    primary_foreground: generateContrast(primary.toHex()),
-    primary_hover: generateHoverColor(primary).toHex(),
+    primary: primary.toHslString(),
+    primary_foreground: generateContrast(primary.toHslString()),
+    primary_hover: generateHoverColor(primary).toHslString(),
 
-    secondary: secondary.toHex(),
-    secondary_foreground: generateContrast(secondary.toHex()),
-    secondary_hover: generateHoverColor(secondary).toHex(),
+    secondary: secondary.toHslString(),
+    secondary_foreground: generateContrast(secondary.toHslString()),
+    secondary_hover: generateHoverColor(secondary).toHslString(),
 
     muted: mutedColors.muted,
     muted_foreground: mutedColors.mutedForeground,
     muted_hover: mutedColors.muted_hover,
 
-    accent: accent.toHex(),
-    accent_foreground: generateContrast(accent.toHex()),
-    accent_hover: generateHoverColor(accent).toHex(),
+    accent: accent.toHslString(),
+    accent_foreground: generateContrast(accent.toHslString()),
+    accent_hover: generateHoverColor(accent).toHslString(),
 
-    danger: '#dc2626', // Vermelho padrão
-    danger_foreground: '#ffffff',
-    danger_hover: generateHoverColor(colord('#dc2626')).toHex(),
+    danger,
+    danger_foreground,
+    danger_hover,
 
-    warning: '#fbbf24', // Amarelo padrão
-    warning_foreground: '#000000',
-    warning_hover: generateHoverColor(colord('#fbbf24')).toHex(),
+    warning,
+    warning_foreground,
+    warning_hover,
 
-    success: '#10b981', // Verde padrão
-    success_foreground: '#ffffff',
-    success_hover: generateHoverColor(colord('#10b981')).toHex(),
+    success,
+    success_foreground,
+    success_hover,
 
     border: border,
     input: input,
-    ring: primary.toHex(),
+    ring: primary.toHslString(),
 
     chart1: chartColors[0],
     chart2: chartColors[1],
@@ -135,7 +165,7 @@ const generateModeColors = (
 }
 
 // Função principal para criar o tema
-export const generateTheme = (primaryColor: string): Theme => {
+export const generateTheme = (primaryColor: HslColor): Theme => {
   const baseLight = colord('#f7fafc') // Cor base para o modo claro
   const baseDark = colord('#18181b') // Cor base para o modo escuro
   const primary = colord(primaryColor)

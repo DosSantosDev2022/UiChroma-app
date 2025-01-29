@@ -13,9 +13,10 @@ import {
   ModalTitle,
   ModalTrigger
 } from '@repo/ChromaUI/components'
+import { HslColor } from 'colord'
+import { HslColorPicker } from 'react-colorful'
 import { FaCheck } from 'react-icons/fa6'
 import { MdPalette } from 'react-icons/md'
-import { ColorPicker } from './ColorPicker'
 
 const ModalTemplates = () => {
   const { selectedColor, setSelectedColor, setTheme, setCustomColor } =
@@ -25,7 +26,7 @@ const ModalTemplates = () => {
     setSelectedColor(colorLabel)
     setTheme('light') // Definindo o tema para 'light' após seleção
   }
-  const handleCustomColor = (color: string) => {
+  const handleCustomColor = (color: HslColor) => {
     setCustomColor(color)
     generateTheme(color)
   }
@@ -63,7 +64,7 @@ const ModalTemplates = () => {
             ))}
           </div>
           <div className="px-2 py-3">
-            <ColorPicker color="" onChange={handleCustomColor} />
+            <HslColorPicker onChange={handleCustomColor} />
           </div>
         </ModalContent>
       </ModalRoot>

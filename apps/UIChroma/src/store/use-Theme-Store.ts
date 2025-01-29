@@ -14,7 +14,7 @@ export const useThemeStore = create<ThemeState>((set) => {
     darkColors: initialTheme.dark,
     selectedColor: null,
     theme: 'light',
-    customColor: '',
+    customColor: { h: 0, s: 0, l: 100 },
 
     // Define o tema (light/dark)
     setTheme: (theme) => set({ theme }),

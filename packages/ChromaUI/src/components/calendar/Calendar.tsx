@@ -80,15 +80,16 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
                           className={`flex h-full w-full cursor-pointer 
                             items-center justify-center rounded-full p-4 text-sm font-medium transition-all duration-200 hover:bg-accent-hover
                             ${isCurrentMonth ? '' : 'opacity-30'} 
-                            ${isToday
-                              ? 'bg-accent text-accent-foreground'
-                              : isSelected
+                            ${
+                              isToday
                                 ? 'bg-accent text-accent-foreground'
-                                : isStart || isEnd
-                                  ? 'bg-primary text-primary-foreground'
-                                  : isInRange
-                                    ? 'bg-accent text-accent-foreground hover:bg-accent-hover'
-                                    : ''
+                                : isSelected
+                                  ? 'bg-accent text-accent-foreground'
+                                  : isStart || isEnd
+                                    ? 'bg-primary text-primary-foreground'
+                                    : isInRange
+                                      ? 'bg-accent text-accent-foreground hover:bg-accent-hover'
+                                      : ''
                             }`}
                         >
                           {date.getDate()}

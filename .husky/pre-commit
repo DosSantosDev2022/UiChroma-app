@@ -1,0 +1,4 @@
+echo 'Check for linting errors and run format prettier before commiting...'
+pnpm run format
+pnpm run lint
+echo 'Done'

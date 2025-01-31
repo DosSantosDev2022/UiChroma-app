@@ -97,4 +97,3 @@ const ModalSearch = ({ data }: ModalProps) => {
 }
 
 export { ModalSearch }
-

@@ -19,4 +19,3 @@ const Title = ({ children, as = 'h1', className }: TitleProps) => {
 }
 
 export { Title }
-

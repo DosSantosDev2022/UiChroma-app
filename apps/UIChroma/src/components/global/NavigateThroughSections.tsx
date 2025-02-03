@@ -5,13 +5,13 @@ import { GoDotFill } from 'react-icons/go'
 
 interface NavigateThroughSectionsProps {
   links: {
-    text: string
-    url: string
+    label: string
+    href: string
   }[]
 }
 
 const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
-  const [activeLink, setActiveLink] = useState<string>(links[0]?.url || '')
+  const [activeLink, setActiveLink] = useState<string>(links[0]?.href || '')
 
   const handleButtonClickScrollIntoView = (id: string) => {
     const element = document.getElementById(id)
@@ -31,18 +31,18 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
           {links.map((link) => (
             <li
               className="transition-colors duration-300 hover:bg-muted-hover"
-              key={link.text}
+              key={link.label}
             >
               <Button
-                onClick={() => handleButtonClickScrollIntoView(link.url)}
+                onClick={() => handleButtonClickScrollIntoView(link.href)}
                 variants="link"
                 sizes="full"
-                className={`justify-start gap-2 text-base font-light text-muted-foreground 
-                    hover:no-underline 
-                    ${activeLink === link.url ? 'font-bold text-primary' : ''}`}
+                className={`justify-start gap-2 truncate text-base font-light 
+                    text-muted-foreground hover:no-underline
+                    ${activeLink === link.href ? 'font-bold text-primary' : ''}`}
               >
                 <GoDotFill size={12} />
-                {link.text}
+                {link.label}
               </Button>
             </li>
           ))}

@@ -1,94 +1,80 @@
 import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
-import {
-  ContentSections,
-  MainContainer,
-  SectionNavigation,
-  SectionPage,
-  WrapperSections
-} from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/NavigateThroughSections'
 import { Title } from '@/components/global/title'
-import { links } from '@/enums/documentation'
+import { linksNavigationMap } from '@/enums/links-nav-pages'
 import { GET_PAGE_DATA } from '@/services/get-page-data'
 
 export default async function Starter() {
-  const slug = 'getStarted'
+  const slug = 'gettingstarted'
   const { documentationPage } = await GET_PAGE_DATA(slug)
-
+  const links = linksNavigationMap[slug] || []
   return (
-    <MainContainer>
-      <SectionPage>
+    <div className="grid grid-cols-4 gap-4">
+      <section className="col-span-3 w-full rounded-md  border border-border p-4 shadow-sm">
         <Title>{documentationPage.title}</Title>
-        <WrapperSections>
-          <ContentSections id="Introdução">
-            {documentationPage.sectionOne && (
-              <RichText
-                content={documentationPage.sectionOne?.content.raw}
-                renderers={defaultRenderers}
-              />
-            )}
-          </ContentSections>
+        <div className="space-y-10 pb-10 pt-8">
+          {documentationPage.sectionOne && (
+            <RichText
+              id={documentationPage.sectionOne.identifier}
+              content={documentationPage.sectionOne?.content.raw}
+              renderers={defaultRenderers}
+            />
+          )}
 
-          <ContentSections id="Primeiros-Passos">
-            {documentationPage.sectionTwo && (
-              <RichText
-                content={documentationPage.sectionTwo?.content.raw}
-                renderers={defaultRenderers}
-              />
-            )}
-          </ContentSections>
+          {documentationPage.sectionTwo && (
+            <RichText
+              id={documentationPage.sectionTwo.identifier}
+              content={documentationPage.sectionTwo?.content.raw}
+              renderers={defaultRenderers}
+            />
+          )}
 
-          <ContentSections id="Instalação">
-            {documentationPage.sectionThree && (
-              <RichText
-                content={documentationPage.sectionThree?.content.raw}
-                renderers={defaultRenderers}
-              />
-            )}
-          </ContentSections>
+          {documentationPage.sectionThree && (
+            <RichText
+              id={documentationPage.sectionThree.identifier}
+              content={documentationPage.sectionThree?.content.raw}
+              renderers={defaultRenderers}
+            />
+          )}
 
-          <ContentSections id="Usando">
-            {documentationPage.sectionFour && (
-              <RichText
-                content={documentationPage.sectionFour?.content.raw}
-                renderers={defaultRenderers}
-              />
-            )}
-          </ContentSections>
+          {documentationPage.sectionFour && (
+            <RichText
+              id={documentationPage.sectionFour.identifier}
+              content={documentationPage.sectionFour?.content.raw}
+              renderers={defaultRenderers}
+            />
+          )}
 
-          <ContentSections id="Personalização">
-            {documentationPage.sectionFive && (
-              <RichText
-                content={documentationPage.sectionFive?.content.raw}
-                renderers={defaultRenderers}
-              />
-            )}
-          </ContentSections>
+          {documentationPage.sectionFive && (
+            <RichText
+              id={documentationPage.sectionFive.identifier}
+              content={documentationPage.sectionFive?.content.raw}
+              renderers={defaultRenderers}
+            />
+          )}
 
-          <ContentSections id="Exemplos">
-            {documentationPage.sectionSix && (
-              <RichText
-                content={documentationPage.sectionSix?.content.raw}
-                renderers={defaultRenderers}
-              />
-            )}
-          </ContentSections>
+          {documentationPage.sectionSix && (
+            <RichText
+              id={documentationPage.sectionSix.identifier}
+              content={documentationPage.sectionSix?.content.raw}
+              renderers={defaultRenderers}
+            />
+          )}
 
-          <ContentSections id="Exemplos2">
-            {documentationPage.sectionSeven && (
-              <RichText
-                content={documentationPage.sectionSeven?.content.raw}
-                renderers={defaultRenderers}
-              />
-            )}
-          </ContentSections>
-        </WrapperSections>
-      </SectionPage>
+          {documentationPage.sectionSeven && (
+            <RichText
+              id={documentationPage.sectionSeven.identifier}
+              content={documentationPage.sectionSeven?.content.raw}
+              renderers={defaultRenderers}
+            />
+          )}
+        </div>
+      </section>
 
-      <SectionNavigation>
+      <section className="sticky top-0 col-span-1 h-screen w-full space-y-2 border border-border px-8 py-5 shadow-sm">
         <NavigateThroughSections links={links} />
-      </SectionNavigation>
-    </MainContainer>
+      </section>
+    </div>
   )
 }

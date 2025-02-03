@@ -1,10 +1,14 @@
 import { RichText as CmsRichText } from '@graphcms/rich-text-react-renderer'
 import { ComponentProps } from 'react'
 
-type RichTextProps = ComponentProps<typeof CmsRichText>
+type RichTextProps = ComponentProps<typeof CmsRichText> & { id?: string }
 
-const RichText = ({ ...props }: RichTextProps) => {
-  return <CmsRichText {...props} />
+const RichText = ({ id, ...props }: RichTextProps) => {
+  return (
+    <div className="flex flex-col gap-2.5" id={id}>
+      <CmsRichText {...props} />
+    </div>
+  )
 }
 
 export { RichText }

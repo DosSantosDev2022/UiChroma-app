@@ -21,7 +21,7 @@ const WrapperSections = ({
   className?: string
 }) => {
   return (
-    <div className={twMerge(' space-y-20  pb-10 pt-8', className)}>
+    <div className={twMerge(' space-y-10  pb-10 pt-8', className)}>
       {children}
     </div>
   )
@@ -35,7 +35,7 @@ const ContentSections = ({
   id?: string
 }) => {
   return (
-    <div id={id} className="flex flex-col gap-3">
+    <div id={id} className="flex flex-col gap-2">
       {children}
     </div>
   )

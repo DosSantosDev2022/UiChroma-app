@@ -1,5 +1,5 @@
 import { Logo } from '@/assets/icons/Logo'
-import { links, themes } from '@/enums/sideBar'
+import { links, themes, docs } from '@/enums/sideBar'
 import { GET_COMPONENTS_NAME } from '@/services/get-Component-Names'
 import {
   SideBar,
@@ -19,6 +19,7 @@ import {
 import Link from 'next/link'
 import { LuComponent } from 'react-icons/lu'
 import { MdColorLens } from 'react-icons/md'
+import { IoDocumentText } from 'react-icons/io5'
 
 const AppSidebar = async () => {
   const { pageComponents } = await GET_COMPONENTS_NAME()
@@ -46,7 +47,23 @@ const AppSidebar = async () => {
                 </Link>
               ))}
             </SideBarList>
+
             {/* menu dropdows */}
+            <SideBarDropRoot>
+              <SideBarDropTrigger icon={<IoDocumentText size={20} />}>
+                Documentação
+              </SideBarDropTrigger>
+              <SideBarDropContent>
+                <SideBarDropList>
+                  {docs.map((doc, index) => (
+                    <Link key={index} href={`/${doc.url}`}>
+                      <SideBarDropItem>{doc.label}</SideBarDropItem>
+                    </Link>
+                  ))}
+                </SideBarDropList>
+              </SideBarDropContent>
+            </SideBarDropRoot>
+
             <SideBarDropRoot>
               <SideBarDropTrigger icon={<MdColorLens size={20} />}>
                 Temas

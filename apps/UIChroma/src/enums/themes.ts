@@ -1,15 +1,17 @@
 export enum NavigationLinks {
   INTRODUCTION = 'Introdução',
-  ESTRUTURA = 'Estrutura',
-  DARK = 'Dark',
-  CUSTOMIZATION = 'Personalização',
-  INTEGRATION = 'Integração'
+  STRUCTURE = 'Estrutura',
+  TAILWIND = 'Tailwind css',
+  TEMAS = 'Temas',
+  COLORS = 'Cores',
+  HSL = 'HSL'
 }
 
 export const links = [
   { text: NavigationLinks.INTRODUCTION, url: NavigationLinks.INTRODUCTION },
-  { text: NavigationLinks.ESTRUTURA, url: NavigationLinks.ESTRUTURA },
-  { text: NavigationLinks.DARK, url: NavigationLinks.DARK },
-  { text: NavigationLinks.CUSTOMIZATION, url: NavigationLinks.CUSTOMIZATION },
-  { text: NavigationLinks.INTEGRATION, url: NavigationLinks.INTEGRATION }
+  { text: NavigationLinks.STRUCTURE, url: NavigationLinks.STRUCTURE },
+  { text: NavigationLinks.TAILWIND, url: NavigationLinks.TAILWIND },
+  { text: NavigationLinks.TEMAS, url: NavigationLinks.TEMAS },
+  { text: NavigationLinks.COLORS, url: NavigationLinks.COLORS },
+  { text: NavigationLinks.HSL, url: NavigationLinks.HSL }
 ]

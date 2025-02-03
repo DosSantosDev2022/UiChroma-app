@@ -46,8 +46,8 @@ export function ExempleComponents() {
         <Examples.PaginationPreview />
       </ContainerPreview>
 
-      <ContainerPreview title="Componente Select">
-        <Examples.SelectPreview />
+      <ContainerPreview title="Componente Modal">
+        <Examples.ModalPreview />
       </ContainerPreview>
 
       <ContainerPreview title="Componente Carousel">

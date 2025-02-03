@@ -20,7 +20,7 @@ const generateContrast = (
 
 // Define as cores secundárias mais claras
 const generateSecondaryColor = (base: Colord) =>
-  base.desaturate(0.3).lighten(0.6)
+  base.desaturate(0.4).lighten(0.2).darken(0.2)
 
 // Define cores suaves (muted) com base no tema
 const generateMutedColor = (mode: 'light' | 'dark') => {
@@ -40,8 +40,8 @@ const generateMutedColor = (mode: 'light' | 'dark') => {
 }
 
 // Gera cores de destaque (accent)
-const generateAccentColor = (primary: Colord, secondary: Colord) =>
-  primary.mix(secondary, 0.5).saturate(0.4).lighten(0.3)
+const generateAccentColor = (primary: Colord) =>
+  primary.saturate(0.5).lighten(0.2)
 
 // Gera tons de hover
 const generateHoverColor = (base: Colord) => base.lighten(0.1)
@@ -170,7 +170,7 @@ export const generateTheme = (primaryColor: HslColor): Theme => {
   const baseDark = colord('#18181b') // Cor base para o modo escuro
   const primary = colord(primaryColor)
   const secondary = generateSecondaryColor(primary)
-  const accent = generateAccentColor(primary, secondary)
+  const accent = generateAccentColor(primary)
   const chartColors = generateChartColors(primary)
 
   return {

@@ -17,22 +17,22 @@ const defaultRenderers = {
     </h2>
   ),
   h3: ({ children }: defaultRenderersProps) => (
-    <h3 className="text-start text-2xl font-semibold tracking-tight">
+    <h3 className="text-start text-3xl font-semibold tracking-tight">
       {children}
     </h3>
   ),
   h4: ({ children }: defaultRenderersProps) => (
-    <h4 className="text-start text-lg font-semibold tracking-tight">
+    <h4 className="text-start text-2xl font-semibold tracking-tight">
       {children}
     </h4>
   ),
   h5: ({ children }: defaultRenderersProps) => (
-    <h5 className="text-md text-start font-semibold tracking-tight">
+    <h5 className="text-start text-lg font-semibold tracking-tight">
       {children}
     </h5>
   ),
   h6: ({ children }: defaultRenderersProps) => (
-    <h6 className="text-start text-xl font-extrabold tracking-tight">
+    <h6 className="text-md text-start font-extrabold tracking-tight">
       {children}
     </h6>
   ),
@@ -41,7 +41,10 @@ const defaultRenderers = {
   p: ({ children }: defaultRenderersProps) => (
     <p className="w-full text-base font-normal">{children}</p>
   ),
-
+  // bold
+  b: ({ children }: defaultRenderersProps) => (
+    <b className="text-accent">{children}</b>
+  ),
   // Listas
   li: ({ children }: defaultRenderersProps) => (
     <li className="text-muted-foreground">{children}</li>
@@ -55,7 +58,7 @@ const defaultRenderers = {
 
   // Links
   a: ({ children, href }: { children: ReactNode; href?: string }) => (
-    <a href={href} className="text-accent hover:text-accent-hover">
+    <a href={href} className="text-primary hover:text-primary-hover">
       {children}
     </a>
   ),

@@ -9,6 +9,7 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
     title
     slug
     sectionOne {
+      identifier
       id
       title
       description
@@ -17,6 +18,7 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
       }
     }
     sectionTwo {
+      identifier
       id
       title
       description
@@ -25,6 +27,7 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
       }
     }
     sectionThree {
+      identifier
       id
       title
       description
@@ -33,6 +36,7 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
       }
     }
     sectionFour {
+      identifier
       id
       title
       description
@@ -41,6 +45,7 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
       }
     }
     sectionFive {
+      identifier
       id
       title
       description
@@ -49,6 +54,7 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
       }
     }
     sectionSix {
+      identifier
       id
       title
       description
@@ -57,6 +63,7 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
       }
     }
     sectionSeven {
+      identifier
       id
       title
       description
@@ -70,5 +77,5 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
   const variables = {
     slug
   }
-  return fetchHygraphQuery(query, variables)
+  return fetchHygraphQuery(query, variables, { cache: 'no-cache' })
 }

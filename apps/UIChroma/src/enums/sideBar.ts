@@ -1,6 +1,6 @@
 import { FaHome } from 'react-icons/fa'
 import { IoIosRocket } from 'react-icons/io'
-import { IoDocumentText } from 'react-icons/io5'
+import { MdOutlineInstallDesktop } from 'react-icons/md'
 import { IconType } from 'react-icons/lib'
 import { MdNewReleases } from 'react-icons/md'
 import { v4 as uuid } from 'uuid'
@@ -8,14 +8,14 @@ import { v4 as uuid } from 'uuid'
 export enum NavigationLinksSideBar {
   HOME = 'Home',
   GETTING_STARTED = 'Primeiros passos',
-  DOCUMENTATION = 'Documentação',
+  CLI = 'CLI',
   RELEASES = 'Releases'
 }
 
 export enum NavigationUrls {
   HOME = '/',
-  GETTING_STARTED = '/gettingStarted',
-  DOCUMENTATION = '/documentation',
+  GETTING_STARTED = '/gettingstarted',
+  CLI = '/cli',
   RELEASES = '/releases'
 }
 
@@ -41,9 +41,9 @@ export const links: LinkItem[] = [
   },
   {
     id: uuid(),
-    name: NavigationLinksSideBar.DOCUMENTATION,
-    Url: NavigationUrls.DOCUMENTATION,
-    icon: IoDocumentText
+    name: NavigationLinksSideBar.CLI,
+    Url: NavigationUrls.CLI,
+    icon: MdOutlineInstallDesktop
   },
   {
     id: uuid(),
@@ -61,5 +61,24 @@ export const themes = [
   {
     label: 'Criar tema',
     url: 'themes/create'
+  }
+]
+
+export const docs = [
+  {
+    label: 'Temas e cores',
+    url: 'docs/themes'
+  },
+  {
+    label: 'Dark mode',
+    url: 'docs/dark'
+  },
+  {
+    label: 'Tailwind css',
+    url: 'docs/tailwind'
+  },
+  {
+    label: 'Sass',
+    url: 'docs/sass'
   }
 ]

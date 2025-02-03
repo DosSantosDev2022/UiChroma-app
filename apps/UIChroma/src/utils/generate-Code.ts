@@ -1,8 +1,8 @@
-import { Colors } from '@/@types/colors-themes-types'
+import { Theme } from '@/@types/colors-themes-types'
 
 export const generateCodeCss = (
-  lightColors: Colors['light'],
-  darkColors: Colors['dark']
+  lightColors: Theme['light'],
+  darkColors: Theme['dark']
 ) => {
   return `
       @tailwind base;

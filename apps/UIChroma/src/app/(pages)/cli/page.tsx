@@ -6,7 +6,7 @@ import {
   WrapperSections
 } from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/NavigateThroughSections'
-import { links } from '@/enums/documentation'
+import { links } from '@/enums/links-nav-pages'
 
 export default async function DocumentationPage() {
   return (

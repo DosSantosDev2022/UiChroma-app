@@ -23,7 +23,8 @@ import { FaCheck } from 'react-icons/fa6'
 import { MdPalette } from 'react-icons/md'
 
 const ModalTemplates = () => {
-  const { selectedColor, handleColorClick, handleCustomColor } = useThemeStore()
+  const { selectedColor, handleColorClick, handleCustomColor, customColor } =
+    useThemeStore()
   const [isShowPicker, setIsShowPicker] = useState(false)
 
   const handleShowPicker = () => {
@@ -78,8 +79,19 @@ const ModalTemplates = () => {
             </Button>
           </div>
           {isShowPicker && (
-            <div className="px-2 py-3">
-              <HslColorPicker onChange={handleCustomColor} />
+            <div className="flex gap-2 px-2 py-3">
+              <HslColorPicker
+                style={{
+                  width: '100%'
+                }}
+                onChange={handleCustomColor}
+              />
+              <div
+                className="w-full rounded-md border border-border shadow"
+                style={{
+                  backgroundColor: `hsl(${customColor.h}, ${customColor.s}%, ${customColor.l}%)`
+                }}
+              />
             </div>
           )}
         </ModalContent>

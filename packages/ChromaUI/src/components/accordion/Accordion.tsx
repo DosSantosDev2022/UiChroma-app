@@ -87,6 +87,7 @@ const AccordionContent = ({
   const contentId = 'accordion-content'
   return (
     <div
+      aria-label="accordion-content"
       data-state={isOpen ? 'open' : 'closed'}
       aria-hidden={!isOpen}
       id={contentId}

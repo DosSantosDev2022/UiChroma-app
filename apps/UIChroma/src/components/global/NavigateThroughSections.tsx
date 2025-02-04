@@ -1,5 +1,9 @@
 'use client'
-import { Button, Navigation } from '@repo/ChromaUI/components'
+import {
+  Navigation,
+  NavigationItem,
+  NavigationList
+} from '@repo/ChromaUI/components'
 import { useState } from 'react'
 import { GoDotFill } from 'react-icons/go'
 
@@ -26,30 +30,24 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
       <h3 className="mb-1 px-2 py-1 text-sm font-semibold">
         Navegue nessa página
       </h3>
-      <div>
-        <ul>
-          {links.map((link) => (
-            <li
-              className="transition-colors duration-300 hover:bg-muted-hover"
-              key={link.label}
-            >
-              <Button
-                onClick={() => handleButtonClickScrollIntoView(link.href)}
-                variants="link"
-                sizes="full"
-                className={`justify-start gap-2 truncate text-base font-light 
-                    text-muted-foreground hover:no-underline
-                    ${activeLink === link.href ? 'font-bold text-primary' : ''}`}
-              >
-                <GoDotFill size={12} />
-                {link.label}
-              </Button>
-            </li>
-          ))}
-        </ul>
-      </div>
+
+      <NavigationList className="sm:flex-col sm:gap-1">
+        {links.map((link) => (
+          <NavigationItem
+            onClick={() => handleButtonClickScrollIntoView(link.href)}
+            className={`gap-2 p-1.5 text-muted-foreground
+                hover:no-underline
+                ${activeLink === link.href ? 'font-bold text-primary' : ''}`}
+            key={link.label}
+          >
+            <GoDotFill size={12} />
+            {link.label}
+          </NavigationItem>
+        ))}
+      </NavigationList>
     </Navigation>
   )
 }
 
 export { NavigateThroughSections }
+

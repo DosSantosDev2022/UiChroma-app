@@ -1,5 +1,5 @@
 import { Logo } from '@/assets/icons/Logo'
-import { links, themes, docs } from '@/enums/sideBar'
+import { docs, links, themes } from '@/enums/sideBar'
 import { GET_COMPONENTS_NAME } from '@/services/get-Component-Names'
 import {
   SideBar,
@@ -17,9 +17,9 @@ import {
   SideBarRoot
 } from '@repo/ChromaUI/components'
 import Link from 'next/link'
+import { IoDocumentText } from 'react-icons/io5'
 import { LuComponent } from 'react-icons/lu'
 import { MdColorLens } from 'react-icons/md'
-import { IoDocumentText } from 'react-icons/io5'
 
 const AppSidebar = async () => {
   const { pageComponents } = await GET_COMPONENTS_NAME()
@@ -27,8 +27,6 @@ const AppSidebar = async () => {
   const componentList = [...pageComponents].sort((a, b) =>
     a.name.localeCompare(b.name)
   )
-
-  /* const templates = [...Templates].sort((a, b) => a.name.localeCompare(b.name)) */
   return (
     <SideBarRoot>
       <SideBar>
@@ -112,3 +110,4 @@ const AppSidebar = async () => {
 }
 
 export { AppSidebar }
+

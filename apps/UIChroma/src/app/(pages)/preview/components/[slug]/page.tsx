@@ -1,16 +1,10 @@
 import { inter } from '@/assets/fonts'
 import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
-import {
-  MainContainer,
-  SectionNavigation,
-  SectionPage,
-  WrapperSections
-} from '@/components/global/containers/pageContainers'
 import { NavigateThroughSections } from '@/components/global/NavigateThroughSections'
 import { Title } from '@/components/global/title'
 import ComponentPreview from '@/components/pages/preview/component-Preview'
 import { DocLinks } from '@/components/pages/preview/doc-Links'
-import { links } from '@/enums/preview'
+import { linksNavigationComponents } from '@/enums/links-nav-pages'
 import { GET_DETAILS_COMPONENT } from '@/services/get-Details-Component'
 import {
   Badge,
@@ -58,9 +52,9 @@ export default async function ComponentDetails({
   }
 
   return (
-    <MainContainer>
-      <SectionPage>
-        <WrapperSections className="space-y-10 pb-0 pt-0">
+    <div className="grid grid-cols-4 gap-4">
+      <section className="col-span-3 w-full rounded-md  border border-border p-4 shadow-sm">
+        <div className="space-y-10 pb-0 pt-0">
           <div id="Início">
             <div className=" flex w-full flex-col">
               <div className="mt-2 flex  items-center justify-start gap-3">
@@ -154,7 +148,7 @@ export default async function ComponentDetails({
               </div>
             )}
 
-            <div id="Como usar" className="space-y-4">
+            <div id="ComoUsar" className="space-y-4">
               <div className="space-y-2">
                 <Title as="h3" className={`${inter.className}`}>
                   {pageComponent.sampleCode.title}
@@ -207,12 +201,12 @@ export default async function ComponentDetails({
               ))}
             </div>
           )}
-        </WrapperSections>
-      </SectionPage>
+        </div>
+      </section>
 
-      <SectionNavigation>
-        <NavigateThroughSections links={links} />
-      </SectionNavigation>
-    </MainContainer>
+      <section className="sticky top-0 col-span-1 h-screen w-full space-y-2 border border-border px-8 py-5 shadow-sm">
+        <NavigateThroughSections links={linksNavigationComponents} />
+      </section>
+    </div>
   )
 }

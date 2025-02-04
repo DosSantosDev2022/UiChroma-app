@@ -1,5 +1,5 @@
 import { ModalSearch } from '@/components/global/header/modalSearch'
-import { GET_SEARCH } from '@/services/get-Search'
+import { GET_COMPONENTS_NAME } from '@/services/get-Component-Names'
 import { Badge } from '@repo/ChromaUI/components'
 import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
@@ -7,7 +7,7 @@ import { IoLogoFigma } from 'react-icons/io5'
 import { SelectTheme } from './selectTheme'
 
 const Header = async () => {
-  const { pageComponents } = await GET_SEARCH()
+  const { pageComponents } = await GET_COMPONENTS_NAME()
 
   const links = [
     {

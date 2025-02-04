@@ -11,7 +11,7 @@ import {
   ModalTrigger
 } from '@repo/ChromaUI/components'
 import Link from 'next/link'
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 
 interface Component {
@@ -28,6 +28,7 @@ const ModalSearch = ({ data }: ModalProps) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [filtered, setFiltered] = useState<Component[]>([])
   const [isOpen, setIsOpen] = useState(false)
+
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.toLowerCase()
     setSearchTerm(value)
@@ -42,6 +43,12 @@ const ModalSearch = ({ data }: ModalProps) => {
       setFiltered([])
     }
   }
+  useEffect(() => {
+    if (!isOpen) {
+      setSearchTerm('')
+      setFiltered([])
+    }
+  }, [isOpen])
 
   const handleOpenChange = (newState: boolean) => {
     setIsOpen(newState)
@@ -70,13 +77,13 @@ const ModalSearch = ({ data }: ModalProps) => {
             onChange={handleSearch}
           />
         </form>
-        <div className="space-4  custom-scrollbar max-h-80 overflow-y-auto">
+        <div className="custom-scrollbar max-h-80 overflow-y-auto">
           {filtered.length > 0 ? (
-            <ul>
+            <ul className="space-y-1">
               {filtered.map((filter) => (
                 <li className="flex flex-col space-y-2" key={filter.id}>
                   <Link
-                    className="w-full rounded-md border p-2 transition-all duration-200 hover:bg-muted-hover hover:text-muted-foreground"
+                    className="w-full rounded-md border border-border p-2 transition-all duration-200 hover:bg-muted-hover hover:text-muted-foreground"
                     href={`/preview/components/${filter.slug}`}
                     onClick={() => handleOpenChange(false)}
                   >
@@ -85,11 +92,11 @@ const ModalSearch = ({ data }: ModalProps) => {
                 </li>
               ))}
             </ul>
-          ) : (
+          ) : searchTerm.trim() !== '' ? (
             <span className="font-normal text-muted-foreground">
               Nenhum componente encontrado !
             </span>
-          )}
+          ) : null}
         </div>
       </ModalContent>
     </ModalRoot>

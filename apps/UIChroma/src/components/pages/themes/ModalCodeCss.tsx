@@ -1,7 +1,8 @@
 'use client'
+import { Colors } from '@/@types/colors-themes-types'
 import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
 import { useThemeStore } from '@/store/use-Theme-Store'
-import { formatColors } from '@/utils/formatColors'
+import { formatColors } from '@/utils/format-Colors'
 import { generateCodeCss, generateTailwindConfig } from '@/utils/generate-Code'
 import {
   Button,
@@ -19,7 +20,6 @@ import {
   ModalTitle,
   ModalTrigger
 } from '@repo/ChromaUI/components'
-
 import { useState } from 'react'
 import { BiLogoCss3 } from 'react-icons/bi'
 import { IoCopy } from 'react-icons/io5'
@@ -78,8 +78,8 @@ export function ModalCodeCss() {
                   copyText={
                     activeTab === 'globalcss'
                       ? generateCodeCss(
-                          formatColors(lightColors),
-                          formatColors(darkColors)
+                          formatColors(lightColors) as Colors,
+                          formatColors(darkColors) as Colors
                         )
                       : generateTailwindConfig()
                   }
@@ -90,8 +90,8 @@ export function ModalCodeCss() {
                   code={
                     activeTab === 'globalcss'
                       ? generateCodeCss(
-                          formatColors(lightColors),
-                          formatColors(darkColors)
+                          formatColors(lightColors) as Colors,
+                          formatColors(darkColors) as Colors
                         )
                       : generateTailwindConfig()
                   }

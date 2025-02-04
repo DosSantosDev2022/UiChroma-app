@@ -9,7 +9,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   sizes?: 'xs' | 'sm' | 'lg' | 'icon' | 'full'
   variants?:
     | 'primary'
-    | 'secundary'
+    | 'secondary'
     | 'outline'
     | 'ghost'
     | 'accent'
@@ -25,7 +25,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantClasses = {
   primary: 'bg-primary text-primary-foreground hover:bg-primary-hover',
-  secundary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
+  secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary-hover',
   outline:
     'text-accent bg-accent-foreground hover:bg-accent-hover hover:text-accent-foreground',
   ghost:

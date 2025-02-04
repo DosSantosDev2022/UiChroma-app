@@ -1,6 +1,6 @@
 export * from './accordion/Accordion'
 export * from './avatar/Avatar'
-export * from './bedge/Bedge'
+export * from './bedge/Badge'
 export * from './button/Button'
 export * from './calendar/Calendar'
 export * from './card-Image/card-Image'

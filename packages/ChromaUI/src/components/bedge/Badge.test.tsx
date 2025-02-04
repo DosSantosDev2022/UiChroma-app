@@ -2,33 +2,34 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 import { describe, expect, it } from 'vitest'
-import { Badge } from './Bedge'
+import { Badge, BadgeProps } from './Badge'
+
+const renderBadge = (props: BadgeProps) =>
+  render(<Badge {...props}>{props.children}</Badge>)
 
 describe('Component Badge', () => {
   it('The Badge component must render correctly', () => {
-    render(
-      <Badge variant={'primary'} size={'lg'}>
-        Testes
-      </Badge>
-    )
-    expect(screen.getByText('Testes').parentElement)
+    renderBadge({ variant: 'primary', size: 'lg', children: 'Testes' })
+    expect(screen.getByText('Testes').parentElement).toBeInTheDocument()
   })
 
   it('should render with the correct primary variant', () => {
-    render(<Badge variant="primary">primary</Badge>)
+    renderBadge({ variant: 'primary', children: 'primary' })
     expect(screen.getByText('primary')).toHaveClass('bg-primary')
   })
 
   it('should render with the correct secondary variant', () => {
-    render(<Badge variant="secondary">secondary</Badge>)
+    renderBadge({ variant: 'secondary', children: 'secondary' })
     expect(screen.getByText('secondary')).toHaveClass('bg-secondary')
   })
+
   it('should render with the correct accent variant', () => {
-    render(<Badge variant="accent">accent</Badge>)
+    renderBadge({ variant: 'accent', children: 'accent' })
     expect(screen.getByText('accent')).toHaveClass('bg-accent')
   })
+
   it('should render with correct muted variant', () => {
-    render(<Badge variant="muted">muted</Badge>)
+    renderBadge({ variant: 'muted', children: 'muted' })
     expect(screen.getByText('muted')).toHaveClass('bg-muted')
   })
 })

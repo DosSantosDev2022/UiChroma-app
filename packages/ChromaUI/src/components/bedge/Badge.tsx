@@ -1,7 +1,7 @@
 import React, { ComponentProps } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-interface BadgeProps extends ComponentProps<'span'> {
+export interface BadgeProps extends ComponentProps<'span'> {
   variant?: 'primary' | 'secondary' | 'accent' | 'muted'
   size?: 'xs' | 'md' | 'lg' | 'xl' | 'full'
   children?: string

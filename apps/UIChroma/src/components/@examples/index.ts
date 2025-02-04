@@ -13,4 +13,3 @@ export { default as PaginationPreview } from './pagination/index'
 export { default as PopoverPreview } from './popover/index'
 export { default as SelectPreview } from './select/index'
 export { default as TextAreaPreview } from './textarea/index'
-

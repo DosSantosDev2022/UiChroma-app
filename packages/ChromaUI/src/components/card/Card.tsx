@@ -7,6 +7,7 @@ const Card = React.forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <div
+      aria-label="card-root"
       ref={ref}
       className={twMerge(
         'space-y-3 rounded-lg border border-border bg-background p-4 shadow-sm',
@@ -24,6 +25,7 @@ const CardHeader = React.forwardRef<
   React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => (
   <div
+    aria-label="card-header"
     ref={ref}
     className={twMerge('flex flex-col space-y-1.5', className)}
     {...props}
@@ -37,6 +39,7 @@ const CardTitle = React.forwardRef<
   React.ComponentPropsWithoutRef<'h3'>
 >(({ className, ...props }, ref) => (
   <h3
+    aria-label="card-title"
     ref={ref}
     className={twMerge(
       'text-2xl font-semibold leading-none tracking-tight text-foreground',
@@ -53,6 +56,7 @@ const CardDescription = React.forwardRef<
   React.ComponentPropsWithoutRef<'p'>
 >(({ className, ...props }, ref) => (
   <p
+    aria-label="card-description"
     ref={ref}
     className={twMerge('text-sm text-muted-foreground', className)}
     {...props}
@@ -66,6 +70,7 @@ const CardContent = React.forwardRef<
   React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => (
   <div
+    aria-label="card-content"
     ref={ref}
     className={twMerge('flex flex-col items-start', className)}
     {...props}
@@ -79,6 +84,7 @@ const CardFooter = React.forwardRef<
   React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => (
   <div
+    aria-label="card-footer"
     ref={ref}
     className={twMerge('flex items-center gap-2 sm:gap-3', className)}
     {...props}

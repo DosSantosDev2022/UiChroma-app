@@ -7,13 +7,12 @@ import { Badge } from '@repo/ChromaUI/components'
 import { format } from 'date-fns'
 
 interface ReleasePageParams {
-  searchParams: {
-    query: string
-  }
+  searchParams?: Record<string, string | undefined>
 }
 
 export default async function ReleasePage({ searchParams }: ReleasePageParams) {
-  const { releasePage } = await GET_RELEASES(searchParams.query)
+  const searchQuery = searchParams?.query ?? ''
+  const { releasePage } = await GET_RELEASES(searchQuery)
 
   return (
     <div className="relative mb-10 flex max-w-5xl flex-col px-4 sm:px-6 lg:px-8">
@@ -48,7 +47,7 @@ export default async function ReleasePage({ searchParams }: ReleasePageParams) {
                     <Title as="h4" className="text-xl font-bold">
                       {release.title}
                     </Title>
-                    <Badge variant="primary" children={release.version} />
+                    <Badge variant="primary">{release.version}</Badge>
                   </div>
                 </div>
 

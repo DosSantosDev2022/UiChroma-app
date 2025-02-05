@@ -2,16 +2,17 @@
 
 import { Input } from '@repo/ChromaUI/components'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 
 const SearchReleases = () => {
   const searchParams = useSearchParams()
   const { push } = useRouter()
-  const [searchTerm, setSearchTerm] = useState(searchParams.get('query') || '')
+  const currentQuery = searchParams.get('query') || ''
+  const [searchTerm, setSearchTerm] = useState(currentQuery)
 
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams)
+  const updateSearchQuery = useCallback(() => {
+    const params = new URLSearchParams(searchParams.toString())
 
     if (searchTerm) {
       params.set('query', searchTerm)
@@ -20,7 +21,13 @@ const SearchReleases = () => {
     }
 
     push(`/releases?${params.toString()}`)
-  }, [searchTerm, push, searchParams])
+  }, [searchTerm, searchParams, push])
+
+  useEffect(() => {
+    console.log('SearchTerm atual:', searchTerm)
+    const timeout = setTimeout(updateSearchQuery, 500)
+    return () => clearTimeout(timeout)
+  }, [searchTerm, updateSearchQuery])
 
   return (
     <div className="flex h-14 w-full items-center justify-end p-2">

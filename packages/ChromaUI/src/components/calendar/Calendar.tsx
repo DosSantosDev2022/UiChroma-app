@@ -1,7 +1,6 @@
 'use client'
 import { format, isSameDay } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
-import React from 'react'
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu'
 import { Button } from '../button/Button'
 import { CalendarProps, useCalendar } from './../../hooks/useCalendar'
@@ -23,13 +22,23 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
     <div className="flex w-full max-w-80 flex-col items-center justify-center rounded-2xl border border-border p-4 shadow-sm">
       <div className="mb-2 flex w-full items-center gap-2">
         <div className="flex w-full items-center justify-between gap-8 rounded-xl  border border-border p-1 text-sm font-medium text-muted-foreground">
-          <Button variants="ghost" sizes="icon" onClick={prevMonth}>
+          <Button
+            aria-label="chevron-left"
+            variants="ghost"
+            sizes="icon"
+            onClick={prevMonth}
+          >
             <LuChevronLeft />
           </Button>
           <span className="capitalize">
             {format(currentDate, 'MMMM yyyy', { locale: ptBR })}
           </span>
-          <Button variants="ghost" sizes="icon" onClick={nextMonth}>
+          <Button
+            aria-label="chevron-right"
+            variants="ghost"
+            sizes="icon"
+            onClick={nextMonth}
+          >
             <LuChevronRight />
           </Button>
         </div>

@@ -84,6 +84,7 @@ const Carousel = ({
 
   return (
     <div
+      aria-label="carousel-root"
       className={twMerge(
         'relative h-56 w-full overflow-hidden sm:h-72 md:h-96',
         'flex items-center justify-center',
@@ -93,6 +94,7 @@ const Carousel = ({
     >
       {/* Conteúdo do Carrossel */}
       <div
+        aria-label="carousel-content"
         className="flex h-full transition-transform duration-700 ease-in-out"
         style={{
           transform: `translateX(-${currentIndex * 100}%)`
@@ -100,6 +102,7 @@ const Carousel = ({
       >
         {itemsRef.current.map((child, index) => (
           <div
+            aria-label="carousel-image"
             key={index}
             className="flex h-full w-full flex-shrink-0 items-center justify-center"
           >

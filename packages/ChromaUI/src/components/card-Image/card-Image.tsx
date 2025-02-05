@@ -13,6 +13,7 @@ const CardTitle = React.forwardRef<
 >(({ className, label, ...props }, ref) => {
   return (
     <h3
+      aria-label="card-title"
       ref={ref}
       {...props}
       className={twMerge(
@@ -33,6 +34,7 @@ const CardDescription = React.forwardRef<
 >(({ className, label, ...props }, ref) => {
   return (
     <p
+      aria-label="card-description"
       ref={ref}
       {...props}
       className={twMerge(
@@ -53,6 +55,7 @@ const CardImage = React.forwardRef<
 >(({ className, image, title, description, ...props }, ref) => {
   return (
     <div
+      aria-label="card-root"
       ref={ref}
       className={twMerge(
         'group relative overflow-hidden rounded-2xl p-0 shadow-sm',
@@ -63,6 +66,7 @@ const CardImage = React.forwardRef<
     >
       {/* Imagem de fundo com efeito hover */}
       <div
+        aria-label="card-image"
         className={twMerge(
           'flex h-full flex-col justify-end gap-3 p-4',
           ' transform transition-transform duration-300 ease-in group-hover:scale-105',
@@ -71,10 +75,16 @@ const CardImage = React.forwardRef<
         style={{ backgroundImage: `url(${image})` }}
       />
       {/* Gradiente sobre a imagem */}
-      <div className="absolute inset-0 bg-gradient-to-t from-accent" />
+      <div
+        aria-label="card-gradient"
+        className="absolute inset-0 bg-gradient-to-t from-accent"
+      />
 
       {/* Conteúdo */}
-      <div className="absolute inset-0 flex flex-col justify-end gap-2 p-4">
+      <div
+        aria-label="card-content"
+        className="absolute inset-0 flex flex-col justify-end gap-2 p-4"
+      >
         <CardTitle label={title} />
         <CardDescription label={description} />
       </div>

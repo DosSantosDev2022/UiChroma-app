@@ -91,7 +91,7 @@ export default async function ComponentDetails({
           </div>
 
           <div className="flex flex-col gap-12">
-            <div id="Preview" className="space-y-4">
+            <div id="Preview" className="space-y-10">
               <Title as="h3" className={`${inter.className}`}>
                 Preview
               </Title>

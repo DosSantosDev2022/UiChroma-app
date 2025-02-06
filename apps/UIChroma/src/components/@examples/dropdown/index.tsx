@@ -45,7 +45,7 @@ const DropDownPreview = () => {
           <DropDownList>
             {list.map((i) => (
               <DropDownItem key={i.id}>
-                <DropDownLink>
+                <DropDownLink href="#">
                   <DropDownIcon>{i.icon}</DropDownIcon>
                   {i.content}
                 </DropDownLink>

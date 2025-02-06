@@ -1,5 +1,11 @@
 'use client'
-import React, { createContext, ReactNode, useContext, useState } from 'react'
+import React, {
+  ComponentPropsWithRef,
+  createContext,
+  ReactNode,
+  useContext,
+  useState
+} from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface DropDownContextProps {
@@ -118,6 +124,7 @@ const DropDownItem = React.forwardRef<
     {...props}
     className={twMerge(
       'cursor-pointer px-2 py-1.5 hover:bg-muted-hover',
+      'flex w-full items-center justify-start gap-2 text-sm font-semibold text-foreground',
       className
     )}
     ref={ref}
@@ -146,32 +153,19 @@ const DropDownLabel = React.forwardRef<
 
 DropDownLabel.displayName = 'DropDownLabel'
 
-interface DropDownLinkProps extends React.ComponentPropsWithRef<'a'> {
-  asChild?: boolean
-}
-
-const DropDownLink = React.forwardRef<HTMLAnchorElement, DropDownLinkProps>(
-  ({ className, asChild, children, ...props }, ref) => {
-    if (asChild && React.isValidElement(children)) {
-      return React.cloneElement(children as React.ReactElement, {
-        ...props,
-        ref
-      })
-    }
-
-    return (
-      <a
-        className={twMerge(
-          'flex w-full items-center justify-start gap-2 text-sm font-semibold text-foreground',
-          className
-        )}
-        {...props}
-        ref={ref}
-        children={children}
-      />
-    )
-  }
-)
+const DropDownLink = React.forwardRef<
+  HTMLAnchorElement,
+  ComponentPropsWithRef<'a'>
+>(({ className, children, ...props }, ref) => {
+  return (
+    <a
+      className={twMerge('', className)}
+      {...props}
+      ref={ref}
+      children={children}
+    />
+  )
+})
 
 DropDownLink.displayName = 'DropDownLink'
 

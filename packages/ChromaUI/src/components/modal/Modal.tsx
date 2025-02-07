@@ -67,7 +67,11 @@ const ModalRoot = ({
   onOpenChange?: (isOpen: boolean) => void
 }) => (
   <ModalProvider open={open} onOpenChange={onOpenChange}>
-    <div className={twMerge('', className)} {...props} />
+    <div
+      aria-label="modal-root"
+      className={twMerge('', className)}
+      {...props}
+    />
   </ModalProvider>
 )
 
@@ -78,6 +82,7 @@ const ModalHeader = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
+    aria-label="modal-header"
     className={twMerge(
       'flex w-full items-center justify-between space-y-1 px-1 py-1.5',
       className
@@ -93,6 +98,7 @@ const ModalTitle = ({
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>) => (
   <h4
+    aria-label="modal-title"
     className={twMerge(
       'text-xl font-semibold leading-none tracking-tight text-foreground',
       className
@@ -108,6 +114,7 @@ const ModalDescription = ({
   ...props
 }: React.HTMLAttributes<HTMLParagraphElement>) => (
   <p
+    aria-label="modal-title"
     className={twMerge('px-1 py-1.5 text-sm text-muted-foreground', className)}
     {...props}
   />
@@ -120,6 +127,7 @@ const ModalFooter = ({
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
+    aria-label="modal-footer"
     className={twMerge(
       'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
       className
@@ -146,6 +154,7 @@ const ModalOverlay = React.forwardRef<
 
   return (
     <div
+      aria-label="Modal-Overlay"
       className={twMerge(
         'fixed inset-0 z-40',
         variantClasses[variant],
@@ -175,6 +184,7 @@ const ModalTrigger = React.forwardRef<
 
   return (
     <button
+      aria-label="modal-trigger"
       value={'text'}
       onClick={toggleOpen}
       className={twMerge(
@@ -199,6 +209,7 @@ const ModalClose = React.forwardRef<
   const { toggleOpen } = useModalContext()
   return (
     <button
+      aria-label="modal-close"
       value={'text'}
       onClick={toggleOpen}
       className={twMerge(
@@ -222,7 +233,10 @@ const ModalContent = React.forwardRef<
 
   return (
     isOpen && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center">
+      <div
+        aria-label="modal-content"
+        className="fixed inset-0 z-50 flex items-center justify-center"
+      >
         <div
           data-state={isOpen ? 'open' : 'closed'}
           className={twMerge(

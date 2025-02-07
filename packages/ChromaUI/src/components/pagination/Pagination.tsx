@@ -1,14 +1,13 @@
 import React from 'react'
 import { BsThreeDots } from 'react-icons/bs'
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu'
-
 import { twMerge } from 'tailwind-merge'
 
 const Pagination = React.forwardRef<HTMLElement, React.ComponentProps<'nav'>>(
   ({ className, ...props }, ref) => (
     <nav
-      role="navigation"
-      aria-label="navigation"
+      role="pagination"
+      aria-label="pagination"
       className={twMerge('mx-auto flex  w-full justify-center py-2', className)}
       {...props}
       ref={ref}
@@ -23,6 +22,7 @@ const PaginationContent = React.forwardRef<
   React.ComponentProps<'ul'>
 >(({ className, ...props }, ref) => (
   <ul
+    aria-label="pagination-list"
     className={twMerge('flex flex-row items-center gap-1', className)}
     {...props}
     ref={ref}
@@ -36,6 +36,7 @@ const PaginationItem = React.forwardRef<
   React.ComponentProps<'li'>
 >(({ className, ...props }, ref) => (
   <li
+    aria-label="pagination-item"
     className={twMerge('flex items-center justify-center', className)}
     {...props}
     ref={ref}
@@ -49,21 +50,21 @@ type PaginationLinkProps = {
   radius?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
 } & React.ComponentProps<'button'>
 
+const variantClasses = {
+  xs: 'rounded',
+  sm: 'rounded-sm',
+  md: 'rounded-md',
+  lg: 'rounded-lg',
+  xl: 'rounded-xl',
+  full: 'rounded-full'
+}
+
 const PageButton = ({
   className,
   isActive,
   radius = 'lg',
   ...props
 }: PaginationLinkProps) => {
-  const variantClasses = {
-    xs: 'rounded',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    xl: 'rounded-xl',
-    full: 'rounded-full'
-  }
-
   return (
     <button
       aria-current={isActive ? 'page' : 'false'}
@@ -115,6 +116,7 @@ const PaginationEllipsis = ({
   ...props
 }: React.ComponentProps<'span'>) => (
   <span
+    aria-label="More pages"
     aria-hidden
     className={twMerge(
       'flex h-9 w-9 items-center justify-center text-foreground',

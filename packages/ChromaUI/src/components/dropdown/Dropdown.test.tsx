@@ -7,7 +7,7 @@ import {
   DropDownContent,
   DropDownItem,
   DropDownLink
-} from './DropDown'
+} from './Dropdown'
 
 describe('Dropdown component', () => {
   it('should render DropdownTrigger correctly', () => {

@@ -9,56 +9,69 @@ interface defaultRenderersProps {
 const defaultRenderers = {
   // Títulos
   h1: ({ children }: defaultRenderersProps) => (
-    <h1 className={`${inter.className} text-6xl font-bold`}>{children}</h1>
+    <h1
+      className={`${inter.className} text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl`}
+    >
+      {children}
+    </h1>
   ),
   h2: ({ children }: defaultRenderersProps) => (
-    <h2 className="text-start text-4xl font-extrabold tracking-tight">
+    <h2 className="text-start text-2xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
       {children}
     </h2>
   ),
   h3: ({ children }: defaultRenderersProps) => (
-    <h3 className="text-start text-3xl font-semibold tracking-tight">
+    <h3 className="text-start text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
       {children}
     </h3>
   ),
   h4: ({ children }: defaultRenderersProps) => (
-    <h4 className="text-start text-2xl font-semibold tracking-tight">
+    <h4 className="text-start text-lg font-semibold tracking-tight sm:text-xl md:text-2xl">
       {children}
     </h4>
   ),
   h5: ({ children }: defaultRenderersProps) => (
-    <h5 className="text-start text-lg font-semibold tracking-tight">
+    <h5 className="text-start text-base font-semibold tracking-tight sm:text-lg">
       {children}
     </h5>
   ),
   h6: ({ children }: defaultRenderersProps) => (
-    <h6 className="text-md text-start font-extrabold tracking-tight">
+    <h6 className="text-start text-sm font-extrabold tracking-tight sm:text-base">
       {children}
     </h6>
   ),
 
   // Parágrafos
   p: ({ children }: defaultRenderersProps) => (
-    <p className="w-full text-base font-normal">{children}</p>
+    <p className="w-full text-sm font-normal sm:text-base md:text-lg">
+      {children}
+    </p>
   ),
-  // bold
+
+  // Bold
   b: ({ children }: defaultRenderersProps) => (
     <b className="text-accent">{children}</b>
   ),
+
   // Listas
   li: ({ children }: defaultRenderersProps) => (
-    <li className="text-muted-foreground">{children}</li>
+    <li className="text-sm text-muted-foreground sm:text-base">{children}</li>
   ),
   ul: ({ children }: defaultRenderersProps) => (
-    <ul className="ml-6 mt-1 list-disc space-y-4 px-2">{children}</ul>
+    <ul className="ml-4 mt-1 list-disc space-y-2 px-2 sm:ml-6 sm:space-y-4">
+      {children}
+    </ul>
   ),
   ol: ({ children }: defaultRenderersProps) => (
-    <ol className="mt-2 space-y-2 px-2">{children}</ol>
+    <ol className="mt-2 space-y-2 px-2 sm:space-y-4">{children}</ol>
   ),
 
   // Links
   a: ({ children, href }: { children: ReactNode; href?: string }) => (
-    <a href={href} className="text-primary hover:text-primary-hover">
+    <a
+      href={href}
+      className="text-sm text-primary hover:text-primary-hover sm:text-base"
+    >
       {children}
     </a>
   ),
@@ -69,13 +82,14 @@ const defaultRenderers = {
       src={src || ''}
       alt={alt || ''}
       className="max-w-full rounded-md shadow-md"
+      sizes="(max-width: 768px) 100vw, 50vw"
     />
   ),
 
   // Bloco de código
   code_block: ({ children }: defaultRenderersProps) => (
-    <pre className="custom-scrollbar w-full overflow-x-auto rounded-xl border border-border bg-foreground px-10 py-5 dark:bg-muted">
-      <code className="text-background dark:text-muted-foreground">
+    <pre className="custom-scrollbar w-full overflow-x-auto rounded-xl border border-border bg-foreground px-4 py-3 dark:bg-muted sm:px-6 sm:py-4 md:px-10 md:py-5">
+      <code className="text-xs text-background dark:text-muted-foreground sm:text-sm md:text-base">
         {children}
       </code>
     </pre>
@@ -83,14 +97,14 @@ const defaultRenderers = {
 
   // Bloco de citação
   blockquote: ({ children }: defaultRenderersProps) => (
-    <blockquote className="border-l-4 border-border pl-6 italic text-muted-foreground">
+    <blockquote className="border-l-4 border-border pl-4 text-sm italic text-muted-foreground sm:pl-6 sm:text-base">
       {children}
     </blockquote>
   ),
 
   // Tabelas
   table: ({ children }: defaultRenderersProps) => (
-    <table className="w-full border-collapse border border-border">
+    <table className="w-full border-collapse border border-border text-sm sm:text-base">
       {children}
     </table>
   ),
@@ -103,22 +117,24 @@ const defaultRenderers = {
 
   // Span (texto em linha)
   span: ({ children }: defaultRenderersProps) => (
-    <span className="text-muted-foreground">{children}</span>
+    <span className="text-sm text-muted-foreground sm:text-base">
+      {children}
+    </span>
   ),
 
   // Strong (negrito)
   strong: ({ children }: defaultRenderersProps) => (
-    <strong className="font-bold">{children}</strong>
+    <strong className="text-sm font-bold sm:text-base">{children}</strong>
   ),
 
   // Em (itálico)
   em: ({ children }: defaultRenderersProps) => (
-    <em className="italic">{children}</em>
+    <em className="text-sm italic sm:text-base">{children}</em>
   ),
 
   // Small (texto pequeno)
   small: ({ children }: defaultRenderersProps) => (
-    <small className="text-sm text-accent">{children}</small>
+    <small className="text-xs text-accent sm:text-sm">{children}</small>
   )
 }
 

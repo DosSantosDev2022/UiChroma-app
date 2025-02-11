@@ -8,30 +8,20 @@ export default async function Home() {
   const slug = 'home-page'
   const { documentationPage } = await GET_PAGE_DATA(slug)
   return (
-    <div className=" flex h-full max-w-4xl flex-col px-4 sm:px-6 lg:px-8">
-      <section className="flex h-full flex-col pb-10 pt-16">
-        <div className="space-y-6">
-          {documentationPage.sectionOne && (
-            <RichText
-              content={documentationPage?.sectionOne.content.raw}
-              renderers={defaultRenderers}
-            />
-          )}
-        </div>
+    <div className=" flex  w-full flex-col px-4 sm:px-6 lg:px-8">
+      <section className="flex w-full flex-col pb-0 pt-0 lg:pb-10 lg:pt-16">
+        {documentationPage.sectionOne && (
+          <RichText
+            content={documentationPage?.sectionOne.content.raw}
+            renderers={defaultRenderers}
+          />
+        )}
 
         <div className="mt-4 flex w-full items-center justify-start gap-2">
-          <Button
-            variants="shine"
-            asChild
-            className="flex w-40 items-center justify-center text-base"
-          >
-            <Link href={'/starter'}>Primeiros passos</Link>
+          <Button sizes="sm" variants="shine" asChild>
+            <Link href={'/starter'}>Início</Link>
           </Button>
-          <Button
-            variants="shine"
-            asChild
-            className="flex w-40 items-center justify-center text-base"
-          >
+          <Button sizes="sm" variants="shine" asChild>
             <Link href={'/'}>Documentação</Link>
           </Button>
         </div>

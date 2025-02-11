@@ -43,8 +43,8 @@ const variantClasses = {
 }
 const sizeClasses = {
   xs: 'h-10 w-24 text-sm',
-  sm: 'h-12 w-28 text-sm',
-  lg: 'h-14 w-28 text-lg',
+  sm: 'h-10 w-28 text-sm',
+  lg: 'h-10 w-28 text-lg',
   icon: 'h-8 w-8 p-1',
   full: 'h-10 w-full text-lg'
 }

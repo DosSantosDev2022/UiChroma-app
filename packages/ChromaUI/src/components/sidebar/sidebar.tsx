@@ -84,7 +84,7 @@ const SideBar = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        ' flex h-full flex-col justify-between border border-border bg-background p-4',
+        'hidden h-full flex-col justify-between border border-border bg-background p-4 lg:flex',
         isOpenSideBar
           ? 'fixed z-50 w-72 translate-x-0 animate-expand-dimensions lg:relative lg:z-0'
           : ' p-2 sm:w-20 sm:translate-x-0',

@@ -22,6 +22,7 @@ const ClipBoardAction = React.forwardRef<HTMLButtonElement, ClipBoardProps>(
     }
     return (
       <button
+        aria-label="button-copy"
         className={twMerge(
           'flex items-center gap-2 rounded-md p-1.5 transition-all duration-500',
           'bg-muted text-muted-foreground hover:bg-muted-hover',
@@ -42,7 +43,14 @@ const ClipBoardContainer = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => {
-  return <div className={twMerge('w-full', className)} {...props} ref={ref} />
+  return (
+    <div
+      aria-label="clipboard-container"
+      className={twMerge('w-full', className)}
+      {...props}
+      ref={ref}
+    />
+  )
 })
 ClipBoardContainer.displayName = 'ClipBoardContainer'
 

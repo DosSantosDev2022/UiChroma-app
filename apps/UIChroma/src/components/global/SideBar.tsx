@@ -2,6 +2,7 @@ import { Logo } from '@/assets/icons/Logo'
 import { docs, links, themes } from '@/enums/sideBar'
 import { GET_COMPONENTS_NAME } from '@/services/get-Component-Names'
 import {
+  Badge,
   SideBar,
   SideBarContent,
   SideBarDropContent,
@@ -30,7 +31,7 @@ const AppSidebar = async () => {
   return (
     <SideBarRoot>
       <SideBar>
-        <SideBarHeader>
+        <SideBarHeader trigger>
           <SideBarLogo label="Chroma" icon={<Logo />} />
         </SideBarHeader>
         <SideBarContent>
@@ -55,7 +56,14 @@ const AppSidebar = async () => {
                 <SideBarDropList>
                   {docs.map((doc, index) => (
                     <Link key={index} href={`/${doc.url}`}>
-                      <SideBarDropItem>{doc.label}</SideBarDropItem>
+                      <SideBarDropItem>
+                        {doc.label}
+                        {doc.status && (
+                          <Badge className="ml-2 py-0.5 text-xs" size="md">
+                            {doc.status}
+                          </Badge>
+                        )}
+                      </SideBarDropItem>
                     </Link>
                   ))}
                 </SideBarDropList>
@@ -92,9 +100,9 @@ const AppSidebar = async () => {
                       >
                         {component.name}
                         {component.developing && (
-                          <span className="ml-2  rounded-lg  bg-accent px-1 py-0.5 text-xs text-accent-foreground">
+                          <Badge className="ml-2 px-1 py-0.5 text-xs" size="md">
                             in-dev
-                          </span>
+                          </Badge>
                         )}
                       </Link>
                     </SideBarDropItem>

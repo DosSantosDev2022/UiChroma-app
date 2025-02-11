@@ -5,21 +5,37 @@ import { Title } from '@/components/global/title'
 import { linksNavigationMap } from '@/enums/links-nav-pages'
 import { GET_PAGE_DATA } from '@/services/get-page-data'
 
-interface ThemesPageParams {
-  params: {
-    slug: string
-  }
-}
+export default async function ThemesPage({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+  const { documentationPage } = await GET_PAGE_DATA(slug)
+  const links = linksNavigationMap[slug] || []
 
-export default async function ThemesPage({ params }: ThemesPageParams) {
-  const { documentationPage } = await GET_PAGE_DATA(params.slug)
-  const links = linksNavigationMap[params.slug] || []
+  if (documentationPage.developing) {
+    return (
+      <div className="flex h-full w-full items-center justify-center border border-border p-14">
+        <div className="flex w-full flex-col items-center justify-center space-y-3 text-center">
+          <h1 className=" text-4xl font-bold text-foreground">
+            A página {documentationPage.title} está em desenvolvimento 🚧
+          </h1>
+          <p className="mt-2 max-w-[720px] font-normal text-muted-foreground">
+            Esta documentação ainda está em desenvolvimento, estamos trabalhando
+            para disponibiliza-lo o mais breve possível.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       <div className="grid grid-cols-4 gap-4">
         <section className="col-span-3 w-full rounded-md  border border-border p-4 shadow-sm">
           <Title>{documentationPage.title}</Title>
-          <div className={' space-y-10 pb-10 pt-8'}>
+          <div className={'space-y-16 pb-10 pt-8'}>
             {documentationPage.sectionOne && (
               <RichText
                 id={documentationPage.sectionOne.identifier}

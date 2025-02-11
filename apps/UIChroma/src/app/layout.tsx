@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`${inter.className} overflow-hidden bg-background text-foreground antialiased`}
+        className={`${inter.className} relative overflow-hidden bg-background text-foreground antialiased`}
       >
         <div className="flex h-screen w-screen flex-row overflow-hidden">
           <AppSidebar />

@@ -28,7 +28,7 @@ const DocLinks = ({ links }: LinksProps) => {
 
         return (
           <li key={link.id}>
-            <Button asChild variants="shine">
+            <Button asChild variants="shine" sizes="sm">
               <Link
                 aria-label={`link to ${link.label}`}
                 target="_blank"

@@ -71,6 +71,7 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
         raw
       }
     }
+    developing
   }
 }
   `

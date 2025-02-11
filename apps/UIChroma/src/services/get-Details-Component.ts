@@ -44,6 +44,11 @@ export const GET_DETAILS_COMPONENT = async (
             command
           }
           developing
+          navigateThroughSections {
+            id
+            label
+            url
+          }
         }
      }
   `

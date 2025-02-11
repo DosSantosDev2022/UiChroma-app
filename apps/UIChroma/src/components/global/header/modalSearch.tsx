@@ -56,9 +56,9 @@ const ModalSearch = ({ data }: ModalProps) => {
 
   return (
     <ModalRoot open={isOpen} onOpenChange={handleOpenChange}>
-      <ModalTrigger className="w-[320px] justify-start ">
+      <ModalTrigger className="max-w-full justify-start sm:w-80">
         <BsSearch size={18} />
-        Buscar...
+        <span>Buscar...</span>
       </ModalTrigger>
       <ModalOverlay variant="blur" />
       <ModalContent>

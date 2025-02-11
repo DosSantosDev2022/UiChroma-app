@@ -11,7 +11,10 @@ const Title = ({ children, as = 'h1', className }: TitleProps) => {
   const Tag = as
   return (
     <Tag
-      className={twMerge('text-4xl font-extrabold tracking-wide', className)}
+      className={twMerge(
+        'text-3xl font-extrabold tracking-wide sm:text-4xl',
+        className
+      )}
     >
       {children}
     </Tag>

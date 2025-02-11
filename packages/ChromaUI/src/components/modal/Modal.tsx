@@ -69,7 +69,7 @@ const ModalRoot = ({
   <ModalProvider open={open} onOpenChange={onOpenChange}>
     <div
       aria-label="modal-root"
-      className={twMerge('', className)}
+      className={twMerge('w-full', className)}
       {...props}
     />
   </ModalProvider>
@@ -84,7 +84,7 @@ const ModalHeader = ({
   <div
     aria-label="modal-header"
     className={twMerge(
-      'flex w-full items-center justify-between space-y-1 px-1 py-1.5',
+      'flex w-full items-center justify-between gap-2 px-1 py-1.5',
       className
     )}
     {...props}
@@ -100,7 +100,7 @@ const ModalTitle = ({
   <h4
     aria-label="modal-title"
     className={twMerge(
-      'text-xl font-semibold leading-none tracking-tight text-foreground',
+      'text-lg font-semibold leading-none tracking-tight text-foreground sm:text-xl',
       className
     )}
     {...props}
@@ -156,7 +156,7 @@ const ModalOverlay = React.forwardRef<
     <div
       aria-label="Modal-Overlay"
       className={twMerge(
-        'fixed inset-0 z-40',
+        'fixed inset-0 z-50',
         variantClasses[variant],
         className
       )}
@@ -240,7 +240,7 @@ const ModalContent = React.forwardRef<
         <div
           data-state={isOpen ? 'open' : 'closed'}
           className={twMerge(
-            'w-full max-w-2xl space-y-2 border border-border bg-background p-6 shadow-lg sm:rounded-lg',
+            'w-3/4 space-y-2 border border-border bg-background p-3 shadow-lg sm:w-1/2 sm:rounded-lg sm:p-6',
             'data-[state=closed]:animate-smooth-fadeout data-[state=open]:animate-smooth-fadein',
             className
           )}

@@ -20,7 +20,7 @@ const Header = async () => {
     }
   ]
   return (
-    <header className="col-start-2 row-start-1 flex h-16 w-full items-center justify-between border-b border-border px-6">
+    <header className="col-start-2 row-start-1 flex h-16 w-full items-center justify-between gap-2 border-b border-border px-4 sm:px-6">
       <ModalSearch data={pageComponents} />
 
       <div className="flex items-center gap-4">

@@ -53,13 +53,3 @@ export const linksNavigationMap: Record<
     { label: 'O que faz?', href: 'oquefaz' }
   ]
 }
-
-export const linksNavigationComponents = [
-  { label: 'Início', href: 'Início' },
-  { label: 'Features', href: 'Features' },
-  { label: 'Preview', href: 'Preview' },
-  { label: 'Copiar código', href: 'CopyCode' },
-  { label: 'Utilidades', href: 'Utilidades' },
-  { label: 'Exemplos de uso', href: 'ComoUsar' },
-  { label: 'Dependencias', href: 'Dependencias' }
-]

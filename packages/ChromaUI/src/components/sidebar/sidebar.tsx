@@ -44,7 +44,7 @@ const useDropDownContext = () => {
 
 // Providers para Sidebar e Dropdown
 const SideBarProvider = ({ children }: { children: ReactNode }) => {
-  const [isOpenSideBar, setIsOpen] = useState(true)
+  const [isOpenSideBar, setIsOpen] = useState(false)
   const toggle = () => setIsOpen((prev) => !prev)
   return (
     <SideBarContext.Provider value={{ isOpenSideBar, toggle }}>
@@ -84,11 +84,10 @@ const SideBar = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        '  flex h-full flex-col justify-between border border-border bg-background p-4',
-        '',
+        ' flex h-full flex-col justify-between border border-border bg-background p-4',
         isOpenSideBar
-          ? 'w-72 translate-x-0 animate-expand-dimensions'
-          : '-translate-x-full p-2 sm:w-20 sm:translate-x-0',
+          ? 'fixed z-50 w-72 translate-x-0 animate-expand-dimensions lg:relative lg:z-0'
+          : ' p-2 sm:w-20 sm:translate-x-0',
         className
       )}
     />
@@ -178,7 +177,7 @@ const SideBarContent = React.forwardRef<
       {...props}
       ref={ref}
       className={twMerge(
-        'custom-scrollbar overflow-y-auto" flex min-h-0 flex-1 flex-col',
+        'custom-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto',
         className
       )}
     />
@@ -251,7 +250,7 @@ const SideBarNavigation = React.forwardRef<
   React.ComponentPropsWithRef<'nav'>
 >(({ className, ...props }, ref) => {
   return (
-    <nav ref={ref} {...props} className={twMerge('space-y-1', className)} />
+    <nav ref={ref} {...props} className={twMerge('space-y-3', className)} />
   )
 })
 
@@ -384,7 +383,7 @@ const SideBarDropItem = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        'cursor-pointer list-none truncate rounded-md px-1.5 py-2 text-sm text-muted-foreground hover:bg-muted-hover',
+        'flex cursor-pointer list-none truncate rounded-md px-1.5 py-2 text-sm text-muted-foreground hover:bg-muted-hover',
         className
       )}
     >

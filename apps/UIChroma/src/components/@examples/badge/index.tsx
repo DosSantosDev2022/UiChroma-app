@@ -31,7 +31,7 @@ const BedgePreview = () => {
         <Badge
           key={type.variant}
           variant={type.variant}
-          size={'lg'}
+          size={'md'}
           children={type.children}
         />
       ))}

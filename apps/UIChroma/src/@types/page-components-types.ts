@@ -29,6 +29,12 @@ interface blockCode {
   blockCode: string
 }
 
+interface navLinks {
+  id: string
+  label: string
+  url: string
+}
+
 export interface ComponentsPageData {
   pageComponent: {
     id: string
@@ -43,5 +49,6 @@ export interface ComponentsPageData {
     sampleCode: blockCode
     dependencies: Dependencies[]
     developing: boolean
+    navigateThroughSections: navLinks[]
   }
 }

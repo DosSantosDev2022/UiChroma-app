@@ -3,7 +3,7 @@ import { Button, ButtonProps } from '@repo/ChromaUI/components'
 const ButtonPreview = () => {
   const variantes: ButtonProps['variants'][] = [
     'primary',
-    'secundary',
+    'secondary',
     'outline',
     'accent',
     'disabled',

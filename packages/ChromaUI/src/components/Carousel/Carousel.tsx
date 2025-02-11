@@ -24,14 +24,14 @@ const CarouselButton = ({
     aria-label={direction === 'prev' ? 'Previous Slide' : 'Next Slide'}
     className={twMerge(
       'absolute top-1/2 -translate-y-1/2 transform rounded-full p-2',
-      'bg-transparent text-primary-foreground duration-300 hover:bg-primary-hover hover:text-primary-foreground focus:outline-none active:scale-95',
+      'bg-transparent text-accent-foreground duration-300 hover:bg-primary-hover hover:text-accent focus:outline-none active:scale-95',
       direction === 'prev' ? 'left-2 sm:left-4' : 'right-2 sm:right-4'
     )}
   >
     {direction === 'prev' ? (
-      <IoIosArrowBack size={20} />
+      <IoIosArrowBack size={26} />
     ) : (
-      <IoIosArrowForward size={20} />
+      <IoIosArrowForward size={26} />
     )}
   </button>
 )

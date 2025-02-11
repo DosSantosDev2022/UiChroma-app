@@ -22,5 +22,6 @@ export interface PageDataTypes {
     sectionFive?: Section | null
     sectionSix?: Section | null
     sectionSeven?: Section | null
+    developing?: boolean
   }
 }

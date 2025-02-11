@@ -86,7 +86,7 @@ const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
           data-state={isOpen ? 'open' : 'closed'}
           {...props}
           className={twMerge(
-            `${position} mt-1 w-full min-w-[8rem] rounded-md border border-border bg-background`,
+            `${position} mt-1 w-full min-w-32 rounded-md border border-border bg-background`,
             `data-[state=open]:animate-smooth-fadein`,
             `data-[state=closed]:animate-smooth-fadeout`,
             className
@@ -123,7 +123,7 @@ const DropDownItem = React.forwardRef<
   <li
     {...props}
     className={twMerge(
-      'cursor-pointer px-2 py-1.5 hover:bg-muted-hover',
+      'cursor-pointer rounded px-2 py-1.5 outline-none hover:bg-muted-hover',
       'flex w-full items-center justify-start gap-2 text-sm font-semibold text-foreground',
       className
     )}

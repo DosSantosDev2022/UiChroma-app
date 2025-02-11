@@ -4,7 +4,6 @@ import { NavigateThroughSections } from '@/components/global/NavigateThroughSect
 import { Title } from '@/components/global/title'
 import ComponentPreview from '@/components/pages/preview/component-Preview'
 import { DocLinks } from '@/components/pages/preview/doc-Links'
-import { linksNavigationComponents } from '@/enums/links-nav-pages'
 import { GET_DETAILS_COMPONENT } from '@/services/get-Details-Component'
 import {
   Badge,
@@ -18,15 +17,11 @@ import {
 import { redirect } from 'next/navigation'
 import { FaCircleCheck } from 'react-icons/fa6'
 
-interface ComponentDetailsProps {
-  params: {
-    slug: string
-  }
-}
-
 export default async function ComponentDetails({
   params
-}: ComponentDetailsProps) {
+}: {
+  params: Promise<{ slug: string }>
+}) {
   const { slug } = await params
 
   const { pageComponent } = await GET_DETAILS_COMPONENT(slug)
@@ -52,12 +47,12 @@ export default async function ComponentDetails({
   }
 
   return (
-    <div className="grid grid-cols-4 gap-4">
-      <section className="col-span-3 w-full rounded-md  border border-border p-4 shadow-sm">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
+      <section className="col-span-3 w-full rounded-md  border border-border p-3 shadow-sm sm:p-4">
         <div className="space-y-10 pb-0 pt-0">
-          <div id="Início">
-            <div className=" flex w-full flex-col">
-              <div className="mt-2 flex  items-center justify-start gap-3">
+          <div id="start">
+            <div className="flex w-full flex-col">
+              <div className="mt-2 flex  items-center justify-between gap-3 sm:justify-start">
                 <Title className={`${inter.className}`}>
                   {pageComponent.name}
                 </Title>
@@ -67,14 +62,14 @@ export default async function ComponentDetails({
                   children={`v.${pageComponent.version}`}
                 />
               </div>
-              <p className="mt-2.5 max-w-[500px] text-base font-normal text-muted-foreground">
+              <p className="mt-2.5 w-full text-base font-normal text-muted-foreground sm:max-w-[500px]">
                 {pageComponent.description}
               </p>
             </div>
             <DocLinks links={pageComponent.docsLinks} />
           </div>
 
-          <div id="Features">
+          <div id="features">
             <div className="w-full space-y-4">
               <Title as="h3" className={`${inter.className}`}>
                 Features
@@ -83,7 +78,7 @@ export default async function ComponentDetails({
                 {pageComponent.features.map((feature, index) => (
                   <li key={index} className="flex items-center gap-2">
                     <FaCircleCheck className="text-primary" size={18} />
-                    <span className="font-bold">{feature.name}</span>
+                    <span className="text-base font-bold">{feature.name}</span>
                   </li>
                 ))}
               </ul>
@@ -91,7 +86,7 @@ export default async function ComponentDetails({
           </div>
 
           <div className="flex flex-col gap-12">
-            <div id="Preview" className="space-y-10">
+            <div id="preview" className="space-y-10">
               <Title as="h3" className={`${inter.className}`}>
                 Preview
               </Title>
@@ -99,7 +94,7 @@ export default async function ComponentDetails({
               <ComponentPreview componentData={pageComponent} />
             </div>
 
-            <div id="CopyCode" className="space-y-4">
+            <div id="copyCode" className="space-y-4">
               <div className="space-y-2">
                 <Title as="h3" className={`${inter.className}`}>
                   {pageComponent.sourceCode?.title}
@@ -122,7 +117,7 @@ export default async function ComponentDetails({
             </div>
 
             {pageComponent.utilities && (
-              <div id="Utilidades" className="space-y-4 ">
+              <div id="utilities" className="space-y-4 ">
                 <div className="space-y-2">
                   <Title as="h3" className={`${inter.className}`}>
                     Utilidades
@@ -148,7 +143,7 @@ export default async function ComponentDetails({
               </div>
             )}
 
-            <div id="ComoUsar" className="space-y-4">
+            <div id="toUse" className="space-y-4">
               <div className="space-y-2">
                 <Title as="h3" className={`${inter.className}`}>
                   {pageComponent.sampleCode.title}
@@ -175,9 +170,9 @@ export default async function ComponentDetails({
           </div>
 
           {pageComponent.dependencies && (
-            <div id="Dependencias" className="space-y-4">
+            <div id="dependencies" className="space-y-4">
               <Title as="h3" className={`${inter.className}`}>
-                Dependências
+                Dependencias
               </Title>
               {pageComponent.dependencies.map((dep) => (
                 <div
@@ -204,8 +199,10 @@ export default async function ComponentDetails({
         </div>
       </section>
 
-      <section className="sticky top-0 col-span-1 h-screen w-full space-y-2 border border-border px-8 py-5 shadow-sm">
-        <NavigateThroughSections links={linksNavigationComponents} />
+      <section className="sticky top-0 col-span-1 hidden h-screen w-full space-y-2 border border-border px-8 py-5 shadow-sm lg:block">
+        <NavigateThroughSections
+          links={pageComponent.navigateThroughSections}
+        />
       </section>
     </div>
   )

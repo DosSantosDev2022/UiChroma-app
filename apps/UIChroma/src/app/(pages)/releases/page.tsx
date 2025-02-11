@@ -10,9 +10,13 @@ interface ReleasePageParams {
   searchParams?: Record<string, string | undefined>
 }
 
-export default async function ReleasePage({ searchParams }: ReleasePageParams) {
-  const searchQuery = searchParams?.query ?? ''
-  const { releasePage } = await GET_RELEASES(searchQuery)
+export default async function ReleasePage({
+  searchParams
+}: {
+  searchParams: Promise<{ query: string }>
+}) {
+  const { query } = await searchParams
+  const { releasePage } = await GET_RELEASES(query)
 
   return (
     <div className="relative mb-10 flex max-w-5xl flex-col px-4 sm:px-6 lg:px-8">

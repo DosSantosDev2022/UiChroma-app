@@ -16,11 +16,11 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       muted: 'bg-muted text-muted-foreground'
     }
     const variantSizes = {
-      xs: 'w-10',
-      md: 'w-16',
-      lg: 'w-24',
-      xl: 'w-28',
-      full: 'w-full'
+      xs: 'text-xs min-w-8 px-2 py-0.5',
+      md: 'text-sm min-w-14 px-3 py-1',
+      lg: 'text-base min-w-16 px-4 py-1.5',
+      xl: 'text-lg min-w-24 px-5 py-2',
+      full: 'w-full text-base px-6 py-2'
     }
 
     return (

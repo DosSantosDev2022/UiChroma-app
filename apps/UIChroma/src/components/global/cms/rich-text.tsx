@@ -5,7 +5,7 @@ type RichTextProps = ComponentProps<typeof CmsRichText> & { id?: string }
 
 const RichText = ({ id, ...props }: RichTextProps) => {
   return (
-    <div className="flex flex-col gap-2.5" id={id}>
+    <div className="space-y-4" id={id}>
       <CmsRichText {...props} />
     </div>
   )

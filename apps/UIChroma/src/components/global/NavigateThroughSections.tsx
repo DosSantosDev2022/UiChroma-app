@@ -9,18 +9,23 @@ import { GoDotFill } from 'react-icons/go'
 
 interface NavigateThroughSectionsProps {
   links: {
+    id: string
     label: string
-    href: string
+    url: string
   }[]
 }
 
 const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
-  const [activeLink, setActiveLink] = useState<string>(links[0]?.href || '')
+  const [activeLink, setActiveLink] = useState<string>(links[0]?.url || '')
 
   const handleButtonClickScrollIntoView = (id: string) => {
     const element = document.getElementById(id)
+    if (!element) {
+      console.warn(`Elemento com ID ${id} não encontrado.`)
+      return
+    }
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
     setActiveLink(id)
   }
@@ -34,10 +39,10 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
       <NavigationList className="sm:flex-col sm:gap-1">
         {links.map((link) => (
           <NavigationItem
-            onClick={() => handleButtonClickScrollIntoView(link.href)}
+            onClick={() => handleButtonClickScrollIntoView(link.url)}
             className={`gap-2 p-1.5 text-muted-foreground
                 hover:no-underline
-                ${activeLink === link.href ? 'font-bold text-primary' : ''}`}
+                ${activeLink === link.url ? 'font-bold text-primary' : ''}`}
             key={link.label}
           >
             <GoDotFill size={12} />

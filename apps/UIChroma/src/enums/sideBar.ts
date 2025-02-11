@@ -42,7 +42,13 @@ export const themes = [
   }
 ]
 
-export const docs = [
+interface DocsItem {
+  label: string
+  url: string
+  status?: 'maintenance' | 'deprecated' | 'new' | 'in-dev'
+}
+
+export const docs: DocsItem[] = [
   {
     label: 'Primeiros passos',
     url: 'docs/gettingstarted'
@@ -60,11 +66,8 @@ export const docs = [
     url: 'docs/dark'
   },
   {
-    label: 'Tailwind css',
-    url: 'docs/tailwind'
-  },
-  {
     label: 'Sass',
-    url: 'docs/sass'
+    url: 'docs/sass',
+    status: 'in-dev'
   }
 ]

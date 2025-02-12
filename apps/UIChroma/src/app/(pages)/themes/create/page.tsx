@@ -1,4 +1,3 @@
-import { Title } from '@/components/global/title'
 import { ColorModeSelector } from '@/components/pages/themes/ColorModeSelector'
 import { ExempleComponents } from '@/components/pages/themes/exempleComponents'
 import { ModalCodeCss } from '@/components/pages/themes/ModalCodeCss'
@@ -13,7 +12,9 @@ export default function ThemeCreatePage() {
         <div className="z-10 grid grid-cols-12 items-start gap-x-6 gap-y-14 border border-border p-2 text-center md:gap-y-9 lg:text-left">
           <div className="col-span-5 h-full gap-y-4 border border-border p-6">
             <div className="space-y-4">
-              <Title className="text-5xl">Gerador de temas UI</Title>
+              <h5 className="text-3xl font-extrabold tracking-wide sm:text-4xl lg:text-6xl">
+                Gerador de temas UI
+              </h5>
               <p className="text-base font-normal text-muted-foreground">
                 Crie facilmente temas personalizados a partir de uma única cor
                 que você pode copiar e colar em seus aplicativos.
@@ -30,7 +31,7 @@ export default function ThemeCreatePage() {
           </div>
           <div className="col-span-7 space-x-2 border border-border p-2">
             {/* Seletor de cores prontas */}
-            <div className="flex w-full items-start gap-1.5 p-4">
+            <div className="flex w-full items-center justify-between gap-6 p-4">
               <ModalTemplates />
               <ModalCodeCss />
             </div>

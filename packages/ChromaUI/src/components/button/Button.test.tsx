@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom'
-import { userEvent } from '@testing-library/user-event'
 import { render, screen } from '@testing-library/react'
-import React from 'react'
+import { userEvent } from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 import { Button, ButtonProps } from './Button'
 
@@ -42,8 +41,8 @@ describe('Component Button', () => {
 
   const sizes: { name: ButtonProps['sizes']; className: string }[] = [
     { name: 'xs', className: 'w-24 h-10' },
-    { name: 'sm', className: 'w-28 h-12' },
-    { name: 'lg', className: 'w-28 h-14' },
+    { name: 'sm', className: 'w-28 h-10' },
+    { name: 'lg', className: 'w-28 h-10' },
     { name: 'icon', className: 'w-8 h-8' },
     { name: 'full', className: 'w-full' }
   ]

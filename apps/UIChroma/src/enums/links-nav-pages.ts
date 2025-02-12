@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid'
+
 export enum NavigationLinks {
   INTRODUCTION = 'Introdução',
   GETTING_STARTED = 'Primeiros-Passos',
@@ -24,32 +26,104 @@ export const links = [
 
 export const linksNavigationMap: Record<
   string,
-  { label: string; href: string }[]
+  { id: string; label: string; url: string }[]
 > = {
   themes: [
-    { label: 'Introdução', href: 'Introdução' },
-    { label: 'Estrutura', href: 'Estrutura' },
-    { label: 'Tailwind CSS', href: 'Tailwind css' },
-    { label: 'Temas', href: 'Temas' },
-    { label: 'Cores', href: 'Cores' },
-    { label: 'HSL', href: 'HSL' }
+    {
+      label: 'Introdução',
+      url: 'Introdução',
+      id: uuid()
+    },
+    {
+      label: 'Estrutura',
+      url: 'Estrutura',
+      id: uuid()
+    },
+    {
+      label: 'Tailwind CSS',
+      url: 'Tailwind css',
+      id: uuid()
+    },
+    {
+      label: 'Temas',
+      url: 'Temas',
+      id: uuid()
+    },
+    {
+      label: 'Cores',
+      url: 'Cores',
+      id: uuid()
+    },
+    {
+      label: 'HSL',
+      url: 'HSL',
+      id: uuid()
+    }
   ],
   dark: [
-    { label: 'Introdução', href: 'Introdução' },
-    { label: 'Ativando Dark Mode', href: 'Ativando' },
-    { label: 'Alternândo Tema', href: 'Alternancia' },
-    { label: 'Salvando preferência', href: 'Preferencia' }
+    {
+      label: 'Introdução',
+      url: 'Introdução',
+      id: uuid()
+    },
+    {
+      label: 'Ativando Dark Mode',
+      url: 'Ativando',
+      id: uuid()
+    },
+    {
+      label: 'Alternândo Tema',
+      url: 'Alternancia',
+      id: uuid()
+    },
+    {
+      label: 'Salvando preferência',
+      url: 'Preferencia',
+      id: uuid()
+    }
   ],
   gettingstarted: [
-    { label: 'Introdução', href: 'Introdução' },
-    { label: 'Primeiros Passos', href: 'PrimeirosPassos' },
-    { label: 'Instalação', href: 'Instalação' },
-    { label: 'Como usar', href: 'Usando' },
-    { label: 'Personalização', href: 'Personalização' },
-    { label: 'Exemplos', href: 'Exemplos' }
+    {
+      label: 'Introdução',
+      url: 'Introdução',
+      id: uuid()
+    },
+    {
+      label: 'Primeiros Passos',
+      url: 'PrimeirosPassos',
+      id: uuid()
+    },
+    {
+      label: 'Instalação',
+      url: 'Instalação',
+      id: uuid()
+    },
+    {
+      label: 'Como usar',
+      url: 'Usando',
+      id: uuid()
+    },
+    {
+      label: 'Personalização',
+      url: 'Personalização',
+      id: uuid()
+    },
+    {
+      label: 'Exemplos',
+      url: 'Exemplos',
+      id: uuid()
+    }
   ],
   cli: [
-    { label: 'Introdução', href: 'Introdução' },
-    { label: 'O que faz?', href: 'oquefaz' }
+    {
+      label: 'Introdução',
+      url: 'Introdução',
+      id: uuid()
+    },
+    {
+      label: 'O que faz?',
+      url: 'oquefaz',
+      id: uuid()
+    }
   ]
 }

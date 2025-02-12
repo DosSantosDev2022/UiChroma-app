@@ -33,7 +33,7 @@ export function ModalCodeCss() {
 
   return (
     <ModalRoot>
-      <ModalTrigger className="w-24 rounded-lg">
+      <ModalTrigger className="w-full rounded-lg">
         Copiar
         <IoCopy size={16} />
       </ModalTrigger>

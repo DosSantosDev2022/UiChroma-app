@@ -16,12 +16,12 @@ const defaultRenderers = {
     </h1>
   ),
   h2: ({ children }: defaultRenderersProps) => (
-    <h2 className="text-start text-2xl font-extrabold tracking-tight sm:text-3xl md:text-4xl">
+    <h2 className="text-start text-2xl font-extrabold tracking-tight sm:text-3xl md:text-3xl lg:text-3xl">
       {children}
     </h2>
   ),
   h3: ({ children }: defaultRenderersProps) => (
-    <h3 className="text-start text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
+    <h3 className="text-start text-xl font-semibold tracking-tight sm:text-2xl md:text-2xl lg:text-2xl">
       {children}
     </h3>
   ),
@@ -43,7 +43,7 @@ const defaultRenderers = {
 
   // Parágrafos
   p: ({ children }: defaultRenderersProps) => (
-    <p className="w-full text-sm font-normal sm:text-base md:text-lg">
+    <p className="w-full text-sm font-normal sm:text-base md:text-base lg:text-base">
       {children}
     </p>
   ),
@@ -55,10 +55,12 @@ const defaultRenderers = {
 
   // Listas
   li: ({ children }: defaultRenderersProps) => (
-    <li className="text-sm text-muted-foreground sm:text-base">{children}</li>
+    <li className="rounded-md bg-muted px-3 py-2 text-sm text-muted-foreground dark:bg-secondary dark:text-secondary-foreground sm:text-base">
+      {children}
+    </li>
   ),
   ul: ({ children }: defaultRenderersProps) => (
-    <ul className="ml-4 mt-1 list-disc space-y-2 px-2 sm:ml-6 sm:space-y-4">
+    <ul className="ml-4 mt-1 list-disc space-y-2 px-2 py-2.5 sm:ml-6 sm:space-y-4">
       {children}
     </ul>
   ),

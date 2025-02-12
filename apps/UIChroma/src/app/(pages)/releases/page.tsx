@@ -1,14 +1,9 @@
 import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
-import { Title } from '@/components/global/title'
 import { SearchReleases } from '@/components/pages/releases/search-Releases'
 import { GET_RELEASES } from '@/services/get-Releases'
 import { Badge } from '@repo/ChromaUI/components'
 import { format } from 'date-fns'
-
-interface ReleasePageParams {
-  searchParams?: Record<string, string | undefined>
-}
 
 export default async function ReleasePage({
   searchParams
@@ -23,21 +18,25 @@ export default async function ReleasePage({
       <SearchReleases />
       {!releasePage || !releasePage.releases.length ? (
         <div className="mt-10 flex flex-col items-center justify-center">
-          <Title>Releases não encontradas</Title>
+          <h1 className="text-3xl font-extrabold tracking-wide lg:text-6xl">
+            Releases não encontradas
+          </h1>
           <p className="text-base text-muted-foreground">
             Nenhum componente encontrado para sua pesquisa.
           </p>
         </div>
       ) : (
         <>
-          <div className="flex flex-col gap-3">
-            <Title>{releasePage.title}</Title>
+          <div className="mt-8 flex flex-col gap-3">
+            <h1 className="text-3xl font-extrabold tracking-wide lg:text-6xl">
+              {releasePage.title}
+            </h1>
             <p className="text-base font-normal text-muted-foreground">
               {releasePage.description}
             </p>
           </div>
 
-          <div className="mb-20 mt-20 space-y-4">
+          <div className="mb-20 mt-10 space-y-4">
             {releasePage.releases.map((release) => (
               <div
                 key={release.id}
@@ -48,10 +47,12 @@ export default async function ReleasePage({
                     {format(new Date(release.date), 'dd/MM/yyyy')}
                   </span>
                   <div className="flex items-center gap-3">
-                    <Title as="h4" className="text-xl font-bold">
+                    <h4 className="text-3xl font-bold tracking-wide">
                       {release.title}
-                    </Title>
-                    <Badge variant="primary">{release.version}</Badge>
+                    </h4>
+                    <Badge size="md" variant="primary">
+                      {release.version}
+                    </Badge>
                   </div>
                 </div>
 

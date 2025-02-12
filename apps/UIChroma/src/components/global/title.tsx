@@ -12,7 +12,7 @@ const Title = ({ children, as = 'h1', className }: TitleProps) => {
   return (
     <Tag
       className={twMerge(
-        'text-3xl font-extrabold tracking-wide sm:text-4xl',
+        'text-3xl font-extrabold tracking-wide sm:text-4xl lg:text-6xl',
         className
       )}
     >

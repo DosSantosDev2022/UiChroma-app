@@ -1,7 +1,6 @@
 'use client'
 
 import { Theme } from '@/@types/colors-themes-types'
-import { Title } from '@/components/global/title'
 import { useThemeStore } from '@/store/use-Theme-Store'
 import { useEffect, useState } from 'react'
 import { HslStringColorPicker } from 'react-colorful'
@@ -45,17 +44,15 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
   const title = mode === 'dark' ? 'Dark Mode' : 'Light Mode'
 
   return (
-    <div className=" flex w-full flex-col items-center space-y-4 px-2 py-2.5">
+    <div className=" flex w-full flex-col items-center space-y-4  px-2 py-2.5">
       <div
         onClick={() => setTheme(mode)}
         className="flex w-full cursor-pointer items-center justify-start rounded-md border border-border px-2 py-1.5 duration-300 active:scale-95"
       >
         {icon}
-        <Title as="h4" className="text-xl">
-          {title}
-        </Title>
+        <h4 className="text-xl font-extrabold tracking-wide">{title}</h4>
       </div>
-      <div className="custom-scrollbar max-h-[360px] overflow-y-auto rounded-md border border-border px-2 py-1.5 shadow-sm">
+      <div className="custom-scrollbar max-h-[360px] w-full overflow-y-auto rounded-md border border-border px-2 py-1.5 shadow-sm">
         {Object.keys(colors).map((key) => {
           const colorKey = key as keyof Theme['light'] | keyof Theme['dark']
           return (

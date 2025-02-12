@@ -3,8 +3,27 @@
 import * as Examples from '@/components/@examples'
 import { useThemeStore } from '@/store/use-Theme-Store'
 import { updateCssVariables } from '@/utils/update-Css-Variables'
-import { useEffect } from 'react'
-import { ContainerPreview } from './container'
+import { ReactNode, useEffect } from 'react'
+
+interface ContainerPreviewProps {
+  children: ReactNode
+  title?: string
+}
+
+const ContainerPreview = ({ children, title }: ContainerPreviewProps) => {
+  return (
+    <div
+      className={
+        'flex w-full flex-col items-start justify-center gap-3 rounded-md border px-6 py-4 dark:border-border'
+      }
+    >
+      <h4 className="text-lg font-extrabold tracking-wide">{title}</h4>
+      <div className="flex w-full grow flex-col items-center justify-center px-2 py-3">
+        {children}
+      </div>
+    </div>
+  )
+}
 
 export function ExempleComponents() {
   const { theme, lightColors, darkColors } = useThemeStore()

@@ -1,8 +1,4 @@
-import { Title } from '@/components/global/title'
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
   Card,
   CardContent,
   CardDescription,
@@ -27,16 +23,8 @@ const CardPreview = () => {
         </CardDescription>
       </CardContent>
       <CardFooter className="gap-2">
-        <Avatar>
-          <AvatarImage src="https://github.com/shadcn.png" />
-          <AvatarFallback>JS</AvatarFallback>
-        </Avatar>
-        <div>
-          <Title as="h6" className="text-sm text-muted-foreground">
-            Jonathan Reinink
-          </Title>
-          <span className="text-sm text-muted-foreground">Aug 18</span>
-        </div>
+        <h6 className="text-sm text-muted-foreground">Jonathan Reinink</h6>
+        <span className="text-sm text-muted-foreground">Aug 18</span>
       </CardFooter>
     </Card>
   )

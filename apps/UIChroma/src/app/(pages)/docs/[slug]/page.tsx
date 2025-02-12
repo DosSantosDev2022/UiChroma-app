@@ -1,7 +1,6 @@
 import { RichText } from '@/components/global/cms/rich-text'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { NavigateThroughSections } from '@/components/global/NavigateThroughSections'
-import { Title } from '@/components/global/title'
 import { linksNavigationMap } from '@/enums/links-nav-pages'
 import { GET_PAGE_DATA } from '@/services/get-page-data'
 
@@ -32,9 +31,11 @@ export default async function ThemesPage({
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-4">
-        <section className="col-span-3 w-full rounded-md  border border-border p-4 shadow-sm">
-          <Title>{documentationPage.title}</Title>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
+        <section className="col-span-3 w-full rounded-md border  border-border p-4 shadow-sm">
+          <h1 className=" text-3xl font-extrabold tracking-tight lg:text-6xl">
+            {documentationPage.title}
+          </h1>
           <div className={'space-y-16 pb-10 pt-8'}>
             {documentationPage.sectionOne && (
               <RichText
@@ -86,7 +87,7 @@ export default async function ThemesPage({
           </div>
         </section>
 
-        <section className="sticky top-0 col-span-1 h-screen w-full space-y-2 border border-border px-8 py-5 shadow-sm">
+        <section className="sticky top-0 col-span-1 hidden h-screen w-full space-y-2 border border-border px-8 py-5 shadow-sm lg:block">
           <NavigateThroughSections links={links} />
         </section>
       </div>

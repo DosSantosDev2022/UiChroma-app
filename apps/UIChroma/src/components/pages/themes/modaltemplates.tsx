@@ -2,7 +2,6 @@
 
 import { themes } from '@/enums/colors'
 import { useThemeStore } from '@/store/use-Theme-Store'
-import { generateTheme } from '@/utils/generate-Theme'
 import {
   Button,
   ModalClose,
@@ -12,10 +11,8 @@ import {
   ModalOverlay,
   ModalRoot,
   ModalTitle,
-  ModalTrigger,
-  useModalContext
+  ModalTrigger
 } from '@repo/ChromaUI/components'
-import { HslColor } from 'colord'
 import { useState } from 'react'
 import { HslColorPicker } from 'react-colorful'
 import { FaPlus } from 'react-icons/fa'
@@ -34,7 +31,7 @@ const ModalTemplates = () => {
   return (
     <>
       <ModalRoot>
-        <ModalTrigger className="w-28 rounded-lg">
+        <ModalTrigger className="w-full rounded-lg">
           Templates
           <MdPalette size={16} />
         </ModalTrigger>

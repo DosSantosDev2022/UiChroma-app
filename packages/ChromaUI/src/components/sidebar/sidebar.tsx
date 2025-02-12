@@ -6,7 +6,7 @@ import React, {
   useContext,
   useState
 } from 'react'
-import { TbLayoutSidebarLeftExpandFilled } from 'react-icons/tb'
+import { LuChevronFirst, LuChevronLast } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 import { Button } from '../button/Button'
 
@@ -85,9 +85,10 @@ const SideBar = React.forwardRef<
       {...props}
       className={twMerge(
         'hidden h-full flex-col justify-between border border-border bg-background p-4 lg:flex',
+        'overflow-visible transition-all duration-300',
         isOpenSideBar
-          ? 'fixed z-50 w-72 translate-x-0 animate-expand-dimensions lg:relative lg:z-0'
-          : ' p-2 sm:w-20 sm:translate-x-0',
+          ? 'fixed z-50 w-72 translate-x-0 lg:relative lg:z-0 lg:flex lg:translate-x-0'
+          : 'sm:w-20 sm:translate-x-0',
         className
       )}
     />
@@ -103,15 +104,18 @@ const SideBarTrigger = React.forwardRef<
   const { toggle, isOpenSideBar } = useSideBarContext()
   return (
     <Button
-      variants="ghost"
+      variants="accent"
       sizes="icon"
       onClick={toggle}
       aria-expanded={isOpenSideBar}
       {...props}
-      className={twMerge('absolute -right-6 top-2 z-20 p-1', className)}
+      className={twMerge(
+        'absolute -right-6 top-2 z-20 p-1 duration-300 active:scale-95',
+        className
+      )}
       ref={ref}
     >
-      <TbLayoutSidebarLeftExpandFilled size={24} />
+      {isOpenSideBar ? <LuChevronFirst /> : <LuChevronLast />}
     </Button>
   )
 })
@@ -134,11 +138,14 @@ const SideBarLogo = React.forwardRef<
       )}
     >
       {icon}
-      {isOpenSideBar && (
-        <span className="text-xl font-extrabold text-accent-foreground">
-          {label}
-        </span>
-      )}
+      <span
+        className={twMerge(
+          `text-xl font-extrabold text-accent-foreground`,
+          `overflow-hidden transition-all duration-300 ${isOpenSideBar ? 'ml-1 w-full' : 'w-0'}`
+        )}
+      >
+        {label}
+      </span>
     </div>
   )
 })
@@ -245,6 +252,27 @@ const SideBarLabel = React.forwardRef<
 
 SideBarLabel.displayName = 'SideBarLabel'
 
+const SideBarTooltip = React.forwardRef<
+  HTMLDivElement,
+  React.ComponentPropsWithRef<'div'>
+>(({ ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      {...props}
+      className={twMerge(
+        'absolute left-16 z-50 ml-2',
+        ' whitespace-nowrap rounded-md bg-accent px-2 py-1.5 text-sm text-accent-foreground shadow-md',
+        'invisible opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100'
+      )}
+    >
+      {props.children}
+    </div>
+  )
+})
+
+SideBarTooltip.displayName = 'SideBarTooltip'
+
 const SideBarNavigation = React.forwardRef<
   HTMLElement,
   React.ComponentPropsWithRef<'nav'>
@@ -271,22 +299,31 @@ SideBarList.displayName = 'SideBarList'
 
 const SideBarItem = React.forwardRef<
   HTMLLIElement,
-  React.ComponentPropsWithRef<'li'> & { icon?: ReactNode }
->(({ className, children, icon, ...props }, ref) => {
+  React.ComponentPropsWithRef<'li'> & { icon?: ReactNode; tooltip?: string }
+>(({ className, children, icon, tooltip, ...props }, ref) => {
   const { isOpenSideBar } = useSideBarContext()
+
   return (
     <li
       ref={ref}
       {...props}
       className={twMerge(
-        'mt-1 cursor-pointer list-none truncate rounded-md px-1.5 py-2 text-sm text-foreground hover:bg-muted-hover',
-        'flex items-center  gap-2',
-        `${isOpenSideBar ? 'justify-start' : 'justify-center'}`,
+        'group mt-1 cursor-pointer list-none rounded-md px-1.5 py-2',
+        ' text-sm text-foreground hover:bg-muted-hover',
+        'flex items-center gap-2',
+        isOpenSideBar ? '' : 'justify-center',
         className
       )}
     >
-      {icon}
-      {isOpenSideBar && <span>{children}</span>}
+      <span className="relative">{icon}</span>
+
+      {!isOpenSideBar && <SideBarTooltip>{tooltip}</SideBarTooltip>}
+
+      <span
+        className={`overflow-hidden transition-all duration-300 ${isOpenSideBar ? 'ml-1 w-full' : 'w-0'}`}
+      >
+        {children}
+      </span>
     </li>
   )
 })
@@ -312,8 +349,11 @@ SideBarDropRoot.displayName = 'SideBarDropRoot'
 
 const SideBarDropTrigger = React.forwardRef<
   ElementRef<typeof Button>,
-  React.ComponentPropsWithRef<typeof Button> & { icon?: ReactNode }
->(({ className, icon, ...props }, ref) => {
+  React.ComponentPropsWithRef<typeof Button> & {
+    icon?: ReactNode
+    tooltip?: string
+  }
+>(({ className, icon, tooltip, ...props }, ref) => {
   const { isOpenSideBar } = useSideBarContext()
   const { toggle } = useDropDownContext()
   return (
@@ -323,19 +363,24 @@ const SideBarDropTrigger = React.forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        'h-9 w-full ',
-        `${isOpenSideBar ? 'justify-start' : ''}`,
+        'h-9 w-full',
+        `${isOpenSideBar ? 'justify-start' : 'group'}`,
         className
       )}
     >
-      {icon}
-      {isOpenSideBar && <span> {props.children}</span>}
+      <span className="relative">{icon}</span>
+      {!isOpenSideBar && <SideBarTooltip>{tooltip}</SideBarTooltip>}
+      <span
+        className={`flex items-start overflow-hidden transition-all duration-300 ${isOpenSideBar ? 'ml-1 w-full' : 'w-0'}`}
+      >
+        {props.children}
+      </span>
     </Button>
   )
 })
 SideBarDropTrigger.displayName = 'SideBarDropTrigger'
 
-const SideBarDropContent = React.forwardRef<
+const SideBarDropGroup = React.forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithRef<'div'>
 >(({ className, children, ...props }, ref) => {
@@ -349,8 +394,8 @@ const SideBarDropContent = React.forwardRef<
         className={twMerge(
           'flex flex-col space-y-1 rounded-md bg-background p-1',
           isOpenSideBar ? 'relative' : 'absolute',
-          'custom-scrollbar max-h-60 animate-smooth-fadein overflow-y-auto', // Animação e limites de altura
-          'transition-all duration-300', // Suaviza a transição
+          'custom-scrollbar max-h-60 animate-smooth-fadein overflow-y-auto',
+          'transition-all duration-300',
           'z-50',
           className
         )}
@@ -360,7 +405,7 @@ const SideBarDropContent = React.forwardRef<
     )
   )
 })
-SideBarDropContent.displayName = 'SideBarDropContent'
+SideBarDropGroup.displayName = 'SideBarDropGroup'
 
 const SideBarDropList = React.forwardRef<
   HTMLUListElement,
@@ -396,7 +441,7 @@ SideBarDropItem.displayName = 'SideBarDropItem'
 export {
   SideBar,
   SideBarContent,
-  SideBarDropContent,
+  SideBarDropGroup,
   SideBarDropItem,
   SideBarDropList,
   SideBarDropRoot,

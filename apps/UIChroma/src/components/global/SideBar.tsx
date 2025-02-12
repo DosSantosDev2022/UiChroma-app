@@ -5,7 +5,7 @@ import {
   Badge,
   SideBar,
   SideBarContent,
-  SideBarDropContent,
+  SideBarDropGroup,
   SideBarDropItem,
   SideBarDropList,
   SideBarDropRoot,
@@ -40,7 +40,10 @@ const AppSidebar = async () => {
             <SideBarList>
               {links.map((link) => (
                 <Link key={link.id} href={link.Url}>
-                  <SideBarItem icon={<link.icon size={20} />}>
+                  <SideBarItem
+                    tooltip={link.name}
+                    icon={<link.icon size={20} />}
+                  >
                     {link.name}
                   </SideBarItem>
                 </Link>
@@ -49,10 +52,13 @@ const AppSidebar = async () => {
 
             {/* menu dropdows */}
             <SideBarDropRoot>
-              <SideBarDropTrigger icon={<IoDocumentText size={20} />}>
+              <SideBarDropTrigger
+                tooltip="Documentação"
+                icon={<IoDocumentText size={20} />}
+              >
                 Documentação
               </SideBarDropTrigger>
-              <SideBarDropContent>
+              <SideBarDropGroup>
                 <SideBarDropList>
                   {docs.map((doc, index) => (
                     <Link key={index} href={`/${doc.url}`}>
@@ -67,14 +73,17 @@ const AppSidebar = async () => {
                     </Link>
                   ))}
                 </SideBarDropList>
-              </SideBarDropContent>
+              </SideBarDropGroup>
             </SideBarDropRoot>
 
             <SideBarDropRoot>
-              <SideBarDropTrigger icon={<MdColorLens size={20} />}>
+              <SideBarDropTrigger
+                tooltip="Temas"
+                icon={<MdColorLens size={20} />}
+              >
                 Temas
               </SideBarDropTrigger>
-              <SideBarDropContent>
+              <SideBarDropGroup>
                 <SideBarDropList>
                   {themes.map((theme, index) => (
                     <Link key={index} href={`/${theme.url}`}>
@@ -82,14 +91,17 @@ const AppSidebar = async () => {
                     </Link>
                   ))}
                 </SideBarDropList>
-              </SideBarDropContent>
+              </SideBarDropGroup>
             </SideBarDropRoot>
 
             <SideBarDropRoot>
-              <SideBarDropTrigger icon={<LuComponent size={20} />}>
+              <SideBarDropTrigger
+                tooltip="Componentes"
+                icon={<LuComponent size={20} />}
+              >
                 Componentes
               </SideBarDropTrigger>
-              <SideBarDropContent>
+              <SideBarDropGroup>
                 <SideBarDropList>
                   {componentList.map((component, index) => (
                     <SideBarDropItem key={index}>
@@ -108,7 +120,7 @@ const AppSidebar = async () => {
                     </SideBarDropItem>
                   ))}
                 </SideBarDropList>
-              </SideBarDropContent>
+              </SideBarDropGroup>
             </SideBarDropRoot>
           </SideBarNavigation>
         </SideBarContent>

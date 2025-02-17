@@ -4,6 +4,8 @@ import React, {
   createContext,
   ReactNode,
   useContext,
+  useEffect,
+  useRef,
   useState
 } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -77,26 +79,46 @@ interface DropDownContentProps extends React.ComponentPropsWithRef<'div'> {
   position?: 'absolute' | 'sticky'
 }
 
-const DropDownContent = React.forwardRef<HTMLDivElement, DropDownContentProps>(
-  ({ className, position = 'absolute', ...props }, ref) => {
-    const { isOpen } = useDropDownContext()
-    return (
-      isOpen && (
-        <div
-          data-state={isOpen ? 'open' : 'closed'}
-          {...props}
-          className={twMerge(
-            `${position} mt-1 w-full min-w-32 rounded-md border border-border bg-background`,
-            `data-[state=open]:animate-smooth-fadein`,
-            `data-[state=closed]:animate-smooth-fadeout`,
-            className
-          )}
-          ref={ref}
-        />
+const DropDownContent = ({
+  className,
+  children,
+  position = 'absolute',
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & DropDownContentProps) => {
+  const { isOpen } = useDropDownContext()
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const contentHeight = contentRef.current.scrollHeight
+      contentRef.current.style.setProperty(
+        '--dropdown-content-heigth',
+        `${contentHeight}px`
       )
+    }
+  }, [isOpen, children])
+
+  return (
+    isOpen && (
+      <div
+        aria-label="dropdown-content"
+        ref={contentRef}
+        data-state={isOpen ? 'open' : 'closed'}
+        {...props}
+        className={twMerge(
+          `${position} mt-0.5 w-full min-w-32 rounded-md border border-border bg-background`,
+          'overflow-hidden transition-all',
+          isOpen
+            ? `data-[state=open]:animate-dropdown-in`
+            : `h-0 overflow-hidden data-[state=closed]:animate-dropdown-up`,
+          className
+        )}
+      >
+        {children}
+      </div>
     )
-  }
-)
+  )
+}
 
 DropDownContent.displayName = 'DropDownContent'
 

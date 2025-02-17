@@ -4,6 +4,8 @@ import React, {
   ElementRef,
   ReactNode,
   useContext,
+  useEffect,
+  useRef,
   useState
 } from 'react'
 import { LuChevronFirst, LuChevronLast } from 'react-icons/lu'
@@ -72,28 +74,44 @@ const SideBarRoot = React.forwardRef<
   </SideBarProvider>
 ))
 
-const SideBar = React.forwardRef<
-  HTMLElement,
-  React.ComponentPropsWithRef<'aside'>
->(({ className, ...props }, ref) => {
+const SideBar = ({
+  className,
+  children,
+  ...props
+}: React.HTMLAttributes<HTMLElement>) => {
   const { isOpenSideBar } = useSideBarContext()
+  const contentRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const contentWidth = contentRef.current.scrollWidth
+      contentRef.current.style.setProperty(
+        '--sidebar-width',
+        `${contentWidth}px`
+      )
+    }
+  }, [isOpenSideBar, children])
+
   return (
     <aside
+      data-state={isOpenSideBar ? 'open' : 'closed'}
       aria-label="sidebar"
       data-sidebar="aside"
-      ref={ref}
+      ref={contentRef}
       {...props}
       className={twMerge(
         'hidden h-full flex-col justify-between border border-border bg-background p-4 lg:flex',
         'overflow-visible transition-all duration-300',
         isOpenSideBar
-          ? 'fixed z-50 w-72 translate-x-0 lg:relative lg:z-0 lg:flex lg:translate-x-0'
-          : 'sm:w-20 sm:translate-x-0',
+          ? 'fixed z-50 w-72 max-w-72 translate-x-0 data-[state=open]:animate-sidebar-in lg:relative lg:z-0 lg:flex lg:translate-x-0'
+          : 'data-[state-closed]:animate-sidebar-out sm:w-20 sm:translate-x-0 ',
         className
       )}
-    />
+    >
+      {children}
+    </aside>
   )
-})
+}
 
 SideBar.displayName = 'SideBar'
 
@@ -394,7 +412,7 @@ const SideBarDropGroup = React.forwardRef<
         className={twMerge(
           'flex flex-col space-y-1 rounded-md bg-background p-1',
           isOpenSideBar ? 'relative' : 'absolute',
-          'custom-scrollbar max-h-60 animate-smooth-fadein overflow-y-auto',
+          'custom-scrollbar max-h-60 overflow-y-auto',
           'transition-all duration-300',
           'z-50',
           className

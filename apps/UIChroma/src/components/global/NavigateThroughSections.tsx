@@ -32,7 +32,7 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
 
   return (
     <Navigation>
-      <h3 className="mb-1 px-2 py-1 text-sm font-semibold">
+      <h3 className="mb-1 truncate px-2 py-1 text-sm font-semibold">
         Navegue nessa página
       </h3>
 
@@ -40,7 +40,7 @@ const NavigateThroughSections = ({ links }: NavigateThroughSectionsProps) => {
         {links.map((link) => (
           <NavigationItem
             onClick={() => handleButtonClickScrollIntoView(link.url)}
-            className={`gap-2 p-1.5 text-muted-foreground
+            className={`gap-2 truncate p-1.5 text-sm text-muted-foreground
                 hover:no-underline
                 ${activeLink === link.url ? 'font-bold text-primary' : ''}`}
             key={link.label}

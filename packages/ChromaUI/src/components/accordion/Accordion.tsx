@@ -1,5 +1,12 @@
 'use client'
-import React, { createContext, ReactNode, useContext, useState } from 'react'
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import { LuChevronDown } from 'react-icons/lu'
 import { twMerge } from 'tailwind-merge'
 
@@ -85,6 +92,18 @@ const AccordionContent = ({
 }: React.HTMLAttributes<HTMLDivElement>) => {
   const { isOpen } = useAccordionContext()
   const contentId = 'accordion-content'
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (contentRef.current) {
+      const contentHeight = contentRef.current.scrollHeight
+      contentRef.current.style.setProperty(
+        '--accordion-content-height',
+        `${contentHeight}px`
+      )
+    }
+  }, [isOpen, children])
+
   return (
     <div
       aria-label="accordion-content"
@@ -96,9 +115,10 @@ const AccordionContent = ({
         'overflow-hidden transition-all',
         isOpen
           ? 'data-[state=open]:animate-accordion-down'
-          : 'max-h-0 data-[state=closed]:animate-accordion-up',
+          : 'h-0 data-[state=closed]:animate-accordion-up',
         className
       )}
+      ref={contentRef}
     >
       <div className="my-1 rounded-b-md px-4 py-2">{children}</div>
     </div>

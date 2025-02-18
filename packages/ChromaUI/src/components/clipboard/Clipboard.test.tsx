@@ -2,31 +2,33 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import { beforeEach, describe, expect, it } from 'vitest'
 import {
-  ClipBoardAction,
-  ClipBoardArea,
-  ClipBoardContainer,
-  ClipBoardHeader,
-  ClipBoardLabel
+	ClipBoardAction,
+	ClipBoardArea,
+	ClipBoardContainer,
+	ClipBoardHeader,
+	ClipBoardLabel,
 } from './Clipboard'
 
 describe('Component clipboard', () => {
-  beforeEach(() => {
-    render(
-      <ClipBoardContainer>
-        <ClipBoardHeader>
-          <ClipBoardLabel>Copiar componente</ClipBoardLabel>
-          <ClipBoardAction copyText={''} />
-        </ClipBoardHeader>
-        <ClipBoardArea>{''}</ClipBoardArea>
-      </ClipBoardContainer>
-    )
-  })
+	beforeEach(() => {
+		render(
+			<ClipBoardContainer>
+				<ClipBoardHeader>
+					<ClipBoardLabel>Copiar componente</ClipBoardLabel>
+					<ClipBoardAction copyText={''} />
+				</ClipBoardHeader>
+				<ClipBoardArea>{''}</ClipBoardArea>
+			</ClipBoardContainer>,
+		)
+	})
 
-  it('should render the clipboard component correctly', () => {
-    expect(screen.getByLabelText('clipboard-container')).toBeInTheDocument()
-  })
+	it('should render the clipboard component correctly', () => {
+		expect(
+			screen.getByLabelText('clipboard-container'),
+		).toBeInTheDocument()
+	})
 
-  /* it('should must copy the content by clicking the action button', async () => {
+	/* it('should must copy the content by clicking the action button', async () => {
     const user = userEvent.setup()
     const textToCopy = 'Texto para ser copiado'
 

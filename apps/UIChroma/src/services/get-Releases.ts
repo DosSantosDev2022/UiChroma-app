@@ -1,10 +1,10 @@
-import { ReleasePage } from '@/@types/page-releases-Types'
+import type { ReleasePage } from '@/@types/page-releases-Types'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_RELEASES = async (
-  searchTerm?: string
+	searchTerm?: string,
 ): Promise<ReleasePage> => {
-  const query = `
+	const query = `
     query MyQuery($searchTerm: String) {
       releasePage(where: { slug: "release-page" }) {
         title
@@ -24,9 +24,9 @@ export const GET_RELEASES = async (
       }
     }
   `
-  return fetchHygraphQuery(
-    query,
-    { searchTerm: searchTerm || '' },
-    { cache: 'no-cache' /* revalidate: 60 * 60 * 24 */ }
-  )
+	return fetchHygraphQuery(
+		query,
+		{ searchTerm: searchTerm || '' },
+		{ cache: 'no-cache' /* revalidate: 60 * 60 * 24 */ },
+	)
 }

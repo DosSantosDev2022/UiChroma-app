@@ -6,42 +6,42 @@ import { Carousel } from './Carousel'
 const images = ['', '', '']
 
 describe('Component Carousel', () => {
-  const mockChildren = [
-    <img src="https://placehold.co/600x400" alt="slide01" key="1" />,
-    <img src="https://placehold.co/600x400" alt="slide02" key="2" />,
-    <img src="https://placehold.co/600x400" alt="slide03" key="3" />
-  ]
+	const mockChildren = [
+		<img src='https://placehold.co/600x400' alt='slide01' key='1' />,
+		<img src='https://placehold.co/600x400' alt='slide02' key='2' />,
+		<img src='https://placehold.co/600x400' alt='slide03' key='3' />,
+	]
 
-  it('should correctly render the carousel component', () => {
-    render(<Carousel children={mockChildren} />)
+	it('should correctly render the carousel component', () => {
+		render(<Carousel>{mockChildren}</Carousel>)
 
-    expect(screen.getByAltText('slide01')).toBeInTheDocument()
-    expect(screen.getByAltText('slide02')).toBeInTheDocument()
-    expect(screen.getByAltText('slide03')).toBeInTheDocument()
-  })
+		expect(screen.getByAltText('slide01')).toBeInTheDocument()
+		expect(screen.getByAltText('slide02')).toBeInTheDocument()
+		expect(screen.getByAltText('slide03')).toBeInTheDocument()
+	})
 
-  it('should not render carousel component when there is no image url', () => {
-    render(<Carousel children={images} />)
-    expect(screen.queryByRole('img')).not.toBeInTheDocument()
-  })
+	it('should not render carousel component when there is no image url', () => {
+		render(<Carousel>{mockChildren}</Carousel>)
+		expect(screen.queryByRole('img')).not.toBeInTheDocument()
+	})
 
-  it('should navigate to the next slide when next button is clicked', async () => {
-    render(<Carousel children={mockChildren} />)
+	it('should navigate to the next slide when next button is clicked', async () => {
+		render(<Carousel>{mockChildren}</Carousel>)
 
-    fireEvent.click(screen.getByLabelText('Next Slide'))
+		fireEvent.click(screen.getByLabelText('Next Slide'))
 
-    await waitFor(() => {
-      expect(screen.getByAltText('slide02')).toBeInTheDocument()
-    })
-  })
+		await waitFor(() => {
+			expect(screen.getByAltText('slide02')).toBeInTheDocument()
+		})
+	})
 
-  it('should navigate to the prev slide when prev button is clicked', async () => {
-    render(<Carousel children={mockChildren} />)
+	it('should navigate to the prev slide when prev button is clicked', async () => {
+		render(<Carousel>{mockChildren}</Carousel>)
 
-    fireEvent.click(screen.getByLabelText('Previous Slide'))
+		fireEvent.click(screen.getByLabelText('Previous Slide'))
 
-    await waitFor(() => {
-      expect(screen.getByAltText('slide02')).toBeInTheDocument()
-    })
-  })
+		await waitFor(() => {
+			expect(screen.getByAltText('slide02')).toBeInTheDocument()
+		})
+	})
 })

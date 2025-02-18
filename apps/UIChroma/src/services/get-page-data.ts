@@ -1,8 +1,10 @@
-import { PageDataTypes } from '@/@types/pages-Data-Types'
+import type { PageDataTypes } from '@/@types/pages-Data-Types'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
-export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
-  const query = `
+export const GET_PAGE_DATA = async (
+	slug: string,
+): Promise<PageDataTypes> => {
+	const query = `
   query MyQuery($slug: String!) {
   documentationPage(where: {slug: $slug}) {
     id
@@ -75,8 +77,8 @@ export const GET_PAGE_DATA = async (slug: string): Promise<PageDataTypes> => {
   }
 }
   `
-  const variables = {
-    slug
-  }
-  return fetchHygraphQuery(query, variables, { cache: 'no-cache' })
+	const variables = {
+		slug,
+	}
+	return fetchHygraphQuery(query, variables, { cache: 'no-cache' })
 }

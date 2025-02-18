@@ -1,10 +1,10 @@
-import { ComponentsPageData } from '@/@types/page-components-types'
+import type { ComponentsPageData } from '@/@types/page-components-types'
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_DETAILS_COMPONENT = async (
-  slug: string
+	slug: string,
 ): Promise<ComponentsPageData> => {
-  const query = `
+	const query = `
       query MyQuery($slug: String!) {
         pageComponent(where: {slug: $slug}) {
            id
@@ -52,8 +52,8 @@ export const GET_DETAILS_COMPONENT = async (
         }
      }
   `
-  const variables = { slug }
-  return fetchHygraphQuery(query, variables, {
-    cache: 'no-cache'
-  })
+	const variables = { slug }
+	return fetchHygraphQuery(query, variables, {
+		cache: 'no-cache',
+	})
 }

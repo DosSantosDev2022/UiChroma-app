@@ -31,7 +31,6 @@
     "zustand": "^5.0.2"
   },
   "devDependencies": {
-    "@repo/eslint-config": "workspace:*",
     "@types/color": "^4.2.0",
     "@types/react-color": "^3.0.12",
     "@types/uuid": "^9.0.8",

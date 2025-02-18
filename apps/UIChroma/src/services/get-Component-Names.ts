@@ -1,16 +1,16 @@
 import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export interface QueryProps {
-  pageComponents: {
-    id: string
-    slug: string
-    name: string
-    developing: boolean
-  }[]
+	pageComponents: {
+		id: string
+		slug: string
+		name: string
+		developing: boolean
+	}[]
 }
 
 export const GET_COMPONENTS_NAME = async (): Promise<QueryProps> => {
-  const query = `
+	const query = `
       query MyQuery {
       pageComponents(first: 100) {
         id
@@ -20,5 +20,5 @@ export const GET_COMPONENTS_NAME = async (): Promise<QueryProps> => {
       }
     }
   `
-  return fetchHygraphQuery(query, undefined, { cache: 'no-cache' })
+	return fetchHygraphQuery(query, undefined, { cache: 'no-cache' })
 }

@@ -1,10 +1,10 @@
-import { Theme } from '@/@types/colors-themes-types'
+import type { Theme } from '@/@types/colors-themes-types'
 
 export const generateCodeCss = (
-  lightColors: Theme['light'],
-  darkColors: Theme['dark']
+	lightColors: Theme['light'],
+	darkColors: Theme['dark'],
 ) => {
-  return `
+	return `
       @tailwind base;
       @tailwind components;
       @tailwind utilities;
@@ -90,7 +90,7 @@ export const generateCodeCss = (
 }
 
 export const generateTailwindConfig = () => {
-  return `
+	return `
      const config: Config = {
     content: [
       './src/pages/**/*.{js,ts,jsx,tsx,mdx}',

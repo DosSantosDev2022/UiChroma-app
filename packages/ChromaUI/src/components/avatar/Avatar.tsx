@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { type ComponentPropsWithRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const AvatarContainer = React.forwardRef<
@@ -83,12 +83,12 @@ Avatar.displayName = 'Avatar'
 // Componente AvatarImage
 const AvatarImage = React.forwardRef<
 	HTMLImageElement,
-	React.ImgHTMLAttributes<HTMLImageElement>
+	ComponentPropsWithRef<'img'>
 >(({ className, ...props }, ref) => (
 	<img
-		aria-hidden
 		ref={ref}
-		alt='Users profile picture'
+		aria-hidden
+		alt='User avatar'
 		className={twMerge(
 			'aspect-square h-full w-full object-cover',
 			className,

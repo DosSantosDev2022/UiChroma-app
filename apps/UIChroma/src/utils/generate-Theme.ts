@@ -30,7 +30,7 @@ const generateMutedColor = (mode: 'light' | 'dark') => {
 			mutedForeground: colord('#6b7280').toHslString(),
 			muted_hover: colord('#f3f4f6').toHslString(),
 		}
-	// biome-ignore lint/style/noUselessElse: <explanation>
+		// biome-ignore lint/style/noUselessElse: <explanation>
 	} else {
 		return {
 			muted: colord('#1C202A').toHslString(),

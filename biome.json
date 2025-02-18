@@ -21,12 +21,16 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"recommended": true,
+			"a11y": {
+				"noRedundantRoles": "warn",
+				"useAltText": "warn"
+			}
 		}
 	},
 	"javascript": {
 		"formatter": {
-			"arrowParentheses":"always",
+			"arrowParentheses": "always",
 			"bracketSameLine": false,
 			"bracketSpacing": true,
 			"quoteStyle": "single",

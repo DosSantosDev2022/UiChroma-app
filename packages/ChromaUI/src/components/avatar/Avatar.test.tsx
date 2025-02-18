@@ -29,7 +29,7 @@ describe('Avatar component', () => {
 		expect(screen.getByText('Jhon Doe'))
 		expect(screen.getByText('jhondoe@email.com'))
 		// Verificar se a imagem está presente no DOM
-		const avatarImage = screen.getByRole('img')
+		const avatarImage = screen.getByAltText('User avatar')
 		expect(avatarImage).toBeInTheDocument()
 		expect(avatarImage).toHaveAttribute('src', '/img/avatar-01.jpg')
 	})

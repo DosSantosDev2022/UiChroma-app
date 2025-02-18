@@ -21,7 +21,7 @@ describe('Component Carousel', () => {
 	})
 
 	it('should not render carousel component when there is no image url', () => {
-		render(<Carousel>{mockChildren}</Carousel>)
+		render(<Carousel>{images}</Carousel>)
 		expect(screen.queryByRole('img')).not.toBeInTheDocument()
 	})
 

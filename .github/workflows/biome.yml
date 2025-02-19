@@ -1,0 +1,33 @@
+name: Biome Lint & Format
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  biome:
+    name: Run Biome
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Biome Linter
+        run: npx biome check .
+
+      - name: Run Biome Formatter Check
+        run: npx biome check . --apply-unsafe

@@ -33,7 +33,7 @@ export default async function ThemesPage({
 		<>
 			<div className='grid grid-cols-1 gap-4 lg:grid-cols-4'>
 				<section className='col-span-3 w-full rounded-md border  border-border p-4 shadow-sm'>
-					<h1 className=' text-3xl font-extrabold tracking-tight lg:text-6xl'>
+					<h1 className=' text-3xl font-extrabold tracking-tight lg:text-5xl'>
 						{documentationPage.title}
 					</h1>
 					<div className={'space-y-16 pb-10 pt-8'}>

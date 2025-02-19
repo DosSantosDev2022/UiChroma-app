@@ -54,7 +54,7 @@ export default async function ComponentDetails({
 					<div id='start'>
 						<div className='flex w-full flex-col'>
 							<div className='mt-2 flex  items-center justify-between gap-3 sm:justify-start'>
-								<Title className={`${inter.className}`}>
+								<Title as='h1' className={`${inter.className}`}>
 									{pageComponent.name}
 								</Title>
 								<Badge
@@ -70,7 +70,7 @@ export default async function ComponentDetails({
 					</div>
 
 					<div id='features'>
-						<div className='w-full space-y-4'>
+						<div className='space-y-4'>
 							<Title as='h3' className={`${inter.className}`}>
 								Features
 							</Title>
@@ -191,8 +191,13 @@ export default async function ComponentDetails({
 
 									<ClipBoardContainer>
 										<ClipBoardHeader>
-											<ClipBoardLabel>{dep.title}</ClipBoardLabel>
-											<ClipBoardAction copyText={dep.command} />
+											<ClipBoardLabel id={`dependency-label-${dep.id}`}>
+												{dep.title}
+											</ClipBoardLabel>
+											<ClipBoardAction
+												aria-labelledby={`dependency-label-${dep.id}`}
+												copyText={dep.command}
+											/>
 										</ClipBoardHeader>
 										<ClipBoardArea>
 											<CodeBlock code={dep.command} />

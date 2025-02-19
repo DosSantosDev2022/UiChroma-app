@@ -80,44 +80,29 @@ const SideBarRoot = React.forwardRef<
 	</SideBarProvider>
 ))
 
-const SideBar = ({
-	className,
-	children,
-	...props
-}: React.HTMLAttributes<HTMLElement>) => {
+const SideBar = React.forwardRef<
+	HTMLDivElement,
+	React.ComponentPropsWithRef<'div'>
+>(({ className, children, ...props }, ref) => {
 	const { isOpenSideBar } = useSideBarContext()
-	const contentRef = useRef<HTMLElement>(null)
-
-	useEffect(() => {
-		if (contentRef.current) {
-			const contentWidth = contentRef.current.scrollWidth
-			contentRef.current.style.setProperty(
-				'--sidebar-width',
-				`${contentWidth}px`,
-			)
-		}
-	}, [])
 
 	return (
-		<aside
+		<div
 			data-state={isOpenSideBar ? 'open' : 'closed'}
 			aria-label='sidebar'
-			data-sidebar='aside'
-			ref={contentRef}
+			ref={ref}
 			{...props}
 			className={twMerge(
 				'hidden h-full flex-col justify-between border border-border bg-background p-4 lg:flex',
-				'overflow-visible transition-all duration-300',
-				isOpenSideBar
-					? 'fixed z-50 w-72 max-w-72 translate-x-0 data-[state=open]:animate-sidebar-in lg:relative lg:z-0 lg:flex lg:translate-x-0'
-					: 'data-[state-closed]:animate-sidebar-out sm:w-20 sm:translate-x-0 ',
+				'overflow-visible transition-all duration-500',
+				isOpenSideBar ? 'fixed z-50 w-72 lg:relative lg:z-0' : 'w-20',
 				className,
 			)}
 		>
 			{children}
-		</aside>
+		</div>
 	)
-}
+})
 
 SideBar.displayName = 'SideBar'
 
@@ -155,11 +140,7 @@ const SideBarLogo = React.forwardRef<
 		<div
 			ref={ref}
 			{...props}
-			className={twMerge(
-				'flex w-full items-center  space-x-1',
-				`${isOpenSideBar ? 'justify-start' : 'justify-center'}`,
-				className,
-			)}
+			className={twMerge('flex w-full items-center  space-x-1', className)}
 		>
 			{icon}
 			<span
@@ -341,9 +322,9 @@ const SideBarItem = React.forwardRef<
 			className={twMerge(
 				'group mt-1 cursor-pointer list-none rounded-md px-1.5 py-2',
 				' text-sm text-foreground hover:bg-muted-hover',
-				'flex items-center gap-2',
-				isOpenSideBar ? '' : 'justify-center',
+				'flex items-center space-x-1 w-full justify-center',
 				className,
+				!isOpenSideBar && 'space-x-0 w-full',
 			)}
 		>
 			<span className='relative'>{icon}</span>
@@ -351,7 +332,7 @@ const SideBarItem = React.forwardRef<
 			{!isOpenSideBar && <SideBarTooltip>{tooltip}</SideBarTooltip>}
 
 			<span
-				className={`overflow-hidden transition-all duration-300 ${isOpenSideBar ? 'ml-1 w-full' : 'w-0'}`}
+				className={`overflow-hidden transition-all duration-300 ${isOpenSideBar ? 'w-full' : 'w-0'}`}
 			>
 				{children}
 			</span>
@@ -388,25 +369,26 @@ const SideBarDropTrigger = React.forwardRef<
 	const { isOpenSideBar } = useSideBarContext()
 	const { toggle } = useDropDownContext()
 	return (
-		<Button
+		<button
 			variants='ghost'
 			onClick={toggle}
 			ref={ref}
 			{...props}
 			className={twMerge(
-				'h-9 w-full',
-				`${isOpenSideBar ? 'justify-start' : 'group'}`,
+				'group mt-1 cursor-pointer w-full rounded-md px-1.5 py-2 flex items-center justify-center space-x-1',
+				'text-sm text-foreground hover:bg-muted-hover',
 				className,
+				!isOpenSideBar && 'space-x-0 w-full',
 			)}
 		>
 			<span className='relative'>{icon}</span>
 			{!isOpenSideBar && <SideBarTooltip>{tooltip}</SideBarTooltip>}
 			<span
-				className={`flex items-start overflow-hidden transition-all duration-300 ${isOpenSideBar ? 'ml-1 w-full' : 'w-0'}`}
+				className={`flex items-start overflow-hidden transition-all duration-300 ${isOpenSideBar ? 'w-full' : 'w-0'}`}
 			>
 				{props.children}
 			</span>
-		</Button>
+		</button>
 	)
 })
 SideBarDropTrigger.displayName = 'SideBarDropTrigger'
@@ -423,11 +405,11 @@ const SideBarDropGroup = React.forwardRef<
 				ref={ref}
 				{...props}
 				className={twMerge(
-					'flex flex-col space-y-1 rounded-md bg-background p-1',
-					isOpenSideBar ? 'relative' : 'absolute',
+					'flex flex-col space-y-1 rounded-md bg-background p-1.5',
+					isOpenSideBar ? 'relative' : 'absolute shadow-md',
 					'custom-scrollbar max-h-60 overflow-y-auto',
 					'transition-all duration-300',
-					'z-50',
+					'z-50  border border-accent',
 					className,
 				)}
 			>

@@ -1,4 +1,3 @@
-import animations from '@repo/animations-ui'
 const baseConfig = {
 	content: [
 		'../../apps/*/src/**/*.{js,ts,jsx,tsx}', // Para aplicações no monorepo
@@ -80,14 +79,6 @@ const baseConfig = {
 					'0%': { opacity: '1', transform: 'scale(1)' },
 					'100%': { opacity: '0', transform: 'scale(0.95)' },
 				},
-				'sidebar-in': {
-					from: { width: 'var(--sidebar-width)' },
-					to: { width: 'var(--sidebar-width)' },
-				},
-				'sidebar-out': {
-					from: { width: 'var(--sidebar-width)' },
-					to: { width: 'var(--sidebar-width)' },
-				},
 			},
 			animation: {
 				//accordion
@@ -99,9 +90,6 @@ const baseConfig = {
 				// modal
 				'modal-in': 'modal-in 0.25s cubic-bezier(.4, 0, .2, 1)',
 				'modal-out': 'modal-out 0.25s cubic-bezier(.4, 0, .2, 1)',
-				// sideBar
-				'sidebar-in': 'sidebar-in 0.8s ease-out',
-				'sidebar-out': 'sidebar-out 0.8s ease-out',
 			},
 		},
 	},

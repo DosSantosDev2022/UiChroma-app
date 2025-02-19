@@ -1,6 +1,7 @@
 import { NavigateThroughSections } from '@/components/global/NavigateThroughSections'
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { RichText } from '@/components/global/cms/rich-text'
+import { Pagination } from '@/components/pages/docs/docPagination'
 import { linksNavigationMap } from '@/enums/links-nav-pages'
 import { GET_PAGE_DATA } from '@/services/get-page-data'
 
@@ -85,6 +86,7 @@ export default async function ThemesPage({
 							/>
 						)}
 					</div>
+					<Pagination slug={slug} />
 				</section>
 
 				<section className='sticky top-0 col-span-1 hidden h-screen w-full space-y-2 border border-border px-8 py-5 shadow-sm lg:block'>

@@ -80,9 +80,6 @@
     --chart-5: #EF4F77;
   }
 }
-
-
-
 /* Custom scrollbar styles */
 .custom-scrollbar {
   @apply overflow-auto scrollbar-thin scrollbar-track-background scrollbar-thumb-foreground;

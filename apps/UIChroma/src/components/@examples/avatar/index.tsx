@@ -7,25 +7,26 @@ import {
 	AvatarName,
 	AvatarWrapper,
 } from '@repo/ChromaUI/components'
+import { v4 as uuidv4 } from 'uuid'
 
 const AvatarPreview = () => {
 	const avatarItens = [
 		{
-			id: 'avatar01',
+			id: uuidv4(),
 			img: '/img/avatar-01.jpg',
 			fallback: 'AV1',
 			name: 'Jhon Doe',
 			label: 'jhondoe@email.com',
 		},
 		{
-			id: 'avatar02',
+			id: uuidv4(),
 			img: '/img/avatar-02.jpg',
 			fallback: 'AV2',
 			name: 'Jhon Doe',
 			label: 'jhondoe@email.com',
 		},
 		{
-			id: 'avatar03',
+			id: uuidv4(),
 			img: '/img/avatar-03.jpg',
 			fallback: 'AV3',
 			name: 'Jhon Doe',

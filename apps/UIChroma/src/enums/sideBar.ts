@@ -1,7 +1,7 @@
 import { FaHome } from 'react-icons/fa'
 import type { IconType } from 'react-icons/lib'
 import { MdNewReleases } from 'react-icons/md'
-import { v4 as uuid } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 export enum NavigationLinksSideBar {
 	HOME = 'Home',
@@ -22,13 +22,13 @@ interface LinkItem {
 
 export const links: LinkItem[] = [
 	{
-		id: uuid(),
+		id: uuidv4(),
 		name: NavigationLinksSideBar.HOME,
 		Url: NavigationUrls.HOME,
 		icon: FaHome,
 	},
 	{
-		id: uuid(),
+		id: uuidv4(),
 		name: NavigationLinksSideBar.RELEASES,
 		Url: NavigationUrls.RELEASES,
 		icon: MdNewReleases,
@@ -43,6 +43,7 @@ export const themes = [
 ]
 
 interface DocsItem {
+	id: string
 	label: string
 	url: string
 	status?: 'maintenance' | 'deprecated' | 'new' | 'in-dev'
@@ -50,22 +51,27 @@ interface DocsItem {
 
 export const docs: DocsItem[] = [
 	{
+		id: uuidv4(),
 		label: 'Primeiros passos',
 		url: 'docs/gettingstarted',
 	},
 	{
+		id: uuidv4(),
 		label: 'CLI',
 		url: 'docs/cli',
 	},
 	{
+		id: uuidv4(),
 		label: 'Temas e cores',
 		url: 'docs/themes',
 	},
 	{
+		id: uuidv4(),
 		label: 'Dark mode',
 		url: 'docs/dark',
 	},
 	{
+		id: uuidv4(),
 		label: 'Sass',
 		url: 'docs/sass',
 		status: 'in-dev',

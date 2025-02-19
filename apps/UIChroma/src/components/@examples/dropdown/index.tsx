@@ -10,26 +10,27 @@ import {
 import { FaCreditCard, FaUser } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { RiTeamFill } from 'react-icons/ri'
+import { v4 as uuidv4 } from 'uuid'
 
 const DropDownPreview = () => {
 	const list = [
 		{
-			id: '0001',
+			id: uuidv4(),
 			content: 'Profile',
 			icon: <FaUser />,
 		},
 		{
-			id: '0002',
+			id: uuidv4(),
 			content: 'Biling',
 			icon: <FaCreditCard />,
 		},
 		{
-			id: '0003',
+			id: uuidv4(),
 			content: 'Settings',
 			icon: <IoMdSettings />,
 		},
 		{
-			id: '0004',
+			id: uuidv4(),
 			content: 'Team',
 			icon: <RiTeamFill />,
 		},

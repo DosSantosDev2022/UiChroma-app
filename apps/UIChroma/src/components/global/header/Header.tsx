@@ -5,19 +5,19 @@ import Link from 'next/link'
 import { FaGithub } from 'react-icons/fa'
 import { IoLogoFigma } from 'react-icons/io5'
 import { SelectTheme } from './selectTheme'
-import { randomUUID } from 'node:crypto'
+import { v4 as uuidv4 } from 'uuid'
 
 const Header = async () => {
 	const { pageComponents } = await GET_COMPONENTS_NAME()
 
 	const links = [
 		{
-			id: randomUUID(),
+			id: uuidv4(),
 			url: '',
 			icon: IoLogoFigma,
 		},
 		{
-			id: randomUUID(),
+			id: uuidv4(),
 			url: 'https://github.com/DosSantosDev2022/UiChroma',
 			icon: FaGithub,
 		},

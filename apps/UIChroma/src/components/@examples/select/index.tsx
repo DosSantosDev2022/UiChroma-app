@@ -5,22 +5,28 @@ import {
 	SelectRoot,
 	SelectTrigger,
 } from '@repo/ChromaUI/components'
+import { v4 as uuidv4 } from 'uuid'
 
 const SelectPreview = () => {
 	const options = [
 		{
+			id: uuidv4(),
 			label: 'Opção 01',
 		},
 		{
+			id: uuidv4(),
 			label: 'Opção 02',
 		},
 		{
+			id: uuidv4(),
 			label: 'Opção 03',
 		},
 		{
+			id: uuidv4(),
 			label: 'Opção 04',
 		},
 		{
+			id: uuidv4(),
 			label: 'Opção 05',
 		},
 	]
@@ -31,7 +37,7 @@ const SelectPreview = () => {
 				<SelectTrigger>Abrir select</SelectTrigger>
 				<SelectContent>
 					{options.map((option) => (
-						<SelectOption key={option.label}>{option.label}</SelectOption>
+						<SelectOption key={option.id}>{option.label}</SelectOption>
 					))}
 				</SelectContent>
 			</SelectRoot>

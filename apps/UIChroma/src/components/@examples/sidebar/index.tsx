@@ -43,44 +43,46 @@ import {
 import { IoMdSettings } from 'react-icons/io'
 import { MdDashboard, MdSettings } from 'react-icons/md'
 import { RiTeamFill } from 'react-icons/ri'
+import { v4 as uuidv4 } from 'uuid'
+
 const links = [
-	{ id: 1, name: 'Dashboard', Url: '#', icon: MdDashboard },
-	{ id: 2, name: 'E-commerce', Url: '#', icon: FaShoppingBag },
-	{ id: 3, name: 'Inbox', Url: '#', icon: FaInbox },
-	{ id: 4, name: 'Profile', Url: '#', icon: FaUserFriends },
-	{ id: 5, name: 'Settings', Url: '#', icon: MdSettings },
+	{ id: uuidv4(), name: 'Dashboard', Url: '#', icon: MdDashboard },
+	{ id: uuidv4(), name: 'E-commerce', Url: '#', icon: FaShoppingBag },
+	{ id: uuidv4(), name: 'Inbox', Url: '#', icon: FaInbox },
+	{ id: uuidv4(), name: 'Profile', Url: '#', icon: FaUserFriends },
+	{ id: uuidv4(), name: 'Settings', Url: '#', icon: MdSettings },
 ]
 
 const Clients = [
-	{ label: 'Register', url: '#' },
-	{ label: 'Delete', url: '#' },
-	{ label: 'Reports', url: '#' },
+	{ id: uuidv4(), label: 'Register', url: '#' },
+	{ id: uuidv4(), label: 'Delete', url: '#' },
+	{ id: uuidv4(), label: 'Reports', url: '#' },
 ]
 
 const Documents = [
-	{ id: '1', name: 'Export', slug: 'button', developing: false },
-	{ id: '2', name: 'Import', slug: 'card', developing: false },
-	{ id: '3', name: 'Tabela', slug: 'table', developing: false },
+	{ id: uuidv4(), name: 'Export', slug: 'button', developing: false },
+	{ id: uuidv4(), name: 'Import', slug: 'card', developing: false },
+	{ id: uuidv4(), name: 'Tabela', slug: 'table', developing: false },
 ]
 
 const list = [
 	{
-		id: '0001',
+		id: uuidv4(),
 		content: 'Profile',
 		icon: <FaUser />,
 	},
 	{
-		id: '0002',
+		id: uuidv4(),
 		content: 'Biling',
 		icon: <FaCreditCard />,
 	},
 	{
-		id: '0003',
+		id: uuidv4(),
 		content: 'Settings',
 		icon: <IoMdSettings />,
 	},
 	{
-		id: '0004',
+		id: uuidv4(),
 		content: 'Team',
 		icon: <RiTeamFill />,
 	},
@@ -115,7 +117,7 @@ const sideBarPreview = () => {
 							<SideBarDropGroup>
 								<SideBarDropList>
 									{Clients.map((client) => (
-										<Link key={client.label} href={`/${client.url}`}>
+										<Link key={client.id} href={`/${client.url}`}>
 											<SideBarDropItem>{client.label}</SideBarDropItem>
 										</Link>
 									))}
@@ -165,11 +167,11 @@ const sideBarPreview = () => {
 						<DropDownContent position='absolute'>
 							<DropDownLabel>My accont</DropDownLabel>
 							<DropDownList>
-								{list.map((i) => (
-									<DropDownItem key={i.id}>
+								{list.map((item) => (
+									<DropDownItem key={item.id}>
 										<DropDownLink>
-											<DropDownIcon>{i.icon}</DropDownIcon>
-											{i.content}
+											<DropDownIcon>{item.icon}</DropDownIcon>
+											{item.content}
 										</DropDownLink>
 									</DropDownItem>
 								))}

@@ -1,5 +1,4 @@
 'use client'
-import { randomUUID } from 'node:crypto'
 import React, { type ReactNode, useEffect, useRef } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
@@ -51,7 +50,7 @@ const CarouselIndicators = ({
 	<div className='absolute bottom-4 left-1/2 z-30 flex -translate-x-1/2 space-x-3 p-2 sm:p-0 rtl:space-x-reverse'>
 		{Array.from({ length: itemsLength }).map((_, index) => (
 			<button
-				key={randomUUID()}
+				key={`Go to slide ${index + 1}`}
 				type='button'
 				onClick={() => goToSlide(index)}
 				aria-label={`Go to slide ${index + 1}`}
@@ -80,10 +79,17 @@ const Carousel = ({
 		updateItemsLength,
 	} = useCarousel(autoPlay, autoPlayInterval)
 
-	const itemsRef = useRef<ReactNode[]>([])
+	const itemsRef = useRef<{ id: string; element: ReactNode }[]>([])
 
 	useEffect(() => {
-		const childrenArray = React.Children.toArray(children)
+		// Converte os filhos em array e gera IDs únicos
+		const childrenArray = React.Children.toArray(children).map(
+			(child, index) => ({
+				id: crypto.randomUUID(), // ID único gerado para cada item
+				element: child,
+			}),
+		)
+
 		itemsRef.current = childrenArray
 		updateItemsLength(childrenArray.length)
 	}, [children, updateItemsLength])
@@ -106,13 +112,14 @@ const Carousel = ({
 					transform: `translateX(-${currentIndex * 100}%)`,
 				}}
 			>
-				{itemsRef.current.map((child) => (
+				{/* Renderiza os filhos com IDs únicos */}
+				{itemsRef.current.map(({ id, element }) => (
 					<div
 						aria-label='carousel-image'
-						key={randomUUID()}
+						key={id} // Usando ID único para a chave
 						className='flex h-full w-full flex-shrink-0 items-center justify-center'
 					>
-						{child}
+						{element}
 					</div>
 				))}
 			</div>

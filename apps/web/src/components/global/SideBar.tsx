@@ -16,7 +16,7 @@ import {
 	SideBarLogo,
 	SideBarNavigation,
 	SideBarRoot,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import Link from 'next/link'
 import { IoDocumentText } from 'react-icons/io5'
 import { LuComponent } from 'react-icons/lu'

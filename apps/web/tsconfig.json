@@ -4,7 +4,7 @@
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
-      "@repo/ChromaUI/*": ["../../packages/ChromaUI/src/*"]
+      "@repo/ui/*": ["../../packages/ui/src/*"]
     },
     "incremental": true,
     "strict": true

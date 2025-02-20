@@ -2,9 +2,8 @@
 
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
-import { DatePicker } from '@repo/ChromaUI/components/datepicker/datepicker'
+import { DatePicker, Button } from '@repo/ui/components'
 import { format } from 'date-fns'
-import { Button } from '@repo/ChromaUI/components'
 import { FaFilterCircleXmark } from 'react-icons/fa6'
 
 const FilterReleasesByDate = () => {

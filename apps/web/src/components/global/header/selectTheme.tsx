@@ -1,6 +1,6 @@
 'use client'
 import { useThemeStore } from '@/store/use-Theme-Store'
-import { Button } from '@repo/ChromaUI/components'
+import { Button } from '@repo/ui/components'
 import { useCallback, useEffect } from 'react'
 import { FaMoon } from 'react-icons/fa'
 import { MdSunny } from 'react-icons/md'

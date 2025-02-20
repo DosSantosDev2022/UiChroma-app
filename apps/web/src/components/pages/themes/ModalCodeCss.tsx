@@ -22,7 +22,7 @@ import {
 	ModalRoot,
 	ModalTitle,
 	ModalTrigger,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import { useState } from 'react'
 import { BiLogoCss3 } from 'react-icons/bi'
 import { IoCopy } from 'react-icons/io5'

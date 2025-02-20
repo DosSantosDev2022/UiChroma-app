@@ -1,6 +1,6 @@
 'use client'
 
-import { Input } from '@repo/ChromaUI/components'
+import { Input } from '@repo/ui/components'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'

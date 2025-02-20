@@ -3,7 +3,7 @@ import {
 	Navigation,
 	NavigationItem,
 	NavigationList,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import { useState } from 'react'
 import { GoDotFill } from 'react-icons/go'
 

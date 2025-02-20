@@ -1,4 +1,4 @@
-import { Button } from '@repo/ChromaUI/components'
+import { Button } from '@repo/ui/components'
 import Link from 'next/link'
 import { BiLogoFigma } from 'react-icons/bi'
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa'

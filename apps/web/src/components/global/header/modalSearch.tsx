@@ -9,7 +9,7 @@ import {
 	ModalRoot,
 	ModalTitle,
 	ModalTrigger,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import Link from 'next/link'
 import { type ChangeEvent, useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'

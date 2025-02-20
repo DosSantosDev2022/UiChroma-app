@@ -12,7 +12,7 @@ import {
 	ModalRoot,
 	ModalTitle,
 	ModalTrigger,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import { useState } from 'react'
 import { HslColorPicker } from 'react-colorful'
 import { FaPlus } from 'react-icons/fa'

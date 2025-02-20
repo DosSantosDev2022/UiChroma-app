@@ -2,7 +2,7 @@ import { ColorModeSelector } from '@/components/pages/themes/ColorModeSelector'
 import { ModalCodeCss } from '@/components/pages/themes/ModalCodeCss'
 import { ExempleComponents } from '@/components/pages/themes/exempleComponents'
 import { ModalTemplates } from '@/components/pages/themes/modaltemplates'
-import { Button } from '@repo/ChromaUI/components'
+import { Button } from '@repo/ui/components'
 import Link from 'next/link'
 
 export default function ThemeCreatePage() {

@@ -12,7 +12,7 @@ import {
 	ClipBoardContainer,
 	ClipBoardHeader,
 	ClipBoardLabel,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 
 import { redirect } from 'next/navigation'
 import { FaCircleCheck } from 'react-icons/fa6'

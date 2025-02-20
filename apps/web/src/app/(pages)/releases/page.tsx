@@ -2,7 +2,7 @@ import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { RichText } from '@/components/global/cms/rich-text'
 import { FiltersReleases } from '@/components/pages/releases/filters-Releases'
 import { GET_RELEASES } from '@/services/get-Releases'
-import { Badge } from '@repo/ChromaUI/components'
+import { Badge } from '@repo/ui/components'
 import { format } from 'date-fns'
 
 export default async function ReleasePage({

@@ -4,6 +4,7 @@ import { ptBR } from 'date-fns/locale'
 import { LuChevronLeft, LuChevronRight } from 'react-icons/lu'
 import { Button } from '../button/Button'
 import { type CalendarProps, useCalendar } from './../../hooks/useCalendar'
+import { v4 as uuidv4 } from 'uuid'
 
 const Calendar = ({ value, onChange, range }: CalendarProps) => {
 	const {
@@ -19,7 +20,7 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 	} = useCalendar({ value, onChange, range })
 
 	return (
-		<div className='flex w-full max-w-80 flex-col items-center justify-center rounded-2xl border border-border p-4 shadow-sm'>
+		<div className='flex w-full max-w-80 flex-col items-center justify-center rounded-2xl border border-border p-4 shadow-sm bg-background'>
 			<div className='mb-2 flex w-full items-center gap-2'>
 				<div className='flex w-full items-center justify-between gap-8 rounded-xl  border border-border p-1 text-sm font-medium text-muted-foreground'>
 					<Button
@@ -30,7 +31,7 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 					>
 						<LuChevronLeft />
 					</Button>
-					<span className='capitalize'>
+					<span className='capitalize truncate'>
 						{format(currentDate, 'MMMM yyyy', { locale: ptBR })}
 					</span>
 					<Button
@@ -63,7 +64,7 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 				<tbody>
 					{Array.from({ length: Math.ceil(dates.length / 7) }).map(
 						(_, weekIndex) => (
-							<tr key={dates.toString()} className='grid grid-cols-7'>
+							<tr key={uuidv4()} className='grid grid-cols-7'>
 								{dates
 									.slice(weekIndex * 7, weekIndex * 7 + 7)
 									.map((date) => {
@@ -83,7 +84,7 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 
 										return (
 											<td
-												key={date.toString()}
+												key={uuidv4()}
 												className=' flex h-10 w-10 items-center justify-center rounded-full'
 											>
 												<p

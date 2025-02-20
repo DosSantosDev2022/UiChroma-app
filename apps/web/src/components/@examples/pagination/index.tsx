@@ -14,6 +14,7 @@ import {
 	PaginationPrevious,
 } from '@repo/ChromaUI/components'
 import { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 const PaginationPreview = () => {
 	const [currentPage, setCurrentPage] = useState(1)
@@ -37,7 +38,9 @@ const PaginationPreview = () => {
 				{pages.map((page, index) => {
 					if (page === ELLIPSIS_LEFT || page === ELLIPSIS_RIGTH) {
 						return (
-							<PaginationEllipsis key={page}>{page}</PaginationEllipsis>
+							<PaginationEllipsis key={uuidv4()}>
+								{page}
+							</PaginationEllipsis>
 						)
 					}
 

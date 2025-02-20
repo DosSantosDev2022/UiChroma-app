@@ -1,6 +1,6 @@
 import { defaultRenderers } from '@/components/global/cms/RichTextRenderers'
 import { RichText } from '@/components/global/cms/rich-text'
-import { SearchReleases } from '@/components/pages/releases/search-Releases'
+import { FiltersReleases } from '@/components/pages/releases/filters-Releases'
 import { GET_RELEASES } from '@/services/get-Releases'
 import { Badge } from '@repo/ChromaUI/components'
 import { format } from 'date-fns'
@@ -8,20 +8,25 @@ import { format } from 'date-fns'
 export default async function ReleasePage({
 	searchParams,
 }: {
-	searchParams: Promise<{ query: string }>
+	searchParams: Promise<{
+		query?: string
+		startDate?: string
+		endDate?: string
+	}>
 }) {
-	const { query } = await searchParams
-	const { releasePage } = await GET_RELEASES(query)
+	const { query, startDate, endDate } = await searchParams
+	const { releasePage = null } =
+		(await GET_RELEASES(query, startDate, endDate)) ?? {}
 
 	return (
 		<div className='relative mb-10 flex max-w-5xl flex-col px-4 sm:px-6 lg:px-8'>
-			<SearchReleases />
+			<FiltersReleases />
 			{!releasePage || !releasePage.releases.length ? (
 				<div className='mt-10 flex flex-col items-center justify-center'>
 					<h1 className='text-3xl font-extrabold tracking-wide lg:text-6xl'>
 						Releases não encontradas
 					</h1>
-					<p className='text-base text-muted-foreground'>
+					<p className='text-base text-muted-foreground mt-4'>
 						Nenhum componente encontrado para sua pesquisa.
 					</p>
 				</div>

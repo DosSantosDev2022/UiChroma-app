@@ -4,7 +4,7 @@ import {
 	AccordionContent,
 	AccordionQuestion,
 	AccordionTrigger,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 
 const AccordionPreview = () => {
 	const faqs = [

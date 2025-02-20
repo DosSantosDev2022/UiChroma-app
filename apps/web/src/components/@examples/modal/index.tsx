@@ -7,7 +7,7 @@ import {
 	ModalRoot,
 	ModalTitle,
 	ModalTrigger,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 
 const ModalPreview = () => {
 	return (

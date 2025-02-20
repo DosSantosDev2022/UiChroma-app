@@ -1,4 +1,4 @@
-import { Badge } from '@repo/ChromaUI/components'
+import { Badge } from '@repo/ui/components'
 
 type BadgeType = {
 	variant: 'primary' | 'secondary' | 'accent' | 'muted'

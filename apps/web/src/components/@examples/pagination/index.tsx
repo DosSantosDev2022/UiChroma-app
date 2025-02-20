@@ -12,7 +12,7 @@ import {
 	PaginationItem,
 	PaginationNext,
 	PaginationPrevious,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 

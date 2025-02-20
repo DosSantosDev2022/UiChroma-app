@@ -30,7 +30,7 @@ import {
 	SideBarLogo,
 	SideBarNavigation,
 	SideBarRoot,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import Link from 'next/link'
 import {
 	FaCreditCard,

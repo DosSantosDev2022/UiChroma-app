@@ -5,7 +5,7 @@ import {
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 
 const CardPreview = () => {
 	return (

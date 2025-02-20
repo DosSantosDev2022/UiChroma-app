@@ -63,7 +63,7 @@ const FilterReleasesByDate = () => {
 	}
 
 	return (
-		<div className='space-x-1 flex items-center justify-center'>
+		<div className='space-x-1 flex items-center justify-end p-2'>
 			<DatePicker date={dateRange} onChange={setDateRange} />
 			{/* Botão para limpar os filtros */}
 			<Button sizes='icon' variants='ghost' onClick={handleClearFilters}>

@@ -1,4 +1,4 @@
-import { Label, TextArea } from '@repo/ChromaUI/components'
+import { Label, TextArea } from '@repo/ui/components'
 
 const TextAreaPreview = () => {
 	return (

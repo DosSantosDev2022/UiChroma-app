@@ -6,7 +6,7 @@ import {
 	AvatarLabel,
 	AvatarName,
 	AvatarWrapper,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import { v4 as uuidv4 } from 'uuid'
 
 const AvatarPreview = () => {

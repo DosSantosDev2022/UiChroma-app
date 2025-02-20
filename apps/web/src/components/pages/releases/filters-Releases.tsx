@@ -3,9 +3,11 @@ import { SearchReleases } from './search-Releases'
 
 const FiltersReleases = () => {
 	return (
-		<div className='flex items-center justify-end p-2'>
-			<SearchReleases />
-			<FilterReleasesByDate />
+		<div className='w-full flex items-center justify-end p-2'>
+			<div className='flex flex-col lg:flex-row gap-2'>
+				<SearchReleases />
+				<FilterReleasesByDate />
+			</div>
 		</div>
 	)
 }

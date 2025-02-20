@@ -1,4 +1,4 @@
-import { Button, type ButtonProps } from '@repo/ChromaUI/components'
+import { Button, type ButtonProps } from '@repo/ui/components'
 
 const ButtonPreview = () => {
 	const variantes: ButtonProps['variants'][] = [

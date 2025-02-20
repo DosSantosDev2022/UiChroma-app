@@ -6,7 +6,7 @@ import {
 	DropDownList,
 	DropDownRoot,
 	DropDownTrigger,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 import { FaCreditCard, FaUser } from 'react-icons/fa'
 import { IoMdSettings } from 'react-icons/io'
 import { RiTeamFill } from 'react-icons/ri'

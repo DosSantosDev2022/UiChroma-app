@@ -20,9 +20,9 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 	} = useCalendar({ value, onChange, range })
 
 	return (
-		<div className='flex w-full max-w-80 flex-col items-center justify-center rounded-2xl border border-border p-4 shadow-sm bg-background'>
+		<div className='flex w-64 max-w-64 flex-col items-center justify-center rounded-2xl border border-border p-4 shadow-sm bg-background'>
 			<div className='mb-2 flex w-full items-center gap-2'>
-				<div className='flex w-full items-center justify-between gap-8 rounded-xl  border border-border p-1 text-sm font-medium text-muted-foreground'>
+				<div className='flex w-full items-center justify-between gap-8 rounded-xl  border border-border p-1'>
 					<Button
 						aria-label='chevron-left'
 						variants='ghost'
@@ -31,7 +31,7 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 					>
 						<LuChevronLeft />
 					</Button>
-					<span className='capitalize truncate'>
+					<span className='capitalize text-xs text-muted-foreground'>
 						{format(currentDate, 'MMMM yyyy', { locale: ptBR })}
 					</span>
 					<Button
@@ -44,7 +44,7 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 					</Button>
 				</div>
 			</div>
-			<table className='w-full items-center justify-center pb-3'>
+			<table className='p-1'>
 				<thead className='mb-2'>
 					<tr className='flex'>
 						{['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'].map(
@@ -85,7 +85,7 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 										return (
 											<td
 												key={uuidv4()}
-												className=' flex h-10 w-10 items-center justify-center rounded-full'
+												className=' flex h-8 w-8 items-center justify-center'
 											>
 												<p
 													onClick={() => handleSelectDate(date)}
@@ -95,7 +95,7 @@ const Calendar = ({ value, onChange, range }: CalendarProps) => {
 														}
 													}}
 													className={`flex h-full w-full cursor-pointer 
-                            items-center justify-center rounded-full p-4 text-sm font-medium transition-all duration-200 hover:bg-accent-hover
+                            items-center justify-center rounded-md p-4 text-sm font-normal transition-all duration-200 hover:bg-accent-hover
                             ${isCurrentMonth ? '' : 'opacity-30'} 
                             ${
 															isToday

@@ -1,4 +1,4 @@
-import { Carousel } from '@repo/ChromaUI/components/'
+import { Carousel } from '@repo/ui/components/'
 import Image from 'next/image'
 import { v4 as uuidv4 } from 'uuid'
 

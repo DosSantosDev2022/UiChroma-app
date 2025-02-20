@@ -1,5 +1,5 @@
 'use client'
-import { Button, Calendar } from '@repo/ChromaUI/components'
+import { Button, Calendar } from '@repo/ui/components'
 import { useState } from 'react'
 
 const CalendarPreview = () => {

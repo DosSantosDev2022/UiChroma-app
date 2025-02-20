@@ -1,4 +1,4 @@
-import { CardImage } from '@repo/ChromaUI/components'
+import { CardImage } from '@repo/ui/components'
 
 const CardImagePreview = () => {
 	return (

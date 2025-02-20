@@ -2,7 +2,7 @@ import {
 	PopoverContent,
 	PopoverRoot,
 	PopoverTrigger,
-} from '@repo/ChromaUI/components'
+} from '@repo/ui/components'
 
 const PopoverPreview = () => {
 	return (

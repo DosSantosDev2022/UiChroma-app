@@ -3,13 +3,24 @@ import { fetchHygraphQuery } from '@/app/api/cms/hygraph'
 
 export const GET_RELEASES = async (
 	searchTerm?: string,
-): Promise<ReleasePage> => {
+	startDate?: string,
+	endDate?: string,
+): Promise<ReleasePage | null> => {
 	const query = `
-    query MyQuery($searchTerm: String) {
+     query MyQuery($searchTerm: String, $startDate: Date, $endDate: Date) {
       releasePage(where: { slug: "release-page" }) {
         title
         description
-        releases(orderBy: date_DESC, where: { title_contains: $searchTerm }) {
+        releases(
+          orderBy: date_DESC
+          where: {
+            AND: [
+              { OR: [{ title_contains: $searchTerm }] }
+              { OR: [{ date_gte: $startDate }, { date_gte: $startDate }] }
+              { OR: [{ date_lte: $endDate }, { date_lte: $endDate }] }
+            ]
+          }
+        ) {
           id
           version
           date
@@ -26,7 +37,11 @@ export const GET_RELEASES = async (
   `
 	return fetchHygraphQuery(
 		query,
-		{ searchTerm: searchTerm || '' },
-		{ cache: 'no-cache' /* revalidate: 60 * 60 * 24 */ },
+		{
+			searchTerm: searchTerm || '',
+			startDate: startDate || '1900-01-01',
+			endDate: endDate || '2100-12-31',
+		},
+		{ cache: 'no-cache' },
 	)
 }

@@ -4,10 +4,10 @@
 	"scripts": {
 		"build": "turbo build",
 		"dev": "turbo dev",
-		"format": "npx @biomejs/biome format --write apps/UIChroma/src packages/ChromaUI/src",
-		"lint": "npx @biomejs/biome lint apps/UIChroma/src packages/ChromaUI/src",
-		"lint-fix": "npx @biomejs/biome lint --fix apps/UIChroma/src packages/ChromaUI/src",
-		"check": "npx @biomejs/biome check --write apps/UIChroma/src packages/ChromaUI/src",
+		"format": "npx @biomejs/biome format --write apps/web/src packages/ui/src",
+		"lint": "npx @biomejs/biome lint apps/web/src packages/ui/src",
+		"lint-fix": "npx @biomejs/biome lint --fix apps/web/src packages/ui/src",
+		"check": "npx @biomejs/biome check --write apps/ui/src packages/ui/src",
 		"prepare": "husky",
 		"test": "vitest"
 	},

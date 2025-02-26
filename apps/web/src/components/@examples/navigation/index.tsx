@@ -1,6 +1,5 @@
 import {
 	Navigation,
-	NavigationGroup,
 	NavigationItem,
 	NavigationLink,
 	NavigationList,
@@ -34,17 +33,34 @@ const NavigationPreview = () => {
 	return (
 		<div className='mx-auto'>
 			<Navigation>
-				<NavigationGroup>
-					<NavigationList>
-						{links.map((link) => (
-							<NavigationItem key={link.id}>
-								<NavigationLink href={link.url}>
-									{link.label}
-								</NavigationLink>
-							</NavigationItem>
-						))}
-					</NavigationList>
-				</NavigationGroup>
+				<NavigationList>
+					<NavigationItem>
+						<NavigationLink href='#'>Home</NavigationLink>
+					</NavigationItem>
+					<NavigationItem>
+						<NavigationLink href='#'>Sobre</NavigationLink>
+					</NavigationItem>
+					<NavigationItem
+						isDrop
+						id='dropdown1'
+						dropdownItems={[
+							<NavigationLink key={'item01'} href='#'>
+								React js
+							</NavigationLink>,
+							<NavigationLink key={'item02'} href='#'>
+								Next js
+							</NavigationLink>,
+							<NavigationLink key={'item03'} href='#'>
+								JavaScript
+							</NavigationLink>,
+						]}
+					>
+						Categorias
+					</NavigationItem>
+					<NavigationItem>
+						<NavigationLink href='#'>Contato</NavigationLink>
+					</NavigationItem>
+				</NavigationList>
 			</Navigation>
 		</div>
 	)

@@ -1,37 +1,63 @@
 'use client'
-import React, { type ComponentPropsWithRef, forwardRef } from 'react'
+import type { ComponentPropsWithRef, ReactNode } from 'react'
+import { LuChevronDown } from 'react-icons/lu'
+import {
+	createContext,
+	useContext,
+	useState,
+	forwardRef,
+	cloneElement,
+} from 'react'
 import { twMerge } from 'tailwind-merge'
+import { v4 as uuidv4 } from 'uuid'
+
+interface NavigationContextProps {
+	openDropdown: string | null
+	setOpenDropdown: (id: string | null) => void
+}
+
+const NavigationContext = createContext<
+	NavigationContextProps | undefined
+>(undefined)
+
+const useNavigationContext = () => {
+	const context = useContext(NavigationContext)
+	if (!context) {
+		throw new Error(
+			'Navigation components must be used within a Navigation provider',
+		)
+	}
+	return context
+}
+
+const NavigationProvider = ({ children }: { children: ReactNode }) => {
+	const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+
+	return (
+		<NavigationContext.Provider value={{ openDropdown, setOpenDropdown }}>
+			{children}
+		</NavigationContext.Provider>
+	)
+}
 
 const Navigation = forwardRef<HTMLElement, ComponentPropsWithRef<'nav'>>(
 	({ className, ...props }, ref) => (
-		<nav
-			className={twMerge(
-				'h-full w-full space-y-1',
-				'sm:space-y-2 lg:space-y-4',
-				className,
-			)}
-			{...props}
-			ref={ref}
-		/>
+		<NavigationProvider>
+			<nav
+				aria-label='navigation'
+				className={twMerge(
+					'h-full w-full space-y-1 flex',
+					'sm:space-y-2 lg:space-y-4',
+					className,
+				)}
+				{...props}
+				ref={ref}
+			/>
+		</NavigationProvider>
 	),
 )
 
 Navigation.displayName = 'Navigation'
-
-const NavigationGroup = forwardRef<
-	HTMLDivElement,
-	ComponentPropsWithRef<'div'>
->(({ className, ...props }, ref) => (
-	<div
-		ref={ref}
-		{...props}
-		className={twMerge(
-			'custom-scrollbar overflow-x-auto sm:overflow-x-visible',
-		)}
-	/>
-))
-
-NavigationGroup.displayName = 'NavigationGroup'
 
 const NavigationList = forwardRef<
 	HTMLUListElement,
@@ -39,9 +65,7 @@ const NavigationList = forwardRef<
 >(({ className, ...props }, ref) => (
 	<ul
 		className={twMerge(
-			'flex',
-			'gap-2 sm:gap-4',
-			'sm:flex-row sm:justify-start md:justify-center',
+			'flex flex-col p-2 lg:flex-row gap-2 sm:gap-4',
 			className,
 		)}
 		{...props}
@@ -51,21 +75,89 @@ const NavigationList = forwardRef<
 
 NavigationList.displayName = 'NavigationList'
 
-const NavigationItem = forwardRef<
-	HTMLLIElement,
-	ComponentPropsWithRef<'li'>
->(({ className, ...props }, ref) => (
-	<li
-		className={twMerge(
-			'flex cursor-pointer items-center overflow-hidden rounded-md px-2 py-1.5',
-			'sm:min-w-24',
-			'transition-all duration-300 hover:bg-muted-hover',
+interface NavigationItemProps extends ComponentPropsWithRef<'li'> {
+	isDrop?: boolean
+	dropdownItems?: ReactNode[]
+	id?: string
+	hoverType?: 'text' | 'background'
+}
+
+const NavigationItem = forwardRef<HTMLLIElement, NavigationItemProps>(
+	(
+		{
 			className,
-		)}
-		{...props}
-		ref={ref}
-	/>
-))
+			isDrop,
+			dropdownItems,
+			id,
+			children,
+			hoverType = 'background',
+			...props
+		},
+		ref,
+	) => {
+		const { openDropdown, setOpenDropdown } = useNavigationContext()
+		const isOpen = openDropdown === id
+
+		const handleToggleDropdown = () => {
+			if (isDrop && id) {
+				setOpenDropdown(isOpen ? null : id)
+			}
+		}
+
+		const hoverClasses =
+			hoverType === 'text'
+				? 'hover:text-muted-hover'
+				: 'hover:bg-muted-hover'
+
+		return (
+			<li
+				className={twMerge(
+					'flex items-center justify-start lg:justify-center rounded-md px-2 py-1.5 relative',
+					'sm:min-w-24 cursor-pointer',
+					'transition-all duration-300',
+					hoverClasses,
+					isOpen && 'hover:text-inherit',
+					className,
+				)}
+				{...props}
+				ref={ref}
+				onClick={handleToggleDropdown}
+				onMouseEnter={handleToggleDropdown}
+				onMouseLeave={handleToggleDropdown}
+			>
+				{children}
+				{isDrop && (
+					<LuChevronDown
+						className={twMerge(
+							'ml-1 duration-300 transition-all',
+							`${isOpen ? 'rotate-180' : ''}`,
+						)}
+					/>
+				)}
+				{isDrop && isOpen && dropdownItems && (
+					<ul
+						aria-label='dropdown-content'
+						id={id}
+						className={twMerge(
+							'absolute top-full left-0 bg-background border border-border',
+							' z-10 w-full mt-1 rounded-md shadow-md p-2',
+							'ease-in transition-all duration-300',
+						)}
+					>
+						{dropdownItems.map((item) => (
+							<li
+								key={uuidv4()}
+								className='text-sm px-2 py-1.5 rounded hover:bg-muted-hover text-foreground'
+							>
+								{item}
+							</li>
+						))}
+					</ul>
+				)}
+			</li>
+		)
+	},
+)
 
 NavigationItem.displayName = 'NavigationItem'
 
@@ -77,22 +169,14 @@ interface NavigationLinkProps
 const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>(
 	({ className, asChild, children, ...props }, ref) => {
 		if (asChild) {
-			return React.cloneElement(children as React.ReactElement, {
+			return cloneElement(children as React.ReactElement, {
 				...props,
 				ref,
 			})
 		}
 
 		return (
-			<a
-				className={twMerge(
-					`flex w-full items-center justify-start gap-2  text-sm font-semibold text-muted-foreground
-           `,
-					className,
-				)}
-				{...props}
-				ref={ref}
-			>
+			<a className={twMerge('', className)} {...props} ref={ref}>
 				{children}
 			</a>
 		)
@@ -116,7 +200,6 @@ NavigationIcon.displayName = 'NavigationIcon'
 
 export {
 	Navigation,
-	NavigationGroup,
 	NavigationIcon,
 	NavigationItem,
 	NavigationLink,

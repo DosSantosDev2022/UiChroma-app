@@ -4,7 +4,6 @@ import { describe, expect, it, vi } from 'vitest'
 import {
 	DropDownContent,
 	DropDownItem,
-	DropDownLink,
 	DropDownRoot,
 	DropDownTrigger,
 } from './Dropdown'

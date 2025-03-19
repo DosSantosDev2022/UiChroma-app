@@ -64,10 +64,7 @@ const NavigationList = forwardRef<
 	ComponentPropsWithRef<'ul'>
 >(({ className, ...props }, ref) => (
 	<ul
-		className={twMerge(
-			'flex flex-col p-2 lg:flex-row gap-2 sm:gap-4',
-			className,
-		)}
+		className={twMerge('flex flex-col p-2 gap-2', className)}
 		{...props}
 		ref={ref}
 	/>

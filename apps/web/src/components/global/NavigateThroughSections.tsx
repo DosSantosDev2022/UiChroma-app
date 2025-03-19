@@ -1,9 +1,4 @@
 'use client'
-import {
-	Navigation,
-	NavigationItem,
-	NavigationList,
-} from '@repo/ui/components'
 import { useState } from 'react'
 import { GoDotFill } from 'react-icons/go'
 
@@ -33,26 +28,29 @@ const NavigateThroughSections = ({
 	}
 
 	return (
-		<Navigation>
-			<h3 className='mb-1 truncate px-2 py-1 text-sm font-semibold'>
+		<div className='flex flex-col h-full items-start'>
+			<h3 className='px-2 py-1 text-sm font-semibold mb-6'>
 				Navegue nessa página
 			</h3>
 
-			<NavigationList className='sm:flex-col sm:gap-1'>
-				{links.map((link) => (
-					<NavigationItem
-						onClick={() => handleButtonClickScrollIntoView(link.url)}
-						className={`gap-2 truncate p-1.5 text-sm text-muted-foreground
-                hover:no-underline
+			<nav className='w-full'>
+				<ul className='lg:flex-col sm:gap-1 items-start w-full'>
+					{links.map((link) => (
+						// biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
+						<li
+							onClick={() => handleButtonClickScrollIntoView(link.url)}
+							className={`gap-2 text-sm text-muted-foreground w-full flex items-center
+                hover:no-underline rounded-md px-2 py-1.5 cursor-pointer hover:bg-accent transition-all duration-300
                 ${activeLink === link.url ? 'font-bold text-primary' : ''}`}
-						key={link.label}
-					>
-						<GoDotFill size={12} />
-						{link.label}
-					</NavigationItem>
-				))}
-			</NavigationList>
-		</Navigation>
+							key={link.label}
+						>
+							<GoDotFill size={12} />
+							{link.label}
+						</li>
+					))}
+				</ul>
+			</nav>
+		</div>
 	)
 }
 

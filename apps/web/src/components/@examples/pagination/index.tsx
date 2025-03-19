@@ -3,7 +3,7 @@ import {
 	ELLIPSIS_LEFT,
 	ELLIPSIS_RIGTH,
 	usePagination,
-} from '@/hooks/usePagination/index'
+} from '@/hooks/usePagination/usePagination'
 import {
 	PageButton,
 	Pagination,

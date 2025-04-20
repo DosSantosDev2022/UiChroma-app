@@ -1,0 +1,20 @@
+{
+	"name": "@repo/ui",
+	"version": "1.0.0",
+	"private": true,
+	"exports": {
+		"./components/*": "./src/components/*",
+		"./*": "./src/*"
+	},
+	"scripts": {
+		"lint": "eslint . --max-warnings 0",
+		"generate:component": "turbo gen react-component"
+	},
+	"devDependencies": {
+		"@repo/typescript-config": "workspace:*",
+		"@turbo/gen": "^1.12.4"
+	},
+	"dependencies": {
+		"@radix-ui/react-slot": "^1.1.0"
+	}
+}

@@ -1,39 +1,64 @@
 {
-  "name": "uichroma_app",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "@types/node": "^22.9.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "autoprefixer": "^10.4.19",
-    "eslint": "^8.56.0",
-    "eslint-plugin-prettier": "^5.2.1",
-    "postcss": "^8.4.49",
-    "prettier": "^3.3.3",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "tailwindcss": "^3.4.4",
-    "turbo": "^2.0.6",
-    "typescript": "^5.5.3"
-  },
-  "packageManager": "pnpm@8.15.6",
-  "engines": {
-    "node": ">=18"
-  },
-  "dependencies": {
-    "@next/eslint-plugin-next": "^15.0.3",
-    "date-fns": "^3.6.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.3.1",
-    "react-icons": "^5.2.1",
-    "tailwind-merge": "^2.3.0",
-    "tailwind-scrollbar": "^3.1.0",
-    "tailwindcss-animated": "^1.1.2",
-    "@repo/animations-ui": "workspace:*"
-  }
+	"name": "uichroma_app",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"dev": "turbo dev",
+		"format": "npx @biomejs/biome format --write apps/web/src packages/ui/src",
+		"lint": "npx @biomejs/biome lint apps/web/src packages/ui/src",
+		"lint-fix": "npx @biomejs/biome lint --fix apps/web/src packages/ui/src",
+		"check": "npx @biomejs/biome check --write apps/ui/src packages/ui/src",
+		"prepare": "husky",
+		"test": "vitest"
+	},
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	},
+	"lint-staged": {
+		"**.{js|ts|cjs|mjs|d.cts|d.mts|jsx|tsx|json|jsonc}": [
+			"biome check --write --no-errors-on-unmatched",
+			"biome format --write --no-errors-on-unmatched",
+			"biome lint --write --no-errors-on-unmatched"
+		]
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@commitlint/cli": "^19.8.0",
+		"@commitlint/config-conventional": "^19.8.0",
+		"@testing-library/dom": "^10.4.0",
+		"@testing-library/jest-dom": "^6.6.3",
+		"@testing-library/react": "^16.2.0",
+		"@testing-library/user-event": "^14.6.1",
+		"@types/node": "^22.13.10",
+		"@types/react": "^18.3.18",
+		"@types/react-dom": "^18.3.5",
+		"@types/uuid": "^9.0.8",
+		"@vitejs/plugin-react": "^4.3.4",
+		"autoprefixer": "^10.4.21",
+		"husky": "^9.1.7",
+		"jsdom": "^26.0.0",
+		"lint-staged": "^15.5.0",
+		"postcss": "^8.5.3",
+		"tailwindcss": "^3.4.17",
+		"turbo": "^2.4.4",
+		"typescript": "^5.8.2",
+		"vite-tsconfig-paths": "^5.1.4",
+		"vitest": "^3.0.9"
+	},
+	"packageManager": "pnpm@8.15.6",
+	"engines": {
+		"node": ">=18"
+	},
+	"dependencies": {
+		"date-fns": "^3.6.0",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-icons": "^5.5.0",
+		"tailwind-merge": "^2.6.0",
+		"tailwind-scrollbar": "^3.1.0",
+		"tailwindcss-animated": "^1.1.2",
+		"uuid": "^9.0.1"
+	}
 }

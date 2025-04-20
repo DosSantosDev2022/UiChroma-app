@@ -27,7 +27,7 @@ const ClipBoardAction = React.forwardRef<
 			aria-label='button-copy'
 			className={twMerge(
 				'flex items-center gap-2 rounded-md p-1.5 transition-all duration-500',
-				'bg-muted text-muted-foreground hover:bg-muted-hover',
+				'hover:bg-muted-hover text-muted hover:text-muted-foreground dark:text-muted-foreground',
 				className,
 			)}
 			ref={ref}
@@ -65,7 +65,7 @@ const ClipBoardHeader = React.forwardRef<
 			ref={ref}
 			className={twMerge(
 				'flex h-12 w-full items-center justify-between rounded-md  px-2 py-3',
-				'border border-border bg-background shadow',
+				'border border-border bg-primary dark:bg-secondary shadow',
 				className,
 			)}
 		/>
@@ -82,7 +82,7 @@ const ClipBoardLabel = React.forwardRef<
 			{...props}
 			ref={ref}
 			className={twMerge(
-				'text-base font-normal text-foreground',
+				'text-base font-normal text-primary-foreground dark:text-secondary-foreground',
 				className,
 			)}
 		/>

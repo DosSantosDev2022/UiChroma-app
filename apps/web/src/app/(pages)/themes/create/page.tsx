@@ -25,7 +25,7 @@ export default function ThemeCreatePage() {
 								sizes='sm'
 								variants='shine'
 							>
-								<Link href={'docs'}>Documentação</Link>
+								<Link href={'/docs/themes'}>Documentação</Link>
 							</Button>
 						</div>
 					</div>

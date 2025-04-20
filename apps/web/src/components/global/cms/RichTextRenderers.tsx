@@ -55,14 +55,12 @@ const defaultRenderers = {
 
 	// Listas
 	li: ({ children }: defaultRenderersProps) => (
-		<li className='rounded-md bg-muted px-3 py-2 text-sm text-muted-foreground dark:bg-secondary dark:text-secondary-foreground sm:text-base'>
+		<li className='rounded-md bg-primary px-3 py-2 text-sm text-primary-foreground dark:bg-secondary dark:text-secondary-foreground sm:text-base'>
 			{children}
 		</li>
 	),
 	ul: ({ children }: defaultRenderersProps) => (
-		<ul className='ml-4 mt-1 list-disc space-y-2 px-2 py-2.5 sm:ml-6 sm:space-y-4'>
-			{children}
-		</ul>
+		<ul className='mt-1 space-y-2'>{children}</ul>
 	),
 	ol: ({ children }: defaultRenderersProps) => (
 		<ol className='mt-2 space-y-2 px-2 sm:space-y-4'>{children}</ol>
@@ -70,10 +68,7 @@ const defaultRenderers = {
 
 	// Links
 	a: ({ children, href }: { children: ReactNode; href?: string }) => (
-		<a
-			href={href}
-			className='text-sm text-primary hover:text-primary-hover sm:text-base'
-		>
+		<a href={href} className='text-sm hover:underline sm:text-base'>
 			{children}
 		</a>
 	),

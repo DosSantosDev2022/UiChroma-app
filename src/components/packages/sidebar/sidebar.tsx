@@ -189,7 +189,7 @@ const SideBarContent = React.forwardRef<
 			{...props}
 			ref={ref}
 			className={twMerge(
-				'custom-scrollbar flex min-h-0 flex-1 flex-col overflow-y-auto',
+				'scrollbar-custom flex min-h-0 flex-1 flex-col overflow-y-auto',
 				className,
 			)}
 		/>
@@ -407,7 +407,7 @@ const SideBarDropGroup = React.forwardRef<
 				className={twMerge(
 					'flex flex-col space-y-1 rounded-md bg-background p-1.5',
 					isOpenSideBar ? 'relative' : 'absolute shadow-md',
-					'custom-scrollbar max-h-60 overflow-y-auto',
+					'scrollbar-custom max-h-60 overflow-y-auto',
 					'transition-all duration-300',
 					'z-50  border border-accent',
 					className,

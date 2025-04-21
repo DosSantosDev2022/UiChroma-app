@@ -2,16 +2,14 @@ name: Biome Lint & Format
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   biome:
     name: Run Biome
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
@@ -22,6 +20,11 @@ jobs:
         with:
           node-version: 20
           cache: 'pnpm'
+
+      - name: Enable Corepack and install pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@8.15.5 --activate
 
       - name: Install dependencies
         run: pnpm install

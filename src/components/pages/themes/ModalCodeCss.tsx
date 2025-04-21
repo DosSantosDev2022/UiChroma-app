@@ -2,10 +2,8 @@
 import type { Colors } from '@/@types/colors-themes-types'
 import { CodeBlock } from '@/components/global/codeBlock/codeBlock'
 import { useThemeStore } from '@/store/use-Theme-Store'
-import { formatColors } from '@/utils/format-Colors'
 import { generateCodeCss } from '@/utils/generate-Code'
 import {
-	Button,
 	ClipBoardAction,
 	ClipBoardArea,
 	ClipBoardContainer,
@@ -49,16 +47,16 @@ export function ModalCodeCss() {
 								<ClipBoardLabel>Copiar</ClipBoardLabel>
 								<ClipBoardAction
 									copyText={generateCodeCss(
-										formatColors(lightColors) as Colors,
-										formatColors(darkColors) as Colors,
+										lightColors as Colors,
+										darkColors as Colors,
 									)}
 								/>
 							</ClipBoardHeader>
 							<ClipBoardArea>
 								<CodeBlock
 									code={generateCodeCss(
-										formatColors(lightColors) as Colors,
-										formatColors(darkColors) as Colors,
+										lightColors as Colors,
+										darkColors as Colors,
 									)}
 								/>
 							</ClipBoardArea>

@@ -21,7 +21,10 @@ export const updateCssVariables = (
 				'--color-foreground',
 				`${colors.foreground}`,
 			)
-			demoContainer.style.setProperty('--color-primary', `${colors.primary}`)
+			demoContainer.style.setProperty(
+				'--color-primary',
+				`${colors.primary}`,
+			)
 			demoContainer.style.setProperty(
 				'--color-primary-hover',
 				`${colors.primary_hover}`,
@@ -30,7 +33,10 @@ export const updateCssVariables = (
 				'--color-primary-foreground',
 				`${colors.primary_foreground}`,
 			)
-			demoContainer.style.setProperty('--color-secondary', `${colors.secondary}`)
+			demoContainer.style.setProperty(
+				'--color-secondary',
+				`${colors.secondary}`,
+			)
 			demoContainer.style.setProperty(
 				'--color-secondary-hover',
 				`${colors.secondary_hover}`,
@@ -70,7 +76,10 @@ export const updateCssVariables = (
 				'--color-danger-foreground',
 				`${colors.danger_foreground}`,
 			)
-			demoContainer.style.setProperty('--color-warning', `${colors.warning}`)
+			demoContainer.style.setProperty(
+				'--color-warning',
+				`${colors.warning}`,
+			)
 			demoContainer.style.setProperty(
 				'--color-warning-hover',
 				`${colors.warning_hover}`,

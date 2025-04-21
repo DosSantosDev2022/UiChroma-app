@@ -43,7 +43,7 @@ export function ModalCodeCss() {
 					<ModalClose />
 				</ModalHeader>
 				<div className='flex flex-col gap-2'>
-					<div className='custom-scrollbar sticky max-h-[468px] overflow-y-auto'>
+					<div className='scrollbar-custom sticky max-h-[468px] overflow-y-auto'>
 						<ClipBoardContainer>
 							<ClipBoardHeader>
 								<ClipBoardLabel>Copiar</ClipBoardLabel>

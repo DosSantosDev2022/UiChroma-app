@@ -71,11 +71,7 @@ const ModalRoot = ({
 	onOpenChange?: (isOpen: boolean) => void
 }) => (
 	<ModalProvider open={open} onOpenChange={onOpenChange}>
-		<div
-			aria-label='modal-root'
-			className={twMerge('w-full', className)}
-			{...props}
-		/>
+		<div aria-label='modal-root' {...props} />
 	</ModalProvider>
 )
 
@@ -220,7 +216,7 @@ const ModalClose = React.forwardRef<
 			value={'text'}
 			onClick={toggleOpen}
 			className={twMerge(
-				'flex h-7 w-7 items-center justify-center rounded-md bg-primary  text-primary-foreground hover:bg-primary-hover',
+				'flex h-7 w-7 items-center justify-center rounded-md bg-primary cursor-pointer text-primary-foreground hover:bg-primary-hover',
 				className,
 			)}
 			{...props}

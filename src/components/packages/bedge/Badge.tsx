@@ -7,7 +7,7 @@ export interface BadgeProps extends ComponentProps<'span'> {
 	children?: string
 }
 
-const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
+const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
 	(
 		{ className, variant = 'accent', size = 'xs', children, ...props },
 		ref,
@@ -27,7 +27,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 		}
 
 		return (
-			<span
+			<div
 				className={twMerge(
 					'inline-flex items-center justify-center rounded-full  px-2.5 py-1.5 text-xs font-semibold',
 					'transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
@@ -39,7 +39,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
 				ref={ref}
 			>
 				{children}
-			</span>
+			</div>
 		)
 	},
 )

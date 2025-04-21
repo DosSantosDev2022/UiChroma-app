@@ -25,6 +25,9 @@
 			"a11y": {
 				"noRedundantRoles": "warn",
 				"useAltText": "warn"
+			},
+			"suspicious": {
+				"noArrayIndexKey": "off"
 			}
 		}
 	},

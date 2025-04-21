@@ -2,6 +2,7 @@
 import React, {
 	type ComponentPropsWithRef,
 	createContext,
+	forwardRef,
 	type ReactNode,
 	useContext,
 	useEffect,
@@ -9,6 +10,7 @@ import React, {
 	useState,
 } from 'react'
 import { twMerge } from 'tailwind-merge'
+import Link, { type LinkProps } from 'next/link'
 
 interface DropDownContextProps {
 	isOpen: boolean
@@ -65,7 +67,7 @@ const DropDownTrigger = React.forwardRef<
 				'flex h-10 w-full items-center justify-start gap-1 rounded border border-border px-2 py-1.5',
 				'transition-all duration-300',
 				'bg-background text-foreground hover:bg-muted-hover',
-				'select-none outline-none focus:bg-muted-hover',
+				'select-none cursor-p outline-none focus:bg-muted-hover',
 				className,
 			)}
 			ref={ref}
@@ -129,7 +131,7 @@ const DropDownList = React.forwardRef<
 	<ul
 		{...props}
 		className={twMerge(
-			'custom-scrollbar flex flex-col gap-1 space-y-1 overflow-y-scroll px-2 py-1.5',
+			'scrollbar-custom flex flex-col gap-1 space-y-1 overflow-y-scroll px-2 py-1.5',
 			className,
 		)}
 		ref={ref}
@@ -176,16 +178,20 @@ const DropDownLabel = React.forwardRef<
 
 DropDownLabel.displayName = 'DropDownLabel'
 
-const DropDownLink = React.forwardRef<
-	HTMLAnchorElement,
-	ComponentPropsWithRef<'a'>
->(({ className, children, ...props }, ref) => {
-	return (
-		<a className={twMerge('', className)} {...props} ref={ref}>
-			{children}
-		</a>
-	)
-})
+interface DropDownLinkProps extends LinkProps {
+	className?: string
+	children?: ReactNode
+}
+
+const DropDownLink = forwardRef<HTMLAnchorElement, DropDownLinkProps>(
+	({ className, children, ...props }, ref) => {
+		return (
+			<Link {...props} className={className} ref={ref}>
+				{children}
+			</Link>
+		)
+	},
+)
 
 DropDownLink.displayName = 'DropDownLink'
 

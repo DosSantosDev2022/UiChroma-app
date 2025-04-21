@@ -31,7 +31,7 @@ export default function ThemeCreatePage() {
 					</div>
 					<div className='col-span-7 space-x-2 border border-border p-2'>
 						{/* Seletor de cores prontas */}
-						<div className='flex w-full items-center justify-between gap-6 p-4'>
+						<div className='flex w-full items-center justify-end gap-3 p-4'>
 							<ModalTemplates />
 							<ModalCodeCss />
 						</div>

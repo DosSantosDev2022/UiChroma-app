@@ -21,14 +21,14 @@ export default function RootLayout({
 	return (
 		<html lang='pt-BR'>
 			<body
-				className={`${inter.className} relative overflow-hidden bg-background text-foreground antialiased`}
+				className={`${inter.className}relative overflow-hidden bg-background text-foreground antialiased`}
 			>
 				<div className='flex h-screen w-screen flex-row overflow-hidden'>
 					<AppSidebar />
 
 					<div className='flex flex-1 flex-col'>
 						<Header />
-						<main className=' min-h-0 flex-1 overflow-auto p-4'>
+						<main className=' min-h-0 flex-1 overflow-auto p-4 scrollbar-custom'>
 							{children}
 						</main>
 					</div>

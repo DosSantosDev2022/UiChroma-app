@@ -50,8 +50,8 @@ describe('Navigation component', () => {
 
 	it('should toggle dropdownItems visibility  when clicking on NavigationItem', () => {
 		const trigger = screen.getByText('Categorias')
-		expect(screen.queryByText('dropdown-content')).not.toBeInTheDocument()
+		expect(screen.queryByText('dropdown')).not.toBeInTheDocument()
 		fireEvent.click(trigger)
-		expect(screen.getByLabelText('dropdown-content')).toBeInTheDocument()
+		expect(screen.getByLabelText('dropdown')).toBeInTheDocument()
 	})
 })

@@ -44,11 +44,11 @@ const variantClasses = {
 		'hover:before:bg-accent-foreground hover:before:text-accent relative overflow-hidden bg-accent text-accent-foreground shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-accent before:transition-all before:duration-500 hover:text-accent-foreground hover:shadow-primary hover:before:left-0 hover:before:w-full',
 }
 const sizeClasses = {
-	xs: 'h-10 w-24 text-sm',
-	sm: 'h-10 w-28 text-sm',
-	lg: 'h-10 w-28 text-lg',
+	xs: 'w-24 h-10 text-xs',
+	sm: 'w-28 h-10  text-sm',
+	lg: 'w-28 h-10 text-lg',
 	icon: 'h-8 w-8 p-1',
-	full: 'h-10 w-full text-lg',
+	full: 'w-full h-10 text-lg',
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

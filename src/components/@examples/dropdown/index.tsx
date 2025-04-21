@@ -3,6 +3,7 @@ import {
 	DropDownIcon,
 	DropDownItem,
 	DropDownLabel,
+	DropDownLink,
 	DropDownList,
 	DropDownRoot,
 	DropDownTrigger,
@@ -44,10 +45,12 @@ const DropDownPreview = () => {
 					<DropDownLabel>My accont</DropDownLabel>
 					<DropDownList>
 						{list.map((i) => (
-							<DropDownItem key={i.id}>
-								<DropDownIcon>{i.icon}</DropDownIcon>
-								{i.content}
-							</DropDownItem>
+							<DropDownLink key={i.id} href={'#'}>
+								<DropDownItem>
+									<DropDownIcon>{i.icon}</DropDownIcon>
+									{i.content}
+								</DropDownItem>
+							</DropDownLink>
 						))}
 					</DropDownList>
 				</DropDownContent>

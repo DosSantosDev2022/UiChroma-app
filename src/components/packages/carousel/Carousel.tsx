@@ -2,7 +2,7 @@
 import React, { type ReactNode, useEffect, useRef } from 'react'
 import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io'
 import { twMerge } from 'tailwind-merge'
-import useCarousel from '@/hooks/useCarousel/useCarousel'
+import useCarousel from '@/hooks/carousel/useCarousel'
 
 interface CarouselProps {
 	children: React.ReactNode

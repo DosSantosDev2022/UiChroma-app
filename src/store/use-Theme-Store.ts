@@ -5,7 +5,7 @@ import { generateTheme } from '@/utils/generate-Theme'
 import type { HslColor } from 'react-colorful'
 import { create } from 'zustand'
 
-const getInitialTheme = (): Theme => themes[0] || defaultTheme
+const getInitialTheme = (): Theme => defaultTheme 
 
 export const useThemeStore = create<ThemeState>((set) => {
 	const initialTheme = getInitialTheme()

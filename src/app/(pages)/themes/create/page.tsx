@@ -8,45 +8,38 @@ import Link from 'next/link'
 export default function ThemeCreatePage() {
 	return (
 		<div className='flex flex-col space-y-10'>
-			<section className='relative mx-auto p-2'>
-				<div className='z-10 grid grid-cols-12 items-start gap-x-6 gap-y-14 border border-border p-2 text-center md:gap-y-9 lg:text-left'>
-					<div className='col-span-5 h-full gap-y-4 border border-border p-6'>
-						<div className='space-y-4'>
-							<h5 className='text-3xl font-extrabold tracking-wide sm:text-4xl lg:text-6xl'>
-								Gerador de temas UI
-							</h5>
-							<p className='text-base font-normal text-muted-foreground'>
-								Crie facilmente temas personalizados a partir de uma única
-								cor que você pode copiar e colar em seus aplicativos.
-							</p>
-							<Button
-								className='rounded-md'
-								asChild
-								sizes='sm'
-								variants='shine'
-							>
-								<Link href={'/docs/themes'}>Documentação</Link>
-							</Button>
-						</div>
-					</div>
-					<div className='col-span-7 space-x-2 border border-border p-2'>
-						{/* Seletor de cores prontas */}
-						<div className='flex w-full items-center justify-end gap-3 p-4'>
-							<ModalTemplates />
-							<ModalCodeCss />
-						</div>
-
-						<div className='flex items-center justify-between gap-2'>
-							{/* Seletor para o Light Mode */}
-							<ColorModeSelector mode='light' />
-							{/* Seletor para o Dark Mode */}
-							<ColorModeSelector mode='dark' />
-						</div>
-					</div>
+			<section className='p-4'>
+				<div className='w-full space-y-3'>
+					<h1 className='text-3xl font-extrabold tracking-wide sm:text-4xl lg:text-7xl'>
+						Gerador de temas UI
+					</h1>
+					<p className='text-base font-normal text-muted-foreground'>
+						Crie facilmente temas personalizados a partir de uma única cor
+						que você pode copiar e colar em seus aplicativos.
+					</p>
+					<Button
+						className='rounded-md'
+						asChild
+						sizes='sm'
+						variants='shine'
+					>
+						<Link href={'/docs/themes'}>Documentação</Link>
+					</Button>
 				</div>
 			</section>
 
 			<section className='rounded-md border border-border px-6 py-4'>
+				<div className='p-3 w-full '>
+					<div className='flex items-start justify-end w-full border border-border rounded-lg gap-2 p-4 '>
+						{/* Seletor para o Light Mode */}
+						<ColorModeSelector mode='light' />
+						{/* Seletor para o Dark Mode */}
+						<ColorModeSelector mode='dark' />
+
+						<ModalTemplates />
+						<ModalCodeCss />
+					</div>
+				</div>
 				<ExempleComponents />
 			</section>
 		</div>

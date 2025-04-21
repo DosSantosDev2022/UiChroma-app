@@ -21,6 +21,11 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
 		updateLightColor,
 	} = useThemeStore()
 	const [openPicker, setOpenPicker] = useState<string | null>(null)
+	const [openObjectColors, setObjectColors] = useState(false)
+
+	const handleOpenObjectColor = () => {
+		setObjectColors(!openObjectColors)
+	}
 
 	useEffect(() => {
 		if (theme === 'dark') {
@@ -48,9 +53,9 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
 	const title = mode === 'dark' ? 'Dark Mode' : 'Light Mode'
 
 	return (
-		<div className=' flex w-full flex-col items-center space-y-4  px-2 py-2.5'>
+		<div className=' flex w-full flex-col items-center space-y-4'>
 			<div
-				onClick={() => setTheme(mode)}
+				onClick={handleOpenObjectColor}
 				onKeyUp={(e) => {
 					if (e.key === 'Enter' || e.key === ' ') {
 						setTheme(mode)
@@ -61,49 +66,51 @@ const ColorModeSelector = ({ mode }: ColorModeSelectorProps) => {
 				{icon}
 				<h4 className='text-xl font-extrabold tracking-wide'>{title}</h4>
 			</div>
-			<div className='scrollbar-custom max-h-[360px] w-full overflow-y-auto rounded-md border border-border px-2 py-1.5 shadow-sm'>
-				{Object.keys(colors).map((key) => {
-					const colorKey = key as
-						| keyof Theme['light']
-						| keyof Theme['dark']
-					return (
-						<div key={key} className='mt-6 flex flex-col items-start'>
-							<span className='mb-2 ml-2 text-start text-sm capitalize text-muted-foreground'>
-								{colorKey}
-							</span>
-							{/* Div para abrir o picker */}
-							<div className='flex w-full items-center justify-start gap-2 rounded border border-border p-2'>
-								<div
-									className='h-8 w-8 cursor-pointer rounded-full border border-border duration-300 active:scale-95'
-									style={{ backgroundColor: colors[colorKey] }}
-									onClick={() =>
-										setOpenPicker(openPicker === key ? null : key)
-									}
-									onKeyUp={(e) => {
-										if (e.key === 'Enter' || e.key === ' ') {
-											setOpenPicker(openPicker)
-										}
-									}}
-								/>
-								<span className='truncate text-sm text-muted-foreground'>
-									{colors[colorKey]}
+			{openObjectColors && (
+				<div className='scrollbar-custom max-h-[360px] w-full overflow-y-auto rounded-md border border-border px-2 py-1.5 shadow-sm'>
+					{Object.keys(colors).map((key) => {
+						const colorKey = key as
+							| keyof Theme['light']
+							| keyof Theme['dark']
+						return (
+							<div key={key} className='mt-6 flex flex-col items-start'>
+								<span className='mb-2 ml-2 text-start text-sm capitalize text-muted-foreground'>
+									{colorKey}
 								</span>
-							</div>
-							{/* Picker visível apenas se a cor for clicada */}
-							{openPicker === key && (
-								<div className='absolute left-1/3 top-14 z-10 mt-2 rounded-md p-2 shadow-md'>
-									<HslStringColorPicker
-										color={colors[colorKey]}
-										onChange={(newColor: string) =>
-											handleColorChange(newColor, colorKey)
+								{/* Div para abrir o picker */}
+								<div className='flex w-full items-center justify-start gap-2 rounded border border-border p-2'>
+									<div
+										className='h-8 w-8 cursor-pointer rounded-full border border-border duration-300 active:scale-95'
+										style={{ backgroundColor: colors[colorKey] }}
+										onClick={() =>
+											setOpenPicker(openPicker === key ? null : key)
 										}
+										onKeyUp={(e) => {
+											if (e.key === 'Enter' || e.key === ' ') {
+												setOpenPicker(openPicker)
+											}
+										}}
 									/>
+									<span className='truncate text-sm text-muted-foreground'>
+										{colors[colorKey]}
+									</span>
 								</div>
-							)}
-						</div>
-					)
-				})}
-			</div>
+								{/* Picker visível apenas se a cor for clicada */}
+								{openPicker === key && (
+									<div className='absolute left-1/3 top-14 z-10 mt-2 rounded-md p-2 shadow-md'>
+										<HslStringColorPicker
+											color={colors[colorKey]}
+											onChange={(newColor: string) =>
+												handleColorChange(newColor, colorKey)
+											}
+										/>
+									</div>
+								)}
+							</div>
+						)
+					})}
+				</div>
+			)}
 		</div>
 	)
 }

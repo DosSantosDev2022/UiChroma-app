@@ -1,15 +1,9 @@
 'use client'
 import type { ComponentPropsWithRef, ReactNode } from 'react'
 import { LuChevronDown } from 'react-icons/lu'
-import {
-	createContext,
-	useContext,
-	useState,
-	forwardRef,
-	cloneElement,
-} from 'react'
+import { createContext, useContext, useState, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { v4 as uuidv4 } from 'uuid'
+import Link, { type LinkProps } from 'next/link'
 
 interface NavigationContextProps {
 	openDropdown: string | null
@@ -64,7 +58,7 @@ const NavigationList = forwardRef<
 	ComponentPropsWithRef<'ul'>
 >(({ className, ...props }, ref) => (
 	<ul
-		className={twMerge('flex flex-col p-2 gap-2', className)}
+		className={twMerge('flex flex-col lg:flex-row p-2 gap-2', className)}
 		{...props}
 		ref={ref}
 	/>
@@ -73,9 +67,9 @@ const NavigationList = forwardRef<
 NavigationList.displayName = 'NavigationList'
 
 interface NavigationItemProps extends ComponentPropsWithRef<'li'> {
+	id?: string
 	isDrop?: boolean
 	dropdownItems?: ReactNode[]
-	id?: string
 	hoverType?: 'text' | 'background'
 }
 
@@ -95,7 +89,15 @@ const NavigationItem = forwardRef<HTMLLIElement, NavigationItemProps>(
 		const { openDropdown, setOpenDropdown } = useNavigationContext()
 		const isOpen = openDropdown === id
 
-		const handleToggleDropdown = () => {
+		const handleMouseEnter = () => {
+			if (isDrop && id) setOpenDropdown(id)
+		}
+
+		const handleMouseLeave = () => {
+			if (isDrop && id) setOpenDropdown(null)
+		}
+
+		const handleClick = () => {
 			if (isDrop && id) {
 				setOpenDropdown(isOpen ? null : id)
 			}
@@ -108,42 +110,48 @@ const NavigationItem = forwardRef<HTMLLIElement, NavigationItemProps>(
 
 		return (
 			<li
+				id={id}
+				role={isDrop ? 'menuitem' : undefined}
+				aria-haspopup={isDrop ? 'true' : undefined}
+				aria-expanded={isDrop ? isOpen : undefined}
+				aria-controls={isDrop ? `dropdown-${id}` : undefined}
+				onClick={handleClick}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
 				className={twMerge(
 					'flex items-center justify-start lg:justify-center rounded-md px-2 py-1.5 relative',
-					'sm:min-w-24 cursor-pointer',
-					'transition-all duration-300',
+					'sm:min-w-24 cursor-pointer transition-all duration-300',
 					hoverClasses,
 					isOpen && 'hover:text-inherit',
 					className,
 				)}
 				{...props}
 				ref={ref}
-				onClick={handleToggleDropdown}
-				onMouseEnter={handleToggleDropdown}
-				onMouseLeave={handleToggleDropdown}
 			>
 				{children}
+
 				{isDrop && (
 					<LuChevronDown
 						className={twMerge(
-							'ml-1 duration-300 transition-all',
-							`${isOpen ? 'rotate-180' : ''}`,
+							'ml-1 duration-300 transition-transform',
+							isOpen ? 'rotate-180' : '',
 						)}
 					/>
 				)}
+
 				{isDrop && isOpen && dropdownItems && (
 					<ul
-						aria-label='dropdown-content'
-						id={id}
+						role='menu'
+						id={`dropdown-${id}`}
+						aria-label='dropdown'
 						className={twMerge(
-							'absolute top-full left-0 bg-background border border-border',
-							' z-10 w-full mt-1 rounded-md shadow-md p-2',
-							'ease-in transition-all duration-300',
+							'absolute top-full left-0 bg-background border border-border z-10',
+							'w-full mt-1 rounded-md shadow-md p-2 transition-all duration-300 ease-in',
 						)}
 					>
-						{dropdownItems.map((item) => (
+						{dropdownItems.map((item, index) => (
 							<li
-								key={uuidv4()}
+								key={index}
 								className='text-sm px-2 py-1.5 rounded hover:bg-muted-hover text-foreground'
 							>
 								{item}
@@ -158,24 +166,24 @@ const NavigationItem = forwardRef<HTMLLIElement, NavigationItemProps>(
 
 NavigationItem.displayName = 'NavigationItem'
 
-interface NavigationLinkProps
-	extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-	asChild?: boolean
+interface NavigationLinkProps extends LinkProps {
+	className?: string
+	children?: ReactNode
 }
 
 const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>(
-	({ className, asChild, children, ...props }, ref) => {
-		if (asChild) {
-			return cloneElement(children as React.ReactElement, {
-				...props,
-				ref,
-			})
-		}
-
+	({ className, children, href, ...props }, ref) => {
 		return (
-			<a className={twMerge('', className)} {...props} ref={ref}>
+			<Link
+				className={twMerge('', className)}
+				ref={ref}
+				{...props}
+				href={href || ''}
+				passHref
+				legacyBehavior
+			>
 				{children}
-			</a>
+			</Link>
 		)
 	},
 )

@@ -18,7 +18,7 @@ const Header = async () => {
 		},
 		{
 			id: uuidv4(),
-			url: 'https://github.com/DosSantosDev2022/UiChroma',
+			url: 'https://github.com/DosSantosDev2022/UiChroma-app',
 			icon: FaGithub,
 		},
 	]

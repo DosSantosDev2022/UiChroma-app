@@ -2,15 +2,13 @@ name: Run Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout do código
@@ -19,8 +17,13 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
+
+      - name: Ativar Corepack e instalar pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@8.15.5 --activate
 
       - name: Instalar dependências
         run: pnpm install

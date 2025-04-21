@@ -35,7 +35,7 @@ export function ExempleComponents() {
 	return (
 		<div
 			id='CssVariables'
-			className='grid grid-cols-1 gap-6 bg-background text-foreground lg:grid-cols-2'
+			className='grid grid-cols-1 gap-6 bg-background text-foreground lg:grid-cols-2 p-4'
 		>
 			<ContainerPreview title='Componente button'>
 				<Examples.ButtonPreview />

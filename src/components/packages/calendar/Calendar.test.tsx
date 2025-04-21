@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
-import { useCalendar } from '@/hooks/useCalendar/useCalendar'
+import { useCalendar } from '@/hooks/calendar/useCalendar'
 
-vi.mock('@/hooks/useCalendar/useCalendar', () => {
+vi.mock('@/hooks/calendar/useCalendar', () => {
 	return {
 		useCalendar: vi.fn(() => ({
 			nextMonth: vi.fn(),

@@ -14,90 +14,99 @@ export const updateCssVariables = (
 
 			// Atualizando as variáveis CSS com as cores do tema atual
 			demoContainer.style.setProperty(
-				'--background',
+				'--color-background',
 				`${colors.background}`,
 			)
 			demoContainer.style.setProperty(
-				'--foreground',
+				'--color-foreground',
 				`${colors.foreground}`,
 			)
-			demoContainer.style.setProperty('--primary', `${colors.primary}`)
 			demoContainer.style.setProperty(
-				'--primary-hover',
+				'--color-primary',
+				`${colors.primary}`,
+			)
+			demoContainer.style.setProperty(
+				'--color-primary-hover',
 				`${colors.primary_hover}`,
 			)
 			demoContainer.style.setProperty(
-				'--primary-foreground',
+				'--color-primary-foreground',
 				`${colors.primary_foreground}`,
 			)
-			demoContainer.style.setProperty('--secondary', `${colors.secondary}`)
 			demoContainer.style.setProperty(
-				'--secondary-hover',
+				'--color-secondary',
+				`${colors.secondary}`,
+			)
+			demoContainer.style.setProperty(
+				'--color-secondary-hover',
 				`${colors.secondary_hover}`,
 			)
 			demoContainer.style.setProperty(
-				'--secondary-foreground',
+				'--color-secondary-foreground',
 				`${colors.secondary_foreground}`,
 			)
-			demoContainer.style.setProperty('--muted', `${colors.muted}`)
+			demoContainer.style.setProperty('--color-muted', `${colors.muted}`)
 			demoContainer.style.setProperty(
-				'--muted-hover',
+				'--color-muted-hover',
 				`${colors.muted_hover}`,
 			)
 			demoContainer.style.setProperty(
-				'--muted-foreground',
+				'--color-muted-foreground',
 				`${colors.muted_foreground}`,
 			)
 
 			// Cores adicionais
-			demoContainer.style.setProperty('--accent', `${colors.accent}`)
+			demoContainer.style.setProperty('--color-accent', `${colors.accent}`)
 			demoContainer.style.setProperty(
-				'--accent-hover',
+				'--color-accent-hover',
 				`${colors.accent_hover}`,
 			)
 			demoContainer.style.setProperty(
-				'--accent-foreground',
+				'--color-accent-foreground',
 				`${colors.accent_foreground}`,
 			)
 
 			// Cores de feedback (danger, warning, success)
-			demoContainer.style.setProperty('--danger', `${colors.danger}`)
+			demoContainer.style.setProperty('--color-danger', `${colors.danger}`)
 			demoContainer.style.setProperty(
-				'--danger-hover',
+				'--color-danger-hover',
 				`${colors.danger_hover}`,
 			)
 			demoContainer.style.setProperty(
-				'--danger-foreground',
+				'--color-danger-foreground',
 				`${colors.danger_foreground}`,
 			)
-			demoContainer.style.setProperty('--warning', `${colors.warning}`)
 			demoContainer.style.setProperty(
-				'--warning-hover',
+				'--color-warning',
+				`${colors.warning}`,
+			)
+			demoContainer.style.setProperty(
+				'--color-warning-hover',
 				`${colors.warning_hover}`,
 			)
 			demoContainer.style.setProperty(
-				'--warning-foreground',
+				'--color-warning-foreground',
 				`${colors.warning_foreground}`,
 			)
 			demoContainer.style.setProperty('--success', `${colors.success}`)
 			demoContainer.style.setProperty(
-				'--success-hover',
+				'--color-success-hover',
 				`${colors.success_hover}`,
 			)
 			demoContainer.style.setProperty(
-				'--success-foreground',
+				'--color-success-foreground',
 				`${colors.success_foreground}`,
 			)
-			demoContainer.style.setProperty('--input', `${colors.input}`)
-			demoContainer.style.setProperty('--ring', `${colors.ring}`)
-			demoContainer.style.setProperty('--border', `${colors.border}`)
+			demoContainer.style.setProperty('--color-input', `${colors.input}`)
+			demoContainer.style.setProperty('--color-ring', `${colors.ring}`)
+			demoContainer.style.setProperty('--color-border', `${colors.border}`)
 
 			// Cores para gráficos ou outros componentes
-			demoContainer.style.setProperty('--chart1', `${colors.chart1}`)
-			demoContainer.style.setProperty('--chart2', `${colors.chart2}`)
-			demoContainer.style.setProperty('--chart3', `${colors.chart3}`)
-			demoContainer.style.setProperty('--chart4', `${colors.chart4}`)
-			demoContainer.style.setProperty('--chart5', `${colors.chart5}`)
+			demoContainer.style.setProperty('--color-chart1', `${colors.chart1}`)
+			demoContainer.style.setProperty('--color-chart2', `${colors.chart2}`)
+			demoContainer.style.setProperty('--color-chart3', `${colors.chart3}`)
+			demoContainer.style.setProperty('--color-chart4', `${colors.chart4}`)
+			demoContainer.style.setProperty('--color-chart5', `${colors.chart5}`)
 		}
 	}
 }

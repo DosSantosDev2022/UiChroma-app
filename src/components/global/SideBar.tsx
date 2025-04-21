@@ -104,12 +104,13 @@ const AppSidebar = async () => {
 							<SideBarDropGroup>
 								<SideBarDropList>
 									{componentList.map((component) => (
-										<SideBarDropItem key={component.id}>
-											<Link
-												className='space-x-2'
-												id={component.id}
-												href={`/preview/components/${component.slug}`}
-											>
+										<Link
+											className='space-x-2'
+											id={component.id}
+											key={component.id}
+											href={`/preview/components/${component.slug}`}
+										>
+											<SideBarDropItem>
 												{component.name}
 												{component.developing && (
 													<Badge
@@ -119,8 +120,8 @@ const AppSidebar = async () => {
 														in-dev
 													</Badge>
 												)}
-											</Link>
-										</SideBarDropItem>
+											</SideBarDropItem>
+										</Link>
 									))}
 								</SideBarDropList>
 							</SideBarDropGroup>

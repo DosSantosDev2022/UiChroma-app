@@ -18,7 +18,7 @@ const ModalPreview = () => {
 				<ModalContent>
 					<ModalHeader>
 						<ModalTitle>Templates Chroma UI</ModalTitle>
-						<ModalClose>X</ModalClose>
+						<ModalClose />
 					</ModalHeader>
 					<ModalDescription>
 						Com a nossa biblioteca de componentes, você pode gerar um tema

@@ -6,7 +6,7 @@ import { Button } from '../button/Button'
 import {
 	type CalendarProps,
 	useCalendar,
-} from '@/hooks/useCalendar/useCalendar'
+} from '@/hooks/calendar/useCalendar'
 import { v4 as uuidv4 } from 'uuid'
 
 const Calendar = ({ value, onChange, range }: CalendarProps) => {

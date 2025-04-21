@@ -1,90 +1,68 @@
-import { fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { describe, expect, it, vi } from 'vitest'
-import {
-	PageButton,
-	Pagination,
-	PaginationContent,
-	PaginationEllipsis,
-	PaginationItem,
-	PaginationNext,
-	PaginationPrevious,
-} from './Pagination'
+import { describe, it, expect, vi, beforeEach, type Mock } from 'vitest'
+import { render, screen } from '@testing-library/react'
+import { Pagination } from '@/components/packages'
+import * as nextNavigation from 'next/navigation'
 
-describe('Pagination Component', () => {
-	it('should render the pagination container', () => {
-		render(<Pagination />)
-		expect(screen.getByLabelText('pagination')).toBeInTheDocument()
-	})
-
-	it('should render the pagination content within the pagination', () => {
-		render(
-			<Pagination>
-				<PaginationContent />
-			</Pagination>,
+// ✅ Mock realista e funcional com URLSearchParams
+vi.mock('next/navigation', async () => {
+	const actual =
+		await vi.importActual<typeof import('next/navigation')>(
+			'next/navigation',
 		)
-		expect(screen.getByLabelText('pagination-list')).toBeInTheDocument()
+
+	return {
+		...actual,
+		useSearchParams: vi.fn(() => new URLSearchParams('page=1')), // default inicial
+		usePathname: vi.fn(() => '/'), // pathname fixo para os testes
+	}
+})
+
+describe('Pagination', () => {
+	beforeEach(() => {
+		// Atualiza o retorno do hook para cada teste
+		const mockParams = new URLSearchParams({ page: '1' })
+
+		// Cast necessário para usar mockImplementation
+		;(
+			nextNavigation.useSearchParams as unknown as Mock
+		).mockImplementation(() => mockParams)
 	})
 
-	it('should render a pagination item within the pagination content', () => {
-		render(
-			<PaginationContent>
-				<PaginationItem>1</PaginationItem>
-			</PaginationContent>,
-		)
-		expect(screen.getByLabelText('pagination-item')).toBeInTheDocument()
+	it('should render pagination links correctly', () => {
+		render(<Pagination page={1} limit={10} total={100} />)
+
+		expect(screen.getByText('1')).toBeInTheDocument()
+		expect(screen.getByText('2')).toBeInTheDocument()
+		expect(screen.getByText('3')).toBeInTheDocument()
 	})
 
-	it('should render a PageButton with correct text and active state', () => {
-		render(<PageButton isActive>1</PageButton>)
-		const button = screen.getByRole('button', { name: '1' })
-		expect(button).toHaveAttribute('aria-current', 'page')
-		expect(button).toHaveClass('bg-primary-foreground text-primary')
+	it('should highlight the current page', () => {
+		render(<Pagination page={2} limit={10} total={100} />)
+
+		const activePage = screen.getByText('2')
+		expect(activePage).toHaveClass('bg-primary') // ajustável conforme classe usada
+		expect(activePage).toHaveAttribute('href', '#')
 	})
 
-	it('should render the previous button with the correct aria-label', () => {
-		render(<PaginationPrevious />)
-		const prevButton = screen.getByRole('button', {
-			name: /go to previous page/i,
-		})
-		expect(prevButton).toBeInTheDocument()
+	it('should generate the correct links with query string', () => {
+		render(<Pagination page={1} limit={10} total={100} />)
+
+		const page2 = screen.getByText('2')
+		const link = page2.closest('a')
+		expect(link).toHaveAttribute('href', '?page=2')
 	})
 
-	it('should render the next button with the correct aria-label', () => {
-		render(<PaginationNext />)
-		const nextButton = screen.getByRole('button', {
-			name: /go to next page/i,
-		})
-		expect(nextButton).toBeInTheDocument()
+	it('should hide if there is only one page', () => {
+		render(<Pagination page={1} limit={10} total={9} />)
+
+		expect(screen.queryByRole('navigation')).not.toBeInTheDocument()
 	})
 
-	it('should disable the next button when passing the disabled property', () => {
-		render(<PaginationNext disabled />)
-		const nextButton = screen.getByRole('button', {
-			name: /go to next page/i,
-		})
-		expect(nextButton).toBeDisabled()
-	})
+	it('should render the ellipsis correctly', () => {
+		render(<Pagination page={5} limit={10} total={500} />)
 
-	it('should disable the previous button when passing the disabled property', () => {
-		render(<PaginationPrevious disabled />)
-		const prevButton = screen.getByRole('button', {
-			name: /go to previous page/i,
-		})
-		expect(prevButton).toBeDisabled()
-	})
-
-	it('should call onClick when a PageButton is clicked', () => {
-		const handleClick = vi.fn()
-		render(<PageButton onClick={handleClick}>1</PageButton>)
-		const button = screen.getByRole('button', { name: '1' })
-		fireEvent.click(button)
-		expect(handleClick).toHaveBeenCalledTimes(1)
-	})
-
-	it('should renders the ellipsis icon correctly', () => {
-		render(<PaginationEllipsis />)
-		const ellipsis = screen.getByLabelText('More pages')
-		expect(ellipsis).toBeInTheDocument()
+		const ellipsis = screen.getAllByText('...')
+		expect(ellipsis.length).toBeGreaterThan(0)
 	})
 })

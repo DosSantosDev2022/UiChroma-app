@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-primary: var(--primary);
+	--color-primary-hover: var(--primary-hover);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-hover: var(--secondary-hover);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-hover: var(--muted-hover);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-hover: var(--accent-hover);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-danger: var(--danger);
+	--color-danger-hover: var(--danger-hover);
+	--color-danger-foreground: var(--danger-foreground);
+	--color-warning: var(--warning);
+	--color-warning-hover: var(--warning-hover);
+	--color-warning-foreground: var(--warning-foreground);
+	--color-success: var(--success);
+	--color-success-hover: var(--success-hover);
+	--color-success-foreground: var(--success-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+
+	--animate-accordion-down: accordion-down 0.4s ease-out;
+	--animate-accordion-up: accordion-up 0.4s ease-out;
+	--animate-dropdown-in: dropdown-in 0.4s ease-out;
+	--animate-dropdown-up: dropdown-up 0.4s ease-out;
+	--animate-modal-in: modal-in 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+	--animate-modal-out: modal-out 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+			opacity: 0;
+		}
+		to {
+			height: var(--accordion-content-height);
+		}
+	}
+	@keyframes accordion-up {
+		from {
+			height: var(--accordion-content-height);
+		}
+		to {
+			height: 0;
+			opacity: 0;
+		}
+	}
+	@keyframes dropdown-in {
+		from {
+			height: 0;
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		to {
+			height: var(--dropdown-content-height);
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	@keyframes dropdown-up {
+		from {
+			height: var(--dropdown-content-height);
+			opacity: 1;
+			transform: scale(1);
+		}
+		to {
+			height: 0;
+			opacity: 0;
+			transform: scale(0.95);
+		}
+	}
+	@keyframes modal-in {
+		0% {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	@keyframes modal-out {
+		0% {
+			opacity: 1;
+			transform: scale(1);
+		}
+		100% {
+			opacity: 0;
+			transform: scale(0.95);
+		}
+	}
+}
+
+@layer base {
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
+}
+
+@layer base {
+	:root {
+		--background: #ffffff;
+		--foreground: #0a0c16;
+
+		--primary: #121726;
+		--primary-hover: #020617;
+		--primary-foreground: #f5f9ff;
+		--secondary: #94a3b8;
+		--secondary-hover: #c2c2c2;
+		--secondary-foreground: #121726;
+		--muted: #f3f4f6;
+		--muted-hover: #f3f4f6;
+		--muted-foreground: #6b7280;
+		--accent: #eef4fd;
+		--accent-hover: #c2c2c2;
+		--accent-foreground: #121726;
+
+		--danger: #f25555;
+		--danger-hover: #e04848;
+		--danger-foreground: #f5f9ff;
+		--warning: #f5c542;
+		--warning-hover: #e6b63c;
+		--warning-foreground: #1a1a1a;
+		--success: #5cb85c;
+		--success-hover: #4cae4c;
+		--success-foreground: #ffffff;
+
+		--border: #dde4f0;
+		--ring: #0a0c16;
+		--input: #f3f1f1;
+
+		--chart-1: #eb7260;
+		--chart-2: #2da597;
+		--chart-3: #235d6a;
+		--chart-4: #ccef8f;
+		--chart-5: #dce076;
+	}
+
+	.dark {
+		--background: #0a0c16;
+		--foreground: #f5f9ff;
+
+		--primary: #f5f9ff;
+		--primary-hover: #e8e8e8;
+		--primary-foreground: #121726;
+		--secondary: #1c202a;
+		--secondary-hover: #181515;
+		--secondary-foreground: #f5f9ff;
+		--muted: #1c202a;
+		--muted-hover: #4a4a4a;
+		--muted-foreground: #9aa0a7;
+		--accent: #1c202a;
+		--accent-hover: #404041;
+		--accent-foreground: #f5f9ff;
+
+		--danger: #ff5a5a;
+		--danger-hover: #e04848;
+		--danger-foreground: #f8f8f8;
+		--warning: #f5c542;
+		--warning-hover: #e6b63c;
+		--warning-foreground: #1a1a1a;
+		--success: #5cb85c;
+		--success-hover: #4cae4c;
+		--success-foreground: #fafafa;
+
+		--border: #1c202a;
+		--ring: #d5e1f2;
+		--input: #1c202a;
+
+		--chart-1: #4a91f2;
+		--chart-2: #35b384;
+		--chart-3: #edb64b;
+		--chart-4: #c678dd;
+		--chart-5: #ef4f77;
+	}
+}
+/* Custom scrollbar styles */
+
+/* .custom-scrollbar {
+  @apply overflow-auto scrollbar-thin scrollbar-track-background scrollbar-thumb-foreground;
+} 
+
+.animation-hover {
+  @apply duration-200 transition-all
+} */

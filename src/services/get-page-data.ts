@@ -80,5 +80,5 @@ export const GET_PAGE_DATA = async (
 	const variables = {
 		slug,
 	}
-	return fetchHygraphQuery(query, variables, { cache: 'no-cache' })
+	return fetchHygraphQuery(query, variables, { cache: 'force-cache', revalidate: 60 * 60 * 24 })
 }

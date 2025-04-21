@@ -54,6 +54,7 @@ export const GET_DETAILS_COMPONENT = async (
   `
 	const variables = { slug }
 	return fetchHygraphQuery(query, variables, {
-		cache: 'no-cache',
+		cache: 'force-cache',
+    revalidate: 60 * 60 * 24 // revalida a cada 1 dia
 	})
 }

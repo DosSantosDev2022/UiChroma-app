@@ -76,7 +76,7 @@ describe('GET_PAGE_DATA', () => {
 		expect(fetchHygraphQuery).toHaveBeenCalledWith(
 			expect.any(String),
 			{ slug },
-			{ cache: 'no-cache' },
+			{ cache: 'force-cache',revalidate: 60 * 60 * 24 },
 		)
 
 		expect(result).toEqual(mockResponse)

@@ -169,7 +169,7 @@ const sideBarPreview = () => {
 							<DropDownList>
 								{list.map((item) => (
 									<DropDownItem key={item.id}>
-										<DropDownLink>
+										<DropDownLink href={'#'}>
 											<DropDownIcon>{item.icon}</DropDownIcon>
 											{item.content}
 										</DropDownLink>

@@ -68,7 +68,7 @@ describe('GET_DETAILS_COMPONENT', () => {
 		expect(fetchHygraphQuery).toHaveBeenCalledWith(
 			expect.any(String),
 			expect.objectContaining({ slug }),
-			expect.objectContaining({ cache: 'no-cache' }),
+			expect.objectContaining({ cache: 'force-cache',revalidate: 60 * 60 * 24 }),
 		)
 
 		// Verificando se a resposta é igual ao esperado

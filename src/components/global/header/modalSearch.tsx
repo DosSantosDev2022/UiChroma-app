@@ -77,7 +77,7 @@ const ModalSearch = ({ data }: ModalProps) => {
 						onChange={handleSearch}
 					/>
 				</form>
-				<div className='custom-scrollbar max-h-80 overflow-y-auto'>
+				<div className='scrollbar-custom max-h-80 overflow-y-auto'>
 					{filtered.length > 0 ? (
 						<ul className='space-y-1'>
 							{filtered.map((filter) => (

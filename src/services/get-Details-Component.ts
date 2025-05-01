@@ -24,16 +24,16 @@ export const GET_DETAILS_COMPONENT = async (
           }
           sourceCode {
             description
-            title
+            name
             blockCode
           }
           utilities {
-            title
+            name
             description
             blockCode
           }
           sampleCode {
-            title
+            name
             description
             blockCode
           }

@@ -11,7 +11,7 @@ interface Features {
 }
 
 interface Utilities {
-	title: string
+	name: string
 	description: string
 	blockCode: string
 }
@@ -24,7 +24,7 @@ interface Dependencies {
 }
 
 interface blockCode {
-	title: string
+	name: string
 	description: string
 	blockCode: string
 }

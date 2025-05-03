@@ -2,8 +2,6 @@ import { Logo } from '@/assets/icons/Logo'
 import {
 	Avatar,
 	AvatarContainer,
-	AvatarFallback,
-	AvatarImage,
 	AvatarLabel,
 	AvatarName,
 	AvatarWrapper,
@@ -153,10 +151,7 @@ const sideBarPreview = () => {
 					<DropDownRoot>
 						<DropDownTrigger>
 							<AvatarContainer>
-								<Avatar>
-									<AvatarImage src={'/img/avatar-01.jpg'} />
-									<AvatarFallback>{'UI'}</AvatarFallback>
-								</Avatar>
+								<Avatar src={'/img/avatar-01.jpg'} name='UI' />
 								<AvatarWrapper>
 									<AvatarName>Juliano Santos</AvatarName>
 									<AvatarLabel>dossantosdev@gmail.com</AvatarLabel>

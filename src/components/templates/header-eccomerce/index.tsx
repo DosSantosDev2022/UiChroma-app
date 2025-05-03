@@ -9,7 +9,7 @@ import {
 	Avatar,
 } from '@/components/packages'
 import { useState } from 'react'
-import { FaPhone, FaShoppingCart, FaUser } from 'react-icons/fa'
+import { FaShoppingCart } from 'react-icons/fa'
 import { IoClose, IoMenu } from 'react-icons/io5'
 
 const Header = () => {
@@ -21,9 +21,13 @@ const Header = () => {
 
 	const links = [
 		{ label: 'Home', url: '/#' },
-		{ label: 'About', url: '/#' },
-		{ label: 'Blog', url: '/#' },
-		{ label: 'Contact', url: '/#' },
+		{ label: 'Produtos', url: '/#' },
+		{ label: 'Categorias', url: '/#' },
+		{ label: 'Ofertas', url: '/#' },
+		{ label: 'Novidades', url: '/#' },
+		{ label: 'Ajuda', url: '/#' },
+		{ label: 'Contato', url: '/#' },
+		{ label: 'Sobre Nós', url: '/#' },
 	]
 
 	return (
@@ -51,7 +55,7 @@ const Header = () => {
 					/>
 					{/* Ícones no mobile - só aparecem quando menu está aberto */}
 					{isOpen && (
-						<div className='flex items-center justify-between w-full gap-2 lg:hidden'>
+						<div className='flex items-center justify-between w-full gap-2 px-2.5 py-3 lg:hidden'>
 							<Button variants='link' sizes='icon'>
 								<FaShoppingCart />
 							</Button>
@@ -67,7 +71,11 @@ const Header = () => {
 							<FaShoppingCart />
 						</Button>
 						<Button variants='link' sizes='icon'>
-							<Avatar src='/avatars/joao.png' name='João Pedro' />
+							<Avatar
+								className='w-8 h-8'
+								src='/avatars/joao.png'
+								name='João Pedro'
+							/>
 						</Button>
 					</div>
 				</div>

@@ -31,7 +31,7 @@ const Header = () => {
 	]
 
 	return (
-		<header className='w-full px-4 lg:px-10 py-5 border border-border bg-background'>
+		<header className='w-full max-w-7xl px-4 lg:px-10 py-5 border border-border bg-background'>
 			{/* Topo: Logo + Menu Toggle + Busca + Ações */}
 			<div className='flex flex-col lg:flex-row items-center justify-between gap-4 border-b border-border pb-4'>
 				{/* Logo e Toggle Mobile */}

@@ -27,7 +27,7 @@ const Header = () => {
 	]
 
 	return (
-		<header className='w-full px-4 lg:px-10 py-5 border border-border space-y-1.5'>
+		<header className='w-full max-w-7xl px-4 lg:px-10 py-5 border border-border space-y-1.5'>
 			<div className='w-full flex items-center justify-between flex-wrap gap-1.5 lg:gap-0 p-2.5 border-b border-border'>
 				<div className='flex items-center justify-center gap-2'>
 					<FaPhone size={14} />

@@ -24,7 +24,7 @@ const Header = () => {
 	]
 
 	return (
-		<header className='w-full px-4 lg:px-14 py-5 border border-border'>
+		<header className='w-full max-w-7xl px-4 lg:px-14 py-5 border border-border'>
 			<div className='flex flex-col lg:flex-row items-center justify-between'>
 				{/* Logo + Toggle Mobile */}
 				<div className='flex items-center justify-between w-full lg:w-auto'>

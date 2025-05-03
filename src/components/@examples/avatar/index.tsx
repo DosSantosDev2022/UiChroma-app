@@ -1,8 +1,6 @@
 import {
 	Avatar,
 	AvatarContainer,
-	AvatarFallback,
-	AvatarImage,
 	AvatarLabel,
 	AvatarName,
 	AvatarWrapper,
@@ -42,10 +40,11 @@ const AvatarPreview = () => {
 						Avatar simples
 					</span>
 					{avatarItens.map((avatar) => (
-						<Avatar key={avatar.id}>
-							<AvatarImage src={avatar.img} />
-							<AvatarFallback>{avatar.fallback}</AvatarFallback>
-						</Avatar>
+						<Avatar
+							key={avatar.id}
+							name={avatar.fallback}
+							src={avatar.img}
+						/>
 					))}
 				</div>
 			</div>
@@ -57,10 +56,11 @@ const AvatarPreview = () => {
 					</span>
 					{avatarItens.map((avatar) => (
 						<AvatarContainer key={avatar.id}>
-							<Avatar>
-								<AvatarImage src={avatar.img} />
-								<AvatarFallback>{avatar.fallback}</AvatarFallback>
-							</Avatar>
+							<Avatar
+								key={avatar.id}
+								name={avatar.fallback}
+								src={avatar.img}
+							/>
 							<AvatarWrapper>
 								<AvatarName>{avatar.name}</AvatarName>
 								<AvatarLabel>{avatar.label}</AvatarLabel>

@@ -44,10 +44,10 @@ const variantClasses = {
 		'hover:before:bg-accent-foreground hover:before:text-accent relative overflow-hidden bg-accent text-accent-foreground shadow-2xl transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-accent before:transition-all before:duration-500 hover:text-accent-foreground hover:shadow-primary hover:before:left-0 hover:before:w-full',
 }
 const sizeClasses = {
-	xs: 'w-24 h-10 text-xs',
+	xs: 'w-24 h-10 text-sm',
 	sm: 'w-28 h-10  text-sm',
-	lg: 'w-28 h-10 text-lg',
-	icon: 'h-8 w-8 p-1',
+	lg: 'w-32 h-10 text-lg',
+	icon: 'h-8 w-8 p-0.5',
 	full: 'w-full h-10 text-lg',
 }
 
@@ -56,7 +56,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 		{
 			className,
 			loading = false,
-			sizes = 'sm',
+			sizes = 'xs',
 			variants = 'primary',
 			asChild = false,
 			...props
@@ -69,7 +69,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 				twMerge(
 					variantClasses[variants],
 					sizeClasses[sizes],
-					'appearance-none rounded-md px-2 py-1.5 flex gap-1 duration-300 transition-all cursor-pointer',
+					'appearance-none rounded-md  flex gap-1 duration-300 transition-all cursor-pointer',
 					' items-center justify-center font-normal ring-offset-background disabled:pointer-events-none disabled:opacity-60',
 					'transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
 					className,

@@ -41,7 +41,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 	}
 
 	return (
-		<div className='flex flex-col items-center justify-center border border-border p-6 shadow-sm'>
+		<div className='flex flex-col items-center justify-center border border-border/50 p-2 shadow-sm'>
 			<Component />
 		</div>
 	)

@@ -4,6 +4,7 @@ import { NavigateThroughSections } from '@/components/global/NavigateThroughSect
 import { Title } from '@/components/global/title'
 import {
 	Badge,
+	Button,
 	ClipBoardAction,
 	ClipBoardArea,
 	ClipBoardContainer,
@@ -13,6 +14,7 @@ import {
 import ComponentPreview from '@/components/pages/preview/component-Preview'
 import { DocLinks } from '@/components/pages/preview/doc-Links'
 import { GET_TEMPLATES } from '@/services/get-Templates'
+import Link from 'next/link'
 import { FaCircleCheck } from 'react-icons/fa6'
 
 export default async function HeadersTemplatesPage() {
@@ -63,19 +65,26 @@ export default async function HeadersTemplatesPage() {
 							key={template.id}
 							id={template.identifier}
 						>
-							<div className='flex flex-col gap-4'>
-								<Title
-									as='h3'
-									className={`lg:text-2xl text-xl ${inter.className}`}
-								>
-									{template.name}
-								</Title>
-								<p>{template.description}</p>
+							<div className='flex flex-col w-full gap-2 p-2'>
+								<div className='flex flex-col gap-4'>
+									<Title
+										as='h3'
+										className={`lg:text-2xl text-xl ${inter.className}`}
+									>
+										{template.name}
+									</Title>
+									<p>{template.description}</p>
 
-								<ComponentPreview
-									path='templates'
-									componentData={template}
-								/>
+									<ComponentPreview
+										path='templates'
+										componentData={template}
+									/>
+								</div>
+								<Button variants='ghost' sizes='full' asChild>
+									<Link href={`headers/${template.identifier}`}>
+										Ver preview em tela cheia
+									</Link>
+								</Button>
 							</div>
 
 							<div id='copyCode' className='space-y-4'>
@@ -93,7 +102,7 @@ export default async function HeadersTemplatesPage() {
 					))}
 				</div>
 			</section>
-			<section className='sticky top-0 col-span-1 h-screen hidden space-y-2 border border-border px-8 shadow-sm lg:block'>
+			<section className='sticky top-0 col-span-1 h-screen hidden space-y-2 border border-border px-8 py-4 shadow-sm lg:block'>
 				<NavigateThroughSections
 					links={template?.navigateThroughSections ?? []}
 				/>

@@ -4,6 +4,7 @@ import { Button } from '../button/Button'
 import { format } from 'date-fns'
 import { Calendar } from '../calendar/Calendar'
 import { ptBR } from 'date-fns/locale'
+import { FaCalendar } from 'react-icons/fa'
 
 const DatePicker = ({
 	date,
@@ -41,9 +42,10 @@ const DatePicker = ({
 	return (
 		<div className='relative'>
 			<Button
-				className='w-full truncate'
+				sizes='full'
+				className='truncate'
 				onClick={openCalendar}
-				variants='ghost'
+				variants='secondary'
 			>
 				{date.startDate && date.endDate ? (
 					<>
@@ -56,7 +58,10 @@ const DatePicker = ({
 						</span>
 					</>
 				) : (
-					'Selecione um período'
+					<span className='flex items-center gap-1'>
+						<FaCalendar />
+						Selecione
+					</span>
 				)}
 			</Button>
 

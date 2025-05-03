@@ -5,7 +5,7 @@ export const GET_RELEASES = async (
 	searchTerm?: string,
 	startDate?: string,
 	endDate?: string,
-): Promise<ReleasePage | null> => {
+): Promise<ReleasePage> => {
 	const query = `
      query MyQuery($searchTerm: String, $startDate: Date, $endDate: Date) {
       releasePage(where: { slug: "release-page" }) {
@@ -14,12 +14,10 @@ export const GET_RELEASES = async (
         releases(
           orderBy: date_DESC
           where: {
-            AND: [
-              { OR: [{ title_contains: $searchTerm }] }
-              { OR: [{ date_gte: $startDate }, { date_gte: $startDate }] }
-              { OR: [{ date_lte: $endDate }, { date_lte: $endDate }] }
-            ]
-          }
+          title_contains: $searchTerm
+          date_gte: $startDate
+          date_lte: $endDate
+         }
         ) {
           id
           version
@@ -42,6 +40,8 @@ export const GET_RELEASES = async (
 			startDate: startDate || '1900-01-01',
 			endDate: endDate || '2100-12-31',
 		},
-		{ cache: 'no-cache' },
+    {
+      cache: 'no-cache'
+    }
 	)
 }

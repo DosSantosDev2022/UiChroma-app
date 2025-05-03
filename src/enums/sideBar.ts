@@ -1,3 +1,4 @@
+import { Label } from './../components/packages/label/Label';
 import { FaHome } from 'react-icons/fa'
 import type { IconType } from 'react-icons/lib'
 import { MdNewReleases } from 'react-icons/md'
@@ -76,4 +77,24 @@ export const docs: DocsItem[] = [
 		url: 'docs/sass',
 		status: 'in-dev',
 	},
+]
+
+interface templatesItem {
+  id: string
+	label: string
+	url: string
+	status?: 'maintenance' | 'deprecated' | 'new' | 'in-dev'
+}
+
+export const templates:templatesItem[] = [
+  {
+		id: uuidv4(),
+		label: 'Headers',
+	  url: 'template/headers'
+	},
+	{
+		id: uuidv4(),
+		label: 'Footers',
+	  url: 'template/footers'
+	}
 ]

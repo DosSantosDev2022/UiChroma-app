@@ -1,5 +1,5 @@
 import { Logo } from '@/assets/icons/Logo'
-import { docs, links, themes } from '@/enums/sideBar'
+import { docs, links, themes, templates } from '@/enums/sideBar'
 import { GET_COMPONENTS_NAME } from '@/services/get-Component-Names'
 import {
 	Badge,
@@ -61,6 +61,32 @@ const AppSidebar = async () => {
 							<SideBarDropGroup>
 								<SideBarDropList>
 									{docs.map((doc) => (
+										<Link key={doc.label} href={`/${doc.url}`}>
+											<SideBarDropItem>
+												{doc.label}
+												{doc.status && (
+													<Badge className='ml-2 py-0.5 text-xs' size='md'>
+														{doc.status}
+													</Badge>
+												)}
+											</SideBarDropItem>
+										</Link>
+									))}
+								</SideBarDropList>
+							</SideBarDropGroup>
+						</SideBarDropRoot>
+
+						{/* menu templates */}
+						<SideBarDropRoot>
+							<SideBarDropTrigger
+								tooltip='Templates'
+								icon={<IoDocumentText size={20} />}
+							>
+								Templates
+							</SideBarDropTrigger>
+							<SideBarDropGroup>
+								<SideBarDropList>
+									{templates.map((doc) => (
 										<Link key={doc.label} href={`/${doc.url}`}>
 											<SideBarDropItem>
 												{doc.label}

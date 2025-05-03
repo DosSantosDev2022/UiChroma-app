@@ -43,7 +43,7 @@ describe('Component Button', () => {
 	const sizes: { name: ButtonProps['sizes']; className: string }[] = [
 		{ name: 'xs', className: 'w-24' },
 		{ name: 'sm', className: 'w-28' },
-		{ name: 'lg', className: 'w-28' },
+		{ name: 'lg', className: 'w-32' },
 		{ name: 'icon', className: 'w-8 h-8' },
 		{ name: 'full', className: 'w-full' },
 	]

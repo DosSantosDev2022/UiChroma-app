@@ -1,4 +1,6 @@
-import React, { type ComponentPropsWithRef } from 'react'
+'use client'
+
+import React, { useState, type ComponentPropsWithRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const AvatarContainer = React.forwardRef<
@@ -11,7 +13,6 @@ const AvatarContainer = React.forwardRef<
 		{...props}
 	/>
 ))
-
 AvatarContainer.displayName = 'AvatarContainer'
 
 const AvatarWrapper = React.forwardRef<
@@ -24,106 +25,72 @@ const AvatarWrapper = React.forwardRef<
 		{...props}
 	/>
 ))
-
 AvatarWrapper.displayName = 'AvatarWrapper'
 
 const AvatarName = React.forwardRef<
 	HTMLSpanElement,
 	React.ComponentPropsWithRef<'span'>
->(({ className, ...props }, ref) => {
-	return (
-		<span
-			ref={ref}
-			{...props}
-			className={twMerge(
-				'truncate text-sm  font-semibold  text-muted-foreground',
-				className,
-			)}
-		/>
-	)
-})
-
+>(({ className, ...props }, ref) => (
+	<span
+		ref={ref}
+		className={twMerge(
+			'truncate text-sm font-semibold text-muted-foreground',
+			className,
+		)}
+		{...props}
+	/>
+))
 AvatarName.displayName = 'AvatarName'
 
 const AvatarLabel = React.forwardRef<
 	HTMLSpanElement,
 	React.ComponentPropsWithRef<'span'>
->(({ className, ...props }, ref) => {
-	return (
-		<span
-			ref={ref}
-			{...props}
-			className={twMerge(
-				'truncate text-xs font-normal text-muted-foreground',
-				className,
-			)}
-		/>
-	)
-})
-
+>(({ className, ...props }, ref) => (
+	<span
+		ref={ref}
+		className={twMerge(
+			'truncate text-xs font-normal text-muted-foreground',
+			className,
+		)}
+		{...props}
+	/>
+))
 AvatarLabel.displayName = 'AvatarLabel'
 
-// Componente Avatar
-const Avatar = React.forwardRef<
-	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-	<div
-		ref={ref}
-		className={twMerge(
-			'relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full',
-			className,
-		)}
-		{...props}
-	/>
-))
+type AvatarProps = React.HTMLAttributes<HTMLDivElement> & {
+	src?: string
+	name?: string
+}
 
+const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
+	({ className, src, name = '?', ...props }, ref) => {
+		const [hasError, setHasError] = useState(false)
+
+		return (
+			<div
+				ref={ref}
+				className={twMerge(
+					'relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full',
+					className,
+				)}
+				{...props}
+			>
+				{!hasError && src ? (
+					<img
+						src={src}
+						alt={name}
+						className='aspect-square h-full w-full object-cover'
+						onError={() => setHasError(true)}
+					/>
+				) : (
+					<div className='flex h-full w-full items-center justify-center rounded-full bg-muted-foreground text-white font-medium'>
+						{name.charAt(0).toUpperCase()}
+					</div>
+				)}
+			</div>
+		)
+	},
+)
 Avatar.displayName = 'Avatar'
 
-// Componente AvatarImage
-const AvatarImage = React.forwardRef<
-	HTMLImageElement,
-	ComponentPropsWithRef<'img'>
->(({ className, ...props }, ref) => (
-	<img
-		ref={ref}
-		aria-hidden
-		alt='User avatar'
-		className={twMerge(
-			'aspect-square h-full w-full object-cover',
-			className,
-		)}
-		{...props}
-	/>
-))
-
-AvatarImage.displayName = 'AvatarImage'
-
-// Componente AvatarFallback
-const AvatarFallback = React.forwardRef<
-	HTMLDivElement,
-	React.HTMLAttributes<HTMLDivElement>
->(({ className, children, ...props }, ref) => (
-	<div
-		ref={ref}
-		className={twMerge(
-			'flex h-full w-full items-center justify-center rounded-full bg-muted-foreground',
-			className,
-		)}
-		{...props}
-	>
-		{children}
-	</div>
-))
-
-AvatarFallback.displayName = 'AvatarFallback'
-
-export {
-	Avatar,
-	AvatarContainer,
-	AvatarFallback,
-	AvatarImage,
-	AvatarLabel,
-	AvatarName,
-	AvatarWrapper,
-}
+export { Avatar, AvatarContainer, AvatarWrapper, AvatarName, AvatarLabel }

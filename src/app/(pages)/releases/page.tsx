@@ -15,9 +15,7 @@ export default async function ReleasePage({
 	}>
 }) {
 	const { query, startDate, endDate } = await searchParams
-	const { releasePage = null } =
-		(await GET_RELEASES(query, startDate, endDate)) ?? {}
-
+	const { releasePage } = await GET_RELEASES(query, startDate, endDate)
 	return (
 		<div className='relative mb-10 flex max-w-5xl flex-col px-4 sm:px-6 lg:px-8'>
 			<FiltersReleases />

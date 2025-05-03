@@ -99,7 +99,7 @@ export default async function ComponentDetails({
 						<div id='copyCode' className='space-y-4'>
 							<div className='space-y-2'>
 								<Title as='h3' className={`${inter.className}`}>
-									{pageComponent.sourceCode?.title}
+									{pageComponent.sourceCode?.name}
 								</Title>
 								<p className='text-base font-normal text-muted-foreground'>
 									{pageComponent.sourceCode.description}
@@ -150,7 +150,7 @@ export default async function ComponentDetails({
 						<div id='toUse' className='space-y-4'>
 							<div className='space-y-2'>
 								<Title as='h3' className={`${inter.className}`}>
-									{pageComponent.sampleCode.title}
+									{pageComponent.sampleCode.name}
 								</Title>
 								<p className='text-base font-normal text-muted-foreground'>
 									{pageComponent.sampleCode.description}
@@ -160,7 +160,7 @@ export default async function ComponentDetails({
 							<ClipBoardContainer>
 								<ClipBoardHeader>
 									<ClipBoardLabel>
-										{pageComponent.sampleCode?.title}
+										{pageComponent.sampleCode?.name}
 									</ClipBoardLabel>
 									<ClipBoardAction
 										copyText={pageComponent.sampleCode?.blockCode || ''}

@@ -13,7 +13,7 @@ export const GET_PAGE_DATA = async (
     sectionOne {
       identifier
       id
-      title
+      name
       description
       content {
         raw
@@ -22,7 +22,7 @@ export const GET_PAGE_DATA = async (
     sectionTwo {
       identifier
       id
-      title
+      name
       description
       content {
         raw
@@ -31,7 +31,7 @@ export const GET_PAGE_DATA = async (
     sectionThree {
       identifier
       id
-      title
+      name
       description
       content {
         raw
@@ -40,7 +40,7 @@ export const GET_PAGE_DATA = async (
     sectionFour {
       identifier
       id
-      title
+      name
       description
       content {
         raw
@@ -49,7 +49,7 @@ export const GET_PAGE_DATA = async (
     sectionFive {
       identifier
       id
-      title
+      name
       description
       content {
         raw
@@ -58,7 +58,7 @@ export const GET_PAGE_DATA = async (
     sectionSix {
       identifier
       id
-      title
+      name
       description
       content {
         raw
@@ -67,7 +67,7 @@ export const GET_PAGE_DATA = async (
     sectionSeven {
       identifier
       id
-      title
+      name
       description
       content {
         raw

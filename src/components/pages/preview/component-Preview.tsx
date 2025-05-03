@@ -7,10 +7,12 @@ interface ComponentPreviewProps {
 	componentData: {
 		name: string
 	}
+	path?: string
 }
 
 const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 	componentData,
+	path = '@examples',
 }) => {
 	const [Component, setComponent] = useState<React.FC | null>(null)
 
@@ -18,7 +20,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 		const loadComponent = async () => {
 			try {
 				const importedComponent = await import(
-					`@/components/@examples/${componentData.name.toLowerCase()}`
+					`@/components/${path}/${componentData.name.toLowerCase()}`
 				)
 				setComponent(() => importedComponent.default)
 			} catch (error) {
@@ -27,7 +29,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 		}
 
 		loadComponent()
-	}, [componentData.name])
+	}, [componentData.name, path])
 
 	if (!Component) {
 		return (
@@ -39,7 +41,7 @@ const ComponentPreview: React.FC<ComponentPreviewProps> = ({
 	}
 
 	return (
-		<div className='flex flex-col items-center justify-center border border-border p-6 shadow-sm'>
+		<div className='flex flex-col items-center justify-center border border-border/50 p-2 shadow-sm'>
 			<Component />
 		</div>
 	)

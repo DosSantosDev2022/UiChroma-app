@@ -10,6 +10,7 @@ import { twMerge } from 'tailwind-merge'
 interface PopoverContextProps {
 	isOpen: boolean
 	toggleOpen: () => void
+	error?: string
 }
 
 const PopoverContext = createContext<PopoverContextProps | undefined>(
@@ -72,9 +73,9 @@ const PopoverTrigger = React.forwardRef<
 			aria-expanded={isOpen}
 			{...props}
 			className={twMerge(
-				'flex  w-full items-center justify-center gap-1 rounded border px-2 py-1.5',
-				'transition-all duration-300',
-				'bg-background text-primary hover:bg-muted-hover',
+				'flex w-full items-center justify-center gap-1 rounded border border-border px-2 py-1.5',
+				'transition-all duration-300 cursor-pointer',
+				'bg-background text-primary hover:bg-muted-hover active:scale-95',
 				'select-none outline-none focus:bg-muted-hover focus:ring-1 focus:ring-muted focus:ring-offset-1',
 				className,
 			)}
@@ -120,9 +121,10 @@ const PopoverContent = React.forwardRef<
 					data-state={isOpen ? 'open' : 'closed'}
 					{...props}
 					className={twMerge(
-						`${position} ${alignmentClasses[alignment]} mt-1 w-full rounded-md border bg-background p-4`,
-						'data-[state=open]:animate-smooth-fadein',
-						'data-[state=closed]:animate-smooth-fadeout',
+						`${position} ${alignmentClasses[alignment]}`,
+						' z-50 w-72 mb-2 mt-2 rounded-md shadow-md outline-none border border-border bg-background p-4',
+						'data-[state=open]:animate-fade-in data-[state=closed]:animate-fade-out',
+						'',
 						className,
 					)}
 					ref={ref}
@@ -134,77 +136,10 @@ const PopoverContent = React.forwardRef<
 
 PopoverContent.displayName = 'PopoverContent'
 
-const PopoverList = React.forwardRef<
-	HTMLUListElement,
-	React.ComponentPropsWithRef<'ul'>
->(({ className, ...props }, ref) => (
-	<ul
-		{...props}
-		className={twMerge('flex flex-col space-y-1', className)}
-		ref={ref}
-	/>
-))
-
-PopoverList.displayName = 'PopoverList'
-
-const PopoverItem = React.forwardRef<
-	HTMLLIElement,
-	React.ComponentPropsWithRef<'li'>
->(({ className, ...props }, ref) => (
-	<li
-		{...props}
-		className={twMerge(
-			'cursor-pointer px-2 py-1.5 hover:bg-muted-hover focus:ring-2 focus:ring-primary focus:ring-offset-2',
-			className,
-		)}
-		ref={ref}
-	/>
-))
-
-PopoverItem.displayName = 'PopoverItem'
-
-const PopoverLabel = React.forwardRef<
-	HTMLLabelElement,
-	React.ComponentPropsWithRef<'span'>
->(({ className, ...props }, ref) => {
-	return (
-		<div className='w-full p-2'>
-			<span
-				className={twMerge(
-					'border-b-2 pb-1 pt-1 text-start text-sm font-semibold text-muted-foreground ',
-					className,
-				)}
-				ref={ref}
-				{...props}
-			/>
-		</div>
-	)
-})
-
-PopoverLabel.displayName = 'PopoverLabel'
-
-const PopoverIcon = React.forwardRef<
-	HTMLElement,
-	React.ComponentPropsWithRef<'i'>
->(({ className, ...props }, ref) => {
-	return (
-		<i
-			className={twMerge('text-primary', className)}
-			{...props}
-			ref={ref}
-		/>
-	)
-})
-
-PopoverIcon.displayName = 'PopoverIcon'
-
 export {
 	PopoverContent,
-	PopoverIcon,
-	PopoverItem,
-	PopoverLabel,
-	PopoverList,
 	PopoverProvider,
 	PopoverRoot,
 	PopoverTrigger,
+	usePopoverContext,
 }

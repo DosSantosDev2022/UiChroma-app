@@ -96,5 +96,10 @@ export const templates:templatesItem[] = [
 		id: uuidv4(),
 		label: 'Footers',
 	  url: 'template/footers'
+	},
+	{
+		id: uuidv4(),
+		label: 'Login',
+	  url: 'template/login'
 	}
 ]
